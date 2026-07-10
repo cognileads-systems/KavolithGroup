@@ -231,7 +231,19 @@ function AuditTerminal() {
                 className={
                   "leading-relaxed " +
                   (m.role === "system" ? "text-muted-foreground" : "text-foreground")
-                }
+}
+
+function SessionId() {
+  const [id, setId] = useState<string>("--------");
+  useEffect(() => {
+    setId(Math.floor(Math.random() * 0xffffffff).toString(16).padStart(8, "0"));
+  }, []);
+  return (
+    <span className="text-[10px] uppercase tracking-[0.2em] text-cyan">
+      session.id: 0x{id}
+    </span>
+  );
+}
               >
                 {m.content}
               </p>
