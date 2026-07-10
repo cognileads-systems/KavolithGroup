@@ -232,6 +232,7 @@ function AuditTerminal() {
                   "leading-relaxed " +
                   (m.role === "system" ? "text-muted-foreground" : "text-foreground")
                 }
+              >
                 {m.content}
               </p>
             </div>
