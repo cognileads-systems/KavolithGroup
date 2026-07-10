@@ -209,9 +209,7 @@ function AuditTerminal() {
               CogniLeads System Auditor <span className="text-cyan">v1.0</span>
             </span>
           </div>
-          <span className="text-[10px] uppercase tracking-[0.2em] text-cyan">
-            session.id: 0x{Math.floor(Math.random() * 1e8).toString(16)}
-          </span>
+          <SessionId />
         </div>
 
         <div className="relative h-[420px] overflow-y-auto p-5 space-y-3 text-sm">
