@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "sdk_version": "0.20.1",
+  "path": "/mcp",
+  "auth": {
+    "type": "oauth",
+    "issuer": "https://wfmnlfjwbdvsdjmhgnlz.supabase.co/auth/v1",
+    "accepted_audiences": [
+      "authenticated"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "cognileads-systems-mcp",
+      "version": "0.1.0",
+      "title": "CogniLeads Systems"
+    },
+    "tools": [
+      {
+        "name": "submit_lead",
+        "title": "Submit Lead",
+        "description": "Capture a new inbound lead in the signed-in user's CogniLeads pipeline. Use for prospect names, emails, companies, and inbound messages.",
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Prospect name."
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "description": "Prospect email address."
+            },
+            "company": {
+              "type": "string",
+              "description": "Prospect company / organization."
+            },
+            "message": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Inbound message or context about the lead."
+            }
+          },
+          "required": [
+            "email",
+            "message"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_my_leads",
+        "title": "List My Leads",
+        "description": "List the inbound leads captured by the signed-in user, newest first.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "description": "Max number of leads to return (default 20)."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}

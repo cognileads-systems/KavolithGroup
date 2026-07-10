@@ -209,9 +209,7 @@ function AuditTerminal() {
               CogniLeads System Auditor <span className="text-cyan">v1.0</span>
             </span>
           </div>
-          <span className="text-[10px] uppercase tracking-[0.2em] text-cyan">
-            session.id: 0x{Math.floor(Math.random() * 1e8).toString(16)}
-          </span>
+          <SessionId />
         </div>
 
         <div className="relative h-[420px] overflow-y-auto p-5 space-y-3 text-sm">
@@ -488,5 +486,17 @@ function Footer() {
         <span className="h-1.5 w-1.5 bg-cyan animate-pulse-cyan" /> all nodes operational
       </span>
     </footer>
+  );
+}
+
+function SessionId() {
+  const [id, setId] = useState<string>("--------");
+  useEffect(() => {
+    setId(Math.floor(Math.random() * 0xffffffff).toString(16).padStart(8, "0"));
+  }, []);
+  return (
+    <span className="text-[10px] uppercase tracking-[0.2em] text-cyan">
+      session.id: 0x{id}
+    </span>
   );
 }
