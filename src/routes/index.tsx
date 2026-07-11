@@ -3,7 +3,45 @@ import { useEffect, useRef, useState } from "react";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { property: "og:url", content: "https://cognileadssystems.lovable.app/" },
+    ],
+    links: [{ rel: "canonical", href: "https://cognileadssystems.lovable.app/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "CogniLeads Systems",
+          url: "https://cognileadssystems.lovable.app",
+          description:
+            "Autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects within 120 seconds.",
+          sameAs: ["https://www.linkedin.com/in/cognileads"],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: "Autonomous AI SDR Infrastructure",
+          provider: {
+            "@type": "Organization",
+            name: "CogniLeads Systems",
+            url: "https://cognileadssystems.lovable.app",
+          },
+          serviceType: "AI-powered Digital Employee Workflows & Automation Infrastructure",
+          areaServed: "Global",
+          description:
+            "Engineered AI SDR workflows: 24/7 inbound qualification, enrichment, and routing in under 120 seconds.",
+        }),
+      },
+    ],
+  }),
 });
+
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/cognileads";
 
