@@ -289,8 +289,10 @@ function AuditTerminal() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type response to auditor..."
+            aria-label="Response to CogniLeads system auditor"
             className="flex-1 bg-transparent border-none outline-none text-sm placeholder:text-muted-foreground/60"
           />
+
           <button
             type="submit"
             className="inline-flex items-center gap-2 border border-cyan px-4 py-2 text-[11px] uppercase tracking-[0.2em] text-cyan glow-cyan animate-pulse-cyan hover:bg-cyan hover:text-primary-foreground transition-all"
