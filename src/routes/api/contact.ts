@@ -1,27 +1,36 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { z } from "zod";
 
-interface ContactPayload {
-  name?: string;
-  email?: string;
-  company?: string;
-  message?: string;
-  audit_transcript?: Array<{ role: string; content: string }>;
-}
+const transcriptEntrySchema = z.object({
+  role: z.string().max(50),
+  content: z.string().max(4000),
+});
+
+const contactSchema = z.object({
+  name: z.string().trim().max(100).optional().nullable(),
+  email: z.string().trim().email().max(255),
+  company: z.string().trim().max(150).optional().nullable(),
+  message: z.string().trim().min(1).max(4000),
+  audit_transcript: z.array(transcriptEntrySchema).max(50).optional(),
+});
 
 export const Route = createFileRoute("/api/contact")({
   server: {
     handlers: {
       POST: async ({ request }) => {
-        let body: ContactPayload;
+        let raw: unknown;
         try {
-          body = (await request.json()) as ContactPayload;
+          raw = await request.json();
         } catch {
-          return Response.json({ ok: false, error: "invalid_json" }, { status: 400 });
+          return Response.json({ ok: false }, { status: 400 });
         }
 
-        if (!body.email || !body.message) {
-          return Response.json({ ok: false, error: "missing_fields" }, { status: 400 });
+        const parsed = contactSchema.safeParse(raw);
+        if (!parsed.success) {
+          console.warn("[CogniLeads] contact validation failed:", parsed.error.flatten());
+          return Response.json({ ok: false }, { status: 400 });
         }
+        const body = parsed.data;
 
         const payload = {
           source: "cognileads.systems//web",
@@ -36,8 +45,9 @@ export const Route = createFileRoute("/api/contact")({
         };
 
         const results: Record<string, unknown> = {};
+        let hadFailure = false;
 
-        // 1) Email alert framework (server log + optional Resend if configured)
+        // 1) Email alert framework
         const resendKey = process.env.RESEND_API_KEY;
         const alertTo = process.env.CONTACT_ALERT_EMAIL;
         const alertFrom = process.env.CONTACT_ALERT_FROM;
@@ -57,15 +67,16 @@ export const Route = createFileRoute("/api/contact")({
               }),
             });
             results.email = { status: r.status };
+            if (!r.ok) hadFailure = true;
           } catch (e) {
             results.email = { error: String(e) };
+            hadFailure = true;
           }
         } else {
-          console.log("[CogniLeads] contact submission:", JSON.stringify(payload));
           results.email = { status: "logged" };
         }
 
-        // 2) Fallback / dual-router: forward to Make.com webhook
+        // 2) Make.com webhook
         const makeUrl = process.env.MAKE_WEBHOOK_URL;
         if (makeUrl) {
           try {
@@ -75,14 +86,21 @@ export const Route = createFileRoute("/api/contact")({
               body: JSON.stringify(payload),
             });
             results.make = { status: r.status };
+            if (!r.ok) hadFailure = true;
           } catch (e) {
             results.make = { error: String(e) };
+            hadFailure = true;
           }
         } else {
           results.make = { status: "not_configured" };
         }
 
-        return Response.json({ ok: true, payload, results });
+        console.log(
+          "[CogniLeads] contact submission:",
+          JSON.stringify({ payload, results }),
+        );
+
+        return Response.json({ ok: !hadFailure });
       },
     },
   },
