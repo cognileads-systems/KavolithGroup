@@ -9,7 +9,26 @@ export const Route = createFileRoute("/auth")({
     next: typeof s.next === "string" ? s.next : "",
   }),
   component: AuthPage,
+  head: () => ({
+    meta: [
+      { title: "Access CogniLeads // Operator Authentication" },
+      {
+        name: "description",
+        content:
+          "Sign in or provision a CogniLeads operator account to access the autonomous AI SDR control plane.",
+      },
+      { property: "og:title", content: "Access CogniLeads // Operator Authentication" },
+      {
+        property: "og:description",
+        content: "Operator authentication for the CogniLeads Systems AI SDR control plane.",
+      },
+      { property: "og:url", content: "https://cognileadssystems.lovable.app/auth" },
+      { name: "robots", content: "noindex, nofollow" },
+    ],
+    links: [{ rel: "canonical", href: "https://cognileadssystems.lovable.app/auth" }],
+  }),
 });
+
 
 function isSafeRelative(path: string) {
   return path.startsWith("/") && !path.startsWith("//");
