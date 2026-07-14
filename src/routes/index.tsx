@@ -395,6 +395,242 @@ function ArchitectureTabs() {
   );
 }
 
+type PipelineNode = {
+  id: string;
+  label: string;
+  caption: string;
+  metrics: { k: string; v: string }[];
+};
+
+const PIPELINE_NODES: PipelineNode[] = [
+  {
+    id: "input",
+    label: "input.payload",
+    caption: "source: web",
+    metrics: [
+      { k: "ingest.rate", v: "1.2k/hr" },
+      { k: "schema", v: "v3.1" },
+    ],
+  },
+  {
+    id: "dedupe",
+    label: "deduping_router",
+    caption: "cross-reference",
+    metrics: [
+      { k: "dedupe.hit", v: "18%" },
+      { k: "lookup", v: "< 40ms" },
+    ],
+  },
+  {
+    id: "enrich",
+    label: "enrichment.api",
+    caption: "apollo & clearbit",
+    metrics: [
+      { k: "latency", v: "< 500ms" },
+      { k: "match.rate", v: "94%" },
+    ],
+  },
+  {
+    id: "icp",
+    label: "icp_classifier.ai",
+    caption: "gpt-4o engine",
+    metrics: [
+      { k: "model", v: "gpt-4o" },
+      { k: "confidence", v: "0.91" },
+    ],
+  },
+  {
+    id: "score",
+    label: "scoring.engine",
+    caption: "tier allocation",
+    metrics: [
+      { k: "tiers", v: "A / B / C" },
+      { k: "throughput", v: "800/min" },
+    ],
+  },
+  {
+    id: "outgest",
+    label: "crm_outgest",
+    caption: "slack & email dispatch",
+    metrics: [
+      { k: "channels", v: "slack + smtp" },
+      { k: "success", v: "99.98%" },
+    ],
+  },
+];
+
+function PipelineDiagram() {
+  return (
+    <div className="relative bg-[#0A1120] overflow-hidden">
+      <style>{`
+        @keyframes pipeline-flow {
+          0%   { left: 0%;   opacity: 0; }
+          8%   { opacity: 1; }
+          92%  { opacity: 1; }
+          100% { left: 100%; opacity: 0; }
+        }
+        @keyframes pipeline-flow-vert {
+          0%   { top: 0%;   opacity: 0; }
+          8%   { opacity: 1; }
+          92%  { opacity: 1; }
+          100% { top: 100%; opacity: 0; }
+        }
+        .pipe-line-h {
+          position: relative;
+          height: 2px;
+          background: linear-gradient(90deg, rgba(56,189,248,0.15), rgba(56,189,248,0.55), rgba(56,189,248,0.15));
+          box-shadow: 0 0 8px rgba(56,189,248,0.35);
+        }
+        .pipe-pulse-h {
+          position: absolute;
+          top: 50%;
+          width: 10px;
+          height: 10px;
+          margin-top: -5px;
+          border-radius: 9999px;
+          background: #38BDF8;
+          box-shadow: 0 0 12px #38BDF8, 0 0 24px rgba(56,189,248,0.6);
+          animation: pipeline-flow 2.8s linear infinite;
+        }
+        .pipe-line-v {
+          position: relative;
+          width: 2px;
+          background: linear-gradient(180deg, rgba(56,189,248,0.15), rgba(56,189,248,0.55), rgba(56,189,248,0.15));
+          box-shadow: 0 0 8px rgba(56,189,248,0.35);
+        }
+        .pipe-pulse-v {
+          position: absolute;
+          left: 50%;
+          width: 10px;
+          height: 10px;
+          margin-left: -5px;
+          border-radius: 9999px;
+          background: #38BDF8;
+          box-shadow: 0 0 12px #38BDF8, 0 0 24px rgba(56,189,248,0.6);
+          animation: pipeline-flow-vert 2.2s linear infinite;
+        }
+      `}</style>
+
+      {/* grid backdrop */}
+      <div
+        className="absolute inset-0 opacity-30 pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, rgba(56,189,248,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(56,189,248,0.08) 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
+        }}
+      />
+      {/* corner ticks */}
+      <div className="absolute left-2 top-2 text-[10px] uppercase tracking-[0.25em] text-[#38BDF8]/80">
+        &gt; pipeline.render // live
+      </div>
+      <div className="absolute right-2 top-2 flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-[#10B981]">
+        <span className="h-1.5 w-1.5 rounded-full bg-[#10B981] animate-pulse" />
+        status: healthy
+      </div>
+
+      <div className="relative px-4 py-10 md:px-8 md:py-14">
+        {/* Desktop / tablet: horizontal flow */}
+        <div className="hidden md:flex items-stretch gap-0">
+          {PIPELINE_NODES.map((n, i) => (
+            <div key={n.id} className="flex items-center flex-1 min-w-0 last:flex-none">
+              <PipelineCard node={n} index={i} />
+              {i < PIPELINE_NODES.length - 1 && (
+                <div className="flex-1 min-w-[24px] px-1">
+                  <div className="pipe-line-h">
+                    <span
+                      className="pipe-pulse-h"
+                      style={{ animationDelay: `${i * 0.45}s` }}
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Mobile: vertical flow */}
+        <div className="flex md:hidden flex-col items-stretch">
+          {PIPELINE_NODES.map((n, i) => (
+            <div key={n.id} className="flex flex-col items-stretch">
+              <PipelineCard node={n} index={i} />
+              {i < PIPELINE_NODES.length - 1 && (
+                <div className="self-center h-10 py-1">
+                  <div className="pipe-line-v h-full">
+                    <span
+                      className="pipe-pulse-v"
+                      style={{ animationDelay: `${i * 0.4}s` }}
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PipelineCard({ node, index }: { node: PipelineNode; index: number }) {
+  return (
+    <div className="group relative flex-none w-full md:w-[168px] lg:w-[180px]">
+      <div
+        className="
+          relative border border-[#38BDF8]/25 bg-[#0F1A2E]/80 backdrop-blur-sm
+          px-3 py-3 transition-all duration-200
+          hover:border-[#38BDF8] hover:bg-[#132340]
+          hover:shadow-[0_0_24px_rgba(56,189,248,0.35)]
+          hover:-translate-y-0.5 cursor-default
+          before:content-[''] before:absolute before:-top-px before:-left-px before:w-2 before:h-2 before:border-t before:border-l before:border-[#38BDF8]
+          after:content-[''] after:absolute after:-bottom-px after:-right-px after:w-2 after:h-2 after:border-b after:border-r after:border-[#38BDF8]
+        "
+      >
+        <div className="flex items-center justify-between text-[9px] uppercase tracking-[0.2em] text-[#38BDF8]/70">
+          <span>node.{String(index).padStart(2, "0")}</span>
+          <span className="flex items-center gap-1 text-[#10B981]">
+            <span className="h-1 w-1 rounded-full bg-[#10B981] animate-pulse" />
+            ok
+          </span>
+        </div>
+        <div className="mt-2 text-[13px] leading-tight text-foreground font-mono break-all">
+          [{node.label}]
+        </div>
+        <div className="mt-1 text-[10px] uppercase tracking-[0.15em] text-muted-foreground break-all">
+          // {node.caption}
+        </div>
+
+        {/* hover micro-metrics dropdown */}
+        <div
+          className="
+            pointer-events-none absolute left-1/2 -translate-x-1/2 top-full mt-2 z-20
+            w-[220px] max-w-[80vw]
+            opacity-0 translate-y-1 transition-all duration-200
+            group-hover:opacity-100 group-hover:translate-y-0
+          "
+        >
+          <div className="border border-[#38BDF8]/60 bg-[#0A1120]/95 backdrop-blur px-3 py-2 shadow-[0_0_20px_rgba(56,189,248,0.35)]">
+            <div className="text-[9px] uppercase tracking-[0.25em] text-[#38BDF8] mb-1">
+              micro.metrics
+            </div>
+            {node.metrics.map((m) => (
+              <div
+                key={m.k}
+                className="flex items-center justify-between gap-3 text-[10px] font-mono"
+              >
+                <span className="text-muted-foreground">{m.k}</span>
+                <span className="text-[#10B981]">{m.v}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+
 function ContactBlock() {
   const [state, setState] = useState<"idle" | "sending" | "ok" | "err">("idle");
   const [preview, setPreview] = useState<string>("");
