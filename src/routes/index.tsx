@@ -666,7 +666,7 @@ function ContactBlock() {
     setPreview(JSON.stringify(payload, null, 2));
     setState("sending");
 
-    const WEBHOOK_URL = "PASTE_YOUR_ACTUAL_MAKE_WEBHOOK_URL_HERE";
+    const WEBHOOK_URL = "https://hook.us2.make.com/5mdsxdg4uittjnebeeknh7kqhducosu2";
 
     try {
       const r = await fetch(WEBHOOK_URL, {
@@ -718,8 +718,6 @@ function ContactBlock() {
           >
             {state === "sending"
               ? "> Routing Data..."
-              : state === "ok"
-              ? "// [SUCCESS] payload routed ✓"
               : state === "err"
               ? "// [ERR] retry transmission"
               : "> Execute Payload"}
