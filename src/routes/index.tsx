@@ -718,8 +718,6 @@ function ContactBlock() {
           >
             {state === "sending"
               ? "> Routing Data..."
-              : state === "ok"
-              ? "// [SUCCESS] payload routed ✓"
               : state === "err"
               ? "// [ERR] retry transmission"
               : "> Execute Payload"}
