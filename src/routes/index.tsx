@@ -350,27 +350,32 @@ function ArchitectureTabs() {
           </div>
         </div>
 
-        <div className="relative aspect-[16/8] bg-black/50 overflow-hidden">
-          <div
-            className="absolute inset-0 opacity-40"
-            style={{
-              backgroundImage:
-                "linear-gradient(to right, rgba(0,240,255,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,240,255,0.08) 1px, transparent 1px)",
-              backgroundSize: "32px 32px",
-            }}
-          />
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center">
-            <div className="h-10 w-10 border border-cyan/60 flex items-center justify-center text-cyan animate-pulse-cyan">
-              [ ]
-            </div>
-            <div className="text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
-              Awaiting embed // {current.label}
-            </div>
-            <div className="text-[10px] text-muted-foreground/60 max-w-md">
-              Container reserved. Drop workflow canvas, scenario map, or endpoint payload here.
+        {active === "n8n" ? (
+          <PipelineDiagram />
+        ) : (
+          <div className="relative aspect-[16/8] bg-black/50 overflow-hidden">
+            <div
+              className="absolute inset-0 opacity-40"
+              style={{
+                backgroundImage:
+                  "linear-gradient(to right, rgba(0,240,255,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,240,255,0.08) 1px, transparent 1px)",
+                backgroundSize: "32px 32px",
+              }}
+            />
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center">
+              <div className="h-10 w-10 border border-cyan/60 flex items-center justify-center text-cyan animate-pulse-cyan">
+                [ ]
+              </div>
+              <div className="text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+                Awaiting embed // {current.label}
+              </div>
+              <div className="text-[10px] text-muted-foreground/60 max-w-md">
+                Container reserved. Drop workflow canvas, scenario map, or endpoint payload here.
+              </div>
             </div>
           </div>
-        </div>
+        )}
+
 
         <div className="grid grid-cols-2 md:grid-cols-4 border-t border-border text-[10px] uppercase tracking-[0.2em]">
           {[
