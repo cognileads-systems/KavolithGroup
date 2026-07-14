@@ -451,11 +451,29 @@ function ContactBlock() {
             disabled={state === "sending"}
             className="w-full inline-flex items-center justify-center gap-2 border border-cyan px-5 py-3 text-xs uppercase tracking-[0.25em] text-cyan glow-cyan hover:bg-cyan hover:text-primary-foreground transition-all disabled:opacity-60"
           >
-            {state === "sending" ? "// transmitting..." : state === "ok" ? "// payload received ✓" : state === "err" ? "// retry transmission" : "&gt; fire dual-router hook"}
+            {state === "sending"
+              ? "// transmitting payload..."
+              : state === "ok"
+              ? "// [SUCCESS] payload routed ✓"
+              : state === "err"
+              ? "// [ERR] retry transmission"
+              : "> Execute Payload"}
           </button>
+          {state === "ok" && (
+            <div className="border border-cyan/60 bg-cyan/5 px-3 py-2 text-[11px] uppercase tracking-[0.2em] text-cyan glow-cyan">
+              <span className="animate-blink mr-2">▮</span>
+              [SUCCESS] Payload routed to pipeline successfully.
+            </div>
+          )}
+          {state === "err" && (
+            <div className="border border-destructive/60 bg-destructive/10 px-3 py-2 text-[11px] uppercase tracking-[0.2em] text-destructive">
+              [ERR] Transmission failed. Verify webhook endpoint.
+            </div>
+          )}
           <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
             router.1 email.alert // router.2 make.webhook
           </p>
+
         </form>
 
         <div className="border border-border bg-black/60 p-6 overflow-hidden">
