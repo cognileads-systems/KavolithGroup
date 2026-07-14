@@ -771,12 +771,14 @@ function Field({
   type = "text",
   placeholder,
   required,
+  error,
 }: {
   label: string;
   name: string;
   type?: string;
   placeholder?: string;
   required?: boolean;
+  error?: string;
 }) {
   return (
     <div>
@@ -788,8 +790,12 @@ function Field({
         type={type}
         required={required}
         placeholder={placeholder}
-        className="w-full bg-black/40 border border-border px-3 py-2 text-sm outline-none focus:border-cyan focus:ring-1 focus:ring-cyan"
+        aria-invalid={!!error}
+        className="w-full bg-black/40 border border-border px-3 py-2 text-sm outline-none focus:border-cyan focus:ring-1 focus:ring-cyan aria-[invalid=true]:border-destructive"
       />
+      {error && (
+        <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-destructive">// {error}</p>
+      )}
     </div>
   );
 }
