@@ -77,14 +77,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "CogniLeads Systems | Autonomous AI SDR Infrastructure" },
-      { name: "description", content: "We engineer autonomous AI SDR infrastructure that qualifies, enriches, and books inbound business leads into your database within 120 seconds. 24/7/365." },
-      { property: "og:title", content: "CogniLeads Systems | Autonomous AI SDR Infrastructure" },
-      { property: "og:description", content: "We engineer autonomous AI SDR infrastructure that qualifies, enriches, and books inbound business leads into your database within 120 seconds. 24/7/365." },
+      { title: "CogniLeads Systems // Autonomous AI SDR & Lead Infrastructure" },
+      { name: "description", content: "We engineer autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects within 120 seconds. 24/7/365." },
+      { property: "og:title", content: "CogniLeads Systems // Autonomous AI SDR & Lead Infrastructure" },
+      { property: "og:description", content: "We engineer autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects within 120 seconds. 24/7/365." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "CogniLeads Systems | Autonomous AI SDR Infrastructure" },
-      { name: "twitter:description", content: "We engineer autonomous AI SDR infrastructure that qualifies, enriches, and books inbound business leads into your database within 120 seconds. 24/7/365." },
+      { name: "twitter:title", content: "CogniLeads Systems // Autonomous AI SDR & Lead Infrastructure" },
+      { name: "twitter:description", content: "We engineer autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects within 120 seconds. 24/7/365." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/577318cd-eff3-48a0-879a-b3177a7b3107" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/577318cd-eff3-48a0-879a-b3177a7b3107" },
     ],
@@ -92,6 +92,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "stylesheet",
         href: appCss,
+      },
+      {
+        rel: "icon",
+        type: "image/svg+xml",
+        href: "/favicon.svg",
       },
       {
         rel: "stylesheet",
