@@ -398,15 +398,23 @@ function ContactBlock() {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
     const payload = {
-      name: String(fd.get("name") || ""),
-      email: String(fd.get("email") || ""),
-      company: String(fd.get("company") || ""),
-      message: String(fd.get("message") || ""),
+      source: "cognileads.systems//web",
+      timestamp: new Date().toISOString(),
+      lead: {
+        name: String(fd.get("name") || ""),
+        email: String(fd.get("email") || ""),
+        company: String(fd.get("company") || ""),
+        message: String(fd.get("message") || ""),
+      },
+      routers: ["email.alert", "make.webhook"],
     };
     setPreview(JSON.stringify(payload, null, 2));
     setState("sending");
+
+    const WEBHOOK_URL = "YOUR_MAKE_WEBHOOK_URL_HERE";
+
     try {
-      const r = await fetch("/api/contact", {
+      const r = await fetch(WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -416,6 +424,7 @@ function ContactBlock() {
       setState("err");
     }
   }
+
 
   return (
     <section id="contact" className="py-12 lg:py-20 border-b border-border/60">
