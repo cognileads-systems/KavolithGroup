@@ -634,19 +634,35 @@ function PipelineCard({ node, index }: { node: PipelineNode; index: number }) {
 function ContactBlock() {
   const [state, setState] = useState<"idle" | "sending" | "ok" | "err">("idle");
   const [preview, setPreview] = useState<string>("");
+  const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string }>({});
+
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
+    const name = String(fd.get("name") || "").trim();
+    const email = String(fd.get("email") || "").trim();
+    const company = String(fd.get("company") || "").trim();
+    const message = String(fd.get("message") || "").trim();
+
+    const nextErrors: typeof errors = {};
+    if (!name) nextErrors.name = "operator.name required";
+    if (!email) nextErrors.email = "operator.email required";
+    else if (!EMAIL_RE.test(email)) nextErrors.email = "invalid email format";
+    if (!message) nextErrors.message = "payload.message required";
+
+    if (Object.keys(nextErrors).length) {
+      setErrors(nextErrors);
+      setState("idle");
+      return;
+    }
+    setErrors({});
+
     const payload = {
       source: "cognileads.systems//web",
       timestamp: new Date().toISOString(),
-      lead: {
-        name: String(fd.get("name") || ""),
-        email: String(fd.get("email") || ""),
-        company: String(fd.get("company") || ""),
-        message: String(fd.get("message") || ""),
-      },
+      lead: { name, email, company, message },
       routers: ["email.alert", "make.webhook"],
     };
     setPreview(JSON.stringify(payload, null, 2));
@@ -671,9 +687,9 @@ function ContactBlock() {
     <section id="contact" className="py-12 lg:py-20 border-b border-border/60">
       <SectionHeader index="05" title="Dual-Router Lead Capture Hook" caption="POST /api/contact" />
       <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <form onSubmit={onSubmit} className="border border-border bg-panel/70 p-6 space-y-4">
-          <Field label="operator.name" name="name" placeholder="Jane Doe" />
-          <Field label="operator.email" name="email" type="email" required placeholder="jane@company.com" />
+        <form onSubmit={onSubmit} noValidate className="border border-border bg-panel/70 p-6 space-y-4">
+          <Field label="operator.name" name="name" placeholder="Jane Doe" required error={errors.name} />
+          <Field label="operator.email" name="email" type="email" required placeholder="jane@company.com" error={errors.email} />
           <Field label="operator.org" name="company" placeholder="Acme Inc." />
           <div>
             <label className="block text-[10px] uppercase tracking-[0.25em] text-muted-foreground mb-2">
@@ -681,19 +697,23 @@ function ContactBlock() {
             </label>
             <textarea
               name="message"
-              required
               rows={5}
-              className="w-full bg-black/40 border border-border px-3 py-2 text-sm outline-none focus:border-cyan focus:ring-1 focus:ring-cyan"
+              aria-invalid={!!errors.message}
+              className="w-full bg-black/40 border border-border px-3 py-2 text-sm outline-none focus:border-cyan focus:ring-1 focus:ring-cyan aria-[invalid=true]:border-destructive"
               placeholder="Describe your inbound funnel..."
             />
+            {errors.message && (
+              <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-destructive">// {errors.message}</p>
+            )}
           </div>
           <button
             type="submit"
             disabled={state === "sending"}
-            className="w-full inline-flex items-center justify-center gap-2 border border-cyan px-5 py-3 text-xs uppercase tracking-[0.25em] text-cyan glow-cyan hover:bg-cyan hover:text-primary-foreground transition-all disabled:opacity-60"
+            aria-busy={state === "sending"}
+            className="w-full inline-flex items-center justify-center gap-2 border border-cyan px-5 py-3 text-xs uppercase tracking-[0.25em] text-cyan glow-cyan hover:bg-cyan hover:text-primary-foreground transition-all disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-cyan"
           >
             {state === "sending"
-              ? "// transmitting payload..."
+              ? "> Routing Data..."
               : state === "ok"
               ? "// [SUCCESS] payload routed ✓"
               : state === "err"
