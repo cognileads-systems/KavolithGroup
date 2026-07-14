@@ -661,14 +661,12 @@ function ContactBlock() {
 
     const payload = {
       source: "cognileads.systems//web",
-      timestamp: new Date().toISOString(),
       lead: { name, email, company, message },
-      routers: ["email.alert", "make.webhook"],
     };
     setPreview(JSON.stringify(payload, null, 2));
     setState("sending");
 
-    const WEBHOOK_URL = "YOUR_MAKE_WEBHOOK_URL_HERE";
+    const WEBHOOK_URL = "PASTE_YOUR_ACTUAL_MAKE_WEBHOOK_URL_HERE";
 
     try {
       const r = await fetch(WEBHOOK_URL, {
@@ -676,7 +674,13 @@ function ContactBlock() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      setState(r.ok ? "ok" : "err");
+      if (r.ok) {
+        console.log("[cognileads] payload routed successfully", payload);
+        (e.currentTarget as HTMLFormElement).reset();
+        setState("ok");
+      } else {
+        setState("err");
+      }
     } catch {
       setState("err");
     }
