@@ -821,6 +821,8 @@ const TEMPLATES = [
     asset: "saas_pipeline.v1",
     title: "SaaS Pipeline V1",
     role: "// product-led growth",
+    description:
+      "Built for high-velocity SaaS operations. Compresses the qualify → enrich → route sequence into a single automated pass. Lead-to-qualified in <120s. Zero manual triage.",
     metrics: [
       { k: "TTFV", v: "< 30s" },
       { k: "trial→paid", v: "22%" },
@@ -834,6 +836,8 @@ const TEMPLATES = [
     asset: "high_ticket_inbound.v1",
     title: "High-Ticket Inbound V1",
     role: "// booked-call engine",
+    description:
+      "Designed for high-ACV sales cycles. Layers deep firmographic and intent enrichment prior to routing. Every lead pre-vetted. Every call closer-ready.",
     metrics: [
       { k: "call.rate", v: "8.4%" },
       { k: "AOV", v: "$18k+" },
@@ -847,6 +851,8 @@ const TEMPLATES = [
     asset: "enterprise_scale.v1",
     title: "Enterprise Scale V1",
     role: "// account-based motion",
+    description:
+      "Engineered for complex buying committees. Runs parallel enrichment across named contacts, mapping out the entire corporate stakeholder matrix automatically.",
     metrics: [
       { k: "cycle", v: "-38%" },
       { k: "ACV lift", v: "+27%" },
@@ -856,6 +862,7 @@ const TEMPLATES = [
     accent: "from-cyan/25 via-cyan/5 to-transparent",
   },
 ] as const;
+
 
 function TemplateMatrix() {
   const scrollToContact = () => {
