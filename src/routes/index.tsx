@@ -66,6 +66,7 @@ function Index() {
         <AuditTerminal />
         <ArchitectureTabs />
         <ContactBlock />
+        <TemplateMatrix />
         <Footer />
       </main>
     </div>
