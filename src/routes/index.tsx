@@ -821,6 +821,8 @@ const TEMPLATES = [
     asset: "saas_pipeline.v1",
     title: "SaaS Pipeline V1",
     role: "// product-led growth",
+    description:
+      "Built for high-velocity SaaS operations. Compresses the qualify → enrich → route sequence into a single automated pass. Lead-to-qualified in <120s. Zero manual triage.",
     metrics: [
       { k: "TTFV", v: "< 30s" },
       { k: "trial→paid", v: "22%" },
@@ -834,6 +836,8 @@ const TEMPLATES = [
     asset: "high_ticket_inbound.v1",
     title: "High-Ticket Inbound V1",
     role: "// booked-call engine",
+    description:
+      "Designed for high-ACV sales cycles. Layers deep firmographic and intent enrichment prior to routing. Every lead pre-vetted. Every call closer-ready.",
     metrics: [
       { k: "call.rate", v: "8.4%" },
       { k: "AOV", v: "$18k+" },
@@ -847,6 +851,8 @@ const TEMPLATES = [
     asset: "enterprise_scale.v1",
     title: "Enterprise Scale V1",
     role: "// account-based motion",
+    description:
+      "Engineered for complex buying committees. Runs parallel enrichment across named contacts, mapping out the entire corporate stakeholder matrix automatically.",
     metrics: [
       { k: "cycle", v: "-38%" },
       { k: "ACV lift", v: "+27%" },
@@ -856,6 +862,7 @@ const TEMPLATES = [
     accent: "from-cyan/25 via-cyan/5 to-transparent",
   },
 ] as const;
+
 
 function TemplateMatrix() {
   const scrollToContact = () => {
@@ -878,8 +885,23 @@ function TemplateMatrix() {
         {TEMPLATES.map((t, i) => (
           <article
             key={t.id}
+            itemScope
+            itemType="https://schema.org/Product"
             className="group relative overflow-hidden rounded-lg border border-border/60 bg-[#0A1120] p-5 transition-all duration-300 hover:border-cyan/60 hover:-translate-y-0.5"
           >
+            <meta itemProp="sku" content={t.id} />
+            <meta itemProp="category" content="Automation Service Template" />
+            <meta itemProp="url" content={`https://cognileadssystems.lovable.app/#${t.id}`} />
+            <div itemProp="brand" itemScope itemType="https://schema.org/Organization" className="hidden">
+              <meta itemProp="name" content="CogniLeads Systems" />
+            </div>
+            <div itemProp="offers" itemScope itemType="https://schema.org/Offer" className="hidden">
+              <meta itemProp="availability" content="https://schema.org/InStock" />
+              <meta itemProp="priceCurrency" content="USD" />
+              <meta itemProp="price" content="0" />
+              <meta itemProp="seller" content="CogniLeads Systems" />
+            </div>
+
             <div
               className={`pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-gradient-to-br ${t.accent}`}
             />
@@ -895,7 +917,10 @@ function TemplateMatrix() {
 
             <div className="relative mt-4">
               <div className="text-[11px] text-muted-foreground">{t.role}</div>
-              <h3 className="mt-1 text-lg font-semibold tracking-tight text-foreground">
+              <h3
+                itemProp="name"
+                className="mt-1 text-lg font-semibold tracking-tight text-foreground"
+              >
                 {t.title}
               </h3>
               <div className="mt-1 text-[11px] text-cyan/80 truncate">
@@ -903,6 +928,13 @@ function TemplateMatrix() {
                 {t.asset}
               </div>
             </div>
+
+            <p
+              itemProp="description"
+              className="relative mt-4 text-[12px] leading-relaxed text-muted-foreground"
+            >
+              {t.description}
+            </p>
 
             <div className="relative mt-5 grid grid-cols-3 gap-2 border-y border-border/60 py-3">
               {t.metrics.map((m) => (
@@ -940,6 +972,7 @@ function TemplateMatrix() {
     </section>
   );
 }
+
 
 function Footer() {
   return (
