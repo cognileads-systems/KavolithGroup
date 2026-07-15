@@ -885,8 +885,23 @@ function TemplateMatrix() {
         {TEMPLATES.map((t, i) => (
           <article
             key={t.id}
+            itemScope
+            itemType="https://schema.org/Product"
             className="group relative overflow-hidden rounded-lg border border-border/60 bg-[#0A1120] p-5 transition-all duration-300 hover:border-cyan/60 hover:-translate-y-0.5"
           >
+            <meta itemProp="sku" content={t.id} />
+            <meta itemProp="category" content="Automation Service Template" />
+            <meta itemProp="url" content={`https://cognileadssystems.lovable.app/#${t.id}`} />
+            <div itemProp="brand" itemScope itemType="https://schema.org/Organization" className="hidden">
+              <meta itemProp="name" content="CogniLeads Systems" />
+            </div>
+            <div itemProp="offers" itemScope itemType="https://schema.org/Offer" className="hidden">
+              <meta itemProp="availability" content="https://schema.org/InStock" />
+              <meta itemProp="priceCurrency" content="USD" />
+              <meta itemProp="price" content="0" />
+              <meta itemProp="seller" content="CogniLeads Systems" />
+            </div>
+
             <div
               className={`pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-gradient-to-br ${t.accent}`}
             />
@@ -902,7 +917,10 @@ function TemplateMatrix() {
 
             <div className="relative mt-4">
               <div className="text-[11px] text-muted-foreground">{t.role}</div>
-              <h3 className="mt-1 text-lg font-semibold tracking-tight text-foreground">
+              <h3
+                itemProp="name"
+                className="mt-1 text-lg font-semibold tracking-tight text-foreground"
+              >
                 {t.title}
               </h3>
               <div className="mt-1 text-[11px] text-cyan/80 truncate">
@@ -910,6 +928,13 @@ function TemplateMatrix() {
                 {t.asset}
               </div>
             </div>
+
+            <p
+              itemProp="description"
+              className="relative mt-4 text-[12px] leading-relaxed text-muted-foreground"
+            >
+              {t.description}
+            </p>
 
             <div className="relative mt-5 grid grid-cols-3 gap-2 border-y border-border/60 py-3">
               {t.metrics.map((m) => (
@@ -947,6 +972,7 @@ function TemplateMatrix() {
     </section>
   );
 }
+
 
 function Footer() {
   return (
