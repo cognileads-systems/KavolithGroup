@@ -672,7 +672,10 @@ function ContactBlock() {
     try {
       const r = await fetch(WEBHOOK_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "X-CogniLeads-Token": "Cognileads_arfath@786",
+        },
         body: JSON.stringify(payload),
       });
       if (r.ok) {
