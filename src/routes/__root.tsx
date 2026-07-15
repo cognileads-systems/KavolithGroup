@@ -99,8 +99,43 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "/favicon.svg",
       },
       {
+        rel: "canonical",
+        href: "https://cognileadssystems.lovable.app/",
+      },
+      {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "AutomationBusiness",
+          name: "CogniLeads Systems",
+          url: "https://cognileadssystems.lovable.app/",
+          description:
+            "CogniLeads Systems engineers autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects within 120 seconds — 24/7/365.",
+          slogan: "Autonomous AI SDR & Lead Infrastructure",
+          image:
+            "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/577318cd-eff3-48a0-879a-b3177a7b3107",
+          areaServed: "Global",
+          knowsAbout: [
+            "AI SDR Infrastructure",
+            "Multi-Agent Workflows",
+            "Workflow Automation",
+            "Conversion Rate Optimization",
+            "Next.js Engineering",
+          ],
+          makesOffer: [
+            { "@type": "Offer", name: "AI SDR Infrastructure" },
+            { "@type": "Offer", name: "Multi-Agent Workflows" },
+            { "@type": "Offer", name: "Workflow Automation" },
+            { "@type": "Offer", name: "Conversion Rate Optimization" },
+            { "@type": "Offer", name: "Next.js Engineering" },
+          ],
+        }),
       },
     ],
   }),
