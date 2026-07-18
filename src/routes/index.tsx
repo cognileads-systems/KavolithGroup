@@ -112,8 +112,8 @@ function Hero() {
           System Log // Live SDR Infrastructure
         </div>
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
-          Stop Losing{" "}
-          <span className="text-cyan text-glow">60%</span> of Your Inbound Leads to Slow Follow-Ups.
+          We Don't Build Websites.{" "}
+          <span className="text-cyan text-glow">We Deploy Revenue Infrastructure.</span>
         </h1>
         <p className="mt-6 max-w-xl text-sm md:text-base text-muted-foreground leading-relaxed">
           We engineer{" "}
