@@ -765,14 +765,15 @@ function ContactBlock() {
           <pre className="text-xs text-cyan/90 whitespace-pre-wrap min-h-[240px]">
 {preview ||
 `{
-  "source": "cognileads.systems//web",
-  "lead": {
-    "name": "...",
-    "email": "...",
-    "company": "...",
-    "message": "..."
-  },
-  "routers": ["email.alert", "make.webhook"]
+  "Lead Name": "...",
+  "Email": "...",
+  "Company": "...",
+  "Message": "...",
+  "Category": "",
+  "Status": "New",
+  "Intent Signal": "",
+  "Priority Action": "",
+  "Source": "cognileads.systems//web"
 }`}
           </pre>
         </div>
