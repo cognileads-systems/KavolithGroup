@@ -112,28 +112,64 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "AutomationBusiness",
-          name: "CogniLeads Systems",
-          url: "https://cognileadssystems.lovable.app/",
-          description:
-            "CogniLeads Systems engineers autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects within 120 seconds — 24/7/365.",
-          slogan: "Autonomous AI SDR & Lead Infrastructure",
-          image:
-            "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/577318cd-eff3-48a0-879a-b3177a7b3107",
-          areaServed: "Global",
-          knowsAbout: [
-            "AI SDR Infrastructure",
-            "Multi-Agent Workflows",
-            "Workflow Automation",
-            "Conversion Rate Optimization",
-            "Next.js Engineering",
-          ],
-          makesOffer: [
-            { "@type": "Offer", name: "AI SDR Infrastructure" },
-            { "@type": "Offer", name: "Multi-Agent Workflows" },
-            { "@type": "Offer", name: "Workflow Automation" },
-            { "@type": "Offer", name: "Conversion Rate Optimization" },
-            { "@type": "Offer", name: "Next.js Engineering" },
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://cognileadssystems.lovable.app/#organization",
+              name: "CogniLeads Systems",
+              url: "https://cognileadssystems.lovable.app/",
+              logo: "https://cognileadssystems.lovable.app/favicon.svg",
+              image:
+                "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/577318cd-eff3-48a0-879a-b3177a7b3107",
+              slogan: "We Don't Build Websites. We Deploy Revenue Infrastructure.",
+              description:
+                "CogniLeads Systems engineers autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects within 120 seconds — 24/7/365.",
+              areaServed: "Global",
+              knowsAbout: [
+                "AI SDR Infrastructure",
+                "Multi-Agent Workflows",
+                "Workflow Automation",
+                "Conversion Rate Optimization",
+                "Revenue Infrastructure",
+              ],
+            },
+            {
+              "@type": "WebApplication",
+              "@id": "https://cognileadssystems.lovable.app/#webapp",
+              name: "CogniLeads Intelligence OS",
+              url: "https://cognileadssystems.lovable.app/",
+              applicationCategory: "BusinessApplication",
+              operatingSystem: "Web",
+              provider: { "@id": "https://cognileadssystems.lovable.app/#organization" },
+              offers: {
+                "@type": "Offer",
+                price: "0",
+                priceCurrency: "USD",
+                availability: "https://schema.org/InStock",
+              },
+            },
+            {
+              "@type": "ProfessionalService",
+              "@id": "https://cognileadssystems.lovable.app/#service",
+              name: "Autonomous AI SDR Infrastructure",
+              url: "https://cognileadssystems.lovable.app/",
+              provider: { "@id": "https://cognileadssystems.lovable.app/#organization" },
+              areaServed: "Global",
+              serviceType: "AI SDR Infrastructure",
+              description:
+                "Design, deploy, and operate autonomous inbound SDR pipelines: qualification kernel, enrichment layer, dual-router dispatch, and plain-text lead ledger.",
+              hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: "CogniLeads Deployments",
+                itemListElement: [
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI SDR Infrastructure" } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Multi-Agent Workflows" } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Workflow Automation" } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Conversion Rate Optimization" } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Next.js Engineering" } },
+                ],
+              },
+            },
           ],
         }),
       },
