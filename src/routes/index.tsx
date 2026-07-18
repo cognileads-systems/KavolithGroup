@@ -65,8 +65,10 @@ function Index() {
         <Hero />
         <AuditTerminal />
         <ArchitectureTabs />
+        <PlaybookRepository />
         <ContactBlock />
         <TemplateMatrix />
+        <FAQBlock />
         <Footer />
       </main>
     </div>
