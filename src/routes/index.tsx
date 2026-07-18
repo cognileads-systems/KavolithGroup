@@ -663,16 +663,15 @@ function ContactBlock() {
     setErrors({});
 
     const payload = {
-      "Lead Name": name,
-      "Email": email,
-      "Company": company,
-      "Message": message,
-      "Category": "",
-      "Status": "New",
-      "Intent Signal": "",
-      "Priority Action": "",
-      "Source": "cognileads.systems//web",
+      lead: {
+        name,
+        email,
+        company,
+        message,
+      },
+      source: "cognileads.systems//web",
     };
+
     setPreview(JSON.stringify(payload, null, 2));
     setState("sending");
 
