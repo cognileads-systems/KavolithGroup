@@ -663,33 +663,41 @@ function ContactBlock() {
     setErrors({});
 
     const payload = {
-      source: "cognileads.systems//web",
-      lead: { name, email, company, message },
+      "Lead Name": name,
+      "Email": email,
+      "Company": company,
+      "Message": message,
+      "Category": "",
+      "Status": "New",
+      "Intent Signal": "",
+      "Priority Action": "",
+      "Source": "cognileads.systems//web",
     };
     setPreview(JSON.stringify(payload, null, 2));
     setState("sending");
 
     const WEBHOOK_URL = "https://hook.us2.make.com/5mdsxdg4uittjnebeeknh7kqhducosu2";
+    const form = e.currentTarget;
 
-    try {
-      const r = await fetch(WEBHOOK_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-CogniLeads-Token": "Cognileads_arfath@786",
-        },
-        body: JSON.stringify(payload),
-      });
-      if (r.ok) {
-        console.log("[cognileads] payload routed successfully", payload);
-        (e.currentTarget as HTMLFormElement).reset();
-        setState("ok");
-      } else {
-        setState("err");
-      }
-    } catch {
-      setState("err");
-    }
+    // Fire-and-forget: dispatch to Make.com asynchronously so the UI never blocks.
+    // Make.com webhooks don't return CORS headers; use no-cors + opaque response.
+    void fetch(WEBHOOK_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CogniLeads-Token": "Cognileads_arfath@786",
+      },
+      body: JSON.stringify(payload),
+      keepalive: true,
+    }).catch((err) => {
+      console.warn("[cognileads] async dispatch warning", err);
+    });
+
+    // 200 Accepted from the frontend perspective — backend processes downstream.
+    console.log("[cognileads] payload dispatched", payload);
+    form.reset();
+    setState("ok");
   }
 
 
