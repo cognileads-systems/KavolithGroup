@@ -1010,3 +1010,202 @@ function SessionId() {
     </span>
   );
 }
+
+const PLAYBOOKS = [
+  {
+    id: "sop-01-inbound-qualification",
+    ref: "SOP.01",
+    title: "Inbound Qualification Kernel",
+    caption: "// qualify → enrich → route in <120s",
+    body:
+      "Deterministic scoring rubric layered over an LLM classifier. Deduplicates on email + company domain, enriches firmographics, then routes to the correct pipeline lane. Zero manual triage.",
+    kpis: [
+      { k: "ttq", v: "< 120s" },
+      { k: "accuracy", v: "94%" },
+      { k: "manual.ops", v: "0" },
+    ],
+  },
+  {
+    id: "sop-02-icp-matching",
+    ref: "SOP.02",
+    title: "ICP Matching Matrix",
+    caption: "// intent × fit × timing",
+    body:
+      "Codified ICP as a scoring surface: firmographic fit, technographic signals, and behavioral intent are combined into a single priority index. High-fit leads jump the queue automatically.",
+    kpis: [
+      { k: "precision", v: "0.91" },
+      { k: "recall", v: "0.87" },
+      { k: "lanes", v: "04" },
+    ],
+  },
+  {
+    id: "sop-03-dual-router",
+    ref: "SOP.03",
+    title: "Dual-Router Dispatch",
+    caption: "// email.alert + make.webhook",
+    body:
+      "Every qualified lead fans out to two independent routers: an operator email alert and a Make.com workflow that syncs to CRM, ledger, and outreach sequencer. Fail-open, retried on the queue.",
+    kpis: [
+      { k: "routers", v: "02" },
+      { k: "delivery", v: "99.8%" },
+      { k: "retries", v: "3x" },
+    ],
+  },
+  {
+    id: "sop-04-ledger-sync",
+    ref: "SOP.04",
+    title: "Ledger Sync Protocol",
+    caption: "// plain-text Google Sheets ledger",
+    body:
+      "Authoritative lead ledger written in flat schema: Lead Name, Email, Company, Message, Category, Status, Intent Signal, Priority Action, Source. Human-auditable, agent-writable, no proprietary lock-in.",
+    kpis: [
+      { k: "columns", v: "09" },
+      { k: "schema", v: "flat" },
+      { k: "audit", v: "human" },
+    ],
+  },
+  {
+    id: "sop-05-observability",
+    ref: "SOP.05",
+    title: "Observability & Failover",
+    caption: "// heartbeat + queue-based retries",
+    body:
+      "Every node emits a heartbeat and structured event. Failures are captured to a dead-letter queue with automated retry policies; operator gets a terminal-style digest of any pipeline drift.",
+    kpis: [
+      { k: "uptime", v: "99.95%" },
+      { k: "dlq", v: "auto" },
+      { k: "alerts", v: "24/7" },
+    ],
+  },
+] as const;
+
+function PlaybookRepository() {
+  return (
+    <section id="playbooks" className="py-12 lg:py-20 border-b border-border/60">
+      <SectionHeader
+        index="04.5"
+        title="Playbook & SOP Repository"
+        caption="GET /playbooks/sop"
+      />
+      <p className="mt-4 max-w-2xl text-sm text-muted-foreground">
+        // Five procedural guides that operate the CogniLeads infrastructure.
+        Each SOP is version-controlled, agent-executable, and human-auditable.
+      </p>
+
+      <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {PLAYBOOKS.map((p, i) => (
+          <article
+            key={p.id}
+            className="group relative overflow-hidden border border-border/60 bg-[#0A1120] p-5 transition-all duration-300 hover:border-cyan/60 hover:-translate-y-0.5"
+          >
+            <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+              <span className="text-cyan">{p.ref}</span>
+              <span className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan animate-pulse-cyan" />
+                doc.{String(i + 1).padStart(2, "0")}
+              </span>
+            </div>
+            <h3 className="mt-3 text-lg font-semibold tracking-tight text-foreground">
+              {p.title}
+            </h3>
+            <div className="mt-1 text-[11px] text-cyan/80">{p.caption}</div>
+            <p className="mt-4 text-[12px] leading-relaxed text-muted-foreground">
+              {p.body}
+            </p>
+            <div className="mt-5 grid grid-cols-3 gap-2 border-t border-border/60 pt-3">
+              {p.kpis.map((m) => (
+                <div key={m.k}>
+                  <div className="text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
+                    {m.k}
+                  </div>
+                  <div className="mt-0.5 text-sm text-cyan">{m.v}</div>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+const FAQS = [
+  {
+    q: "What is autonomous AI SDR infrastructure?",
+    a: "It's a stack of digital-employee workflows that qualify, enrich, and route inbound leads without a human SDR in the loop. CogniLeads combines a neural qualification kernel, a Make.com orchestration layer, and a plain-text ledger so revenue teams get 24/7 inbound coverage with sub-120-second time-to-qualified.",
+  },
+  {
+    q: "How fast does CogniLeads qualify and route an inbound lead?",
+    a: "Median time-to-qualified is under 120 seconds. The kernel deduplicates on email + company domain, enriches firmographics, scores fit and intent, then dispatches to the operator email router and the Make.com workflow router in parallel.",
+  },
+  {
+    q: "Do you replace my CRM or sales team?",
+    a: "No. CogniLeads is infrastructure that sits in front of your CRM and sales team. It removes manual triage on inbound, and hands closers pre-qualified, pre-enriched, priority-ranked leads. Your CRM remains the system of record.",
+  },
+  {
+    q: "How is lead data stored and audited?",
+    a: "Authoritative lead data is written to a plain-text Google Sheets ledger with a flat, human-readable schema: Lead Name, Email, Company, Message, Category, Status, Intent Signal, Priority Action, Source. Every write is agent-attributable and human-auditable.",
+  },
+  {
+    q: "What happens if a workflow fails mid-run?",
+    a: "Every node emits a heartbeat and structured event. Failures are captured to a dead-letter queue with automated retries. The operator gets a terminal-style digest of any pipeline drift, so nothing silently disappears.",
+  },
+  {
+    q: "Can CogniLeads integrate with my existing stack?",
+    a: "Yes. The Make.com router speaks to any HTTP-addressable system — CRMs, outreach sequencers, Slack, custom internal APIs. The MCP layer additionally exposes tools that AI agents (Claude, Cursor, custom) can call to submit or query leads directly.",
+  },
+] as const;
+
+function FAQBlock() {
+  return (
+    <section id="faq" className="py-12 lg:py-20 border-b border-border/60">
+      <SectionHeader index="07" title="FAQ // Operator Questions" caption="GET /faq" />
+      <p className="mt-4 max-w-2xl text-sm text-muted-foreground">
+        // Common questions from revenue and RevOps operators evaluating
+        autonomous SDR infrastructure.
+      </p>
+
+      <div className="mt-8 divide-y divide-border/60 border border-border/60 bg-[#0A1120]">
+        {FAQS.map((f, i) => (
+          <details
+            key={f.q}
+            className="group px-5 py-4 open:bg-cyan/[0.03] transition-colors"
+          >
+            <summary className="flex cursor-pointer items-start justify-between gap-4 list-none">
+              <div className="flex items-start gap-3">
+                <span className="mt-0.5 text-[10px] uppercase tracking-[0.25em] text-cyan">
+                  Q.{String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="text-sm font-medium tracking-tight text-foreground">
+                  {f.q}
+                </span>
+              </div>
+              <span className="text-cyan/80 text-lg leading-none transition-transform group-open:rotate-45">
+                +
+              </span>
+            </summary>
+            <p className="mt-3 pl-[3.25rem] text-[13px] leading-relaxed text-muted-foreground">
+              {f.a}
+            </p>
+          </details>
+        ))}
+      </div>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: FAQS.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          }),
+        }}
+      />
+    </section>
+  );
+}
+
