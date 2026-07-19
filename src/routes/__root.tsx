@@ -77,13 +77,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "CogniLeads Systems // Autonomous AI SDR & Lead Infrastructure" },
+      { title: "VectraSyn // Autonomous AI SDR & Lead Infrastructure" },
       { name: "description", content: "We engineer autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects within 120 seconds. 24/7/365." },
-      { property: "og:title", content: "CogniLeads Systems // Autonomous AI SDR & Lead Infrastructure" },
+      { property: "og:title", content: "VectraSyn // Autonomous AI SDR & Lead Infrastructure" },
       { property: "og:description", content: "We engineer autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects within 120 seconds. 24/7/365." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "CogniLeads Systems // Autonomous AI SDR & Lead Infrastructure" },
+      { name: "twitter:title", content: "VectraSyn // Autonomous AI SDR & Lead Infrastructure" },
       { name: "twitter:description", content: "We engineer autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects within 120 seconds. 24/7/365." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/577318cd-eff3-48a0-879a-b3177a7b3107" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/577318cd-eff3-48a0-879a-b3177a7b3107" },
@@ -116,14 +116,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             {
               "@type": "Organization",
               "@id": "https://cognileadssystems.lovable.app/#organization",
-              name: "CogniLeads Systems",
+              name: "VectraSyn",
               url: "https://cognileadssystems.lovable.app/",
               logo: "https://cognileadssystems.lovable.app/favicon.svg",
               image:
                 "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/577318cd-eff3-48a0-879a-b3177a7b3107",
               slogan: "We Don't Build Websites. We Deploy Revenue Infrastructure.",
               description:
-                "CogniLeads Systems engineers autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects within 120 seconds — 24/7/365.",
+                "VectraSyn engineers autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects within 120 seconds — 24/7/365.",
               areaServed: "Global",
               knowsAbout: [
                 "AI SDR Infrastructure",
@@ -136,7 +136,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             {
               "@type": "WebApplication",
               "@id": "https://cognileadssystems.lovable.app/#webapp",
-              name: "CogniLeads Intelligence OS",
+              name: "VectraSyn Intelligence OS",
               url: "https://cognileadssystems.lovable.app/",
               applicationCategory: "BusinessApplication",
               operatingSystem: "Web",
@@ -160,7 +160,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
                 "Design, deploy, and operate autonomous inbound SDR pipelines: qualification kernel, enrichment layer, dual-router dispatch, and plain-text lead ledger.",
               hasOfferCatalog: {
                 "@type": "OfferCatalog",
-                name: "CogniLeads Deployments",
+                name: "VectraSyn Deployments",
                 itemListElement: [
                   { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI SDR Infrastructure" } },
                   { "@type": "Offer", itemOffered: { "@type": "Service", name: "Multi-Agent Workflows" } },
