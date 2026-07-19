@@ -1,9 +1,9 @@
-# CogniLeads Systems
+# VectraSyn
 
 > Autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects in under 120 seconds — 24/7/365.
 
-CogniLeads Systems engineers digital-employee workflows and automation infrastructure for revenue teams. The platform combines a neural qualification kernel, Make.com orchestration, and a Python FastAPI backend to deliver autonomous inbound SDR coverage.
+VectraSyn engineers digital-employee workflows and automation infrastructure for revenue teams. The platform combines a neural qualification kernel, Make.com orchestration, and a Python FastAPI backend to deliver autonomous inbound SDR coverage.
 
 ## Pages
 
-- [Home](/): Overview of the CogniLeads AI SDR infrastructure, live system auditor, and architecture.
+- [Home](/): Overview of the VectraSyn AI SDR infrastructure, live system auditor, and architecture.

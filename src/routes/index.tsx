@@ -14,7 +14,7 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: "CogniLeads Systems",
+          name: "VectraSyn",
           url: "https://cognileadssystems.lovable.app",
           description:
             "Autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects within 120 seconds.",
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/")({
           name: "Autonomous AI SDR Infrastructure",
           provider: {
             "@type": "Organization",
-            name: "CogniLeads Systems",
+            name: "VectraSyn",
             url: "https://cognileadssystems.lovable.app",
           },
           serviceType: "AI-powered Digital Employee Workflows & Automation Infrastructure",
@@ -48,7 +48,7 @@ const LINKEDIN_URL = "https://www.linkedin.com/in/cognileads";
 type ChatMsg = { role: "system" | "ai" | "user"; content: string };
 
 const AUDIT_SCRIPT = [
-  "Booting CogniLeads System Auditor v1.0 ...",
+  "Booting VectraSyn System Auditor v1.0 ...",
   "[OK] Neural qualification kernel online.",
   "Question 01 // What is your current monthly inbound lead volume?",
   "Question 02 // Average response time to a new inbound lead (in minutes)?",
@@ -82,7 +82,7 @@ function NavBar() {
         <div className="flex items-center gap-3">
           <span className="h-2 w-2 rounded-full bg-cyan animate-pulse-cyan" />
           <span className="text-sm tracking-widest text-foreground">
-            <span className="text-cyan text-glow">CogniLeads Systems</span>
+            <span className="text-cyan text-glow">VectraSyn</span>
             <span className="text-muted-foreground"> // OS</span>
           </span>
         </div>
@@ -114,21 +114,20 @@ function Hero() {
           System Log // Live SDR Infrastructure
         </div>
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
-          We Don't Build Websites.{" "}
-          <span className="text-cyan text-glow">We Deploy Revenue Infrastructure.</span>
+          Stop Losing 60% of Your Inbound Leads to{" "}
+          <span className="text-cyan text-glow">Slow Follow-Ups.</span>
         </h1>
         <p className="mt-6 max-w-xl text-sm md:text-base text-muted-foreground leading-relaxed">
-          We engineer{" "}
-          <span className="text-foreground">autonomous AI SDR infrastructure</span> that qualifies,
-          enriches, and matches inbound prospects within{" "}
-          <span className="text-cyan">120 seconds</span>. 24/7/365.
+          <span className="text-foreground">VectraSyn</span> engineers autonomous inbound lead
+          infrastructure that qualifies, enriches, and routes enterprise prospects into your
+          central CRM within <span className="text-cyan">120 seconds</span>. 24/7/365.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <a
-            href="#audit"
+            href="#contact"
             className="inline-flex items-center gap-2 border border-cyan bg-cyan/10 px-5 py-3 text-xs uppercase tracking-[0.2em] text-cyan glow-cyan hover:bg-cyan hover:text-primary-foreground transition-all"
           >
-            &gt; Initialize System Audit
+            &gt; Join Corporate Waitlist
           </a>
           <a
             href="#contact"
@@ -247,7 +246,7 @@ function AuditTerminal() {
               <span className="h-2.5 w-2.5 rounded-full bg-cyan" />
             </div>
             <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              CogniLeads System Auditor <span className="text-cyan">v1.0</span>
+              VectraSyn System Auditor <span className="text-cyan">v1.0</span>
             </span>
           </div>
           <SessionId />
@@ -292,7 +291,7 @@ function AuditTerminal() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type response to auditor..."
-            aria-label="Response to CogniLeads system auditor"
+            aria-label="Response to VectraSyn system auditor"
             className="flex-1 bg-transparent border-none outline-none text-sm placeholder:text-muted-foreground/60"
           />
 
@@ -669,7 +668,7 @@ function ContactBlock() {
         company,
         message,
       },
-      source: "cognileads.systems//web",
+      source: "vectrasyn.systems//web",
     };
 
     setPreview(JSON.stringify(payload, null, 2));
@@ -685,7 +684,7 @@ function ContactBlock() {
       mode: "no-cors",
       headers: {
         "Content-Type": "application/json",
-        "X-CogniLeads-Token": "Cognileads_arfath@786",
+        "X-VectraSyn-Token": "Cognileads_arfath@786",
       },
       body: JSON.stringify(payload),
       keepalive: true,
@@ -772,7 +771,7 @@ function ContactBlock() {
   "Status": "New",
   "Intent Signal": "",
   "Priority Action": "",
-  "Source": "cognileads.systems//web"
+  "Source": "vectrasyn.systems//web"
 }`}
           </pre>
         </div>
@@ -890,7 +889,7 @@ function TemplateMatrix() {
         caption="GET /frameworks/landing"
       />
       <p className="mt-4 max-w-2xl text-sm text-muted-foreground">
-        // AI-powered landing page frameworks. Pre-wired for the CogniLeads SDR
+        // AI-powered landing page frameworks. Pre-wired for the VectraSyn SDR
         pipeline. Deploy one, get an inbound engine — not a brochure.
       </p>
 
@@ -906,13 +905,13 @@ function TemplateMatrix() {
             <meta itemProp="category" content="Automation Service Template" />
             <meta itemProp="url" content={`https://cognileadssystems.lovable.app/#${t.id}`} />
             <div itemProp="brand" itemScope itemType="https://schema.org/Organization" className="hidden">
-              <meta itemProp="name" content="CogniLeads Systems" />
+              <meta itemProp="name" content="VectraSyn" />
             </div>
             <div itemProp="offers" itemScope itemType="https://schema.org/Offer" className="hidden">
               <meta itemProp="availability" content="https://schema.org/InStock" />
               <meta itemProp="priceCurrency" content="USD" />
               <meta itemProp="price" content="0" />
-              <meta itemProp="seller" content="CogniLeads Systems" />
+              <meta itemProp="seller" content="VectraSyn" />
             </div>
 
             <div
@@ -990,7 +989,7 @@ function TemplateMatrix() {
 function Footer() {
   return (
     <footer className="pt-10 mt-6 flex flex-wrap items-center justify-between gap-3 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-      <span>© {new Date().getFullYear()} CogniLeads Systems // OS</span>
+      <span>We sync work and forge systems. © 2026 VectraSyn. All rights reserved.</span>
       <span className="flex items-center gap-2">
         <span className="h-1.5 w-1.5 bg-cyan animate-pulse-cyan" /> all nodes operational
       </span>
@@ -1087,7 +1086,7 @@ function PlaybookRepository() {
         caption="GET /playbooks/sop"
       />
       <p className="mt-4 max-w-2xl text-sm text-muted-foreground">
-        // Five procedural guides that operate the CogniLeads infrastructure.
+        // Five procedural guides that operate the VectraSyn infrastructure.
         Each SOP is version-controlled, agent-executable, and human-auditable.
       </p>
 
@@ -1131,15 +1130,15 @@ function PlaybookRepository() {
 const FAQS = [
   {
     q: "What is autonomous AI SDR infrastructure?",
-    a: "It's a stack of digital-employee workflows that qualify, enrich, and route inbound leads without a human SDR in the loop. CogniLeads combines a neural qualification kernel, a Make.com orchestration layer, and a plain-text ledger so revenue teams get 24/7 inbound coverage with sub-120-second time-to-qualified.",
+    a: "It's a stack of digital-employee workflows that qualify, enrich, and route inbound leads without a human SDR in the loop. VectraSyn combines a neural qualification kernel, a Make.com orchestration layer, and a plain-text ledger so revenue teams get 24/7 inbound coverage with sub-120-second time-to-qualified.",
   },
   {
-    q: "How fast does CogniLeads qualify and route an inbound lead?",
+    q: "How fast does VectraSyn qualify and route an inbound lead?",
     a: "Median time-to-qualified is under 120 seconds. The kernel deduplicates on email + company domain, enriches firmographics, scores fit and intent, then dispatches to the operator email router and the Make.com workflow router in parallel.",
   },
   {
     q: "Do you replace my CRM or sales team?",
-    a: "No. CogniLeads is infrastructure that sits in front of your CRM and sales team. It removes manual triage on inbound, and hands closers pre-qualified, pre-enriched, priority-ranked leads. Your CRM remains the system of record.",
+    a: "No. VectraSyn is infrastructure that sits in front of your CRM and sales team. It removes manual triage on inbound, and hands closers pre-qualified, pre-enriched, priority-ranked leads. Your CRM remains the system of record.",
   },
   {
     q: "How is lead data stored and audited?",
@@ -1150,7 +1149,7 @@ const FAQS = [
     a: "Every node emits a heartbeat and structured event. Failures are captured to a dead-letter queue with automated retries. The operator gets a terminal-style digest of any pipeline drift, so nothing silently disappears.",
   },
   {
-    q: "Can CogniLeads integrate with my existing stack?",
+    q: "Can VectraSyn integrate with my existing stack?",
     a: "Yes. The Make.com router speaks to any HTTP-addressable system — CRMs, outreach sequencers, Slack, custom internal APIs. The MCP layer additionally exposes tools that AI agents (Claude, Cursor, custom) can call to submit or query leads directly.",
   },
 ] as const;

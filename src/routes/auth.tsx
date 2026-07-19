@@ -11,16 +11,16 @@ export const Route = createFileRoute("/auth")({
   component: AuthPage,
   head: () => ({
     meta: [
-      { title: "Access CogniLeads // Operator Authentication" },
+      { title: "Access VectraSyn // Operator Authentication" },
       {
         name: "description",
         content:
-          "Sign in or provision a CogniLeads operator account to access the autonomous AI SDR control plane.",
+          "Sign in or provision a VectraSyn operator account to access the autonomous AI SDR control plane.",
       },
-      { property: "og:title", content: "Access CogniLeads // Operator Authentication" },
+      { property: "og:title", content: "Access VectraSyn // Operator Authentication" },
       {
         property: "og:description",
-        content: "Operator authentication for the CogniLeads Systems AI SDR control plane.",
+        content: "Operator authentication for the VectraSyn AI SDR control plane.",
       },
       { property: "og:url", content: "https://cognileadssystems.lovable.app/auth" },
       { name: "robots", content: "noindex, nofollow" },
@@ -92,7 +92,7 @@ function AuthPage() {
           &gt; operator.auth
         </div>
         <h1 className="text-xl font-semibold">
-          {mode === "signin" ? "Access CogniLeads" : "Provision Operator"}
+          {mode === "signin" ? "Access VectraSyn" : "Provision Operator"}
         </h1>
         <p className="mt-2 text-xs text-muted-foreground uppercase tracking-[0.2em]">
           {mode === "signin" ? "authenticate to continue" : "create a new operator account"}

@@ -6,10 +6,10 @@ const projectRef = import.meta.env.VITE_SUPABASE_PROJECT_ID ?? "project-ref-unse
 
 export default defineMcp({
   name: "cognileads-systems-mcp",
-  title: "CogniLeads Systems",
+  title: "VectraSyn",
   version: "0.1.0",
   instructions:
-    "Tools for CogniLeads Systems. Signed-in users can submit inbound leads to their own pipeline and list the leads they have captured.",
+    "Tools for VectraSyn. Signed-in users can submit inbound leads to their own pipeline and list the leads they have captured.",
   auth: auth.oauth.issuer({
     issuer: `https://${projectRef}.supabase.co/auth/v1`,
     acceptedAudiences: "authenticated",

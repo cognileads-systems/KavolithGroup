@@ -27,13 +27,13 @@ export const Route = createFileRoute("/api/contact")({
 
         const parsed = contactSchema.safeParse(raw);
         if (!parsed.success) {
-          console.warn("[CogniLeads] contact validation failed:", parsed.error.flatten());
+          console.warn("[VectraSyn] contact validation failed:", parsed.error.flatten());
           return Response.json({ ok: false }, { status: 400 });
         }
         const body = parsed.data;
 
         const payload = {
-          source: "cognileads.systems//web",
+          source: "vectrasyn.systems//web",
           received_at: new Date().toISOString(),
           lead: {
             name: body.name ?? null,
@@ -62,7 +62,7 @@ export const Route = createFileRoute("/api/contact")({
               body: JSON.stringify({
                 from: alertFrom,
                 to: [alertTo],
-                subject: `[CogniLeads] New inbound lead: ${body.email}`,
+                subject: `[VectraSyn] New inbound lead: ${body.email}`,
                 text: JSON.stringify(payload, null, 2),
               }),
             });
@@ -96,7 +96,7 @@ export const Route = createFileRoute("/api/contact")({
         }
 
         console.log(
-          "[CogniLeads] contact submission:",
+          "[VectraSyn] contact submission:",
           JSON.stringify({ payload, results }),
         );
 
