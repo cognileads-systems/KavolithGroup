@@ -164,22 +164,22 @@ function Hero() {
           </span>
         </div>
         <div className="relative aspect-video w-full overflow-hidden border border-border bg-black">
-          <video
-            className="h-full w-full object-cover opacity-80"
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='450'><rect width='100%25' height='100%25' fill='%23090D16'/></svg>"
-          >
-            <source
-              src="https://cdn.coverr.co/videos/coverr-programming-code-on-a-screen-8461/1080p.mp4"
-              type="video/mp4"
-            />
-          </video>
+          <div
+            className="absolute inset-0 opacity-80"
+            style={{
+              background:
+                "radial-gradient(ellipse at 30% 40%, rgba(0,240,255,0.18), transparent 60%), radial-gradient(ellipse at 70% 70%, rgba(0,240,255,0.10), transparent 55%), #05080F",
+            }}
+            aria-hidden="true"
+          />
+          <div
+            className="pointer-events-none absolute inset-0 opacity-40"
+            style={{
+              background:
+                "repeating-linear-gradient(to bottom, transparent 0 2px, rgba(0,240,255,0.10) 2px 3px)",
+            }}
+          />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#090D16] via-transparent to-transparent" />
-          <div className="pointer-events-none absolute inset-0 opacity-30 mix-blend-screen"
-               style={{ background: "repeating-linear-gradient(to bottom, transparent 0 2px, rgba(0,240,255,0.08) 2px 3px)" }} />
           <div className="absolute left-3 top-3 text-[10px] uppercase tracking-[0.25em] text-cyan text-glow">
             &gt; System Pipeline Demonstration Log // Booting...
           </div>
