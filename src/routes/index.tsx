@@ -114,14 +114,13 @@ function Hero() {
           System Log // Live SDR Infrastructure
         </div>
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
-          We Don't Build Websites.{" "}
-          <span className="text-cyan text-glow">We Deploy Revenue Infrastructure.</span>
+          Stop Losing 60% of Your Inbound Leads to{" "}
+          <span className="text-cyan text-glow">Slow Follow-Ups.</span>
         </h1>
         <p className="mt-6 max-w-xl text-sm md:text-base text-muted-foreground leading-relaxed">
-          We engineer{" "}
-          <span className="text-foreground">autonomous AI SDR infrastructure</span> that qualifies,
-          enriches, and matches inbound prospects within{" "}
-          <span className="text-cyan">120 seconds</span>. 24/7/365.
+          <span className="text-foreground">VectraSyn</span> engineers autonomous inbound lead
+          infrastructure that qualifies, enriches, and routes enterprise prospects into your
+          central CRM within <span className="text-cyan">120 seconds</span>. 24/7/365.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <a
