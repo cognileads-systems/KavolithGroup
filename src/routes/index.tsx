@@ -643,16 +643,16 @@ function ContactBlock() {
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
-    const name = String(fd.get("name") || "").trim();
-    const email = String(fd.get("email") || "").trim();
-    const company = String(fd.get("company") || "").trim();
-    const message = String(fd.get("message") || "").trim();
+    const operatorName = String(fd.get("name") || "").trim();
+    const operatorEmail = String(fd.get("email") || "").trim();
+    const operatorOrg = String(fd.get("company") || "").trim();
+    const payloadMessage = String(fd.get("message") || "").trim();
 
     const nextErrors: typeof errors = {};
-    if (!name) nextErrors.name = "operator.name required";
-    if (!email) nextErrors.email = "operator.email required";
-    else if (!EMAIL_RE.test(email)) nextErrors.email = "invalid email format";
-    if (!message) nextErrors.message = "payload.message required";
+    if (!operatorName) nextErrors.name = "operator.name required";
+    if (!operatorEmail) nextErrors.email = "operator.email required";
+    else if (!EMAIL_RE.test(operatorEmail)) nextErrors.email = "invalid email format";
+    if (!payloadMessage) nextErrors.message = "payload.message required";
 
     if (Object.keys(nextErrors).length) {
       setErrors(nextErrors);
@@ -662,14 +662,13 @@ function ContactBlock() {
     setErrors({});
 
     const payload = {
-      lead: {
-        name,
-        email,
-        company,
-        message,
-      },
-      source: "vectrasyn.systems//web",
+      "name": operatorName,
+      "email": operatorEmail,
+      "company": operatorOrg,
+      "message": payloadMessage,
+      "source": "vectrasyn.systems//web",
     };
+
 
     setPreview(JSON.stringify(payload, null, 2));
     setState("sending");
