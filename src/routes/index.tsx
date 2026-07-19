@@ -124,10 +124,10 @@ function Hero() {
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <a
-            href="#audit"
+            href="#contact"
             className="inline-flex items-center gap-2 border border-cyan bg-cyan/10 px-5 py-3 text-xs uppercase tracking-[0.2em] text-cyan glow-cyan hover:bg-cyan hover:text-primary-foreground transition-all"
           >
-            &gt; Initialize System Audit
+            &gt; Join Corporate Waitlist
           </a>
           <a
             href="#contact"
