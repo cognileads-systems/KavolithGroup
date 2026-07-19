@@ -989,7 +989,7 @@ function TemplateMatrix() {
 function Footer() {
   return (
     <footer className="pt-10 mt-6 flex flex-wrap items-center justify-between gap-3 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-      <span>© {new Date().getFullYear()} VectraSyn // OS</span>
+      <span>We sync work and forge systems. © 2026 VectraSyn. All rights reserved.</span>
       <span className="flex items-center gap-2">
         <span className="h-1.5 w-1.5 bg-cyan animate-pulse-cyan" /> all nodes operational
       </span>
