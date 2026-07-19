@@ -831,10 +831,10 @@ const TEMPLATES = [
   {
     id: "saas-pipeline-v1",
     asset: "saas_pipeline.v1",
-    title: "SaaS Pipeline V1",
+    title: "Syn_Flow // Inbound Pipelines",
     role: "// product-led growth",
     description:
-      "Built for high-velocity SaaS operations. Compresses the qualify → enrich → route sequence into a single automated pass. Lead-to-qualified in <120s. Zero manual triage.",
+      "Seamless intake infrastructure designed to capture frontend web traffic payloads, handle route verification, and pass structured data into custom webhook streams with zero friction.",
     metrics: [
       { k: "TTFV", v: "< 30s" },
       { k: "trial→paid", v: "22%" },
@@ -846,10 +846,10 @@ const TEMPLATES = [
   {
     id: "high-ticket-inbound-v1",
     asset: "high_ticket_inbound.v1",
-    title: "High-Ticket Inbound V1",
+    title: "Core_Forge // Custom Stacks",
     role: "// booked-call engine",
     description:
-      "Designed for high-ACV sales cycles. Layers deep firmographic and intent enrichment prior to routing. Every lead pre-vetted. Every call closer-ready.",
+      "Hardened middleware systems running enterprise-grade Python FastAPI servers and strict Pydantic validation schemas to guarantee absolute data payload security.",
     metrics: [
       { k: "call.rate", v: "8.4%" },
       { k: "AOV", v: "$18k+" },
@@ -861,10 +861,10 @@ const TEMPLATES = [
   {
     id: "enterprise-scale-v1",
     asset: "enterprise_scale.v1",
-    title: "Enterprise Scale V1",
+    title: "Intel_Ops // Cognitive Engines",
     role: "// account-based motion",
     description:
-      "Engineered for complex buying committees. Runs parallel enrichment across named contacts, mapping out the entire corporate stakeholder matrix automatically.",
+      "Deep-learning intent scoring modules, custom programmatic prompt matrices, and Gemini AI data synthesis models evaluating live buyer urgency in real time.",
     metrics: [
       { k: "cycle", v: "-38%" },
       { k: "ACV lift", v: "+27%" },
@@ -899,7 +899,7 @@ function TemplateMatrix() {
             key={t.id}
             itemScope
             itemType="https://schema.org/Product"
-            className="group relative overflow-hidden rounded-lg border border-border/60 bg-[#0A1120] p-5 transition-all duration-300 hover:border-cyan/60 hover:-translate-y-0.5"
+            className="group relative overflow-hidden rounded-none border border-[#00F0FF]/70 bg-[#0B0D10] p-5 transition-all duration-300 hover:border-[#00F0FF] hover:-translate-y-0.5 hover:shadow-[0_0_24px_-4px_rgba(0,240,255,0.5)]"
           >
             <meta itemProp="sku" content={t.id} />
             <meta itemProp="category" content="Automation Service Template" />
