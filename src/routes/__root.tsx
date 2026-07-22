@@ -121,16 +121,52 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               logo: "https://cognileadssystems.lovable.app/favicon.svg",
               image:
                 "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/577318cd-eff3-48a0-879a-b3177a7b3107",
-              slogan: "We Don't Build Websites. We Deploy Revenue Infrastructure.",
+              slogan: "We Sync Work and Forge Systems",
               description:
                 "VectraSyn engineers autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects within 120 seconds — 24/7/365.",
               areaServed: "Global",
               knowsAbout: [
-                "AI SDR Infrastructure",
-                "Multi-Agent Workflows",
-                "Workflow Automation",
-                "Conversion Rate Optimization",
-                "Revenue Infrastructure",
+                "AI Automation",
+                "Lead Intelligence Infrastructure",
+                "AEO/GEO Local SEO",
+                "FastAPI Systems",
+              ],
+            },
+            {
+              "@type": "LocalBusiness",
+              "@id": "https://cognileadssystems.lovable.app/#localbusiness",
+              name: "VectraSyn",
+              slogan: "We Sync Work and Forge Systems",
+              url: "https://cognileadssystems.lovable.app/",
+              image:
+                "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/577318cd-eff3-48a0-879a-b3177a7b3107",
+              priceRange: "₹₹₹",
+              areaServed: "Global",
+              knowsAbout: [
+                "AI Automation",
+                "Lead Intelligence Infrastructure",
+                "AEO/GEO Local SEO",
+                "FastAPI Systems",
+              ],
+              makesOffer: [
+                {
+                  "@type": "Offer",
+                  price: "16000",
+                  priceCurrency: "INR",
+                  itemOffered: { "@type": "Service", name: "Vectra Launchpad" },
+                },
+                {
+                  "@type": "Offer",
+                  price: "48000",
+                  priceCurrency: "INR",
+                  itemOffered: { "@type": "Service", name: "Vectra Scale" },
+                },
+                {
+                  "@type": "Offer",
+                  price: "85000",
+                  priceCurrency: "INR",
+                  itemOffered: { "@type": "Service", name: "CogniLeads OS" },
+                },
               ],
             },
             {
