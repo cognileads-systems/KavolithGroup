@@ -26,20 +26,22 @@
           "openWorldHint": false
         },
         "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
           "type": "object",
           "properties": {
             "name": {
-              "type": "string",
-              "description": "Prospect name."
+              "description": "Prospect name.",
+              "type": "string"
             },
             "email": {
               "type": "string",
               "format": "email",
+              "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$",
               "description": "Prospect email address."
             },
             "company": {
-              "type": "string",
-              "description": "Prospect company / organization."
+              "description": "Prospect company / organization.",
+              "type": "string"
             },
             "message": {
               "type": "string",
@@ -50,9 +52,7 @@
           "required": [
             "email",
             "message"
-          ],
-          "additionalProperties": false,
-          "$schema": "http://json-schema.org/draft-07/schema#"
+          ]
         },
         "outputSchema": null
       },
@@ -66,17 +66,16 @@
           "openWorldHint": false
         },
         "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
           "type": "object",
           "properties": {
             "limit": {
+              "description": "Max number of leads to return (default 20).",
               "type": "integer",
               "minimum": 1,
-              "maximum": 100,
-              "description": "Max number of leads to return (default 20)."
+              "maximum": 100
             }
-          },
-          "additionalProperties": false,
-          "$schema": "http://json-schema.org/draft-07/schema#"
+          }
         },
         "outputSchema": null
       }
