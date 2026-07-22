@@ -826,51 +826,66 @@ function SectionHeader({ index, title, caption }: { index: string; title: string
   );
 }
 
-const TEMPLATES = [
+const TIERS = [
   {
-    id: "saas-pipeline-v1",
-    asset: "saas_pipeline.v1",
-    title: "Syn_Flow // Inbound Pipelines",
-    role: "// product-led growth",
-    description:
-      "Seamless intake infrastructure designed to capture frontend web traffic payloads, handle route verification, and pass structured data into custom webhook streams with zero friction.",
-    metrics: [
-      { k: "TTFV", v: "< 30s" },
-      { k: "trial→paid", v: "22%" },
-      { k: "sections", v: "07" },
+    id: "vectra-launchpad",
+    name: "Vectra Launchpad",
+    subBrand: "VectraSyn Express",
+    price: "₹16,000",
+    priceNote: "One-Time Setup",
+    tagline: "The Viral Reputation & Local Growth Engine",
+    featured: false,
+    note: null as string | null,
+    features: [
+      "Sub-300ms React/Tailwind Web Portal (Dark/Light mode)",
+      "Domain, SSL & Cloud Hosting Included",
+      "Smart AI Interactive Intake Form",
+      "WhatsApp Catalogue & UPI Instant Payment Integration",
+      "AEO & GEO LocalBusiness JSON-LD Schema",
+      "Google Maps Optimization & Automated Google Sheets Funnel",
+      "GA4 Analytics Setup + 3 Free Annual Updates",
     ],
-    stack: ["hero.demo", "pricing.matrix", "activation.loop", "changelog.feed"],
-    accent: "from-cyan/30 via-cyan/5 to-transparent",
+    cta: "> deploy --tier=launchpad",
+    priceValue: "16000",
   },
   {
-    id: "high-ticket-inbound-v1",
-    asset: "high_ticket_inbound.v1",
-    title: "Core_Forge // Custom Stacks",
-    role: "// booked-call engine",
-    description:
-      "Hardened middleware systems running enterprise-grade Python FastAPI servers and strict Pydantic validation schemas to guarantee absolute data payload security.",
-    metrics: [
-      { k: "call.rate", v: "8.4%" },
-      { k: "AOV", v: "$18k+" },
-      { k: "sections", v: "05" },
+    id: "vectra-scale",
+    name: "Vectra Scale",
+    subBrand: "VectraSyn Express",
+    price: "₹48,000",
+    priceNote: "One-Time + ₹7,500/mo Care Plan",
+    tagline: "Automated Growth & Operations Engine",
+    featured: true,
+    note: "100% of Launchpad Fee (₹16,000) Credited Toward Upgrade",
+    features: [
+      "Everything in Launchpad + Multi-Page Architecture",
+      "Automated Online Appointment & Calendar Booking",
+      "WhatsApp AI Auto-Responder (Drip FAQs & Pricing)",
+      "Single-Screen Lead Pipeline Dashboard (New ➔ Closed)",
+      "GBP Top-3 Map-Pack Dominance Strategy",
+      "Google Workspace Domain Email Setup",
     ],
-    stack: ["hero.vsl", "proof.stack", "qualifier.form", "calendar.embed"],
-    accent: "from-cyan/40 via-cyan/10 to-transparent",
+    cta: "> deploy --tier=scale",
+    priceValue: "48000",
   },
   {
-    id: "enterprise-scale-v1",
-    asset: "enterprise_scale.v1",
-    title: "Intel_Ops // Cognitive Engines",
-    role: "// account-based motion",
-    description:
-      "Deep-learning intent scoring modules, custom programmatic prompt matrices, and Gemini AI data synthesis models evaluating live buyer urgency in real time.",
-    metrics: [
-      { k: "cycle", v: "-38%" },
-      { k: "ACV lift", v: "+27%" },
-      { k: "sections", v: "09" },
+    id: "cognileads-os",
+    name: "CogniLeads OS",
+    subBrand: "CogniLeads (by VectraSyn)",
+    price: "₹85,000 – ₹1,50,000",
+    priceNote: "Custom Engineering",
+    tagline: "Autonomous AI Lead Intelligence Pipeline",
+    featured: false,
+    note: null,
+    features: [
+      "Custom Web App + FastAPI & Hardened Pydantic Backend",
+      "Gemini AI Real-Time Intent Scoring Engine (0-100)",
+      "24/7 Autonomous AI SDR & Conversational Qualifier",
+      "Instant Telegram & Slack High-Intent Priority Alerts",
+      "Complete Enterprise AEO/GEO Knowledge Graph Schema",
     ],
-    stack: ["hero.industry", "logo.wall", "security.matrix", "rfp.portal"],
-    accent: "from-cyan/25 via-cyan/5 to-transparent",
+    cta: "> deploy --tier=cognileads-os",
+    priceValue: "85000",
   },
 ] as const;
 
@@ -884,101 +899,110 @@ function TemplateMatrix() {
     <section id="templates" className="py-12 lg:py-20 border-b border-border/60">
       <SectionHeader
         index="06"
-        title="Template Matrix"
-        caption="GET /frameworks/landing"
+        title="Enterprise Package Architecture"
+        caption="GET /pricing/tiers"
       />
       <p className="mt-4 max-w-2xl text-sm text-muted-foreground">
-        // AI-powered landing page frameworks. Pre-wired for the VectraSyn SDR
-        pipeline. Deploy one, get an inbound engine — not a brochure.
+        // Three-tier deployment matrix. From viral local growth to autonomous
+        AI SDR infrastructure — pick the layer that matches your ops maturity.
       </p>
 
-      <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {TEMPLATES.map((t, i) => (
-          <article
-            key={t.id}
-            itemScope
-            itemType="https://schema.org/Product"
-            className="group relative overflow-hidden rounded-none border border-[#00F0FF]/70 bg-[#0B0D10] p-5 transition-all duration-300 hover:border-[#00F0FF] hover:-translate-y-0.5 hover:shadow-[0_0_24px_-4px_rgba(0,240,255,0.5)]"
-          >
-            <meta itemProp="sku" content={t.id} />
-            <meta itemProp="category" content="Automation Service Template" />
-            <meta itemProp="url" content={`https://cognileadssystems.lovable.app/#${t.id}`} />
-            <div itemProp="brand" itemScope itemType="https://schema.org/Organization" className="hidden">
-              <meta itemProp="name" content="VectraSyn" />
-            </div>
-            <div itemProp="offers" itemScope itemType="https://schema.org/Offer" className="hidden">
-              <meta itemProp="availability" content="https://schema.org/InStock" />
-              <meta itemProp="priceCurrency" content="USD" />
-              <meta itemProp="price" content="0" />
-              <meta itemProp="seller" content="VectraSyn" />
-            </div>
-
-            <div
-              className={`pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-gradient-to-br ${t.accent}`}
-            />
-            <div className="pointer-events-none absolute -inset-px rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-[0_0_40px_-10px_rgba(0,240,255,0.35)]" />
-
-            <div className="relative flex items-center justify-between text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-              <span className="text-cyan">0{i + 1}</span>
-              <span className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-cyan animate-pulse-cyan" />
-                ready
-              </span>
-            </div>
-
-            <div className="relative mt-4">
-              <div className="text-[11px] text-muted-foreground">{t.role}</div>
-              <h3
-                itemProp="name"
-                className="mt-1 text-lg font-semibold tracking-tight text-foreground"
-              >
-                {t.title}
-              </h3>
-              <div className="mt-1 text-[11px] text-cyan/80 truncate">
-                {"> "}
-                {t.asset}
+      <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:items-stretch">
+        {TIERS.map((t, i) => {
+          const featured = t.featured;
+          return (
+            <article
+              key={t.id}
+              itemScope
+              itemType="https://schema.org/Product"
+              className={[
+                "group relative flex flex-col rounded-none bg-[#0B0D10] p-6 transition-all duration-300",
+                featured
+                  ? "border-2 border-[#00F0FF] shadow-[0_0_40px_-8px_rgba(0,240,255,0.55)] lg:-translate-y-2 lg:scale-[1.02]"
+                  : "border border-[#00F0FF]/60 hover:border-[#00F0FF] hover:-translate-y-0.5 hover:shadow-[0_0_24px_-4px_rgba(0,240,255,0.45)]",
+              ].join(" ")}
+            >
+              <meta itemProp="sku" content={t.id} />
+              <meta itemProp="category" content="Enterprise AI Package" />
+              <div itemProp="brand" itemScope itemType="https://schema.org/Organization" className="hidden">
+                <meta itemProp="name" content="VectraSyn" />
               </div>
-            </div>
+              <div itemProp="offers" itemScope itemType="https://schema.org/Offer" className="hidden">
+                <meta itemProp="availability" content="https://schema.org/InStock" />
+                <meta itemProp="priceCurrency" content="INR" />
+                <meta itemProp="price" content={t.priceValue} />
+                <meta itemProp="seller" content="VectraSyn" />
+              </div>
 
-            <p
-              itemProp="description"
-              className="relative mt-4 text-[12px] leading-relaxed text-muted-foreground"
-            >
-              {t.description}
-            </p>
-
-            <div className="relative mt-5 grid grid-cols-3 gap-2 border-y border-border/60 py-3">
-              {t.metrics.map((m) => (
-                <div key={m.k}>
-                  <div className="text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
-                    {m.k}
-                  </div>
-                  <div className="mt-0.5 text-sm text-cyan">{m.v}</div>
+              {featured && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 border border-[#00F0FF] bg-[#00F0FF] px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.3em] text-[#001014]">
+                  ★ Most Popular
                 </div>
-              ))}
-            </div>
+              )}
 
-            <ul className="relative mt-4 space-y-1 text-[11px] text-muted-foreground">
-              {t.stack.map((s) => (
-                <li key={s} className="flex items-center gap-2">
-                  <span className="text-cyan/70">▸</span>
-                  <span className="truncate">{s}</span>
-                </li>
-              ))}
-            </ul>
+              <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                <span className="text-cyan">0{i + 1}</span>
+                <span className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-cyan animate-pulse-cyan" />
+                  {featured ? "featured" : "ready"}
+                </span>
+              </div>
 
-            <button
-              type="button"
-              onClick={scrollToContact}
-              className="relative mt-6 w-full rounded-md border border-cyan/50 bg-cyan/5 px-3 py-2 text-left text-[12px] text-cyan transition-colors hover:bg-cyan/15 focus:outline-none focus:ring-1 focus:ring-cyan"
-              aria-label={`Request ${t.title} deployment`}
-            >
-              {"> deploy --template="}
-              <span className="text-foreground">{t.id}</span>
-              <span className="ml-1 animate-pulse-cyan">_</span>
-            </button>
-          </article>
-        ))}
+              <div className="mt-4">
+                <div className="text-[10px] uppercase tracking-[0.25em] text-cyan/80">
+                  {t.subBrand}
+                </div>
+                <h3
+                  itemProp="name"
+                  className="mt-1 text-2xl font-semibold tracking-tight text-foreground"
+                >
+                  {t.name}
+                </h3>
+                <p className="mt-2 text-[12px] leading-relaxed text-muted-foreground" itemProp="description">
+                  {t.tagline}
+                </p>
+              </div>
+
+              <div className="mt-5 border-y border-[#00F0FF]/25 py-4">
+                <div className="text-3xl font-semibold tracking-tight text-cyan">
+                  {t.price}
+                </div>
+                <div className="mt-1 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                  {t.priceNote}
+                </div>
+                {t.note && (
+                  <div className="mt-3 border border-[#00F0FF]/40 bg-[#00F0FF]/5 px-2 py-1.5 text-[10px] leading-snug text-cyan/90">
+                    {t.note}
+                  </div>
+                )}
+              </div>
+
+              <ul className="mt-5 flex-1 space-y-2 text-[12px] text-muted-foreground">
+                {t.features.map((f) => (
+                  <li key={f} className="flex items-start gap-2">
+                    <span className="mt-[3px] text-cyan">▸</span>
+                    <span className="leading-snug">{f}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <button
+                type="button"
+                onClick={scrollToContact}
+                className={[
+                  "mt-6 w-full rounded-md px-3 py-2.5 text-left text-[12px] transition-colors focus:outline-none focus:ring-1 focus:ring-cyan",
+                  featured
+                    ? "border border-[#00F0FF] bg-[#00F0FF] text-[#001014] hover:bg-[#00F0FF]/90"
+                    : "border border-cyan/50 bg-cyan/5 text-cyan hover:bg-cyan/15",
+                ].join(" ")}
+                aria-label={`Request ${t.name} deployment`}
+              >
+                {t.cta}
+                <span className="ml-1 animate-pulse-cyan">_</span>
+              </button>
+            </article>
+          );
+        })}
       </div>
     </section>
   );
