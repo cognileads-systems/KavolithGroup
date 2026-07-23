@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="flex flex-col items-start justify-between gap-8 md:flex-row">
           <div>
             <h3 className="font-mono text-xl font-bold text-white">
-              CogniLeads Systems
+              VectraSyn Group
             </h3>
             <p className="mt-2 text-sm text-neutral-400">
               We sync work and forge systems.
@@ -41,8 +41,13 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-neutral-900 pt-6 text-xs text-neutral-500">
-          © {year} CogniLeads Systems. All rights reserved.
+        <div className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-neutral-900 pt-6 text-xs text-neutral-500">
+          <span>
+            © {year} VectraSyn Group. All rights reserved.
+          </span>
+          <span className="flex items-center gap-2 text-[10px] uppercase tracking-[0.25em]">
+            <span className="h-1.5 w-1.5 bg-cyan animate-pulse-cyan" /> all nodes operational
+          </span>
         </div>
       </div>
     </footer>
