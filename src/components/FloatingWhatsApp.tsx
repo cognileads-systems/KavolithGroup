@@ -1,6 +1,6 @@
 import { MessageCircle } from "lucide-react";
 
-const WHATSAPP_NUMBER = "919999999999"; // TODO: replace with your actual number, country code no '+' or spaces
+const WHATSAPP_NUMBER = "919492044168"; // TODO: replace with your actual number, country code no '+' or spaces
 const WHATSAPP_MESSAGE = "Hi CogniLeads Systems, I'd like to talk about an AI SDR pipeline.";
 
 export default function FloatingWhatsApp() {
