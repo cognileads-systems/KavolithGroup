@@ -103,7 +103,6 @@ function NavBar() {
             CogniLeads OS
           </Link>
           <a
-
             href={LINKEDIN_URL}
             target="_blank"
             rel="noopener noreferrer"
@@ -111,6 +110,26 @@ function NavBar() {
           >
             <span className="h-1.5 w-1.5 bg-cyan group-hover:bg-primary-foreground" />
             Validate // LinkedIn Matrix
+          </a>
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="VectraSyn on Instagram"
+            className="group inline-flex items-center gap-2 border border-cyan/40 px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-cyan/90 transition-all hover:bg-cyan hover:text-primary-foreground"
+          >
+            <span className="h-1.5 w-1.5 bg-cyan group-hover:bg-primary-foreground" />
+            IG
+          </a>
+          <a
+            href={FACEBOOK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="VectraSyn on Facebook"
+            className="group inline-flex items-center gap-2 border border-cyan/40 px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-cyan/90 transition-all hover:bg-cyan hover:text-primary-foreground"
+          >
+            <span className="h-1.5 w-1.5 bg-cyan group-hover:bg-primary-foreground" />
+            FB
           </a>
         </div>
       </div>
