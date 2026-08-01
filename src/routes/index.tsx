@@ -47,7 +47,9 @@ export const Route = createFileRoute("/")({
 });
 
 
-const LINKEDIN_URL = "https://www.linkedin.com/in/cognileads";
+const LINKEDIN_URL = "https://www.linkedin.com/company/vectrasyn-group";
+const FACEBOOK_URL = "https://www.facebook.com/vectrasyngroup";
+const INSTAGRAM_URL = "https://www.instagram.com/vectrasyngroup";
 
 type ChatMsg = { role: "system" | "ai" | "user"; content: string };
 
