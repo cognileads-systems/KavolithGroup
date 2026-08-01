@@ -18,7 +18,11 @@ export const Route = createFileRoute("/")({
           url: "https://cognileadssystems.lovable.app",
           description:
             "Autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects within 120 seconds.",
-          sameAs: ["https://www.linkedin.com/in/cognileads"],
+          sameAs: [
+            "https://www.linkedin.com/company/vectrasyn-group",
+            "https://www.facebook.com/vectrasyngroup",
+            "https://www.instagram.com/vectrasyngroup",
+          ],
         }),
       },
       {
@@ -43,7 +47,9 @@ export const Route = createFileRoute("/")({
 });
 
 
-const LINKEDIN_URL = "https://www.linkedin.com/in/cognileads";
+const LINKEDIN_URL = "https://www.linkedin.com/company/vectrasyn-group";
+const FACEBOOK_URL = "https://www.facebook.com/vectrasyngroup";
+const INSTAGRAM_URL = "https://www.instagram.com/vectrasyngroup";
 
 type ChatMsg = { role: "system" | "ai" | "user"; content: string };
 
@@ -97,7 +103,6 @@ function NavBar() {
             CogniLeads OS
           </Link>
           <a
-
             href={LINKEDIN_URL}
             target="_blank"
             rel="noopener noreferrer"
@@ -105,6 +110,26 @@ function NavBar() {
           >
             <span className="h-1.5 w-1.5 bg-cyan group-hover:bg-primary-foreground" />
             Validate // LinkedIn Matrix
+          </a>
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="VectraSyn on Instagram"
+            className="group inline-flex items-center gap-2 border border-cyan/40 px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-cyan/90 transition-all hover:bg-cyan hover:text-primary-foreground"
+          >
+            <span className="h-1.5 w-1.5 bg-cyan group-hover:bg-primary-foreground" />
+            IG
+          </a>
+          <a
+            href={FACEBOOK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="VectraSyn on Facebook"
+            className="group inline-flex items-center gap-2 border border-cyan/40 px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-cyan/90 transition-all hover:bg-cyan hover:text-primary-foreground"
+          >
+            <span className="h-1.5 w-1.5 bg-cyan group-hover:bg-primary-foreground" />
+            FB
           </a>
         </div>
       </div>
@@ -1113,7 +1138,16 @@ function Footer() {
   return (
     <footer className="pt-10 mt-6 flex flex-wrap items-center justify-between gap-3 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
       <span>We sync work and forge systems. © 2026 VectraSyn. All rights reserved.</span>
-      <span className="flex items-center gap-2">
+      <span className="flex items-center gap-4">
+        <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="VectraSyn on LinkedIn" className="text-cyan/80 transition-colors hover:text-cyan">
+          LinkedIn
+        </a>
+        <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="VectraSyn on Instagram" className="text-cyan/80 transition-colors hover:text-cyan">
+          Instagram
+        </a>
+        <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" aria-label="VectraSyn on Facebook" className="text-cyan/80 transition-colors hover:text-cyan">
+          Facebook
+        </a>
         <span className="h-1.5 w-1.5 bg-cyan animate-pulse-cyan" /> all nodes operational
       </span>
     </footer>
