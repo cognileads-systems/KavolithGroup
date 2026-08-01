@@ -1138,7 +1138,16 @@ function Footer() {
   return (
     <footer className="pt-10 mt-6 flex flex-wrap items-center justify-between gap-3 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
       <span>We sync work and forge systems. © 2026 VectraSyn. All rights reserved.</span>
-      <span className="flex items-center gap-2">
+      <span className="flex items-center gap-4">
+        <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="VectraSyn on LinkedIn" className="text-cyan/80 transition-colors hover:text-cyan">
+          LinkedIn
+        </a>
+        <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="VectraSyn on Instagram" className="text-cyan/80 transition-colors hover:text-cyan">
+          Instagram
+        </a>
+        <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" aria-label="VectraSyn on Facebook" className="text-cyan/80 transition-colors hover:text-cyan">
+          Facebook
+        </a>
         <span className="h-1.5 w-1.5 bg-cyan animate-pulse-cyan" /> all nodes operational
       </span>
     </footer>
