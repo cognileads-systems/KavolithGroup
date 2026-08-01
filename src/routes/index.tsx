@@ -20,8 +20,8 @@ export const Route = createFileRoute("/")({
             "Autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects within 120 seconds.",
           sameAs: [
             "https://www.linkedin.com/company/vectrasyn-group",
-            "https://www.facebook.com/vectrasyngroup",
-            "https://www.instagram.com/vectrasyngroup",
+            "https://www.facebook.com/vectrasyn",
+            "https://www.instagram.com/vectrasyn",
           ],
         }),
       },
@@ -48,19 +48,19 @@ export const Route = createFileRoute("/")({
 
 
 const LINKEDIN_URL = "https://www.linkedin.com/company/vectrasyn-group";
-const FACEBOOK_URL = "https://www.facebook.com/vectrasyngroup";
-const INSTAGRAM_URL = "https://www.instagram.com/vectrasyngroup";
+const FACEBOOK_URL = "https://www.facebook.com/vectrasyn";
+const INSTAGRAM_URL = "https://www.instagram.com/vectrasyn";
 
 type ChatMsg = { role: "system" | "ai" | "user"; content: string };
 
 const AUDIT_SCRIPT = [
-  "Booting VectraSyn System Auditor v1.0 ...",
+  "Booting VectraSyn System Auditor v1.0 // Enterprise AI Diagnostic ...",
   "[OK] Neural qualification kernel online.",
-  "Question 01 // What is your current monthly inbound lead volume?",
-  "Question 02 // Average response time to a new inbound lead (in minutes)?",
-  "Question 03 // Which CRM / stack is your revenue team running today?",
-  "Question 04 // Which qualification signals matter most: ICP fit, intent, or budget?",
-  "Question 05 // Ready to deploy an autonomous SDR pipeline? [Y/N]",
+  "AI // Question 01 // What is your average monthly inbound lead volume?",
+  "AI // Question 02 // What is your current lead response latency (in minutes)?",
+  "AI // Question 03 // Which CRM and sales automation stack does your team run?",
+  "AI // Question 04 // What is your primary bottleneck: Lead Qualification, AEO Search Visibility, or Manual Follow-Ups?",
+  "AI // Question 05 // Ready to deploy an autonomous multi-agent pipeline? [Y/N]",
 ];
 
 function Index() {
@@ -278,7 +278,7 @@ function AuditTerminal() {
               <span className="h-2.5 w-2.5 rounded-full bg-cyan" />
             </div>
             <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              VectraSyn System Auditor <span className="text-cyan">v1.0</span>
+              VectraSyn System Auditor <span className="text-cyan">v1.0</span> // Enterprise AI Diagnostic
             </span>
           </div>
           <SessionId />
@@ -1170,51 +1170,51 @@ const PLAYBOOKS = [
   {
     id: "sop-01-inbound-qualification",
     ref: "SOP.01",
-    title: "Inbound Qualification Kernel",
-    caption: "// qualify → enrich → route in <120s",
+    title: "Autonomous Neural Intake Kernel",
+    caption: "// intent-scoring ➔ semantic-enrichment ➔ real-time routing",
     body:
-      "Deterministic scoring rubric layered over an LLM classifier. Deduplicates on email + company domain, enriches firmographics, then routes to the correct pipeline lane. Zero manual triage.",
+      "Deterministic LLM classification model layered over real-time lead feeds. Deduplicates, extracts firmographics, and routes leads to active pipelines in under 120 seconds.",
     kpis: [
       { k: "ttq", v: "< 120s" },
-      { k: "accuracy", v: "94%" },
+      { k: "accuracy", v: "96%" },
       { k: "manual.ops", v: "0" },
     ],
   },
   {
     id: "sop-02-icp-matching",
     ref: "SOP.02",
-    title: "ICP Matching Matrix",
-    caption: "// intent × fit × timing",
+    title: "AEO & Intent-Classified ICP Engine",
+    caption: "// firmographic-fit × intent-signals × timing",
     body:
-      "Codified ICP as a scoring surface: firmographic fit, technographic signals, and behavioral intent are combined into a single priority index. High-fit leads jump the queue automatically.",
+      "Synthesizes search intent, technographics, and behavioral metadata into a real-time priority index. High-value enterprise prospects auto-bypass manual queues.",
     kpis: [
-      { k: "precision", v: "0.91" },
-      { k: "recall", v: "0.87" },
-      { k: "lanes", v: "04" },
+      { k: "precision", v: "0.94" },
+      { k: "recall", v: "0.89" },
+      { k: "pipeline.lanes", v: "04" },
     ],
   },
   {
     id: "sop-03-dual-router",
     ref: "SOP.03",
-    title: "Dual-Router Dispatch",
-    caption: "// email.alert + make.webhook",
+    title: "Fault-Tolerant Webhook Dispatch",
+    caption: "// secure-proxy ➔ n8n/make-pipeline ➔ crm-sync",
     body:
-      "Every qualified lead fans out to two independent routers: an operator email alert and a Make.com workflow that syncs to CRM, ledger, and outreach sequencer. Fail-open, retried on the queue.",
+      "Every verified submission fans out to encrypted webhook endpoints and operator alerts. Backed by automated exponential backoff and retry queues.",
     kpis: [
-      { k: "routers", v: "02" },
-      { k: "delivery", v: "99.8%" },
+      { k: "active.routers", v: "02" },
+      { k: "delivery", v: "99.9%" },
       { k: "retries", v: "3x" },
     ],
   },
   {
     id: "sop-04-ledger-sync",
     ref: "SOP.04",
-    title: "Ledger Sync Protocol",
-    caption: "// plain-text Google Sheets ledger",
+    title: "Real-Time Multi-Currency Ledger Sync",
+    caption: "// automated-airtable ➔ sheets ➔ crm-ledger",
     body:
-      "Authoritative lead ledger written in flat schema: Lead Name, Email, Company, Message, Category, Status, Intent Signal, Priority Action, Source. Human-auditable, agent-writable, no proprietary lock-in.",
+      "Authoritative lead and transaction ledger written in real-time. Dynamically tracks lead conversions, client tiers, and regional currencies (INR/USD/EUR/GBP).",
     kpis: [
-      { k: "columns", v: "09" },
+      { k: "currencies", v: "04" },
       { k: "schema", v: "flat" },
       { k: "audit", v: "human" },
     ],
@@ -1222,13 +1222,13 @@ const PLAYBOOKS = [
   {
     id: "sop-05-observability",
     ref: "SOP.05",
-    title: "Observability & Failover",
-    caption: "// heartbeat + queue-based retries",
+    title: "Hardened Endpoint Observability",
+    caption: "// token-validation ➔ rate-limiting ➔ zero-spam",
     body:
-      "Every node emits a heartbeat and structured event. Failures are captured to a dead-letter queue with automated retry policies; operator gets a terminal-style digest of any pipeline drift.",
+      "Server-side proxy authentication blocks bot flooding, rate-limits public endpoints, and maintains 24/7 pipeline health monitoring.",
     kpis: [
       { k: "uptime", v: "99.95%" },
-      { k: "dlq", v: "auto" },
+      { k: "spam", v: "zero" },
       { k: "alerts", v: "24/7" },
     ],
   },
