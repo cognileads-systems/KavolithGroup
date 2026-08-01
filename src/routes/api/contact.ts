@@ -79,11 +79,19 @@ export const Route = createFileRoute("/api/contact")({
         // 2) Make.com webhook
         const makeUrl = process.env.MAKE_WEBHOOK_URL;
         if (makeUrl) {
+          const flatPayload = {
+            name: body.name ?? "",
+            email: body.email,
+            company: body.company ?? "",
+            message: body.message,
+            source: "vectrasyn.systems//web",
+            token: "Cognileads_arfath@786",
+          };
           try {
             const r = await fetch(makeUrl, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(payload),
+              body: JSON.stringify(flatPayload),
             });
             results.make = { status: r.status };
             if (!r.ok) hadFailure = true;
