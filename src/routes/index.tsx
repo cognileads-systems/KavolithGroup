@@ -18,7 +18,11 @@ export const Route = createFileRoute("/")({
           url: "https://cognileadssystems.lovable.app",
           description:
             "Autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects within 120 seconds.",
-          sameAs: ["https://www.linkedin.com/in/cognileads"],
+          sameAs: [
+            "https://www.linkedin.com/company/vectrasyn-group",
+            "https://www.facebook.com/vectrasyngroup",
+            "https://www.instagram.com/vectrasyngroup",
+          ],
         }),
       },
       {
