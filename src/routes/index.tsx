@@ -90,7 +90,14 @@ function NavBar() {
           <span className="hidden md:inline text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
             node.status: <span className="text-cyan">online</span>
           </span>
+          <Link
+            to="/cognileads-os"
+            className="inline-flex items-center gap-2 border border-cyan/40 px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-cyan/90 transition-colors hover:bg-cyan/10"
+          >
+            CogniLeads OS
+          </Link>
           <a
+
             href={LINKEDIN_URL}
             target="_blank"
             rel="noopener noreferrer"
