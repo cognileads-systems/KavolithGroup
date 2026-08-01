@@ -680,28 +680,30 @@ function ContactBlock() {
     setPreview(JSON.stringify(payload, null, 2));
     setState("sending");
 
-    const WEBHOOK_URL = "https://hook.us2.make.com/5mdsxdg4uittjnebeeknh7kqhducosu2";
     const form = e.currentTarget;
 
-    // Fire-and-forget: dispatch to Make.com asynchronously so the UI never blocks.
-    // Make.com webhooks don't return CORS headers; use no-cors + opaque response.
-    void fetch(WEBHOOK_URL, {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "application/json",
-        "X-VectraSyn-Token": "Cognileads_arfath@786",
-      },
-      body: JSON.stringify(payload),
-      keepalive: true,
-    }).catch((err) => {
-      console.warn("[cognileads] async dispatch warning", err);
-    });
-
-    // 200 Accepted from the frontend perspective — backend processes downstream.
-    console.log("[cognileads] payload dispatched", payload);
-    form.reset();
-    setState("ok");
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: operatorName,
+          email: operatorEmail,
+          company: operatorOrg,
+          message: payloadMessage,
+        }),
+      });
+      const json = await response.json();
+      if (response.ok && json?.ok === true) {
+        form.reset();
+        setState("ok");
+      } else {
+        setState("err");
+      }
+    } catch (err) {
+      console.warn("[vectrasyn] dispatch failed", err);
+      setState("err");
+    }
   }
 
 
