@@ -826,16 +826,31 @@ function SectionHeader({ index, title, caption }: { index: string; title: string
   );
 }
 
+const CURRENCIES = ["INR", "USD", "EUR", "GBP"] as const;
+type Currency = (typeof CURRENCIES)[number];
+
+type TierPrice = {
+  regular?: string;
+  price: string;
+  note: string;
+  value: string;
+};
+
 const TIERS = [
   {
     id: "vectra-launchpad",
     name: "Vectra Launchpad",
     subBrand: "VectraSyn Express",
-    price: "₹16,000",
-    priceNote: "One-Time Setup",
     tagline: "The Viral Reputation & Local Growth Engine",
     featured: false,
+    badge: null as string | null,
     note: null as string | null,
+    prices: {
+      INR: { regular: "₹28,000", price: "₹23,000", note: "One-Time Setup", value: "23000" },
+      USD: { price: "$799", note: "One-Time Setup", value: "799" },
+      EUR: { price: "€749", note: "One-Time Setup", value: "749" },
+      GBP: { price: "£649", note: "One-Time Setup", value: "649" },
+    } as Record<Currency, TierPrice>,
     features: [
       "Sub-300ms React/Tailwind Web Portal (Dark/Light mode)",
       "Domain, SSL & Cloud Hosting Included",
@@ -846,17 +861,22 @@ const TIERS = [
       "GA4 Analytics Setup + 3 Free Annual Updates",
     ],
     cta: "> deploy --tier=launchpad",
-    priceValue: "16000",
   },
   {
     id: "vectra-scale",
     name: "Vectra Scale",
     subBrand: "VectraSyn Express",
-    price: "₹48,000",
-    priceNote: "One-Time + ₹7,500/mo Care Plan",
     tagline: "Automated Growth & Operations Engine",
     featured: true,
-    note: "100% of Launchpad Fee (₹16,000) Credited Toward Upgrade",
+    badge: null as string | null,
+    note:
+      "100% of the amount actually paid for Launchpad (₹23,000 during the current offer) credited toward this upgrade, as a loyalty credit.",
+    prices: {
+      INR: { price: "₹58,000", note: "One-Time + ₹10,000/mo Care Plan", value: "58000" },
+      USD: { price: "$2,499", note: "One-Time + $349/mo Care Plan", value: "2499" },
+      EUR: { price: "€2,299", note: "One-Time + €329/mo Care Plan", value: "2299" },
+      GBP: { price: "£1,999", note: "One-Time + £289/mo Care Plan", value: "1999" },
+    } as Record<Currency, TierPrice>,
     features: [
       "Everything in Launchpad + Multi-Page Architecture",
       "Automated Online Appointment & Calendar Booking",
@@ -866,31 +886,45 @@ const TIERS = [
       "Google Workspace Domain Email Setup",
     ],
     cta: "> deploy --tier=scale",
-    priceValue: "48000",
   },
   {
-    id: "cognileads-os",
-    name: "CogniLeads OS",
-    subBrand: "CogniLeads (by VectraSyn)",
-    price: "₹85,000 – ₹1,50,000",
-    priceNote: "Custom Engineering",
-    tagline: "Autonomous AI Lead Intelligence Pipeline",
+    id: "vectra-premium",
+    name: "Premium / Total Control",
+    subBrand: "VectraSyn Express",
+    tagline: "Full-Scale AEO/GEO Automation & Global Operations Command",
     featured: false,
-    note: null,
+    badge: "Founding Client Rate — Limited Cohort",
+    note: null as string | null,
+    prices: {
+      INR: {
+        regular: "₹1,95,000",
+        price: "₹90,000",
+        note: "Founding Client Rate — One-Time + ₹15,000/mo",
+        value: "90000",
+      },
+      USD: { regular: "$4,499", price: "$2,099", note: "One-Time + $419/mo", value: "2099" },
+      EUR: { regular: "€4,199", price: "€1,949", note: "One-Time + €389/mo", value: "1949" },
+      GBP: { regular: "£3,599", price: "£1,649", note: "One-Time + £339/mo", value: "1649" },
+    } as Record<Currency, TierPrice>,
     features: [
-      "Custom Web App + FastAPI & Hardened Pydantic Backend",
-      "Gemini AI Real-Time Intent Scoring Engine (0-100)",
-      "24/7 Autonomous AI SDR & Conversational Qualifier",
-      "Instant Telegram & Slack High-Intent Priority Alerts",
-      "Complete Enterprise AEO/GEO Knowledge Graph Schema",
+      "Everything in Scale",
+      "Advanced AEO & GEO optimization suite",
+      "n8n automation workflows with integrated voice-chat AI agent",
+      "Official Google Workspace account included (1 year, 1 seat)",
+      "4 scheduled feature/content updates per year",
+      "Minimum 4-page multi-language AI-translated website",
+      "4-currency storefront support (INR/USD/EUR/GBP)",
+      "Custom .com domain included",
+      "Built on TanStack + Next.js with hardened bot/vulnerability security",
+      "Premium customer care — dedicated human support team, no chatbots",
     ],
-    cta: "> deploy --tier=cognileads-os",
-    priceValue: "85000",
+    cta: "> deploy --tier=premium",
   },
 ] as const;
 
 
 function TemplateMatrix() {
+  const [currency, setCurrency] = useState<Currency>("INR");
   const scrollToContact = () => {
     const el = document.getElementById("contact");
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -902,14 +936,44 @@ function TemplateMatrix() {
         title="Enterprise Package Architecture"
         caption="GET /pricing/tiers"
       />
-      <p className="mt-4 max-w-2xl text-sm text-muted-foreground">
-        // Three-tier deployment matrix. From viral local growth to autonomous
-        AI SDR infrastructure — pick the layer that matches your ops maturity.
-      </p>
+      <div className="mt-4 flex flex-wrap items-start justify-between gap-4">
+        <p className="max-w-2xl text-sm text-muted-foreground">
+          // Three-tier deployment matrix. From viral local growth to full-scale
+          AEO/GEO automation — pick the layer that matches your ops maturity.
+        </p>
+        <div
+          className="flex items-center gap-2"
+          role="group"
+          aria-label="Select display currency"
+        >
+          <span className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+            currency:
+          </span>
+          <div className="flex border border-[#00F0FF]/40">
+            {CURRENCIES.map((c) => (
+              <button
+                key={c}
+                type="button"
+                onClick={() => setCurrency(c)}
+                aria-pressed={currency === c}
+                className={[
+                  "px-3 py-1.5 text-[11px] uppercase tracking-[0.2em] transition-colors focus:outline-none focus:ring-1 focus:ring-cyan",
+                  currency === c
+                    ? "bg-[#00F0FF] text-[#001014]"
+                    : "text-cyan/80 hover:bg-cyan/10",
+                ].join(" ")}
+              >
+                {c}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
 
       <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:items-stretch">
         {TIERS.map((t, i) => {
           const featured = t.featured;
+          const p = t.prices[currency];
           return (
             <article
               key={t.id}
@@ -929,8 +993,8 @@ function TemplateMatrix() {
               </div>
               <div itemProp="offers" itemScope itemType="https://schema.org/Offer" className="hidden">
                 <meta itemProp="availability" content="https://schema.org/InStock" />
-                <meta itemProp="priceCurrency" content="INR" />
-                <meta itemProp="price" content={t.priceValue} />
+                <meta itemProp="priceCurrency" content={currency} />
+                <meta itemProp="price" content={p.value} />
                 <meta itemProp="seller" content="VectraSyn" />
               </div>
 
@@ -964,11 +1028,23 @@ function TemplateMatrix() {
               </div>
 
               <div className="mt-5 border-y border-[#00F0FF]/25 py-4">
-                <div className="text-3xl font-semibold tracking-tight text-cyan">
-                  {t.price}
+                {t.badge && (
+                  <div className="mb-2 inline-block border border-[#00F0FF]/50 bg-[#00F0FF]/10 px-2 py-1 text-[9px] uppercase tracking-[0.2em] text-cyan">
+                    {t.badge}
+                  </div>
+                )}
+                <div className="flex items-baseline gap-3">
+                  {p.regular && (
+                    <span className="text-lg text-muted-foreground line-through decoration-muted-foreground/70">
+                      {p.regular}
+                    </span>
+                  )}
+                  <span className="text-3xl font-semibold tracking-tight text-cyan">
+                    {p.price}
+                  </span>
                 </div>
                 <div className="mt-1 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-                  {t.priceNote}
+                  {p.note}
                 </div>
                 {t.note && (
                   <div className="mt-3 border border-[#00F0FF]/40 bg-[#00F0FF]/5 px-2 py-1.5 text-[10px] leading-snug text-cyan/90">
@@ -1003,6 +1079,21 @@ function TemplateMatrix() {
             </article>
           );
         })}
+      </div>
+
+      <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border border-[#00F0FF]/40 bg-[#00F0FF]/5 p-5">
+        <p className="max-w-2xl text-[12px] leading-relaxed text-muted-foreground">
+          Looking for a proprietary AI Sales Platform instead of a
+          website/automation package? →{" "}
+          <span className="text-cyan">CogniLeads OS is now its own product.</span>
+        </p>
+        <Link
+          to="/cognileads-os"
+          className="inline-flex items-center gap-2 border border-cyan/60 px-4 py-2 text-[11px] uppercase tracking-[0.2em] text-cyan transition-colors hover:bg-cyan hover:text-primary-foreground"
+        >
+          <span className="h-1.5 w-1.5 bg-cyan" />
+          Explore CogniLeads OS
+        </Link>
       </div>
     </section>
   );
