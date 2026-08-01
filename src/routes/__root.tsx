@@ -126,8 +126,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
                 "VectraSyn engineers autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects within 120 seconds — 24/7/365.",
               sameAs: [
                 "https://www.linkedin.com/company/vectrasyn-group",
-                "https://www.facebook.com/vectrasyngroup",
-                "https://www.instagram.com/vectrasyngroup",
+                "https://www.facebook.com/vectrasyn",
+                "https://www.instagram.com/vectrasyn",
               ],
               areaServed: "Global",
               knowsAbout: [
