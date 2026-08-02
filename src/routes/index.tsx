@@ -930,6 +930,8 @@ const TIERS = [
     name: "Premium / Total Control",
     subBrand: "VectraSyn Express",
     tagline: "Full-Scale AEO/GEO Automation & Global Operations Command",
+    outcome:
+      "Multi-language, multi-currency, voice-AI automation — enterprise-grade capability at accessible pricing.",
     featured: false,
     badge: "Founding Client Rate — Limited Cohort",
     note: null as string | null,
