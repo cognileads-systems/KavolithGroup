@@ -903,6 +903,8 @@ const TIERS = [
     name: "Vectra Scale",
     subBrand: "VectraSyn Express",
     tagline: "Automated Growth & Operations Engine",
+    outcome:
+      "A full automation stack — booking, WhatsApp/CRM sync, and a live lead dashboard — plus ongoing care.",
     featured: true,
     badge: null as string | null,
     note:
