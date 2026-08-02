@@ -876,6 +876,8 @@ const TIERS = [
     name: "Vectra Launchpad",
     subBrand: "VectraSyn Express",
     tagline: "The Viral Reputation & Local Growth Engine",
+    outcome:
+      "Get a production-ready site with automated lead capture live in under 2 weeks.",
     featured: false,
     badge: null as string | null,
     note: null as string | null,
