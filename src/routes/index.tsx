@@ -172,7 +172,7 @@ function Hero() {
           {[
             { k: "response.avg", v: "< 120s" },
             { k: "uptime.sla", v: "99.98%" },
-            { k: "pipelines", v: "Autonomous" },
+            { k: "pipelines", v: "Always-On" },
           ].map((s) => (
             <div key={s.k} className="border border-border p-4 bg-panel/60">
               <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
@@ -1181,7 +1181,7 @@ const PLAYBOOKS = [
   {
     id: "sop-01-inbound-qualification",
     ref: "SOP.01",
-    title: "Autonomous Neural Intake Kernel",
+    title: "Applied AI Intake Kernel",
     caption: "// intent-scoring ➔ semantic-enrichment ➔ real-time routing",
     body:
       "Deterministic LLM classification model layered over real-time lead feeds. Deduplicates, extracts firmographics, and routes leads to active pipelines in under 120 seconds.",
