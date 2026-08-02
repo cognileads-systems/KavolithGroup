@@ -1044,6 +1044,11 @@ function TemplateMatrix() {
                 </div>
               )}
 
+              <p className="mb-4 border-l-2 border-cyan/60 pl-3 text-[12px] leading-relaxed text-foreground/80">
+                {t.outcome}
+              </p>
+
+
               <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
                 <span className="text-cyan">0{i + 1}</span>
                 <span className="flex items-center gap-2">
