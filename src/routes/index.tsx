@@ -172,7 +172,7 @@ function Hero() {
           {[
             { k: "response.avg", v: "< 120s" },
             { k: "uptime.sla", v: "99.98%" },
-            { k: "pipelines", v: "Autonomous" },
+            { k: "pipelines", v: "Always-On" },
           ].map((s) => (
             <div key={s.k} className="border border-border p-4 bg-panel/60">
               <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
@@ -876,6 +876,8 @@ const TIERS = [
     name: "Vectra Launchpad",
     subBrand: "VectraSyn Express",
     tagline: "The Viral Reputation & Local Growth Engine",
+    outcome:
+      "Get a production-ready site with automated lead capture live in under 2 weeks.",
     featured: false,
     badge: null as string | null,
     note: null as string | null,
@@ -901,6 +903,8 @@ const TIERS = [
     name: "Vectra Scale",
     subBrand: "VectraSyn Express",
     tagline: "Automated Growth & Operations Engine",
+    outcome:
+      "A full automation stack — booking, WhatsApp/CRM sync, and a live lead dashboard — plus ongoing care.",
     featured: true,
     badge: null as string | null,
     note:
@@ -926,6 +930,8 @@ const TIERS = [
     name: "Premium / Total Control",
     subBrand: "VectraSyn Express",
     tagline: "Full-Scale AEO/GEO Automation & Global Operations Command",
+    outcome:
+      "Multi-language, multi-currency, voice-AI automation — enterprise-grade capability at accessible pricing.",
     featured: false,
     badge: "Founding Client Rate — Limited Cohort",
     note: null as string | null,
@@ -1037,6 +1043,11 @@ function TemplateMatrix() {
                   ★ Most Popular
                 </div>
               )}
+
+              <p className="mb-4 border-l-2 border-cyan/60 pl-3 text-[12px] leading-relaxed text-foreground/80">
+                {t.outcome}
+              </p>
+
 
               <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
                 <span className="text-cyan">0{i + 1}</span>
@@ -1170,7 +1181,7 @@ const PLAYBOOKS = [
   {
     id: "sop-01-inbound-qualification",
     ref: "SOP.01",
-    title: "Autonomous Neural Intake Kernel",
+    title: "Applied AI Intake Kernel",
     caption: "// intent-scoring ➔ semantic-enrichment ➔ real-time routing",
     body:
       "Deterministic LLM classification model layered over real-time lead feeds. Deduplicates, extracts firmographics, and routes leads to active pipelines in under 120 seconds.",
