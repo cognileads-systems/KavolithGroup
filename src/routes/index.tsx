@@ -65,7 +65,7 @@ const AUDIT_SCRIPT = [
 
 function Index() {
   return (
-    <div className="min-h-screen text-foreground font-mono">
+    <div className="min-h-screen text-foreground">
       <NavBar />
       <main className="mx-auto max-w-[1400px] px-6 pb-24">
         <Hero />
@@ -86,16 +86,17 @@ function NavBar() {
     <header className="sticky top-0 z-40 border-b border-border/60 backdrop-blur bg-[#090D16]/80">
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4">
         <div className="flex items-center gap-3">
-          <span className="h-2 w-2 rounded-full bg-cyan animate-pulse-cyan" />
-          <span className="text-sm tracking-widest text-foreground">
-            <span className="text-cyan text-glow">Kavolith</span>
-            <span className="text-muted-foreground"> // OS</span>
+          <span className="h-2 w-2 rounded-full bg-violet animate-pulse-cyan" />
+          <span className="font-display text-base font-semibold tracking-[0.2em] text-foreground">
+            <span className="text-gradient-intelligence">Kavolith</span>
+            <span className="font-mono text-xs tracking-widest text-muted-foreground"> // OS</span>
           </span>
         </div>
         <div className="flex items-center gap-4">
-          <span className="hidden md:inline text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+          <span className="hidden md:inline font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
             node.status: <span className="text-cyan">online</span>
           </span>
+
           <Link
             to="/cognileads-os"
             className="inline-flex items-center gap-2 border border-cyan/40 px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-cyan/90 transition-colors hover:bg-cyan/10"
@@ -141,13 +142,13 @@ function Hero() {
   return (
     <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 py-12 lg:py-20 border-b border-border/60">
       <div>
-        <div className="mb-6 inline-flex items-center gap-2 border border-border px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-          <span className="h-1.5 w-1.5 bg-cyan animate-pulse-cyan" />
+        <div className="mb-6 inline-flex items-center gap-2 border border-border px-3 py-1 font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+          <span className="h-1.5 w-1.5 bg-violet animate-pulse-cyan" />
           System Log // Live SDR Infrastructure
         </div>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
+        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
           Stop Losing 60% of Your Inbound Leads to{" "}
-          <span className="text-cyan text-glow">Slow Follow-Ups.</span>
+          <span className="text-gradient-intelligence">Slow Follow-Ups.</span>
         </h1>
         <p className="mt-6 max-w-xl text-sm md:text-base text-muted-foreground leading-relaxed">
           <span className="text-foreground">Kavolith</span> engineers autonomous inbound lead
@@ -157,13 +158,13 @@ function Hero() {
         <div className="mt-8 flex flex-wrap gap-3">
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 border border-cyan bg-cyan/10 px-5 py-3 text-xs uppercase tracking-[0.2em] text-cyan glow-cyan hover:bg-cyan hover:text-primary-foreground transition-all"
+            className="border-gradient-intelligence inline-flex items-center gap-2 px-5 py-3 font-mono text-xs uppercase tracking-[0.2em] text-foreground transition-all hover:shadow-[0_0_28px_-6px_oklch(0.72_0.19_305/0.65)]"
           >
             &gt; Join Corporate Waitlist
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 border border-border px-5 py-3 text-xs uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground hover:border-cyan/60 transition-all"
+            className="inline-flex items-center gap-2 border border-border px-5 py-3 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground hover:border-violet/60 transition-all"
           >
             Deploy Contact Payload
           </a>
@@ -175,58 +176,173 @@ function Hero() {
             { k: "pipelines", v: "Always-On" },
           ].map((s) => (
             <div key={s.k} className="border border-border p-4 bg-panel/60">
-              <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+              <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
                 {s.k}
               </div>
-              <div className="mt-2 text-cyan text-lg">{s.v}</div>
+              <div className="mt-2 font-mono text-cyan text-lg">{s.v}</div>
             </div>
           ))}
         </dl>
       </div>
 
-      <div className="relative border border-border bg-panel/60 p-3">
-        <div className="flex items-center justify-between border-b border-border pb-2 mb-3">
-          <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-destructive/70" />
-            <span className="h-2 w-2 rounded-full bg-yellow-500/70" />
-            <span className="h-2 w-2 rounded-full bg-cyan" />
-          </div>
-          <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-            stream // pipeline.mp4
-          </span>
+      <NeuralConstellation />
+    </section>
+  );
+}
+
+const NODES = [
+  { id: 0, x: 84, y: 128 },
+  { id: 1, x: 168, y: 62 },
+  { id: 2, x: 172, y: 200 },
+  { id: 3, x: 268, y: 108 },
+  { id: 4, x: 266, y: 246 },
+  { id: 5, x: 366, y: 58 },
+  { id: 6, x: 372, y: 176 },
+  { id: 7, x: 464, y: 122 },
+  { id: 8, x: 458, y: 252 },
+  { id: 9, x: 552, y: 180 },
+] as const;
+
+const EDGES: Array<[number, number]> = [
+  [0, 1], [0, 2], [1, 3], [2, 3], [2, 4], [3, 5], [3, 6],
+  [4, 6], [4, 8], [5, 7], [6, 7], [6, 8], [7, 9], [8, 9],
+];
+
+function NeuralConstellation() {
+  return (
+    <div className="relative border border-border bg-panel/60 p-3">
+      <div className="flex items-center justify-between border-b border-border pb-2 mb-3">
+        <div className="flex items-center gap-2">
+          <span className="h-2 w-2 rounded-full bg-violet" />
+          <span className="h-2 w-2 rounded-full bg-violet/50" />
+          <span className="h-2 w-2 rounded-full bg-cyan" />
         </div>
-        <div className="relative aspect-video w-full overflow-hidden border border-border bg-black">
-          <div
-            className="absolute inset-0 opacity-80"
-            style={{
-              background:
-                "radial-gradient(ellipse at 30% 40%, rgba(0,240,255,0.18), transparent 60%), radial-gradient(ellipse at 70% 70%, rgba(0,240,255,0.10), transparent 55%), #05080F",
-            }}
-            aria-hidden="true"
-          />
-          <div
-            className="pointer-events-none absolute inset-0 opacity-40"
-            style={{
-              background:
-                "repeating-linear-gradient(to bottom, transparent 0 2px, rgba(0,240,255,0.10) 2px 3px)",
-            }}
-          />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#090D16] via-transparent to-transparent" />
-          <div className="absolute left-3 top-3 text-[10px] uppercase tracking-[0.25em] text-cyan text-glow">
-            &gt; System Pipeline Demonstration Log // Booting...
-          </div>
-          <div className="absolute bottom-3 right-3 flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-cyan">
-            <span className="h-1.5 w-1.5 bg-cyan animate-blink" /> REC
-          </div>
-        </div>
-        <div className="mt-3 grid grid-cols-4 gap-2 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-          <div>frame.rate 60fps</div>
-          <div>node.count 42</div>
-          <div>latency 12ms</div>
-          <div className="text-cyan">stream: LIVE</div>
+        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+          neural.graph // intelligence.mesh
+        </span>
+      </div>
+
+      <div className="relative aspect-video w-full overflow-hidden border border-border bg-[#05080F]">
+        <style>{`
+          @keyframes synapse-fire {
+            0%, 100% { stroke-opacity: 0.12; }
+            45%      { stroke-opacity: 0.9; }
+          }
+          @keyframes synapse-travel {
+            0%   { stroke-dashoffset: 220; opacity: 0; }
+            10%  { opacity: 1; }
+            85%  { opacity: 1; }
+            100% { stroke-dashoffset: 0; opacity: 0; }
+          }
+          @keyframes node-breathe {
+            0%, 100% { r: 4; opacity: 0.55; }
+            50%      { r: 6.5; opacity: 1; }
+          }
+          @keyframes halo-breathe {
+            0%, 100% { opacity: 0.05; transform: scale(0.9); }
+            50%      { opacity: 0.35; transform: scale(1.25); }
+          }
+          .nc-edge { animation: synapse-fire 4.2s ease-in-out infinite; }
+          .nc-spark {
+            stroke-dasharray: 26 220;
+            animation: synapse-travel 4.2s linear infinite;
+          }
+          .nc-node { animation: node-breathe 3.6s ease-in-out infinite; transform-box: fill-box; }
+          .nc-halo { animation: halo-breathe 3.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+          @media (prefers-reduced-motion: reduce) {
+            .nc-edge, .nc-spark, .nc-node, .nc-halo { animation: none; }
+          }
+        `}</style>
+
+        <svg
+          viewBox="0 0 640 320"
+          className="h-full w-full"
+          role="img"
+          aria-label="Animated neural network graph representing the Kavolith intelligence mesh"
+        >
+          <defs>
+            <linearGradient id="nc-grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="oklch(0.72 0.19 305)" />
+              <stop offset="100%" stopColor="oklch(0.88 0.19 200)" />
+            </linearGradient>
+            <radialGradient id="nc-glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="oklch(0.72 0.19 305)" stopOpacity="0.55" />
+              <stop offset="100%" stopColor="oklch(0.88 0.19 200)" stopOpacity="0" />
+            </radialGradient>
+            <filter id="nc-blur" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="3" />
+            </filter>
+          </defs>
+
+          <ellipse cx="320" cy="160" rx="250" ry="140" fill="url(#nc-glow)" opacity="0.35" />
+
+          {EDGES.map(([a, b], i) => {
+            const from = NODES[a];
+            const to = NODES[b];
+            const delay = `${(i % 7) * 0.55}s`;
+            return (
+              <g key={`e-${i}`}>
+                <line
+                  className="nc-edge"
+                  x1={from.x}
+                  y1={from.y}
+                  x2={to.x}
+                  y2={to.y}
+                  stroke="url(#nc-grad)"
+                  strokeWidth="1.2"
+                  style={{ animationDelay: delay }}
+                />
+                <line
+                  className="nc-spark"
+                  x1={from.x}
+                  y1={from.y}
+                  x2={to.x}
+                  y2={to.y}
+                  stroke="url(#nc-grad)"
+                  strokeWidth="2.6"
+                  strokeLinecap="round"
+                  filter="url(#nc-blur)"
+                  style={{ animationDelay: delay }}
+                />
+              </g>
+            );
+          })}
+
+          {NODES.map((n, i) => (
+            <g key={n.id}>
+              <circle
+                className="nc-halo"
+                cx={n.x}
+                cy={n.y}
+                r="14"
+                fill="url(#nc-grad)"
+                style={{ animationDelay: `${(i % 5) * 0.7}s` }}
+              />
+              <circle
+                className="nc-node"
+                cx={n.x}
+                cy={n.y}
+                r="4"
+                fill="url(#nc-grad)"
+                style={{ animationDelay: `${(i % 5) * 0.7}s` }}
+              />
+            </g>
+          ))}
+        </svg>
+
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#090D16] via-transparent to-transparent" />
+        <div className="absolute left-3 top-3 font-mono text-[10px] uppercase tracking-[0.25em] text-violet">
+          &gt; intelligence.mesh // 10 nodes // 14 synapses
         </div>
       </div>
-    </section>
+
+      <div className="mt-3 grid grid-cols-4 gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+        <div>infer.rate 60hz</div>
+        <div>node.count 42</div>
+        <div>latency 12ms</div>
+        <div className="text-cyan">mesh: LIVE</div>
+      </div>
+    </div>
   );
 }
 
@@ -284,7 +400,7 @@ function AuditTerminal() {
           <SessionId />
         </div>
 
-        <div className="relative h-[420px] overflow-y-auto p-5 space-y-3 text-sm">
+        <div className="relative h-[420px] overflow-y-auto p-5 space-y-3 font-mono text-sm">
           {messages.map((m, i) => (
             <div key={i} className="flex gap-3">
               <span
@@ -852,10 +968,10 @@ function SectionHeader({ index, title, caption }: { index: string; title: string
   return (
     <div className="flex items-end justify-between border-b border-border/60 pb-3">
       <div className="flex items-baseline gap-4">
-        <span className="text-cyan text-xs tracking-[0.3em]">{index}</span>
-        <h2 className="text-xl md:text-2xl font-semibold tracking-tight">{title}</h2>
+        <span className="font-mono text-violet text-xs tracking-[0.3em]">{index}</span>
+        <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight">{title}</h2>
       </div>
-      <span className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">{caption}</span>
+      <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">{caption}</span>
     </div>
   );
 }
@@ -986,10 +1102,10 @@ function TemplateMatrix() {
           role="group"
           aria-label="Select display currency"
         >
-          <span className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
             currency:
           </span>
-          <div className="flex border border-[#00F0FF]/40">
+          <div className="flex border border-violet/40">
             {CURRENCIES.map((c) => (
               <button
                 key={c}
@@ -997,10 +1113,10 @@ function TemplateMatrix() {
                 onClick={() => setCurrency(c)}
                 aria-pressed={currency === c}
                 className={[
-                  "px-3 py-1.5 text-[11px] uppercase tracking-[0.2em] transition-colors focus:outline-none focus:ring-1 focus:ring-cyan",
+                  "px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] transition-colors focus:outline-none focus:ring-1 focus:ring-violet",
                   currency === c
-                    ? "bg-[#00F0FF] text-[#001014]"
-                    : "text-cyan/80 hover:bg-cyan/10",
+                    ? "bg-violet text-[#0B0D10]"
+                    : "text-violet/80 hover:bg-violet/10",
                 ].join(" ")}
               >
                 {c}
@@ -1020,10 +1136,10 @@ function TemplateMatrix() {
               itemScope
               itemType="https://schema.org/Product"
               className={[
-                "group relative flex flex-col rounded-none bg-[#0B0D10] p-6 transition-all duration-300",
+                "group relative flex flex-col rounded-none p-6 transition-all duration-300",
                 featured
-                  ? "border-2 border-[#00F0FF] shadow-[0_0_40px_-8px_rgba(0,240,255,0.55)] lg:-translate-y-2 lg:scale-[1.02]"
-                  : "border border-[#00F0FF]/60 hover:border-[#00F0FF] hover:-translate-y-0.5 hover:shadow-[0_0_24px_-4px_rgba(0,240,255,0.45)]",
+                  ? "border-gradient-intelligence shadow-[0_0_44px_-10px_oklch(0.72_0.19_305/0.55)] lg:-translate-y-2 lg:scale-[1.02]"
+                  : "bg-[#0B0D10] border border-violet/40 hover:border-violet hover:-translate-y-0.5 hover:shadow-[0_0_24px_-4px_oklch(0.72_0.19_305/0.45)]",
               ].join(" ")}
             >
               <meta itemProp="sku" content={t.id} />
@@ -1039,7 +1155,7 @@ function TemplateMatrix() {
               </div>
 
               {featured && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 border border-[#00F0FF] bg-[#00F0FF] px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.3em] text-[#001014]">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-violet to-cyan px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.3em] text-[#0B0D10]">
                   ★ Most Popular
                 </div>
               )}
@@ -1049,21 +1165,21 @@ function TemplateMatrix() {
               </p>
 
 
-              <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-                <span className="text-cyan">0{i + 1}</span>
+              <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                <span className="text-violet">0{i + 1}</span>
                 <span className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-cyan animate-pulse-cyan" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-violet animate-pulse-cyan" />
                   {featured ? "featured" : "ready"}
                 </span>
               </div>
 
               <div className="mt-4">
-                <div className="text-[10px] uppercase tracking-[0.25em] text-cyan/80">
+                <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-cyan/80">
                   {t.subBrand}
                 </div>
                 <h3
                   itemProp="name"
-                  className="mt-1 text-2xl font-semibold tracking-tight text-foreground"
+                  className="mt-1 font-display text-2xl font-semibold tracking-tight text-foreground"
                 >
                   {t.name}
                 </h3>
@@ -1072,27 +1188,27 @@ function TemplateMatrix() {
                 </p>
               </div>
 
-              <div className="mt-5 border-y border-[#00F0FF]/25 py-4">
+              <div className="mt-5 border-y border-violet/25 py-4">
                 {t.badge && (
-                  <div className="mb-2 inline-block border border-[#00F0FF]/50 bg-[#00F0FF]/10 px-2 py-1 text-[9px] uppercase tracking-[0.2em] text-cyan">
+                  <div className="mb-2 inline-block border border-violet/50 bg-violet/10 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.2em] text-violet">
                     {t.badge}
                   </div>
                 )}
                 <div className="flex items-baseline gap-3">
                   {p.regular && (
-                    <span className="text-lg text-muted-foreground line-through decoration-muted-foreground/70">
+                    <span className="font-mono text-lg text-muted-foreground line-through decoration-muted-foreground/70">
                       {p.regular}
                     </span>
                   )}
-                  <span className="text-3xl font-semibold tracking-tight text-cyan">
+                  <span className="font-mono text-3xl font-semibold tracking-tight text-gradient-intelligence">
                     {p.price}
                   </span>
                 </div>
-                <div className="mt-1 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
                   {p.note}
                 </div>
                 {t.note && (
-                  <div className="mt-3 border border-[#00F0FF]/40 bg-[#00F0FF]/5 px-2 py-1.5 text-[10px] leading-snug text-cyan/90">
+                  <div className="mt-3 border border-cyan/40 bg-cyan/5 px-2 py-1.5 text-[10px] leading-snug text-cyan/90">
                     {t.note}
                   </div>
                 )}
@@ -1101,7 +1217,7 @@ function TemplateMatrix() {
               <ul className="mt-5 flex-1 space-y-2 text-[12px] text-muted-foreground">
                 {t.features.map((f) => (
                   <li key={f} className="flex items-start gap-2">
-                    <span className="mt-[3px] text-cyan">▸</span>
+                    <span className="mt-[3px] text-violet">▸</span>
                     <span className="leading-snug">{f}</span>
                   </li>
                 ))}
@@ -1111,22 +1227,22 @@ function TemplateMatrix() {
                 type="button"
                 onClick={scrollToContact}
                 className={[
-                  "mt-6 w-full rounded-md px-3 py-2.5 text-left text-[12px] transition-colors focus:outline-none focus:ring-1 focus:ring-cyan",
+                  "mt-6 w-full rounded-md px-3 py-2.5 text-left font-mono text-[12px] transition-all focus:outline-none focus:ring-1 focus:ring-violet",
                   featured
-                    ? "border border-[#00F0FF] bg-[#00F0FF] text-[#001014] hover:bg-[#00F0FF]/90"
-                    : "border border-cyan/50 bg-cyan/5 text-cyan hover:bg-cyan/15",
+                    ? "bg-gradient-to-r from-violet to-cyan text-[#0B0D10] hover:opacity-90"
+                    : "border border-violet/50 bg-violet/5 text-violet hover:bg-violet/15",
                 ].join(" ")}
                 aria-label={`Request ${t.name} deployment`}
               >
                 {t.cta}
-                <span className="ml-1 animate-pulse-cyan">_</span>
+                <span className="ml-1 animate-blink">_</span>
               </button>
             </article>
           );
         })}
       </div>
 
-      <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border border-[#00F0FF]/40 bg-[#00F0FF]/5 p-5">
+      <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border border-violet/40 bg-violet/5 p-5">
         <p className="max-w-2xl text-[12px] leading-relaxed text-muted-foreground">
           Looking for a proprietary AI Sales Platform instead of a
           website/automation package? →{" "}
@@ -1266,29 +1382,30 @@ function PlaybookRepository() {
         {PLAYBOOKS.map((p, i) => (
           <article
             key={p.id}
-            className="group relative overflow-hidden border border-border/60 bg-[#0A1120] p-5 transition-all duration-300 hover:border-cyan/60 hover:-translate-y-0.5"
+            className="group relative overflow-hidden border border-border/60 bg-[#0A1120] p-5 transition-all duration-300 hover:border-violet/60 hover:shadow-[0_0_24px_-8px_oklch(0.72_0.19_305/0.5)] hover:-translate-y-0.5"
           >
-            <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+            <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
               <span className="text-cyan">{p.ref}</span>
               <span className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-cyan animate-pulse-cyan" />
+                <span className="h-1.5 w-1.5 rounded-full bg-violet animate-pulse-cyan" />
                 doc.{String(i + 1).padStart(2, "0")}
               </span>
             </div>
-            <h3 className="mt-3 text-lg font-semibold tracking-tight text-foreground">
+            <h3 className="mt-3 font-display text-lg font-semibold tracking-tight text-foreground">
               {p.title}
             </h3>
-            <div className="mt-1 text-[11px] text-cyan/80">{p.caption}</div>
+            <div className="mt-1 font-mono text-[11px] text-cyan/80">{p.caption}</div>
+
             <p className="mt-4 text-[12px] leading-relaxed text-muted-foreground">
               {p.body}
             </p>
             <div className="mt-5 grid grid-cols-3 gap-2 border-t border-border/60 pt-3">
               {p.kpis.map((m) => (
                 <div key={m.k}>
-                  <div className="text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
+                  <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
                     {m.k}
                   </div>
-                  <div className="mt-0.5 text-sm text-cyan">{m.v}</div>
+                  <div className="mt-0.5 font-mono text-sm text-cyan">{m.v}</div>
                 </div>
               ))}
             </div>

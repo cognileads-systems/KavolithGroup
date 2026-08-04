@@ -27,13 +27,13 @@ export const Route = createFileRoute("/api/contact")({
 
         const parsed = contactSchema.safeParse(raw);
         if (!parsed.success) {
-          console.warn("[VectraSyn] contact validation failed:", parsed.error.flatten());
+          console.warn("[Kavolith] contact validation failed:", parsed.error.flatten());
           return Response.json({ ok: false }, { status: 400 });
         }
         const body = parsed.data;
 
         const payload = {
-          source: "vectrasyn.systems//web",
+          source: "kavolith.com//web",
           received_at: new Date().toISOString(),
           lead: {
             name: body.name ?? null,
@@ -62,7 +62,7 @@ export const Route = createFileRoute("/api/contact")({
               body: JSON.stringify({
                 from: alertFrom,
                 to: [alertTo],
-                subject: `[VectraSyn] New inbound lead: ${body.email}`,
+                subject: `[Kavolith] New inbound lead: ${body.email}`,
                 text: JSON.stringify(payload, null, 2),
               }),
             });
@@ -79,13 +79,14 @@ export const Route = createFileRoute("/api/contact")({
         // 2) Make.com webhook
         const makeUrl = process.env.MAKE_WEBHOOK_URL;
         if (makeUrl) {
+          const makeToken = process.env.MAKE_WEBHOOK_TOKEN;
           const flatPayload = {
             name: body.name ?? "",
             email: body.email,
             company: body.company ?? "",
             message: body.message,
-            source: "vectrasyn.systems//web",
-            token: "Cognileads_arfath@786",
+            source: "kavolith.com//web",
+            ...(makeToken ? { token: makeToken } : {}),
           };
           try {
             const r = await fetch(makeUrl, {
@@ -104,7 +105,7 @@ export const Route = createFileRoute("/api/contact")({
         }
 
         console.log(
-          "[VectraSyn] contact submission:",
+          "[Kavolith] contact submission:",
           JSON.stringify({ payload, results }),
         );
 

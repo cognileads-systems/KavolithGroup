@@ -86,7 +86,7 @@ function CogniLeadsOSPage() {
             <span className="h-1.5 w-1.5 bg-cyan animate-pulse-cyan" />
             Sales Intelligence Platform // Standalone Product
           </div>
-          <h1 className="max-w-4xl text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
+          <h1 className="max-w-4xl font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
             CogniLeads OS —{" "}
             <span className="text-cyan text-glow">
               Autonomous AI Lead Intelligence Pipeline
@@ -120,7 +120,7 @@ function CogniLeadsOSPage() {
             </div>
 
             <div className="border border-[#00F0FF]/60 bg-[#0B0D10] p-6">
-              <h2 className="text-xl font-semibold tracking-tight">
+              <h2 className="font-display text-xl font-semibold tracking-tight">
                 What ships with the OS
               </h2>
               <ul className="mt-4 space-y-2 text-[12px] text-muted-foreground">
@@ -138,7 +138,7 @@ function CogniLeadsOSPage() {
         <section className="py-12 lg:py-16 border-b border-border/60">
           <div className="flex items-baseline gap-4">
             <span className="text-cyan text-xs tracking-[0.3em]">02</span>
-            <h2 className="text-xl md:text-2xl font-semibold tracking-tight">
+            <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight">
               Engagement Terms
             </h2>
           </div>
@@ -154,7 +154,7 @@ function CogniLeadsOSPage() {
                 <div className="text-[10px] uppercase tracking-[0.25em] text-cyan/80">
                   {t.ref}
                 </div>
-                <h3 className="mt-2 text-base font-semibold tracking-tight text-foreground">
+                <h3 className="mt-2 font-display text-base font-semibold tracking-tight text-foreground">
                   {t.title}
                 </h3>
                 <p className="mt-2 text-[12px] leading-relaxed text-muted-foreground">
