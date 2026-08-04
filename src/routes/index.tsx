@@ -1242,7 +1242,7 @@ function TemplateMatrix() {
         })}
       </div>
 
-      <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border border-[#00F0FF]/40 bg-[#00F0FF]/5 p-5">
+      <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border border-violet/40 bg-violet/5 p-5">
         <p className="max-w-2xl text-[12px] leading-relaxed text-muted-foreground">
           Looking for a proprietary AI Sales Platform instead of a
           website/automation package? →{" "}
