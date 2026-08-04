@@ -284,7 +284,7 @@ function AuditTerminal() {
           <SessionId />
         </div>
 
-        <div className="relative h-[420px] overflow-y-auto p-5 space-y-3 text-sm">
+        <div className="relative h-[420px] overflow-y-auto p-5 space-y-3 font-mono text-sm">
           {messages.map((m, i) => (
             <div key={i} className="flex gap-3">
               <span
