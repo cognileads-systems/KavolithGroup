@@ -103,7 +103,7 @@ function CogniLeadsOSPage() {
 
         <section className="py-12 lg:py-16 border-b border-border/60">
           <div className="grid gap-6 lg:grid-cols-[minmax(0,380px)_1fr] lg:items-start">
-            <div className="border-2 border-[#00F0FF] bg-[#0B0D10] p-6 shadow-[0_0_40px_-8px_rgba(0,240,255,0.55)]">
+            <div className="border-gradient-intelligence p-6 shadow-[0_0_44px_-10px_oklch(0.72_0.19_305/0.55)]">
               <div className="inline-block border border-[#00F0FF]/50 bg-[#00F0FF]/10 px-2 py-1 text-[9px] uppercase tracking-[0.2em] text-cyan">
                 Presale · Custom Engineering
               </div>
