@@ -1266,19 +1266,20 @@ function PlaybookRepository() {
         {PLAYBOOKS.map((p, i) => (
           <article
             key={p.id}
-            className="group relative overflow-hidden border border-border/60 bg-[#0A1120] p-5 transition-all duration-300 hover:border-cyan/60 hover:-translate-y-0.5"
+            className="group relative overflow-hidden border border-border/60 bg-[#0A1120] p-5 transition-all duration-300 hover:border-violet/60 hover:shadow-[0_0_24px_-8px_oklch(0.72_0.19_305/0.5)] hover:-translate-y-0.5"
           >
-            <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+            <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
               <span className="text-cyan">{p.ref}</span>
               <span className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-cyan animate-pulse-cyan" />
+                <span className="h-1.5 w-1.5 rounded-full bg-violet animate-pulse-cyan" />
                 doc.{String(i + 1).padStart(2, "0")}
               </span>
             </div>
-            <h3 className="mt-3 text-lg font-semibold tracking-tight text-foreground">
+            <h3 className="mt-3 font-display text-lg font-semibold tracking-tight text-foreground">
               {p.title}
             </h3>
-            <div className="mt-1 text-[11px] text-cyan/80">{p.caption}</div>
+            <div className="mt-1 font-mono text-[11px] text-cyan/80">{p.caption}</div>
+
             <p className="mt-4 text-[12px] leading-relaxed text-muted-foreground">
               {p.body}
             </p>
