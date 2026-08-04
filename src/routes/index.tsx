@@ -1072,27 +1072,27 @@ function TemplateMatrix() {
                 </p>
               </div>
 
-              <div className="mt-5 border-y border-[#00F0FF]/25 py-4">
+              <div className="mt-5 border-y border-violet/25 py-4">
                 {t.badge && (
-                  <div className="mb-2 inline-block border border-[#00F0FF]/50 bg-[#00F0FF]/10 px-2 py-1 text-[9px] uppercase tracking-[0.2em] text-cyan">
+                  <div className="mb-2 inline-block border border-violet/50 bg-violet/10 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.2em] text-violet">
                     {t.badge}
                   </div>
                 )}
                 <div className="flex items-baseline gap-3">
                   {p.regular && (
-                    <span className="text-lg text-muted-foreground line-through decoration-muted-foreground/70">
+                    <span className="font-mono text-lg text-muted-foreground line-through decoration-muted-foreground/70">
                       {p.regular}
                     </span>
                   )}
-                  <span className="text-3xl font-semibold tracking-tight text-cyan">
+                  <span className="font-mono text-3xl font-semibold tracking-tight text-gradient-intelligence">
                     {p.price}
                   </span>
                 </div>
-                <div className="mt-1 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
                   {p.note}
                 </div>
                 {t.note && (
-                  <div className="mt-3 border border-[#00F0FF]/40 bg-[#00F0FF]/5 px-2 py-1.5 text-[10px] leading-snug text-cyan/90">
+                  <div className="mt-3 border border-cyan/40 bg-cyan/5 px-2 py-1.5 text-[10px] leading-snug text-cyan/90">
                     {t.note}
                   </div>
                 )}
