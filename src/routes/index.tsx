@@ -986,10 +986,10 @@ function TemplateMatrix() {
           role="group"
           aria-label="Select display currency"
         >
-          <span className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
             currency:
           </span>
-          <div className="flex border border-[#00F0FF]/40">
+          <div className="flex border border-violet/40">
             {CURRENCIES.map((c) => (
               <button
                 key={c}
@@ -997,10 +997,10 @@ function TemplateMatrix() {
                 onClick={() => setCurrency(c)}
                 aria-pressed={currency === c}
                 className={[
-                  "px-3 py-1.5 text-[11px] uppercase tracking-[0.2em] transition-colors focus:outline-none focus:ring-1 focus:ring-cyan",
+                  "px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] transition-colors focus:outline-none focus:ring-1 focus:ring-violet",
                   currency === c
-                    ? "bg-[#00F0FF] text-[#001014]"
-                    : "text-cyan/80 hover:bg-cyan/10",
+                    ? "bg-violet text-[#0B0D10]"
+                    : "text-violet/80 hover:bg-violet/10",
                 ].join(" ")}
               >
                 {c}
