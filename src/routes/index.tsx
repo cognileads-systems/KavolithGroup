@@ -1286,10 +1286,10 @@ function PlaybookRepository() {
             <div className="mt-5 grid grid-cols-3 gap-2 border-t border-border/60 pt-3">
               {p.kpis.map((m) => (
                 <div key={m.k}>
-                  <div className="text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
+                  <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
                     {m.k}
                   </div>
-                  <div className="mt-0.5 text-sm text-cyan">{m.v}</div>
+                  <div className="mt-0.5 font-mono text-sm text-cyan">{m.v}</div>
                 </div>
               ))}
             </div>
