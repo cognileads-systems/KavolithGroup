@@ -107,7 +107,7 @@ function NavBar() {
             href={LINKEDIN_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative inline-flex items-center gap-2 border border-cyan/60 px-4 py-2 text-xs uppercase tracking-[0.2em] text-cyan transition-all hover:bg-cyan hover:text-primary-foreground glow-cyan"
+            className="group relative inline-flex items-center gap-2 border-gradient-intelligence px-4 py-2 font-mono text-xs uppercase tracking-[0.2em] text-foreground transition-all hover:shadow-[0_0_24px_-6px_oklch(0.72_0.19_305/0.6)]"
           >
             <span className="h-1.5 w-1.5 bg-cyan group-hover:bg-primary-foreground" />
             Validate // LinkedIn Matrix
@@ -875,7 +875,7 @@ function ContactBlock() {
             type="submit"
             disabled={state === "sending"}
             aria-busy={state === "sending"}
-            className="w-full inline-flex items-center justify-center gap-2 border border-cyan px-5 py-3 text-xs uppercase tracking-[0.25em] text-cyan glow-cyan hover:bg-cyan hover:text-primary-foreground transition-all disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-cyan"
+            className="w-full inline-flex items-center justify-center gap-2 border-gradient-intelligence px-5 py-3 font-mono text-xs uppercase tracking-[0.25em] text-foreground transition-all hover:shadow-[0_0_28px_-6px_oklch(0.72_0.19_305/0.65)] disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {state === "sending"
               ? "> Routing Data..."
