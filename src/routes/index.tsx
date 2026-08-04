@@ -852,10 +852,10 @@ function SectionHeader({ index, title, caption }: { index: string; title: string
   return (
     <div className="flex items-end justify-between border-b border-border/60 pb-3">
       <div className="flex items-baseline gap-4">
-        <span className="text-cyan text-xs tracking-[0.3em]">{index}</span>
-        <h2 className="text-xl md:text-2xl font-semibold tracking-tight">{title}</h2>
+        <span className="font-mono text-violet text-xs tracking-[0.3em]">{index}</span>
+        <h2 className="font-display text-xl md:text-2xl font-semibold tracking-tight">{title}</h2>
       </div>
-      <span className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">{caption}</span>
+      <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">{caption}</span>
     </div>
   );
 }
