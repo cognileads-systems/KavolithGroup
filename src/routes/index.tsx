@@ -1020,10 +1020,10 @@ function TemplateMatrix() {
               itemScope
               itemType="https://schema.org/Product"
               className={[
-                "group relative flex flex-col rounded-none bg-[#0B0D10] p-6 transition-all duration-300",
+                "group relative flex flex-col rounded-none p-6 transition-all duration-300",
                 featured
-                  ? "border-2 border-[#00F0FF] shadow-[0_0_40px_-8px_rgba(0,240,255,0.55)] lg:-translate-y-2 lg:scale-[1.02]"
-                  : "border border-[#00F0FF]/60 hover:border-[#00F0FF] hover:-translate-y-0.5 hover:shadow-[0_0_24px_-4px_rgba(0,240,255,0.45)]",
+                  ? "border-gradient-intelligence shadow-[0_0_44px_-10px_oklch(0.72_0.19_305/0.55)] lg:-translate-y-2 lg:scale-[1.02]"
+                  : "bg-[#0B0D10] border border-violet/40 hover:border-violet hover:-translate-y-0.5 hover:shadow-[0_0_24px_-4px_oklch(0.72_0.19_305/0.45)]",
               ].join(" ")}
             >
               <meta itemProp="sku" content={t.id} />
