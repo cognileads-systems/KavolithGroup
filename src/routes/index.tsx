@@ -1130,7 +1130,11 @@ function TemplateMatrix() {
         <p className="max-w-2xl text-[12px] leading-relaxed text-muted-foreground">
           Looking for a proprietary AI Sales Platform instead of a
           website/automation package? →{" "}
-          <span className="text-cyan">CogniLeads OS is now its own product.</span>
+          <span className="text-cyan">CogniLeads OS is now its own product.</span>{" "}
+          <span className="ml-1 inline-flex items-center gap-1 border border-cyan/50 bg-cyan/10 px-2 py-[2px] align-middle text-[9px] uppercase tracking-[0.2em] text-cyan">
+            <span className="h-1 w-1 bg-cyan" />
+            A Kavolith Company
+          </span>
         </p>
         <Link
           to="/cognileads-os"
