@@ -65,7 +65,7 @@ const AUDIT_SCRIPT = [
 
 function Index() {
   return (
-    <div className="min-h-screen text-foreground font-mono">
+    <div className="min-h-screen text-foreground">
       <NavBar />
       <main className="mx-auto max-w-[1400px] px-6 pb-24">
         <Hero />
