@@ -1039,7 +1039,7 @@ function TemplateMatrix() {
               </div>
 
               {featured && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 border border-[#00F0FF] bg-[#00F0FF] px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.3em] text-[#001014]">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-violet to-cyan px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.3em] text-[#0B0D10]">
                   ★ Most Popular
                 </div>
               )}
