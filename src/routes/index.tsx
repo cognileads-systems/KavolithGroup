@@ -14,7 +14,7 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: "VectraSyn",
+          name: "Kavolith",
           url: "https://cognileadssystems.lovable.app",
           description:
             "Autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects within 120 seconds.",
@@ -33,7 +33,7 @@ export const Route = createFileRoute("/")({
           name: "Autonomous AI SDR Infrastructure",
           provider: {
             "@type": "Organization",
-            name: "VectraSyn",
+            name: "Kavolith",
             url: "https://cognileadssystems.lovable.app",
           },
           serviceType: "AI-powered Digital Employee Workflows & Automation Infrastructure",
@@ -54,7 +54,7 @@ const INSTAGRAM_URL = "https://www.instagram.com/vectrasyn";
 type ChatMsg = { role: "system" | "ai" | "user"; content: string };
 
 const AUDIT_SCRIPT = [
-  "Booting VectraSyn System Auditor v1.0 // Enterprise AI Diagnostic ...",
+  "Booting Kavolith System Auditor v1.0 // Enterprise AI Diagnostic ...",
   "[OK] Neural qualification kernel online.",
   "AI // Question 01 // What is your average monthly inbound lead volume?",
   "AI // Question 02 // What is your current lead response latency (in minutes)?",
@@ -88,7 +88,7 @@ function NavBar() {
         <div className="flex items-center gap-3">
           <span className="h-2 w-2 rounded-full bg-cyan animate-pulse-cyan" />
           <span className="text-sm tracking-widest text-foreground">
-            <span className="text-cyan text-glow">VectraSyn</span>
+            <span className="text-cyan text-glow">Kavolith</span>
             <span className="text-muted-foreground"> // OS</span>
           </span>
         </div>
@@ -115,7 +115,7 @@ function NavBar() {
             href={INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="VectraSyn on Instagram"
+            aria-label="Kavolith on Instagram"
             className="group inline-flex items-center gap-2 border border-cyan/40 px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-cyan/90 transition-all hover:bg-cyan hover:text-primary-foreground"
           >
             <span className="h-1.5 w-1.5 bg-cyan group-hover:bg-primary-foreground" />
@@ -125,7 +125,7 @@ function NavBar() {
             href={FACEBOOK_URL}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="VectraSyn on Facebook"
+            aria-label="Kavolith on Facebook"
             className="group inline-flex items-center gap-2 border border-cyan/40 px-3 py-2 text-[10px] uppercase tracking-[0.2em] text-cyan/90 transition-all hover:bg-cyan hover:text-primary-foreground"
           >
             <span className="h-1.5 w-1.5 bg-cyan group-hover:bg-primary-foreground" />
@@ -150,7 +150,7 @@ function Hero() {
           <span className="text-cyan text-glow">Slow Follow-Ups.</span>
         </h1>
         <p className="mt-6 max-w-xl text-sm md:text-base text-muted-foreground leading-relaxed">
-          <span className="text-foreground">VectraSyn</span> engineers autonomous inbound lead
+          <span className="text-foreground">Kavolith</span> engineers autonomous inbound lead
           infrastructure that qualifies, enriches, and routes enterprise prospects into your
           central CRM within <span className="text-cyan">120 seconds</span>. 24/7/365.
         </p>
@@ -278,7 +278,7 @@ function AuditTerminal() {
               <span className="h-2.5 w-2.5 rounded-full bg-cyan" />
             </div>
             <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              VectraSyn System Auditor <span className="text-cyan">v1.0</span> // Enterprise AI Diagnostic
+              Kavolith System Auditor <span className="text-cyan">v1.0</span> // Enterprise AI Diagnostic
             </span>
           </div>
           <SessionId />
@@ -323,7 +323,7 @@ function AuditTerminal() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type response to auditor..."
-            aria-label="Response to VectraSyn system auditor"
+            aria-label="Response to Kavolith system auditor"
             className="flex-1 bg-transparent border-none outline-none text-sm placeholder:text-muted-foreground/60"
           />
 
@@ -698,7 +698,7 @@ function ContactBlock() {
       "email": operatorEmail,
       "company": operatorOrg,
       "message": payloadMessage,
-      "source": "vectrasyn.systems//web",
+      "source": "kavolith.com//web",
     };
 
 
@@ -804,7 +804,7 @@ function ContactBlock() {
   "Status": "New",
   "Intent Signal": "",
   "Priority Action": "",
-  "Source": "vectrasyn.systems//web"
+  "Source": "kavolith.com//web"
 }`}
           </pre>
         </div>
@@ -873,8 +873,8 @@ type TierPrice = {
 const TIERS = [
   {
     id: "vectra-launchpad",
-    name: "Vectra Launchpad",
-    subBrand: "VectraSyn Express",
+    name: "Kavolith Launchpad",
+    subBrand: "Kavolith Express",
     tagline: "The Viral Reputation & Local Growth Engine",
     outcome:
       "Get a production-ready site with automated lead capture live in under 2 weeks.",
@@ -900,8 +900,8 @@ const TIERS = [
   },
   {
     id: "vectra-scale",
-    name: "Vectra Scale",
-    subBrand: "VectraSyn Express",
+    name: "Kavolith Scale",
+    subBrand: "Kavolith Express",
     tagline: "Automated Growth & Operations Engine",
     outcome:
       "A full automation stack — booking, WhatsApp/CRM sync, and a live lead dashboard — plus ongoing care.",
@@ -927,8 +927,8 @@ const TIERS = [
   },
   {
     id: "vectra-premium",
-    name: "Premium / Total Control",
-    subBrand: "VectraSyn Express",
+    name: "Kavolith Premium / Total Control",
+    subBrand: "Kavolith Express",
     tagline: "Full-Scale AEO/GEO Automation & Global Operations Command",
     outcome:
       "Multi-language, multi-currency, voice-AI automation — enterprise-grade capability at accessible pricing.",
@@ -1029,13 +1029,13 @@ function TemplateMatrix() {
               <meta itemProp="sku" content={t.id} />
               <meta itemProp="category" content="Enterprise AI Package" />
               <div itemProp="brand" itemScope itemType="https://schema.org/Organization" className="hidden">
-                <meta itemProp="name" content="VectraSyn" />
+                <meta itemProp="name" content="Kavolith" />
               </div>
               <div itemProp="offers" itemScope itemType="https://schema.org/Offer" className="hidden">
                 <meta itemProp="availability" content="https://schema.org/InStock" />
                 <meta itemProp="priceCurrency" content={currency} />
                 <meta itemProp="price" content={p.value} />
-                <meta itemProp="seller" content="VectraSyn" />
+                <meta itemProp="seller" content="Kavolith" />
               </div>
 
               {featured && (
@@ -1130,7 +1130,11 @@ function TemplateMatrix() {
         <p className="max-w-2xl text-[12px] leading-relaxed text-muted-foreground">
           Looking for a proprietary AI Sales Platform instead of a
           website/automation package? →{" "}
-          <span className="text-cyan">CogniLeads OS is now its own product.</span>
+          <span className="text-cyan">CogniLeads OS is now its own product.</span>{" "}
+          <span className="ml-1 inline-flex items-center gap-1 border border-cyan/50 bg-cyan/10 px-2 py-[2px] align-middle text-[9px] uppercase tracking-[0.2em] text-cyan">
+            <span className="h-1 w-1 bg-cyan" />
+            A Kavolith Company
+          </span>
         </p>
         <Link
           to="/cognileads-os"
@@ -1148,15 +1152,15 @@ function TemplateMatrix() {
 function Footer() {
   return (
     <footer className="pt-10 mt-6 flex flex-wrap items-center justify-between gap-3 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-      <span>We sync work and forge systems. © 2026 VectraSyn. All rights reserved.</span>
+      <span>Engineer Intelligence into Business. © 2026 Kavolith. All rights reserved.</span>
       <span className="flex items-center gap-4">
-        <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="VectraSyn on LinkedIn" className="text-cyan/80 transition-colors hover:text-cyan">
+        <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="Kavolith on LinkedIn" className="text-cyan/80 transition-colors hover:text-cyan">
           LinkedIn
         </a>
-        <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="VectraSyn on Instagram" className="text-cyan/80 transition-colors hover:text-cyan">
+        <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="Kavolith on Instagram" className="text-cyan/80 transition-colors hover:text-cyan">
           Instagram
         </a>
-        <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" aria-label="VectraSyn on Facebook" className="text-cyan/80 transition-colors hover:text-cyan">
+        <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" aria-label="Kavolith on Facebook" className="text-cyan/80 transition-colors hover:text-cyan">
           Facebook
         </a>
         <span className="h-1.5 w-1.5 bg-cyan animate-pulse-cyan" /> all nodes operational
@@ -1254,7 +1258,7 @@ function PlaybookRepository() {
         caption="GET /playbooks/sop"
       />
       <p className="mt-4 max-w-2xl text-sm text-muted-foreground">
-        // Five procedural guides that operate the VectraSyn infrastructure.
+        // Five procedural guides that operate the Kavolith infrastructure.
         Each SOP is version-controlled, agent-executable, and human-auditable.
       </p>
 
@@ -1298,15 +1302,15 @@ function PlaybookRepository() {
 const FAQS = [
   {
     q: "What is autonomous AI SDR infrastructure?",
-    a: "It's a stack of digital-employee workflows that qualify, enrich, and route inbound leads without a human SDR in the loop. VectraSyn combines a neural qualification kernel, a Make.com orchestration layer, and a plain-text ledger so revenue teams get 24/7 inbound coverage with sub-120-second time-to-qualified.",
+    a: "It's a stack of digital-employee workflows that qualify, enrich, and route inbound leads without a human SDR in the loop. Kavolith combines a neural qualification kernel, a Make.com orchestration layer, and a plain-text ledger so revenue teams get 24/7 inbound coverage with sub-120-second time-to-qualified.",
   },
   {
-    q: "How fast does VectraSyn qualify and route an inbound lead?",
+    q: "How fast does Kavolith qualify and route an inbound lead?",
     a: "Median time-to-qualified is under 120 seconds. The kernel deduplicates on email + company domain, enriches firmographics, scores fit and intent, then dispatches to the operator email router and the Make.com workflow router in parallel.",
   },
   {
     q: "Do you replace my CRM or sales team?",
-    a: "No. VectraSyn is infrastructure that sits in front of your CRM and sales team. It removes manual triage on inbound, and hands closers pre-qualified, pre-enriched, priority-ranked leads. Your CRM remains the system of record.",
+    a: "No. Kavolith is infrastructure that sits in front of your CRM and sales team. It removes manual triage on inbound, and hands closers pre-qualified, pre-enriched, priority-ranked leads. Your CRM remains the system of record.",
   },
   {
     q: "How is lead data stored and audited?",
@@ -1317,7 +1321,7 @@ const FAQS = [
     a: "Every node emits a heartbeat and structured event. Failures are captured to a dead-letter queue with automated retries. The operator gets a terminal-style digest of any pipeline drift, so nothing silently disappears.",
   },
   {
-    q: "Can VectraSyn integrate with my existing stack?",
+    q: "Can Kavolith integrate with my existing stack?",
     a: "Yes. The Make.com router speaks to any HTTP-addressable system — CRMs, outreach sequencers, Slack, custom internal APIs. The MCP layer additionally exposes tools that AI agents (Claude, Cursor, custom) can call to submit or query leads directly.",
   },
 ] as const;

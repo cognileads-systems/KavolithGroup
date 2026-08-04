@@ -77,13 +77,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "VectraSyn // Autonomous AI SDR & Lead Infrastructure" },
+      { title: "Kavolith // Autonomous AI SDR & Lead Infrastructure" },
       { name: "description", content: "We engineer autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects within 120 seconds. 24/7/365." },
-      { property: "og:title", content: "VectraSyn // Autonomous AI SDR & Lead Infrastructure" },
+      { property: "og:title", content: "Kavolith // Autonomous AI SDR & Lead Infrastructure" },
       { property: "og:description", content: "We engineer autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects within 120 seconds. 24/7/365." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "VectraSyn // Autonomous AI SDR & Lead Infrastructure" },
+      { name: "twitter:title", content: "Kavolith // Autonomous AI SDR & Lead Infrastructure" },
       { name: "twitter:description", content: "We engineer autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects within 120 seconds. 24/7/365." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/577318cd-eff3-48a0-879a-b3177a7b3107" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/577318cd-eff3-48a0-879a-b3177a7b3107" },
@@ -116,14 +116,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             {
               "@type": "Organization",
               "@id": "https://cognileadssystems.lovable.app/#organization",
-              name: "VectraSyn",
+              name: "Kavolith",
               url: "https://cognileadssystems.lovable.app/",
               logo: "https://cognileadssystems.lovable.app/favicon.svg",
               image:
                 "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/577318cd-eff3-48a0-879a-b3177a7b3107",
-              slogan: "We Sync Work and Forge Systems",
+              slogan: "Engineer Intelligence into Business.",
               description:
-                "VectraSyn engineers autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects within 120 seconds — 24/7/365.",
+                "Kavolith engineers autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects within 120 seconds — 24/7/365.",
               sameAs: [
                 "https://www.linkedin.com/company/vectrasyn-group",
                 "https://www.facebook.com/vectrasyn",
@@ -140,8 +140,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             {
               "@type": "LocalBusiness",
               "@id": "https://cognileadssystems.lovable.app/#localbusiness",
-              name: "VectraSyn",
-              slogan: "We Sync Work and Forge Systems",
+              name: "Kavolith",
+              slogan: "Engineer Intelligence into Business.",
               url: "https://cognileadssystems.lovable.app/",
               image:
                 "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/577318cd-eff3-48a0-879a-b3177a7b3107",
@@ -158,13 +158,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
                   "@type": "Offer",
                   price: "16000",
                   priceCurrency: "INR",
-                  itemOffered: { "@type": "Service", name: "Vectra Launchpad" },
+                  itemOffered: { "@type": "Service", name: "Kavolith Launchpad" },
                 },
                 {
                   "@type": "Offer",
                   price: "48000",
                   priceCurrency: "INR",
-                  itemOffered: { "@type": "Service", name: "Vectra Scale" },
+                  itemOffered: { "@type": "Service", name: "Kavolith Scale" },
                 },
                 {
                   "@type": "Offer",
@@ -177,7 +177,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             {
               "@type": "WebApplication",
               "@id": "https://cognileadssystems.lovable.app/#webapp",
-              name: "VectraSyn Intelligence OS",
+              name: "Kavolith Intelligence OS",
               url: "https://cognileadssystems.lovable.app/",
               applicationCategory: "BusinessApplication",
               operatingSystem: "Web",
@@ -201,7 +201,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
                 "Design, deploy, and operate autonomous inbound SDR pipelines: qualification kernel, enrichment layer, dual-router dispatch, and plain-text lead ledger.",
               hasOfferCatalog: {
                 "@type": "OfferCatalog",
-                name: "VectraSyn Deployments",
+                name: "Kavolith Deployments",
                 itemListElement: [
                   { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI SDR Infrastructure" } },
                   { "@type": "Offer", itemOffered: { "@type": "Service", name: "Multi-Agent Workflows" } },
