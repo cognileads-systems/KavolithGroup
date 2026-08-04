@@ -1101,7 +1101,7 @@ function TemplateMatrix() {
               <ul className="mt-5 flex-1 space-y-2 text-[12px] text-muted-foreground">
                 {t.features.map((f) => (
                   <li key={f} className="flex items-start gap-2">
-                    <span className="mt-[3px] text-cyan">▸</span>
+                    <span className="mt-[3px] text-violet">▸</span>
                     <span className="leading-snug">{f}</span>
                   </li>
                 ))}
@@ -1111,15 +1111,15 @@ function TemplateMatrix() {
                 type="button"
                 onClick={scrollToContact}
                 className={[
-                  "mt-6 w-full rounded-md px-3 py-2.5 text-left text-[12px] transition-colors focus:outline-none focus:ring-1 focus:ring-cyan",
+                  "mt-6 w-full rounded-md px-3 py-2.5 text-left font-mono text-[12px] transition-all focus:outline-none focus:ring-1 focus:ring-violet",
                   featured
-                    ? "border border-[#00F0FF] bg-[#00F0FF] text-[#001014] hover:bg-[#00F0FF]/90"
-                    : "border border-cyan/50 bg-cyan/5 text-cyan hover:bg-cyan/15",
+                    ? "bg-gradient-to-r from-violet to-cyan text-[#0B0D10] hover:opacity-90"
+                    : "border border-violet/50 bg-violet/5 text-violet hover:bg-violet/15",
                 ].join(" ")}
                 aria-label={`Request ${t.name} deployment`}
               >
                 {t.cta}
-                <span className="ml-1 animate-pulse-cyan">_</span>
+                <span className="ml-1 animate-blink">_</span>
               </button>
             </article>
           );
