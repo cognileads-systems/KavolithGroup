@@ -75,7 +75,7 @@ function CogniLeadsOSPage() {
             className="inline-flex items-center gap-2 border border-cyan/60 px-4 py-2 text-[11px] uppercase tracking-[0.2em] text-cyan transition-colors hover:bg-cyan hover:text-primary-foreground"
           >
             <span className="h-1.5 w-1.5 bg-cyan" />
-            ← VectraSyn Home
+            ← Kavolith Home
           </Link>
         </div>
       </header>
@@ -94,7 +94,7 @@ function CogniLeadsOSPage() {
           </h1>
           <p className="mt-6 max-w-2xl text-sm md:text-base leading-relaxed text-muted-foreground">
             CogniLeads OS is its own product — a proprietary AI Sales
-            Intelligence Platform, not a VectraSyn website or automation service
+            Intelligence Platform, not a Kavolith website or automation service
             tier. It ingests every inbound signal, scores buyer intent in real
             time, and runs an autonomous SDR against your pipeline around the
             clock.
@@ -183,7 +183,7 @@ function CogniLeadsOSPage() {
 
         <footer className="pt-10 mt-6 flex flex-wrap items-center justify-between gap-3 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
           <span>
-            We sync work and forge systems. © 2026 VectraSyn. All rights reserved.
+            Engineer Intelligence into Business. © 2026 Kavolith. All rights reserved.
           </span>
           <span className="flex items-center gap-2">
             <span className="h-1.5 w-1.5 bg-cyan animate-pulse-cyan" /> all nodes

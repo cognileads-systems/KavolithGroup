@@ -87,12 +87,12 @@ function Consent() {
           &gt; oauth.consent
         </div>
         <h1 className="text-xl font-semibold text-foreground">
-          Connect {clientName} to VectraSyn
+          Connect {clientName} to Kavolith
         </h1>
         <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
           This lets <span className="text-foreground">{clientName}</span> use this app as
           you — it can submit leads and read the leads you have captured. This does not
-          bypass VectraSyn permissions or backend policies.
+          bypass Kavolith permissions or backend policies.
         </p>
         {details?.client?.redirect_uri && (
           <p className="mt-4 text-[10px] uppercase tracking-[0.2em] text-muted-foreground break-all">

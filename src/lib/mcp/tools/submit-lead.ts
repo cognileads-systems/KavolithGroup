@@ -13,7 +13,7 @@ export default defineTool({
   name: "submit_lead",
   title: "Submit Lead",
   description:
-    "Capture a new inbound lead in the signed-in user's VectraSyn pipeline. Use for prospect names, emails, companies, and inbound messages.",
+    "Capture a new inbound lead in the signed-in user's Kavolith pipeline. Use for prospect names, emails, companies, and inbound messages.",
   inputSchema: {
     name: z.string().trim().optional().describe("Prospect name."),
     email: z.string().trim().email().describe("Prospect email address."),
