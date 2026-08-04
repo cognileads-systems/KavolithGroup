@@ -88,6 +88,8 @@
     "vite": "^8.0.16"
   },
   "overrides": {
-    "zod": "^3.24.2"
+    "@modelcontextprotocol/sdk": {
+      "zod": "4.4.2"
+    }
   }
 }
