@@ -1049,21 +1049,21 @@ function TemplateMatrix() {
               </p>
 
 
-              <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-                <span className="text-cyan">0{i + 1}</span>
+              <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                <span className="text-violet">0{i + 1}</span>
                 <span className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-cyan animate-pulse-cyan" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-violet animate-pulse-cyan" />
                   {featured ? "featured" : "ready"}
                 </span>
               </div>
 
               <div className="mt-4">
-                <div className="text-[10px] uppercase tracking-[0.25em] text-cyan/80">
+                <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-cyan/80">
                   {t.subBrand}
                 </div>
                 <h3
                   itemProp="name"
-                  className="mt-1 text-2xl font-semibold tracking-tight text-foreground"
+                  className="mt-1 font-display text-2xl font-semibold tracking-tight text-foreground"
                 >
                   {t.name}
                 </h3>
