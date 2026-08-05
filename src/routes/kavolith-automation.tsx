@@ -47,7 +47,7 @@ export const Route = createFileRoute("/kavolith-automation")({
             itemListElement: AUTOMATION_TIERS.map((t) => ({
               "@type": "Offer",
               name: t.name,
-              price: t.price.replace(/[^\d]/g, ""),
+              price: String(t.oneTime.INR),
               priceCurrency: "INR",
             })),
           },
