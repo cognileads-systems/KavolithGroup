@@ -13,3 +13,12 @@ Kavolith Group operates four brands: Kavolith (AI systems engineering services),
 - [Kavolith Automation](/kavolith-automation): Lead routing, invoicing, and CRM sync automation packages.
 - [About](/about): Background, principles, and location.
 - [Contact](/contact): Consultation request form.
+
+## Kavolith Intelligence presale packages
+
+- AI Compliance & Documentation Employee — multilingual (English, Telugu, Hindi), predefined rate, one-month advance booking.
+- AI HR/Ops Digital Employee — multilingual (English, Telugu, Hindi), predefined rate, one-month advance booking.
+
+## Automation types built by Kavolith Automation
+
+Lead routing, invoice generation and follow-up, CRM synchronisation, inbound enquiry capture and qualification, document collection and validation, appointment reminders, approval escalation, scheduled reporting.
