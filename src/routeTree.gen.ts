@@ -11,9 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as McpRouteImport } from './routes/mcp'
+import { Route as KavolithIntelligenceRouteImport } from './routes/kavolith-intelligence'
+import { Route as KavolithAutomationRouteImport } from './routes/kavolith-automation'
 import { Route as KavolithRouteImport } from './routes/kavolith'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CognileadsOsRouteImport } from './routes/cognileads-os'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiContactRouteImport } from './routes/api/contact'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
@@ -31,9 +35,24 @@ const McpRoute = McpRouteImport.update({
   path: '/mcp',
   getParentRoute: () => rootRouteImport,
 } as any)
+const KavolithIntelligenceRoute = KavolithIntelligenceRouteImport.update({
+  id: '/kavolith-intelligence',
+  path: '/kavolith-intelligence',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KavolithAutomationRoute = KavolithAutomationRouteImport.update({
+  id: '/kavolith-automation',
+  path: '/kavolith-automation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const KavolithRoute = KavolithRouteImport.update({
   id: '/kavolith',
   path: '/kavolith',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CognileadsOsRoute = CognileadsOsRouteImport.update({
@@ -44,6 +63,11 @@ const CognileadsOsRoute = CognileadsOsRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -82,9 +106,13 @@ const DotlovableOauthConsentRoute = DotlovableOauthConsentRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/cognileads-os': typeof CognileadsOsRoute
+  '/contact': typeof ContactRoute
   '/kavolith': typeof KavolithRoute
+  '/kavolith-automation': typeof KavolithAutomationRoute
+  '/kavolith-intelligence': typeof KavolithIntelligenceRoute
   '/mcp': typeof McpRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -95,9 +123,13 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/cognileads-os': typeof CognileadsOsRoute
+  '/contact': typeof ContactRoute
   '/kavolith': typeof KavolithRoute
+  '/kavolith-automation': typeof KavolithAutomationRoute
+  '/kavolith-intelligence': typeof KavolithIntelligenceRoute
   '/mcp': typeof McpRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -109,9 +141,13 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/cognileads-os': typeof CognileadsOsRoute
+  '/contact': typeof ContactRoute
   '/kavolith': typeof KavolithRoute
+  '/kavolith-automation': typeof KavolithAutomationRoute
+  '/kavolith-intelligence': typeof KavolithIntelligenceRoute
   '/mcp': typeof McpRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -124,9 +160,13 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/auth'
     | '/cognileads-os'
+    | '/contact'
     | '/kavolith'
+    | '/kavolith-automation'
+    | '/kavolith-intelligence'
     | '/mcp'
     | '/sitemap.xml'
     | '/.mcp/list-tools'
@@ -137,9 +177,13 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/auth'
     | '/cognileads-os'
+    | '/contact'
     | '/kavolith'
+    | '/kavolith-automation'
+    | '/kavolith-intelligence'
     | '/mcp'
     | '/sitemap.xml'
     | '/.mcp/list-tools'
@@ -150,9 +194,13 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/auth'
     | '/cognileads-os'
+    | '/contact'
     | '/kavolith'
+    | '/kavolith-automation'
+    | '/kavolith-intelligence'
     | '/mcp'
     | '/sitemap.xml'
     | '/.mcp/list-tools'
@@ -164,9 +212,13 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
   CognileadsOsRoute: typeof CognileadsOsRoute
+  ContactRoute: typeof ContactRoute
   KavolithRoute: typeof KavolithRoute
+  KavolithAutomationRoute: typeof KavolithAutomationRoute
+  KavolithIntelligenceRoute: typeof KavolithIntelligenceRoute
   McpRoute: typeof McpRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
@@ -192,11 +244,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof McpRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/kavolith-intelligence': {
+      id: '/kavolith-intelligence'
+      path: '/kavolith-intelligence'
+      fullPath: '/kavolith-intelligence'
+      preLoaderRoute: typeof KavolithIntelligenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kavolith-automation': {
+      id: '/kavolith-automation'
+      path: '/kavolith-automation'
+      fullPath: '/kavolith-automation'
+      preLoaderRoute: typeof KavolithAutomationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/kavolith': {
       id: '/kavolith'
       path: '/kavolith'
       fullPath: '/kavolith'
       preLoaderRoute: typeof KavolithRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cognileads-os': {
@@ -211,6 +284,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -260,9 +340,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
   CognileadsOsRoute: CognileadsOsRoute,
+  ContactRoute: ContactRoute,
   KavolithRoute: KavolithRoute,
+  KavolithAutomationRoute: KavolithAutomationRoute,
+  KavolithIntelligenceRoute: KavolithIntelligenceRoute,
   McpRoute: McpRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
