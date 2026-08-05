@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
-const BASE_URL = "https://cognileadssystems.lovable.app";
+const BASE_URL = "https://kavolithgroup.lovable.app";
 
 interface SitemapEntry {
   path: string;
@@ -15,6 +15,12 @@ export const Route = createFileRoute("/sitemap.xml")({
       GET: async () => {
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
+          { path: "/kavolith", changefreq: "monthly", priority: "0.9" },
+          { path: "/cognileads-os", changefreq: "monthly", priority: "0.9" },
+          { path: "/kavolith-intelligence", changefreq: "monthly", priority: "0.8" },
+          { path: "/kavolith-automation", changefreq: "monthly", priority: "0.8" },
+          { path: "/about", changefreq: "yearly", priority: "0.6" },
+          { path: "/contact", changefreq: "yearly", priority: "0.7" },
         ];
 
         const urls = entries.map((e) =>
