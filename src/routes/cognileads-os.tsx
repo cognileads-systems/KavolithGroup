@@ -1,6 +1,59 @@
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell, Section, Eyebrow, SectionTitle } from "@/components/site/layout";
 import { LivePipelineDemo } from "@/components/site/live-pipeline-demo";
+import {
+  CurrencyToggle,
+  formatMoney,
+  marketRate,
+  type Currency,
+} from "@/components/site/pricing";
+
+const DEPLOYMENT_RANGE: Record<Currency, [number, number]> = {
+  INR: [120000, 250000],
+  USD: [1450, 3020],
+  EUR: [1340, 2790],
+};
+
+function DeploymentPriceCard() {
+  const [currency, setCurrency] = useState<Currency>("USD");
+  const [low, high] = DEPLOYMENT_RANGE[currency];
+
+  return (
+    <div className="rounded-xl border border-accent/50 bg-panel p-6">
+      <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+        Presale · Custom engineering
+      </div>
+
+      <CurrencyToggle currency={currency} onChange={setCurrency} className="mt-4" />
+
+      <div className="mt-4 font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
+        Market rate{" "}
+        <span className="line-through decoration-muted-foreground/70">
+          {marketRate(currency, low)} – {marketRate(currency, high)}
+        </span>
+      </div>
+      <div className="mt-1 font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
+        Our rate
+      </div>
+      <div className="mt-1 font-display text-3xl text-accent">
+        {formatMoney(currency, low)} – {formatMoney(currency, high)}
+      </div>
+      <div className="mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+        scoped per deployment · approximate conversions
+      </div>
+      <p className="mt-4 border-t border-border pt-4 text-sm leading-relaxed text-muted-foreground">
+        60% advance to begin · full platform access during presale · performance-backed remaining
+        balance.
+      </p>
+      <p className="mt-3 text-xs text-muted-foreground">
+        Market-rate figures are indicative agency-pricing placeholders for comparison, not verified
+        or sourced quotes.
+      </p>
+    </div>
+  );
+}
+
 
 const SITE = "https://kavolithgroup.lovable.app";
 
