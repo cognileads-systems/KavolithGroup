@@ -31,7 +31,9 @@ export const Route = createFileRoute("/kavolith")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "ProfessionalService",
+          "@graph": [
+            {
+          "@type": "Service",
           "@id": `${SITE}/kavolith#service`,
           name: "Kavolith",
           url: `${SITE}/kavolith`,
@@ -55,6 +57,23 @@ export const Route = createFileRoute("/kavolith")({
               priceCurrency: "INR",
             })),
           },
+            },
+            {
+              "@type": "LocalBusiness",
+              "@id": `${SITE}/kavolith#localbusiness`,
+              name: "Kavolith",
+              url: `${SITE}/kavolith`,
+              priceRange: "₹₹₹",
+              areaServed: "IN",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Hyderabad",
+                addressRegion: "Telangana",
+                addressCountry: "IN",
+              },
+              parentOrganization: { "@type": "Organization", name: "Kavolith Group" },
+            },
+          ],
         }),
       },
     ],

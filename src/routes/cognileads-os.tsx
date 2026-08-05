@@ -30,6 +30,8 @@ export const Route = createFileRoute("/cognileads-os")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
+          "@graph": [
+            {
           "@type": "SoftwareApplication",
           "@id": `${SITE}/cognileads-os#product`,
           name: "CogniLeads OS",
@@ -45,6 +47,31 @@ export const Route = createFileRoute("/cognileads-os")({
             lowPrice: "120000",
             highPrice: "250000",
           },
+            },
+            {
+              "@type": "Product",
+              "@id": `${SITE}/cognileads-os#productoffer`,
+              name: "CogniLeads OS deployment",
+              url: `${SITE}/cognileads-os`,
+              brand: { "@type": "Brand", name: "CogniLeads OS" },
+              description:
+                "Custom-engineered CogniLeads OS deployment, scoped per business. 60% advance to begin, performance-backed remaining balance.",
+              offers: {
+                "@type": "Offer",
+                priceCurrency: "INR",
+                price: "120000",
+                priceSpecification: {
+                  "@type": "PriceSpecification",
+                  minPrice: "120000",
+                  maxPrice: "250000",
+                  priceCurrency: "INR",
+                  description: "Scoped per deployment. 60% advance to begin.",
+                },
+                availability: "https://schema.org/PreOrder",
+                seller: { "@type": "Organization", name: "Kavolith Group" },
+              },
+            },
+          ],
         }),
       },
     ],
