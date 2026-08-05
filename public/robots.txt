@@ -5,4 +5,4 @@ Disallow: /.mcp/
 Disallow: /.well-known/
 Disallow: /.lovable/
 
-Sitemap: https://cognileadssystems.lovable.app/sitemap.xml
+Sitemap: https://kavolithgroup.lovable.app/sitemap.xml

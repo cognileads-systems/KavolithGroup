@@ -5,10 +5,10 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 14px;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -23,54 +23,56 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-accent-soft: var(--accent-soft);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-cyan: var(--cyan);
-  --color-cyan-dim: var(--cyan-dim);
-  --color-violet: var(--violet);
-  --color-violet-dim: var(--violet-dim);
-  --color-grid: var(--grid);
+  --color-ink: var(--ink);
+  --color-surface: var(--surface);
   --color-panel: var(--panel);
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --color-cyan: var(--cyan);
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
-
 
 :root {
-  --radius: 0.25rem;
-  --background: oklch(0.15 0.02 260);
-  --foreground: oklch(0.96 0.01 240);
-  --card: oklch(0.18 0.025 260);
-  --card-foreground: oklch(0.96 0.01 240);
-  --popover: oklch(0.18 0.025 260);
-  --popover-foreground: oklch(0.96 0.01 240);
-  --primary: oklch(0.88 0.19 200);
-  --primary-foreground: oklch(0.12 0.03 260);
-  --secondary: oklch(0.22 0.03 260);
-  --secondary-foreground: oklch(0.96 0.01 240);
-  --muted: oklch(0.22 0.03 260);
-  --muted-foreground: oklch(0.65 0.03 240);
-  --accent: oklch(0.88 0.19 200);
-  --accent-foreground: oklch(0.12 0.03 260);
-  --destructive: oklch(0.6 0.24 20);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.28 0.03 250 / 60%);
-  --input: oklch(0.22 0.03 260);
-  --ring: oklch(0.88 0.19 200);
-  --cyan: oklch(0.88 0.19 200);
-  --cyan-dim: oklch(0.88 0.19 200 / 30%);
-  --violet: oklch(0.72 0.19 305);
-  --violet-dim: oklch(0.72 0.19 305 / 30%);
-  --grid: oklch(0.88 0.19 200 / 8%);
-  --panel: oklch(0.17 0.024 260);
+  --radius: 0.625rem;
+
+  --ink: #0e0c15;
+  --surface: #14121c;
+  --panel: #16131f;
+  --accent: #a78bfa;
+  --accent-soft: rgba(167, 139, 250, 0.15);
+  --text: #fafaf8;
+  --text-muted: #9a9a94;
+
+  --background: var(--ink);
+  --foreground: var(--text);
+  --card: var(--surface);
+  --card-foreground: var(--text);
+  --popover: var(--panel);
+  --popover-foreground: var(--text);
+  --primary: var(--accent);
+  --primary-foreground: #14121c;
+  --secondary: var(--panel);
+  --secondary-foreground: var(--text);
+  --muted: var(--panel);
+  --muted-foreground: var(--text-muted);
+  --accent-foreground: #14121c;
+  --destructive: oklch(0.62 0.22 22);
+  --destructive-foreground: #fafaf8;
+  --border: rgba(250, 250, 248, 0.07);
+  --input: rgba(250, 250, 248, 0.07);
+  --ring: var(--accent);
+  --cyan: #67e8f9;
 }
 
-html, body {
-  background-color: #090D16;
+html,
+body {
+  background-color: var(--ink);
 }
 
 @layer base {
@@ -78,65 +80,74 @@ html, body {
     border-color: var(--color-border);
   }
   body {
-    background-color: #090D16;
-    color: var(--color-foreground);
+    background-color: var(--ink);
+    color: var(--text);
     font-family: var(--font-sans);
-    background-image:
-      linear-gradient(to right, var(--color-grid) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--color-grid) 1px, transparent 1px);
-    background-size: 48px 48px;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.01em;
   }
 }
 
-@utility glow-cyan {
-  box-shadow: 0 0 20px 0 oklch(0.88 0.19 200 / 30%), inset 0 0 0 1px oklch(0.88 0.19 200 / 40%);
+@utility blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.35;
+  pointer-events: none;
+  background: radial-gradient(circle at center, var(--accent), transparent 70%);
 }
 
-@utility glow-violet {
-  box-shadow: 0 0 20px 0 oklch(0.72 0.19 305 / 30%), inset 0 0 0 1px oklch(0.72 0.19 305 / 45%);
+@utility text-accent-glow {
+  color: var(--accent);
 }
 
-@utility text-glow {
-  text-shadow: 0 0 12px oklch(0.88 0.19 200 / 60%);
+@keyframes stage-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(167, 139, 250, 0);
+  }
+  50% {
+    box-shadow: 0 0 22px 2px rgba(167, 139, 250, 0.35);
+  }
 }
 
-@utility text-gradient-intelligence {
-  background-image: linear-gradient(135deg, oklch(0.72 0.19 305), oklch(0.88 0.19 200));
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-}
-
-@utility border-gradient-intelligence {
-  position: relative;
-  border: 1px solid transparent;
-  background-image:
-    linear-gradient(#0B0D10, #0B0D10),
-    linear-gradient(135deg, oklch(0.72 0.19 305), oklch(0.88 0.19 200));
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-}
-
-
-@keyframes pulse-cyan {
-  0%, 100% { box-shadow: 0 0 0 0 oklch(0.88 0.19 200 / 60%); }
-  50% { box-shadow: 0 0 24px 4px oklch(0.88 0.19 200 / 40%); }
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
 }
 
-@keyframes scan {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100%); }
+@utility animate-stage-pulse {
+  animation: stage-pulse 2s ease-in-out infinite;
 }
 
-@utility animate-pulse-cyan {
-  animation: pulse-cyan 2s ease-in-out infinite;
+@utility animate-rise-in {
+  animation: rise-in 0.4s ease-out both;
 }
+
 @utility animate-blink {
   animation: blink 1s step-end infinite;
 }

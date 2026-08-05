@@ -1,9 +1,15 @@
-# Kavolith
+# Kavolith Group
 
-> Autonomous AI SDR infrastructure that qualifies, enriches, and matches inbound prospects in under 120 seconds — 24/7/365.
+> An Intelligence Systems Company engineering AI systems for revenue, operations, and workforce automation. Based in Hyderabad, India.
 
-Kavolith engineers digital-employee workflows and automation infrastructure for revenue teams. The platform combines a neural qualification kernel, Make.com orchestration, and a Python FastAPI backend to deliver autonomous inbound SDR coverage.
+Kavolith Group operates four brands: Kavolith (AI systems engineering services), CogniLeads OS (AI Revenue Intelligence Platform), Kavolith Intelligence (Enterprise AI Workforce Platform, presale), and Kavolith Automation (automation engineering).
 
 ## Pages
 
-- [Home](/): Overview of the Kavolith AI SDR infrastructure, live system auditor, and architecture.
+- [Home](/): Group overview and the four brands.
+- [Kavolith](/kavolith): Core services — systems audit, custom workflow builds, intelligence layer. Tiers from ₹23,000.
+- [CogniLeads OS](/cognileads-os): AI Revenue Intelligence Platform. Capture, score, route, convert. ₹1,20,000–₹2,50,000 per deployment.
+- [Kavolith Intelligence](/kavolith-intelligence): Enterprise AI Workforce Platform — multilingual digital employees. Coming soon, presale open.
+- [Kavolith Automation](/kavolith-automation): Lead routing, invoicing, and CRM sync automation packages.
+- [About](/about): Background, principles, and location.
+- [Contact](/contact): Consultation request form.
