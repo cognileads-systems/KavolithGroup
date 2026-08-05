@@ -29,6 +29,8 @@ export const Route = createFileRoute("/about")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
+          "@graph": [
+            {
           "@type": "AboutPage",
           "@id": `${SITE}/about#about`,
           url: `${SITE}/about`,
@@ -43,6 +45,26 @@ export const Route = createFileRoute("/about")({
               addressCountry: "IN",
             },
           },
+            },
+            {
+              "@type": "Person",
+              "@id": `${SITE}/about#founder`,
+              name: "Arfath",
+              jobTitle: "Founder",
+              worksFor: { "@type": "Organization", name: "Kavolith Group" },
+              knowsAbout: [
+                "AI systems engineering",
+                "Business process automation",
+                "Revenue operations",
+              ],
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Hyderabad",
+                addressRegion: "Telangana",
+                addressCountry: "IN",
+              },
+            },
+          ],
         }),
       },
     ],

@@ -30,10 +30,34 @@ export const Route = createFileRoute("/contact")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "ContactPage",
-          "@id": `${SITE}/contact#contact`,
-          url: `${SITE}/contact`,
-          about: { "@type": "Organization", name: "Kavolith Group" },
+          "@graph": [
+            {
+              "@type": "ContactPage",
+              "@id": `${SITE}/contact#contact`,
+              url: `${SITE}/contact`,
+              about: { "@id": `${SITE}/contact#localbusiness` },
+            },
+            {
+              "@type": "LocalBusiness",
+              "@id": `${SITE}/contact#localbusiness`,
+              name: "Kavolith Group",
+              url: `${SITE}/`,
+              priceRange: "₹₹₹",
+              areaServed: "IN",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Hyderabad",
+                addressRegion: "Telangana",
+                addressCountry: "IN",
+              },
+              contactPoint: {
+                "@type": "ContactPoint",
+                contactType: "sales",
+                availableLanguage: ["English", "Telugu", "Hindi"],
+                areaServed: "IN",
+              },
+            },
+          ],
         }),
       },
     ],
