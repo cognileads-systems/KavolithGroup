@@ -174,19 +174,8 @@ function CogniLeadsOSPage() {
 
       <Section className="pt-0">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,380px)_1fr] lg:items-start">
-          <div className="rounded-xl border border-accent/50 bg-panel p-6">
-            <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
-              Presale · Custom engineering
-            </div>
-            <div className="mt-4 font-display text-3xl text-accent">₹1,20,000 – ₹2,50,000</div>
-            <div className="mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-              scoped per deployment
-            </div>
-            <p className="mt-4 border-t border-border pt-4 text-sm leading-relaxed text-muted-foreground">
-              60% advance to begin · full platform access during presale · performance-backed
-              remaining balance.
-            </p>
-          </div>
+          <DeploymentPriceCard />
+
 
           <div>
             <SectionTitle eyebrow="Engagement terms" title="Plain-language terms" />
