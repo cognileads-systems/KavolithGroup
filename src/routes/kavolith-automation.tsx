@@ -138,6 +138,25 @@ function AutomationPage() {
       </Section>
 
       <Section className="pt-0">
+        <SectionTitle
+          eyebrow="What we automate"
+          title="Automation types we build"
+          intro="A plain list of the workflow types currently in production for clients."
+        />
+        <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+          {AUTOMATION_TYPES.map((t) => (
+            <li
+              key={t}
+              className="flex gap-3 rounded-lg border border-border bg-surface px-4 py-3 text-sm text-muted-foreground"
+            >
+              <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+              <span>{t}</span>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section className="pt-0">
         <SectionTitle eyebrow="Proof of work" title="Automations in production" />
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {AUTOMATION_CASE_STUDIES.map((c) => (
@@ -145,6 +164,7 @@ function AutomationPage() {
           ))}
         </div>
       </Section>
+
     </PageShell>
   );
 }
