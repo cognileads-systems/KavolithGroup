@@ -72,6 +72,18 @@ const DOMAINS = [
   },
 ];
 
+const AUTOMATION_TYPES = [
+  "Lead routing and instant assignment",
+  "Invoice generation and payment follow-up",
+  "CRM synchronisation across tools",
+  "Inbound enquiry capture and qualification",
+  "Document collection and validation checklists",
+  "Appointment and site-visit reminders",
+  "Internal approval chasing and escalation",
+  "Scheduled reporting and daily digests",
+];
+
+
 function AutomationPage() {
   return (
     <PageShell>
