@@ -1,3 +1,4 @@
+import { Translate } from "@/i18n";
 import { useEffect, useState } from "react";
 
 const STAGES = [
@@ -9,7 +10,7 @@ const STAGES = [
 
 const WORDS = ["scores", "routes", "converts"] as const;
 
-export function LivePipelineDemo() {
+function LivePipelineDemoBase() {
   const [stage, setStage] = useState(0);
   const [word, setWord] = useState(0);
 
@@ -84,5 +85,13 @@ export function LivePipelineDemo() {
         })}
       </ol>
     </div>
+  );
+}
+
+export function LivePipelineDemo() {
+  return (
+    <Translate>
+      <LivePipelineDemoBase />
+    </Translate>
   );
 }

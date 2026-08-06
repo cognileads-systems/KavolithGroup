@@ -1,3 +1,4 @@
+import { Translate } from "@/i18n";
 import { useState } from "react";
 
 export const CURRENCIES = ["USD", "EUR", "INR"] as const;
@@ -228,7 +229,7 @@ export const AUTOMATION_TIERS: Tier[] = [
   },
 ];
 
-export function PricingGrid({ tiers, note }: { tiers: Tier[]; note?: string }) {
+function PricingGridBase({ tiers, note }: { tiers: Tier[]; note?: string }) {
   const [currency, setCurrency] = useState<Currency>("USD");
 
   return (
@@ -310,5 +311,13 @@ export function PricingGrid({ tiers, note }: { tiers: Tier[]; note?: string }) {
         fees alike.
       </p>
     </div>
+  );
+}
+
+export function PricingGrid({ ...props }: Parameters<typeof PricingGridBase>[0]) {
+  return (
+    <Translate>
+      <PricingGridBase {...props} />
+    </Translate>
   );
 }

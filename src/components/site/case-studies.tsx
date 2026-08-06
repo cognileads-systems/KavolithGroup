@@ -1,3 +1,4 @@
+import { Translate } from "@/i18n";
 export type CaseStudy = {
   id: string;
   tag: string;
@@ -90,7 +91,7 @@ export const AUTOMATION_CASE_STUDIES: CaseStudy[] = [
   },
 ];
 
-export function CaseStudyCard({ study }: { study: CaseStudy }) {
+function CaseStudyCardBase({ study }: { study: CaseStudy }) {
   return (
     <article className="rounded-xl border border-border bg-surface p-6 transition-colors hover:border-accent/40">
       <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
@@ -118,5 +119,13 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
         </div>
       </dl>
     </article>
+  );
+}
+
+export function CaseStudyCard({ ...props }: Parameters<typeof CaseStudyCardBase>[0]) {
+  return (
+    <Translate>
+      <CaseStudyCardBase {...props} />
+    </Translate>
   );
 }
