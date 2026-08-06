@@ -69,11 +69,29 @@ function DeploymentPriceCard() {
         scoped per deployment · approximate conversions
       </div>
 
-      <ul className="mt-4 space-y-2 border-t border-border pt-4 text-sm">
+      <ul className="mt-4 space-y-2.5 border-t border-border pt-4 text-sm">
         {DEPLOYMENT_DETAILS.map((d) => (
-          <li key={d} className="flex gap-2 text-muted-foreground">
-            <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+          <li key={d} className="flex items-start gap-2.5 leading-relaxed text-muted-foreground">
+            <svg
+              aria-hidden
+              viewBox="0 0 16 16"
+              className="mt-[3px] h-3.5 w-3.5 shrink-0 text-accent"
+              role="presentation"
+            >
+              <path
+                d="M3 8.5l3.2 3.2L13 4.8"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
             <span>{d}</span>
+          </li>
+        ))}
+      </ul>
+
           </li>
         ))}
       </ul>
@@ -217,9 +235,11 @@ const TERMS = [
 function CogniLeadsOSPage() {
   return (
     <PageShell>
-      <div className="relative overflow-hidden">
+      <div className="relative isolate overflow-hidden">
+        <PhotoBackdrop src={photoNeural} priority />
         <div className="blob right-[8%] top-[-100px] h-[340px] w-[340px]" />
         <Section className="relative grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+
           <div>
             <Eyebrow>A Kavolith Company</Eyebrow>
             <h1 className="mt-5 text-4xl leading-[1.1] md:text-5xl">
@@ -262,7 +282,8 @@ function CogniLeadsOSPage() {
         </div>
       </Section>
 
-      <Section className="pt-0">
+      <PhotoSection image={photoDataviz} className="pt-0">
+
         <div className="grid gap-6 lg:grid-cols-[minmax(0,380px)_1fr] lg:items-start">
           <DeploymentPriceCard />
 
@@ -285,7 +306,8 @@ function CogniLeadsOSPage() {
             </div>
           </div>
         </div>
-      </Section>
+      </PhotoSection>
+
     </PageShell>
   );
 }
