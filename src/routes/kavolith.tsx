@@ -53,7 +53,7 @@ export const Route = createFileRoute("/kavolith")({
             itemListElement: KAVOLITH_TIERS.map((t) => ({
               "@type": "Offer",
               name: t.name,
-              price: String(t.oneTime.INR),
+              price: String(t.setup.now.INR),
               priceCurrency: "INR",
             })),
           },
