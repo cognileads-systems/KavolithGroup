@@ -4,20 +4,38 @@ import { PageShell, Section, Eyebrow, SectionTitle } from "@/components/site/lay
 import { LivePipelineDemo } from "@/components/site/live-pipeline-demo";
 import {
   CurrencyToggle,
+  DiscountBadge,
+  DISCOUNT_CODE,
+  DISCOUNT_PERCENT,
   formatMoney,
-  marketRate,
   type Currency,
 } from "@/components/site/pricing";
 
-const DEPLOYMENT_RANGE: Record<Currency, [number, number]> = {
+const DEPLOYMENT_LIST: Record<Currency, [number, number]> = {
   INR: [120000, 250000],
-  USD: [1450, 3020],
-  EUR: [1340, 2790],
+  USD: [10700, 22300],
+  EUR: [9700, 20300],
 };
+
+const DEPLOYMENT_NOW: Record<Currency, [number, number]> = {
+  INR: [84000, 175000],
+  USD: [7490, 15610],
+  EUR: [6790, 14210],
+};
+
+const DEPLOYMENT_DETAILS = [
+  "Custom web app + FastAPI backend engineered for your pipeline",
+  "Real-time intent scoring (0–100) and priority alerting",
+  "Autonomous SDR for after-hours qualification and booking",
+  "Full schema and analytics layer, documented at handoff",
+  "3 free update rounds per year (3–4 pages or flows each)",
+  "Twice-yearly free bug-fix pass and quarterly performance report",
+];
 
 function DeploymentPriceCard() {
   const [currency, setCurrency] = useState<Currency>("USD");
-  const [low, high] = DEPLOYMENT_RANGE[currency];
+  const [listLow, listHigh] = DEPLOYMENT_LIST[currency];
+  const [low, high] = DEPLOYMENT_NOW[currency];
 
   return (
     <div className="rounded-xl border border-accent/50 bg-panel p-6">
@@ -28,31 +46,42 @@ function DeploymentPriceCard() {
       <CurrencyToggle currency={currency} onChange={setCurrency} className="mt-4" />
 
       <div className="mt-4 font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
-        Market rate{" "}
+        List price{" "}
         <span className="line-through decoration-muted-foreground/70">
-          {marketRate(currency, low)} – {marketRate(currency, high)}
+          {formatMoney(currency, listLow)} – {formatMoney(currency, listHigh)}
         </span>
-      </div>
-      <div className="mt-1 font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
-        Our rate
       </div>
       <div className="mt-1 font-display text-3xl text-accent">
         {formatMoney(currency, low)} – {formatMoney(currency, high)}
       </div>
-      <div className="mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+      <div className="mt-3">
+        <DiscountBadge />
+      </div>
+      <div className="mt-2 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
         scoped per deployment · approximate conversions
       </div>
+
+      <ul className="mt-4 space-y-2 border-t border-border pt-4 text-sm">
+        {DEPLOYMENT_DETAILS.map((d) => (
+          <li key={d} className="flex gap-2 text-muted-foreground">
+            <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+            <span>{d}</span>
+          </li>
+        ))}
+      </ul>
+
       <p className="mt-4 border-t border-border pt-4 text-sm leading-relaxed text-muted-foreground">
         60% advance to begin · full platform access during presale · performance-backed remaining
         balance.
       </p>
       <p className="mt-3 text-xs text-muted-foreground">
-        Market-rate figures are indicative agency-pricing placeholders for comparison, not verified
-        or sourced quotes.
+        List prices are indicative pre-discount figures. {DISCOUNT_CODE} applies {DISCOUNT_PERCENT}%
+        off flat across India, the US, and the EU.
       </p>
     </div>
   );
 }
+
 
 
 const SITE = "https://kavolithgroup.lovable.app";

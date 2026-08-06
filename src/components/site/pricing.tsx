@@ -1,14 +1,17 @@
+import { Translate } from "@/i18n";
 import { useState } from "react";
 
 export const CURRENCIES = ["USD", "EUR", "INR"] as const;
 export type Currency = (typeof CURRENCIES)[number];
 
 export type Amount = Record<Currency, number>;
+export type PricePair = { list: Amount; now: Amount };
 
 const SYMBOL: Record<Currency, string> = { INR: "₹", USD: "$", EUR: "€" };
 
-/** Placeholder anchor multiplier — marketing reference only, not a sourced claim. */
-export const MARKET_MULTIPLIER = 2.2;
+/** Founder discount applied flat across every region. */
+export const DISCOUNT_CODE = "FOUNDER30";
+export const DISCOUNT_PERCENT = 30;
 
 export function formatMoney(currency: Currency, value: number) {
   const rounded = Math.round(value);
@@ -16,10 +19,10 @@ export function formatMoney(currency: Currency, value: number) {
   return `${SYMBOL[currency]}${rounded.toLocaleString(locale)}`;
 }
 
+/** Legacy anchor helper kept for the list price of range-based offers. */
 export function marketRate(currency: Currency, value: number) {
-  const raw = value * MARKET_MULTIPLIER;
   const step = currency === "INR" ? 500 : 5;
-  return formatMoney(currency, Math.round(raw / step) * step);
+  return formatMoney(currency, Math.round(value / step) * step);
 }
 
 export function CurrencyToggle({
@@ -57,32 +60,42 @@ export function CurrencyToggle({
   );
 }
 
-/** Struck-through market reference beside the real rate. */
-export function PriceAnchor({
+export function DiscountBadge({ className = "" }: { className?: string }) {
+  return (
+    <span
+      className={`inline-flex items-center gap-2 rounded-full bg-accent-soft px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-accent ${className}`}
+    >
+      <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+      {DISCOUNT_CODE} · {DISCOUNT_PERCENT}% off
+    </span>
+  );
+}
+
+/** Struck-through list price above the discounted rate. */
+export function PriceLine({
   currency,
-  amount,
+  pair,
+  label,
   suffix,
   size = "lg",
 }: {
   currency: Currency;
-  amount: number;
+  pair: PricePair;
+  label: string;
   suffix?: string;
   size?: "lg" | "sm";
 }) {
   return (
     <div>
       <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
-        Market rate{" "}
+        {label}{" "}
         <span className="line-through decoration-muted-foreground/70">
-          {marketRate(currency, amount)}
+          {formatMoney(currency, pair.list[currency])}
         </span>
       </div>
       <div className="mt-1 flex items-baseline gap-2">
-        <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
-          Our rate
-        </span>
         <span className={`font-display text-accent ${size === "lg" ? "text-2xl" : "text-xl"}`}>
-          {formatMoney(currency, amount)}
+          {formatMoney(currency, pair.now[currency])}
         </span>
         {suffix && <span className="font-mono text-[11px] text-muted-foreground">{suffix}</span>}
       </div>
@@ -93,47 +106,61 @@ export function PriceAnchor({
 export type Tier = {
   id: string;
   name: string;
-  oneTime: Amount;
-  monthly?: Amount;
+  setup: PricePair;
+  monthly?: PricePair;
   outcome: string;
   features: string[];
   badge?: string;
   featured?: boolean;
 };
 
-const TIER_PRICES = {
-  small: { oneTime: { INR: 23000, USD: 280, EUR: 260 } as Amount },
-  mid: {
-    oneTime: { INR: 58000, USD: 700, EUR: 645 } as Amount,
-    monthly: { INR: 10000, USD: 120, EUR: 110 } as Amount,
-  },
-  large: {
-    oneTime: { INR: 90000, USD: 1090, EUR: 1000 } as Amount,
-    monthly: { INR: 15000, USD: 180, EUR: 165 } as Amount,
-  },
+const LAUNCHPAD_SETUP: PricePair = {
+  list: { INR: 46000, USD: 1000, EUR: 900 },
+  now: { INR: 32200, USD: 700, EUR: 630 },
+};
+const SCALE_SETUP: PricePair = {
+  list: { INR: 58000, USD: 3500, EUR: 3200 },
+  now: { INR: 40600, USD: 2450, EUR: 2240 },
+};
+const SCALE_MONTHLY: PricePair = {
+  list: { INR: 28500, USD: 600, EUR: 550 },
+  now: { INR: 20000, USD: 420, EUR: 385 },
+};
+const PREMIUM_SETUP: PricePair = {
+  list: { INR: 90000, USD: 8000, EUR: 7300 },
+  now: { INR: 63000, USD: 5600, EUR: 5100 },
+};
+const PREMIUM_MONTHLY: PricePair = {
+  list: { INR: 40000, USD: 1500, EUR: 1350 },
+  now: { INR: 28000, USD: 1050, EUR: 945 },
 };
 
 export const KAVOLITH_TIERS: Tier[] = [
   {
     id: "launchpad",
     name: "Launchpad",
-    ...TIER_PRICES.small,
+    setup: LAUNCHPAD_SETUP,
     outcome: "Start with a clear map of your process and one workflow running in production.",
     features: [
-      "Initial systems audit",
+      "Initial systems audit and process map",
       "One automated workflow built and deployed",
       "Handoff documentation",
+      "One free update round (up to 3 pages) within 30 days of launch",
     ],
   },
   {
     id: "scale",
     name: "Scale",
-    ...TIER_PRICES.mid,
+    setup: SCALE_SETUP,
+    monthly: SCALE_MONTHLY,
     outcome: "Connect several workflows into one operating layer, with ongoing iteration.",
     features: [
       "Everything in Launchpad",
-      "Multi-workflow integration",
+      "Multi-workflow integration (3–5 connected workflows)",
       "Monthly iteration and support",
+      "3 free update rounds per year (3–4 pages each)",
+      "Twice-yearly free bug-fix pass",
+      "Quarterly site + social profile speed & analytics report",
     ],
     badge: "Most common",
     featured: true,
@@ -141,9 +168,17 @@ export const KAVOLITH_TIERS: Tier[] = [
   {
     id: "premium",
     name: "Premium / Total Control",
-    ...TIER_PRICES.large,
+    setup: PREMIUM_SETUP,
+    monthly: PREMIUM_MONTHLY,
     outcome: "Run an intelligence layer across every team, with build capacity reserved for you.",
-    features: ["Everything in Scale", "Full intelligence layer across teams", "Priority build queue"],
+    features: [
+      "Everything in Scale",
+      "Full intelligence layer across teams",
+      "Priority build queue",
+      "3 free update rounds per year (up to 4 pages each)",
+      "Twice-yearly free bug-fix pass",
+      "Monthly site + profile speed & analytics report",
+    ],
   },
 ];
 
@@ -151,23 +186,28 @@ export const AUTOMATION_TIERS: Tier[] = [
   {
     id: "single-flow",
     name: "Single Flow",
-    ...TIER_PRICES.small,
+    setup: LAUNCHPAD_SETUP,
     outcome: "Automate the one process that costs your team the most manual hours.",
     features: [
-      "Process mapping session",
+      "Process mapping session and workflow spec",
       "One production workflow with error handling",
       "Runbook and handoff documentation",
+      "One free update round (up to 3 workflow steps) within 30 days of launch",
     ],
   },
   {
     id: "ops-stack",
     name: "Ops Stack",
-    ...TIER_PRICES.mid,
+    setup: SCALE_SETUP,
+    monthly: SCALE_MONTHLY,
     outcome: "Wire your core tools together so data stops being re-entered by hand.",
     features: [
       "Everything in Single Flow",
-      "Multi-tool integration and CRM sync",
+      "Multi-tool integration and CRM sync (3–5 connected workflows)",
       "Monitoring, alerting, and monthly iteration",
+      "3 free update rounds per year (3–4 workflow changes each)",
+      "Twice-yearly free bug-fix pass",
+      "Quarterly automation reliability & throughput report",
     ],
     badge: "Most common",
     featured: true,
@@ -175,23 +215,28 @@ export const AUTOMATION_TIERS: Tier[] = [
   {
     id: "automation-control",
     name: "Automation Control",
-    ...TIER_PRICES.large,
+    setup: PREMIUM_SETUP,
+    monthly: PREMIUM_MONTHLY,
     outcome: "Operate automation as infrastructure across departments, with reserved capacity.",
     features: [
       "Everything in Ops Stack",
       "Department-wide workflow coverage",
       "Priority build queue and quarterly review",
+      "3 free update rounds per year (up to 4 workflow changes each)",
+      "Twice-yearly free bug-fix pass",
+      "Monthly automation reliability & throughput report",
     ],
   },
 ];
 
-export function PricingGrid({ tiers, note }: { tiers: Tier[]; note?: string }) {
+function PricingGridBase({ tiers, note }: { tiers: Tier[]; note?: string }) {
   const [currency, setCurrency] = useState<Currency>("USD");
 
   return (
     <div>
       <div className="mb-6 flex flex-wrap items-center gap-3">
         <CurrencyToggle currency={currency} onChange={setCurrency} />
+        <DiscountBadge />
         <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
           Approximate conversions
         </span>
@@ -221,20 +266,26 @@ export function PricingGrid({ tiers, note }: { tiers: Tier[]; note?: string }) {
               )}
             </div>
 
-            <div className="mt-4">
-              <PriceAnchor
+            <div className="mt-4 space-y-3">
+              <PriceLine
                 currency={currency}
-                amount={t.oneTime[currency]}
-                suffix={t.monthly ? undefined : "one-time"}
+                pair={t.setup}
+                label={t.monthly ? "Setup list" : "List price"}
+                suffix={t.monthly ? "setup" : "one-time"}
               />
               {t.monthly && (
-                <div className="mt-2 font-mono text-[11px] text-muted-foreground">
-                  + {formatMoney(currency, t.monthly[currency])} / month
-                </div>
+                <PriceLine
+                  currency={currency}
+                  pair={t.monthly}
+                  label="Monthly list"
+                  suffix="/ month"
+                  size="sm"
+                />
               )}
             </div>
-            <div className="mt-2 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-              Limited-time rate
+
+            <div className="mt-3">
+              <DiscountBadge />
             </div>
 
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{t.outcome}</p>
@@ -249,15 +300,24 @@ export function PricingGrid({ tiers, note }: { tiers: Tier[]; note?: string }) {
             </ul>
 
             <meta itemProp="priceCurrency" content={currency} />
-            <meta itemProp="price" content={String(t.oneTime[currency])} />
+            <meta itemProp="price" content={String(t.setup.now[currency])} />
           </article>
         ))}
       </div>
       {note && <p className="mt-5 text-sm text-muted-foreground">{note}</p>}
       <p className="mt-2 text-xs text-muted-foreground">
-        Market-rate figures are indicative agency-pricing placeholders for comparison, not verified
-        or sourced quotes.
+        List prices are indicative pre-discount figures. The {DISCOUNT_CODE} rate of{" "}
+        {DISCOUNT_PERCENT}% off applies flat across India, the US, and the EU, on setup and monthly
+        fees alike.
       </p>
     </div>
+  );
+}
+
+export function PricingGrid({ ...props }: Parameters<typeof PricingGridBase>[0]) {
+  return (
+    <Translate>
+      <PricingGridBase {...props} />
+    </Translate>
   );
 }

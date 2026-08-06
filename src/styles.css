@@ -151,3 +151,34 @@ body {
 @utility animate-blink {
   animation: blink 1s step-end infinite;
 }
+
+/* ---- Automation / robotics motif layer ---- */
+@utility circuit-grid {
+  background-image:
+    linear-gradient(to right, rgba(167, 139, 250, 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(167, 139, 250, 0.055) 1px, transparent 1px);
+  background-size: 96px 96px;
+  mask-image: radial-gradient(ellipse at 50% 0%, black, transparent 78%);
+}
+
+@utility node-dots {
+  background-image: radial-gradient(rgba(167, 139, 250, 0.22) 1.4px, transparent 1.4px);
+  background-size: 48px 48px;
+  background-position: 24px 24px;
+  opacity: 0.55;
+  mask-image: radial-gradient(ellipse at 50% 10%, black, transparent 70%);
+}
+
+@keyframes node-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@utility animate-node-pulse {
+  animation: node-pulse 2.4s ease-in-out infinite;
+}

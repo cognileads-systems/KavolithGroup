@@ -1,8 +1,9 @@
+import { Translate } from "@/i18n";
 import { useState } from "react";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export function ContactForm() {
+function ContactFormBase() {
   const [state, setState] = useState<"idle" | "sending" | "ok" | "err">("idle");
   const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string }>({});
 
@@ -145,5 +146,13 @@ function Field({
       />
       {error && <p className="mt-1 text-xs text-destructive">{error}</p>}
     </div>
+  );
+}
+
+export function ContactForm() {
+  return (
+    <Translate>
+      <ContactFormBase />
+    </Translate>
   );
 }
