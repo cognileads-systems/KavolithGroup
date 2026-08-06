@@ -92,9 +92,7 @@ function DeploymentPriceCard() {
         ))}
       </ul>
 
-          </li>
-        ))}
-      </ul>
+
 
       <p className="mt-4 border-t border-border pt-4 text-sm leading-relaxed text-muted-foreground">
         60% advance to begin · full platform access during presale · performance-backed remaining
