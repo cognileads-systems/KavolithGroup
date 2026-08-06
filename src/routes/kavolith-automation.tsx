@@ -1,5 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageShell, Section, Eyebrow, SectionTitle } from "@/components/site/layout";
+import {
+  PageShell,
+  Section,
+  PhotoSection,
+  Eyebrow,
+  SectionTitle,
+} from "@/components/site/layout";
+import photoDatastream from "@/assets/photo-datastream.jpg";
+import photoDataviz from "@/assets/photo-dataviz.jpg";
+
 import { PricingGrid, AUTOMATION_TIERS } from "@/components/site/pricing";
 import { AUTOMATION_CASE_STUDIES, CaseStudyCard } from "@/components/site/case-studies";
 

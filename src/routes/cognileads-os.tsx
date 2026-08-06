@@ -1,6 +1,16 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageShell, Section, Eyebrow, SectionTitle } from "@/components/site/layout";
+import {
+  PageShell,
+  Section,
+  PhotoSection,
+  Eyebrow,
+  SectionTitle,
+} from "@/components/site/layout";
+import { PhotoBackdrop } from "@/components/site/photo-backdrop";
+import photoNeural from "@/assets/photo-neural.jpg";
+import photoDataviz from "@/assets/photo-dataviz.jpg";
+
 import { LivePipelineDemo } from "@/components/site/live-pipeline-demo";
 import {
   CurrencyToggle,
