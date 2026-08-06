@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { NAV_LINKS } from "./site-nav";
+import { Translate } from "@/i18n";
 
 const BRANDS = [
   { to: "/kavolith", name: "Kavolith", note: "AI systems engineering" },
@@ -10,6 +11,7 @@ const BRANDS = [
 
 export function SiteFooter() {
   return (
+    <Translate>
     <footer className="border-t border-border bg-surface/60">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 md:grid-cols-3">
         <div>
@@ -60,5 +62,6 @@ export function SiteFooter() {
         </p>
       </div>
     </footer>
+    </Translate>
   );
 }
