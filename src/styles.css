@@ -201,3 +201,17 @@ body {
 @utility animate-node-pulse {
   animation: node-pulse 2.4s ease-in-out infinite;
 }
+
+@keyframes node-pulse-strong {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@utility animate-node-pulse-strong {
+  animation: node-pulse-strong 2.8s ease-in-out infinite;
+}

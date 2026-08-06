@@ -61,7 +61,7 @@ export function NodeLattice({ className = "" }: { className?: string }) {
               r={r}
               fill={color}
               fillOpacity={n.big ? 0.9 : 0.85}
-              className="animate-node-pulse"
+              className="animate-node-pulse-strong"
               style={{ animationDelay: `${(n.i % 6) * 0.3}s` }}
             />
           </g>
