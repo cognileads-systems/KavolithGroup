@@ -1,5 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageShell, Section, Eyebrow, SectionTitle } from "@/components/site/layout";
+import {
+  PageShell,
+  Section,
+  PhotoSection,
+  Eyebrow,
+  SectionTitle,
+} from "@/components/site/layout";
+import photoNeural from "@/assets/photo-neural.jpg";
 
 const SITE = "https://kavolithgroup.lovable.app";
 
@@ -89,7 +96,7 @@ const PRINCIPLES = [
 function AboutPage() {
   return (
     <PageShell>
-      <Section>
+      <PhotoSection image={photoNeural} priority>
         <Eyebrow>About</Eyebrow>
         <h1 className="mt-5 max-w-3xl text-4xl leading-[1.1] md:text-5xl">
           An <span className="text-accent">Intelligence Systems Company</span>
@@ -99,7 +106,7 @@ function AboutPage() {
           work with businesses in India that have outgrown spreadsheets and message threads but
           don't want a year-long enterprise rollout.
         </p>
-      </Section>
+      </PhotoSection>
 
       <Section className="pt-0">
         <div className="grid gap-10 lg:grid-cols-2">
