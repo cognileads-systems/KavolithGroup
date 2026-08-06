@@ -36,6 +36,31 @@ export function Section({
   );
 }
 
+/** Section with a realistic photographic backdrop under a violet-tinted overlay. */
+export function PhotoSection({
+  children,
+  image,
+  priority = false,
+  className = "",
+  id,
+}: {
+  children: ReactNode;
+  image: string;
+  priority?: boolean;
+  className?: string;
+  id?: string;
+}) {
+  return (
+    <div className="relative isolate overflow-hidden">
+      <PhotoBackdrop src={image} priority={priority} />
+      <Section id={id} className={className}>
+        {children}
+      </Section>
+    </div>
+  );
+}
+
+
 export function Eyebrow({ children }: { children: ReactNode }) {
   return (
     <div className="inline-flex items-center gap-2 rounded-full bg-accent-soft px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
