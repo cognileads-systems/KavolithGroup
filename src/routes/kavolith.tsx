@@ -107,7 +107,7 @@ const SERVICES = [
 function KavolithPage() {
   return (
     <PageShell>
-      <Section>
+      <PhotoSection image={photoNeural} priority>
         <Eyebrow>Kavolith · Core services</Eyebrow>
         <h1 className="mt-5 max-w-3xl text-4xl leading-[1.1] md:text-5xl">
           AI systems engineering for businesses that{" "}
@@ -124,7 +124,7 @@ function KavolithPage() {
         >
           Book a consultation
         </Link>
-      </Section>
+      </PhotoSection>
 
       <Section className="pt-0">
         <SectionTitle
@@ -148,7 +148,7 @@ function KavolithPage() {
         </div>
       </Section>
 
-      <Section className="pt-0">
+      <PhotoSection image={photoDataviz} className="pt-0">
         <SectionTitle
           eyebrow="Pricing"
           title="Engagement tiers"
@@ -160,7 +160,7 @@ function KavolithPage() {
             note="All prices in INR. Scope is confirmed after the initial consultation."
           />
         </div>
-      </Section>
+      </PhotoSection>
 
       <Section className="pt-0">
         <SectionTitle

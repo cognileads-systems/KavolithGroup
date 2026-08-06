@@ -96,7 +96,7 @@ const AUTOMATION_TYPES = [
 function AutomationPage() {
   return (
     <PageShell>
-      <Section>
+      <PhotoSection image={photoDatastream} priority>
         <Eyebrow>Kavolith Automation</Eyebrow>
         <h1 className="mt-5 max-w-3xl text-4xl leading-[1.1] md:text-5xl">
           Automation that runs like <span className="text-accent">infrastructure</span>
@@ -111,7 +111,7 @@ function AutomationPage() {
         >
           Scope an automation
         </Link>
-      </Section>
+      </PhotoSection>
 
       <Section className="pt-0">
         <SectionTitle
@@ -132,7 +132,7 @@ function AutomationPage() {
         </div>
       </Section>
 
-      <Section className="pt-0">
+      <PhotoSection image={photoDataviz} className="pt-0">
         <SectionTitle
           eyebrow="Packages"
           title="Automation packages"
@@ -144,7 +144,7 @@ function AutomationPage() {
             note="All prices in INR. Final scope is confirmed after a process mapping session."
           />
         </div>
-      </Section>
+      </PhotoSection>
 
       <Section className="pt-0">
         <SectionTitle
