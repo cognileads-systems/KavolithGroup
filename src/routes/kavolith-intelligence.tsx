@@ -3,6 +3,7 @@ import {
   PageShell,
   Section,
   PhotoSection,
+  LatticeSection,
   Eyebrow,
   SectionTitle,
 } from "@/components/site/layout";
@@ -139,7 +140,7 @@ export const Route = createFileRoute("/kavolith-intelligence")({
 function IntelligencePage() {
   return (
     <PageShell>
-      <PhotoSection image={photoLattice} priority>
+      <LatticeSection>
         <div>
           <div className="mb-7 flex flex-wrap items-center gap-3 rounded-xl border border-accent/40 bg-accent-soft px-5 py-3">
             <span className="animate-stage-pulse h-2 w-2 rounded-full bg-accent" />
@@ -164,7 +165,7 @@ function IntelligencePage() {
             Book a presale slot
           </Link>
         </div>
-      </PhotoSection>
+      </LatticeSection>
 
       <Section className="pt-0">
         <SectionTitle

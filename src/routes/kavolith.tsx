@@ -3,10 +3,10 @@ import {
   PageShell,
   Section,
   PhotoSection,
+  LatticeSection,
   Eyebrow,
   SectionTitle,
 } from "@/components/site/layout";
-import photoNeural from "@/assets/photo-neural.jpg";
 import photoDataviz from "@/assets/photo-dataviz.jpg";
 
 import { PricingGrid, KAVOLITH_TIERS } from "@/components/site/pricing";
@@ -107,7 +107,7 @@ const SERVICES = [
 function KavolithPage() {
   return (
     <PageShell>
-      <PhotoSection image={photoNeural} priority>
+      <LatticeSection>
         <Eyebrow>Kavolith · Core services</Eyebrow>
         <h1 className="mt-5 max-w-3xl text-4xl leading-[1.1] md:text-5xl">
           AI systems engineering for businesses that{" "}
@@ -124,7 +124,7 @@ function KavolithPage() {
         >
           Book a consultation
         </Link>
-      </PhotoSection>
+      </LatticeSection>
 
       <Section className="pt-0">
         <SectionTitle

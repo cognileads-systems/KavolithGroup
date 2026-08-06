@@ -7,10 +7,9 @@ import {
   Eyebrow,
   SectionTitle,
 } from "@/components/site/layout";
-import { PhotoBackdrop } from "@/components/site/photo-backdrop";
-import photoNeural from "@/assets/photo-neural.jpg";
 import photoDataviz from "@/assets/photo-dataviz.jpg";
 
+import { NodeLattice } from "@/components/site/motifs";
 import { LivePipelineDemo } from "@/components/site/live-pipeline-demo";
 import {
   CurrencyToggle,
@@ -244,7 +243,10 @@ function CogniLeadsOSPage() {
   return (
     <PageShell>
       <div className="relative isolate overflow-hidden">
-        <PhotoBackdrop src={photoNeural} priority />
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="circuit-grid absolute inset-0" />
+          <NodeLattice />
+        </div>
         <div className="blob right-[8%] top-[-100px] h-[340px] w-[340px]" />
         <Section className="relative grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-center">
 
