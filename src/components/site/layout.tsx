@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { SiteNav } from "./site-nav";
 import { SiteFooter } from "./site-footer";
 import { CircuitBackdrop, CircuitDivider, NodeGlyph } from "./motifs";
+import { PhotoBackdrop } from "./photo-backdrop";
 import { Translate } from "@/i18n";
 
 export function PageShell({ children }: { children: ReactNode }) {
