@@ -1,5 +1,5 @@
 import {
-  Fragment,
+  Children,
   cloneElement,
   createContext,
   isValidElement,
@@ -81,9 +81,7 @@ const TRANSLATED_PROPS = [
 function walk(node: ReactNode, t: (s: string) => string): ReactNode {
   if (typeof node === "string") return t(node);
   if (Array.isArray(node)) {
-    return node.map((child, i) =>
-      isValidElement(child) ? walk(child, t) : <Fragment key={i}>{walk(child, t)}</Fragment>,
-    );
+    return Children.map(node, (child) => walk(child, t));
   }
   if (isValidElement(node)) {
     const props = { ...(node.props as Record<string, unknown>) };
