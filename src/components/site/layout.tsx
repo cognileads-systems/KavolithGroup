@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { SiteNav } from "./site-nav";
 import { SiteFooter } from "./site-footer";
-import { CircuitBackdrop, CircuitDivider, NodeGlyph } from "./motifs";
+import { CircuitBackdrop, CircuitDivider, NodeGlyph, NodeLattice } from "./motifs";
 import { PhotoBackdrop } from "./photo-backdrop";
 import { Translate } from "@/i18n";
 
@@ -60,6 +60,31 @@ export function PhotoSection({
     </div>
   );
 }
+
+/** Hero/section backed by the bold two-tone node lattice (no photography). */
+export function LatticeSection({
+  children,
+  className = "",
+  id,
+}: {
+  children: ReactNode;
+  className?: string;
+  id?: string;
+}) {
+  return (
+    <div className="relative isolate overflow-hidden">
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="circuit-grid absolute inset-0" />
+        <NodeLattice />
+      </div>
+      <Section id={id} className={`relative ${className}`}>
+        {children}
+      </Section>
+    </div>
+  );
+}
+
+
 
 
 export function Eyebrow({ children }: { children: ReactNode }) {
