@@ -132,9 +132,8 @@ export const Route = createFileRoute("/kavolith-intelligence")({
 function IntelligencePage() {
   return (
     <PageShell>
-      <div className="relative overflow-hidden">
-        <div className="blob left-[6%] top-[-120px] h-[360px] w-[360px]" />
-        <Section className="relative">
+      <PhotoSection image={photoLattice} priority>
+        <div>
           <div className="mb-7 flex flex-wrap items-center gap-3 rounded-xl border border-accent/40 bg-accent-soft px-5 py-3">
             <span className="animate-stage-pulse h-2 w-2 rounded-full bg-accent" />
             <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
