@@ -1,5 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageShell, Section, Eyebrow, SectionTitle } from "@/components/site/layout";
+import {
+  PageShell,
+  Section,
+  PhotoSection,
+  Eyebrow,
+  SectionTitle,
+} from "@/components/site/layout";
+import photoNeural from "@/assets/photo-neural.jpg";
+import photoDataviz from "@/assets/photo-dataviz.jpg";
+
 import { PricingGrid, KAVOLITH_TIERS } from "@/components/site/pricing";
 import { CASE_STUDIES, CaseStudyCard } from "@/components/site/case-studies";
 
@@ -98,7 +107,7 @@ const SERVICES = [
 function KavolithPage() {
   return (
     <PageShell>
-      <Section>
+      <PhotoSection image={photoNeural} priority>
         <Eyebrow>Kavolith · Core services</Eyebrow>
         <h1 className="mt-5 max-w-3xl text-4xl leading-[1.1] md:text-5xl">
           AI systems engineering for businesses that{" "}
@@ -115,7 +124,7 @@ function KavolithPage() {
         >
           Book a consultation
         </Link>
-      </Section>
+      </PhotoSection>
 
       <Section className="pt-0">
         <SectionTitle
@@ -139,7 +148,7 @@ function KavolithPage() {
         </div>
       </Section>
 
-      <Section className="pt-0">
+      <PhotoSection image={photoDataviz} className="pt-0">
         <SectionTitle
           eyebrow="Pricing"
           title="Engagement tiers"
@@ -151,7 +160,7 @@ function KavolithPage() {
             note="All prices in INR. Scope is confirmed after the initial consultation."
           />
         </div>
-      </Section>
+      </PhotoSection>
 
       <Section className="pt-0">
         <SectionTitle

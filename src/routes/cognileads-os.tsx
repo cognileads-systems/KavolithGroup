@@ -1,6 +1,16 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageShell, Section, Eyebrow, SectionTitle } from "@/components/site/layout";
+import {
+  PageShell,
+  Section,
+  PhotoSection,
+  Eyebrow,
+  SectionTitle,
+} from "@/components/site/layout";
+import { PhotoBackdrop } from "@/components/site/photo-backdrop";
+import photoNeural from "@/assets/photo-neural.jpg";
+import photoDataviz from "@/assets/photo-dataviz.jpg";
+
 import { LivePipelineDemo } from "@/components/site/live-pipeline-demo";
 import {
   CurrencyToggle,
@@ -27,10 +37,18 @@ const DEPLOYMENT_DETAILS = [
   "Custom web app + FastAPI backend engineered for your pipeline",
   "Real-time intent scoring (0–100) and priority alerting",
   "Autonomous SDR for after-hours qualification and booking",
-  "Full schema and analytics layer, documented at handoff",
+  "Smart AI intake form with WhatsApp and UPI payment handoff",
+  "Automated CRM / Google Sheets funnel with reconciliation log",
+  "Single-screen lead pipeline dashboard (New → Closed)",
+  "n8n automation workflows with integrated voice-chat AI agent",
+  "Advanced AEO & GEO schema and GA4 analytics layer",
+  "Multi-language interface (EN/Telugu/Hindi) and INR/USD/EUR handling",
+  "Full schema and analytics documentation at handoff",
   "3 free update rounds per year (3–4 pages or flows each)",
   "Twice-yearly free bug-fix pass and quarterly performance report",
+  "Hosted on hardened, bot/vulnerability-protected infrastructure",
 ];
+
 
 function DeploymentPriceCard() {
   const [currency, setCurrency] = useState<Currency>("USD");
@@ -61,14 +79,30 @@ function DeploymentPriceCard() {
         scoped per deployment · approximate conversions
       </div>
 
-      <ul className="mt-4 space-y-2 border-t border-border pt-4 text-sm">
+      <ul className="mt-4 space-y-2.5 border-t border-border pt-4 text-sm">
         {DEPLOYMENT_DETAILS.map((d) => (
-          <li key={d} className="flex gap-2 text-muted-foreground">
-            <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+          <li key={d} className="flex items-start gap-2.5 leading-relaxed text-muted-foreground">
+            <svg
+              aria-hidden
+              viewBox="0 0 16 16"
+              className="mt-[3px] h-3.5 w-3.5 shrink-0 text-accent"
+              role="presentation"
+            >
+              <path
+                d="M3 8.5l3.2 3.2L13 4.8"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
             <span>{d}</span>
           </li>
         ))}
       </ul>
+
+
 
       <p className="mt-4 border-t border-border pt-4 text-sm leading-relaxed text-muted-foreground">
         60% advance to begin · full platform access during presale · performance-backed remaining
@@ -209,9 +243,11 @@ const TERMS = [
 function CogniLeadsOSPage() {
   return (
     <PageShell>
-      <div className="relative overflow-hidden">
+      <div className="relative isolate overflow-hidden">
+        <PhotoBackdrop src={photoNeural} priority />
         <div className="blob right-[8%] top-[-100px] h-[340px] w-[340px]" />
         <Section className="relative grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+
           <div>
             <Eyebrow>A Kavolith Company</Eyebrow>
             <h1 className="mt-5 text-4xl leading-[1.1] md:text-5xl">
@@ -254,7 +290,8 @@ function CogniLeadsOSPage() {
         </div>
       </Section>
 
-      <Section className="pt-0">
+      <PhotoSection image={photoDataviz} className="pt-0">
+
         <div className="grid gap-6 lg:grid-cols-[minmax(0,380px)_1fr] lg:items-start">
           <DeploymentPriceCard />
 
@@ -277,7 +314,8 @@ function CogniLeadsOSPage() {
             </div>
           </div>
         </div>
-      </Section>
+      </PhotoSection>
+
     </PageShell>
   );
 }

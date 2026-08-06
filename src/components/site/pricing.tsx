@@ -138,29 +138,35 @@ const PREMIUM_MONTHLY: PricePair = {
 export const KAVOLITH_TIERS: Tier[] = [
   {
     id: "launchpad",
-    name: "Launchpad",
+    name: "Kavolith Launchpad",
     setup: LAUNCHPAD_SETUP,
     outcome: "Start with a clear map of your process and one workflow running in production.",
     features: [
-      "Initial systems audit and process map",
-      "One automated workflow built and deployed",
-      "Handoff documentation",
-      "One free update round (up to 3 pages) within 30 days of launch",
+      "Sub-300ms React/Tailwind web portal (dark/light mode)",
+      "Domain, SSL & cloud hosting included",
+      "Smart AI interactive intake form",
+      "WhatsApp catalogue & UPI instant payment integration",
+      "AEO & GEO LocalBusiness JSON-LD schema",
+      "Google Maps optimization & automated Google Sheets funnel",
+      "GA4 analytics setup + 3 free annual updates",
+      "GBP Top-3 map-pack strategy",
+      "Google Workspace domain email setup",
     ],
   },
   {
     id: "scale",
-    name: "Scale",
+    name: "Kavolith Scale",
     setup: SCALE_SETUP,
     monthly: SCALE_MONTHLY,
     outcome: "Connect several workflows into one operating layer, with ongoing iteration.",
     features: [
-      "Everything in Launchpad",
-      "Multi-workflow integration (3–5 connected workflows)",
-      "Monthly iteration and support",
-      "3 free update rounds per year (3–4 pages each)",
-      "Twice-yearly free bug-fix pass",
-      "Quarterly site + social profile speed & analytics report",
+      "Everything in Launchpad + multi-page architecture",
+      "Automated online appointment & calendar booking",
+      "WhatsApp AI auto-responder (drip FAQs & pricing)",
+      "Single-screen lead pipeline dashboard (New → Closed)",
+      "GBP Top-3 map-pack strategy",
+      "Google Workspace domain email setup",
+      "100% of Launchpad amount paid credited toward this upgrade as loyalty credit (if upgrading within 90 days)",
     ],
     badge: "Most common",
     featured: true,
@@ -173,11 +179,14 @@ export const KAVOLITH_TIERS: Tier[] = [
     outcome: "Run an intelligence layer across every team, with build capacity reserved for you.",
     features: [
       "Everything in Scale",
-      "Full intelligence layer across teams",
-      "Priority build queue",
-      "3 free update rounds per year (up to 4 pages each)",
-      "Twice-yearly free bug-fix pass",
-      "Monthly site + profile speed & analytics report",
+      "Advanced AEO & GEO optimization suite",
+      "n8n automation workflows with integrated voice-chat AI agent",
+      "Official Google Workspace account included (1 year, 1 seat)",
+      "4 scheduled feature/content updates per year",
+      "Minimum 4-page multi-language AI-translated website",
+      "4-currency storefront support (INR/USD/EUR)",
+      "Custom .com domain included",
+      "Built on hardened, bot/vulnerability-protected infrastructure",
     ],
   },
 ];
@@ -189,9 +198,13 @@ export const AUTOMATION_TIERS: Tier[] = [
     setup: LAUNCHPAD_SETUP,
     outcome: "Automate the one process that costs your team the most manual hours.",
     features: [
-      "Process mapping session and workflow spec",
-      "One production workflow with error handling",
+      "Process mapping session and written workflow spec",
+      "One production workflow with retry and error handling",
+      "Smart AI intake form feeding the workflow",
+      "WhatsApp notification & UPI payment link step",
+      "Automated Google Sheets / CRM record funnel",
       "Runbook and handoff documentation",
+      "GA4 event tracking on the automated path",
       "One free update round (up to 3 workflow steps) within 30 days of launch",
     ],
   },
@@ -202,12 +215,14 @@ export const AUTOMATION_TIERS: Tier[] = [
     monthly: SCALE_MONTHLY,
     outcome: "Wire your core tools together so data stops being re-entered by hand.",
     features: [
-      "Everything in Single Flow",
+      "Everything in Single Flow + multi-tool architecture",
       "Multi-tool integration and CRM sync (3–5 connected workflows)",
+      "Automated appointment & calendar booking flow",
+      "WhatsApp AI auto-responder (drip FAQs & pricing)",
+      "Single-screen lead pipeline dashboard (New → Closed)",
       "Monitoring, alerting, and monthly iteration",
-      "3 free update rounds per year (3–4 workflow changes each)",
-      "Twice-yearly free bug-fix pass",
       "Quarterly automation reliability & throughput report",
+      "100% of Single Flow amount paid credited as loyalty credit (if upgrading within 90 days)",
     ],
     badge: "Most common",
     featured: true,
@@ -221,13 +236,38 @@ export const AUTOMATION_TIERS: Tier[] = [
     features: [
       "Everything in Ops Stack",
       "Department-wide workflow coverage",
+      "n8n automation workflows with integrated voice-chat AI agent",
+      "Official Google Workspace account included (1 year, 1 seat)",
+      "4 scheduled workflow/feature updates per year",
+      "Multi-language automated messaging (EN/Telugu/Hindi)",
+      "4-currency payment handling (INR/USD/EUR)",
       "Priority build queue and quarterly review",
-      "3 free update rounds per year (up to 4 workflow changes each)",
-      "Twice-yearly free bug-fix pass",
-      "Monthly automation reliability & throughput report",
+      "Built on hardened, bot/vulnerability-protected infrastructure",
     ],
   },
 ];
+
+/** Small checkmark used for itemized deliverables. */
+function CheckIcon() {
+  return (
+    <svg
+      aria-hidden
+      viewBox="0 0 16 16"
+      className="mt-[3px] h-3.5 w-3.5 shrink-0 text-accent"
+      role="presentation"
+    >
+      <path
+        d="M3 8.5l3.2 3.2L13 4.8"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 
 function PricingGridBase({ tiers, note }: { tiers: Tier[]; note?: string }) {
   const [currency, setCurrency] = useState<Currency>("USD");
@@ -290,14 +330,15 @@ function PricingGridBase({ tiers, note }: { tiers: Tier[]; note?: string }) {
 
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{t.outcome}</p>
 
-            <ul className="mt-5 space-y-2 text-sm">
+            <ul className="mt-5 space-y-2.5 text-sm">
               {t.features.map((f) => (
-                <li key={f} className="flex gap-2 text-muted-foreground">
-                  <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                <li key={f} className="flex items-start gap-2.5 leading-relaxed text-muted-foreground">
+                  <CheckIcon />
                   <span>{f}</span>
                 </li>
               ))}
             </ul>
+
 
             <meta itemProp="priceCurrency" content={currency} />
             <meta itemProp="price" content={String(t.setup.now[currency])} />

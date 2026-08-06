@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { SiteNav } from "./site-nav";
 import { SiteFooter } from "./site-footer";
 import { CircuitBackdrop, CircuitDivider, NodeGlyph } from "./motifs";
+import { PhotoBackdrop } from "./photo-backdrop";
 import { Translate } from "@/i18n";
 
 export function PageShell({ children }: { children: ReactNode }) {
@@ -35,6 +36,31 @@ export function Section({
     </section>
   );
 }
+
+/** Section with a realistic photographic backdrop under a violet-tinted overlay. */
+export function PhotoSection({
+  children,
+  image,
+  priority = false,
+  className = "",
+  id,
+}: {
+  children: ReactNode;
+  image: string;
+  priority?: boolean;
+  className?: string;
+  id?: string;
+}) {
+  return (
+    <div className="relative isolate overflow-hidden">
+      <PhotoBackdrop src={image} priority={priority} />
+      <Section id={id} className={className}>
+        {children}
+      </Section>
+    </div>
+  );
+}
+
 
 export function Eyebrow({ children }: { children: ReactNode }) {
   return (
