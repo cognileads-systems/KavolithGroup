@@ -8,7 +8,7 @@ import { Translate } from "@/i18n";
 export function PageShell({ children }: { children: ReactNode }) {
   return (
     <div className="relative min-h-screen bg-ink text-foreground">
-      <CircuitBackdrop className="fixed opacity-60" />
+      <CircuitBackdrop className="fixed opacity-100" />
       <div className="relative">
         <SiteNav />
         <main>
