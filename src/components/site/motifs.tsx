@@ -29,7 +29,7 @@ export function NodeLattice({ className = "" }: { className?: string }) {
       aria-hidden
       role="presentation"
       viewBox="0 0 1200 700"
-      preserveAspectRatio="xMidYMid slice"
+      preserveAspectRatio="none"
       className={`absolute inset-0 h-full w-full ${className}`}
     >
       {LINKS.map(([a, b], i) => {
