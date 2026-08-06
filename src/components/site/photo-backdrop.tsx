@@ -26,6 +26,12 @@ export function PhotoBackdrop({
         {...(priority ? {} : { loading: "lazy" as const })}
         className="h-full w-full object-cover opacity-[0.75]"
       />
+      {/* Violet duotone guard: forces any photo to a single accent hue so no
+          competing colours (green/red/amber status lights) survive. */}
+      <div
+        className="absolute inset-0 mix-blend-color"
+        style={{ background: "var(--accent)", opacity: 0.85 }}
+      />
       <div
         className="absolute inset-0"
         style={{
