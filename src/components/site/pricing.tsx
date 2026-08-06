@@ -330,14 +330,15 @@ function PricingGridBase({ tiers, note }: { tiers: Tier[]; note?: string }) {
 
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{t.outcome}</p>
 
-            <ul className="mt-5 space-y-2 text-sm">
+            <ul className="mt-5 space-y-2.5 text-sm">
               {t.features.map((f) => (
-                <li key={f} className="flex gap-2 text-muted-foreground">
-                  <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                <li key={f} className="flex items-start gap-2.5 leading-relaxed text-muted-foreground">
+                  <CheckIcon />
                   <span>{f}</span>
                 </li>
               ))}
             </ul>
+
 
             <meta itemProp="priceCurrency" content={currency} />
             <meta itemProp="price" content={String(t.setup.now[currency])} />
