@@ -74,11 +74,11 @@ export function NodeLattice({ className = "" }: { className?: string }) {
 export function CircuitBackdrop({ className = "" }: { className?: string }) {
   return (
     <div aria-hidden className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}>
-      <div className="circuit-grid absolute inset-0" />
       <NodeLattice />
     </div>
   );
 }
+
 
 
 /** Thin node-and-connection line used between sections.
