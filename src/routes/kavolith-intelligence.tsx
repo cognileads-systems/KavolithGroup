@@ -2,12 +2,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   PageShell,
   Section,
-  PhotoSection,
   LatticeSection,
   Eyebrow,
   SectionTitle,
 } from "@/components/site/layout";
-import photoLattice from "@/assets/photo-lattice.jpg";
 
 const SITE = "https://kavolithgroup.lovable.app";
 
