@@ -1,5 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageShell, Section, Eyebrow, SectionTitle } from "@/components/site/layout";
+import {
+  PageShell,
+  Section,
+  PhotoSection,
+  Eyebrow,
+  SectionTitle,
+} from "@/components/site/layout";
+import photoLattice from "@/assets/photo-lattice.jpg";
 
 const SITE = "https://kavolithgroup.lovable.app";
 
@@ -156,8 +163,8 @@ function IntelligencePage() {
           >
             Book a presale slot
           </Link>
-        </Section>
-      </div>
+        </div>
+      </PhotoSection>
 
       <Section className="pt-0">
         <SectionTitle
