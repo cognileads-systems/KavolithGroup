@@ -74,7 +74,6 @@ export function LatticeSection({
   return (
     <div className="relative isolate overflow-hidden">
       <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="circuit-grid absolute inset-0" />
         <NodeLattice />
       </div>
       <Section id={id} className={`relative ${className}`}>
@@ -83,6 +82,34 @@ export function LatticeSection({
     </div>
   );
 }
+
+/** Photographic base layer with the two-tone node lattice as a top accent. */
+export function PhotoLatticeSection({
+  children,
+  image,
+  priority = false,
+  className = "",
+  id,
+}: {
+  children: ReactNode;
+  image: string;
+  priority?: boolean;
+  className?: string;
+  id?: string;
+}) {
+  return (
+    <div className="relative isolate overflow-hidden">
+      <PhotoBackdrop src={image} priority={priority} />
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+        <NodeLattice />
+      </div>
+      <Section id={id} className={`relative ${className}`}>
+        {children}
+      </Section>
+    </div>
+  );
+}
+
 
 
 
