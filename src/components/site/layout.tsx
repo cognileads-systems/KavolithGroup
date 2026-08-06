@@ -1,13 +1,21 @@
 import type { ReactNode } from "react";
 import { SiteNav } from "./site-nav";
 import { SiteFooter } from "./site-footer";
+import { CircuitBackdrop, CircuitDivider, NodeGlyph } from "./motifs";
+import { Translate } from "@/i18n";
 
 export function PageShell({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-ink text-foreground">
-      <SiteNav />
-      <main>{children}</main>
-      <SiteFooter />
+    <div className="relative min-h-screen bg-ink text-foreground">
+      <CircuitBackdrop className="fixed opacity-60" />
+      <div className="relative">
+        <SiteNav />
+        <main>
+          <Translate>{children}</Translate>
+        </main>
+        <CircuitDivider className="pb-6" />
+        <SiteFooter />
+      </div>
     </div>
   );
 }
@@ -31,6 +39,7 @@ export function Section({
 export function Eyebrow({ children }: { children: ReactNode }) {
   return (
     <div className="inline-flex items-center gap-2 rounded-full bg-accent-soft px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+      <NodeGlyph />
       {children}
     </div>
   );
@@ -63,7 +72,7 @@ export function Card({
 }) {
   return (
     <div
-      className={`rounded-xl border border-border bg-surface p-6 transition-colors hover:border-accent/40 ${className}`}
+      className={`relative overflow-hidden rounded-xl border border-border bg-surface p-6 transition-colors hover:border-accent/40 ${className}`}
     >
       {children}
     </div>
