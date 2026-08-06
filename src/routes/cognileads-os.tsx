@@ -4,12 +4,13 @@ import {
   PageShell,
   Section,
   PhotoSection,
+  PhotoLatticeSection,
   Eyebrow,
   SectionTitle,
 } from "@/components/site/layout";
 import photoDataviz from "@/assets/photo-dataviz.jpg";
+import photoLattice from "@/assets/photo-lattice.jpg";
 
-import { NodeLattice } from "@/components/site/motifs";
 import { LivePipelineDemo } from "@/components/site/live-pipeline-demo";
 import {
   CurrencyToggle,
@@ -242,13 +243,7 @@ const TERMS = [
 function CogniLeadsOSPage() {
   return (
     <PageShell>
-      <div className="relative isolate overflow-hidden">
-        <div aria-hidden className="pointer-events-none absolute inset-0">
-          <div className="circuit-grid absolute inset-0" />
-          <NodeLattice />
-        </div>
-        <div className="blob right-[8%] top-[-100px] h-[340px] w-[340px]" />
-        <Section className="relative grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+      <PhotoLatticeSection image={photoLattice} priority className="grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-center">
 
           <div>
             <Eyebrow>A Kavolith Company</Eyebrow>
@@ -267,8 +262,7 @@ function CogniLeadsOSPage() {
             </Link>
           </div>
           <LivePipelineDemo />
-        </Section>
-      </div>
+      </PhotoLatticeSection>
 
       <Section className="pt-0">
         <SectionTitle
