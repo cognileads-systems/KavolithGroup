@@ -118,7 +118,7 @@ function DeploymentPriceCard() {
 
 
 
-const SITE = "https://kavolithgroup.lovable.app";
+const SITE = "https://kavolith.com";
 
 export const Route = createFileRoute("/cognileads-os")({
   component: CogniLeadsOSPage,

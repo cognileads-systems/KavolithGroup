@@ -9,7 +9,7 @@ import {
 } from "@/components/site/layout";
 import photoNeural from "@/assets/photo-neural.jpg";
 
-const SITE = "https://kavolithgroup.lovable.app";
+const SITE = "https://kavolith.com";
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,
