@@ -13,7 +13,7 @@ import photoNeural from "@/assets/photo-neural.jpg";
 import { PricingGrid, KAVOLITH_TIERS } from "@/components/site/pricing";
 import { CASE_STUDIES, CaseStudyCard } from "@/components/site/case-studies";
 
-const SITE = "https://kavolithgroup.lovable.app";
+const SITE = "https://kavolith.com";
 
 export const Route = createFileRoute("/kavolith")({
   component: KavolithPage,

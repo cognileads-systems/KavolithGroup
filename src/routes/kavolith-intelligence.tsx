@@ -8,7 +8,7 @@ import {
 } from "@/components/site/layout";
 import photoLattice from "@/assets/photo-lattice.jpg";
 
-const SITE = "https://kavolithgroup.lovable.app";
+const SITE = "https://kavolith.com";
 
 const FAQS = [
   {

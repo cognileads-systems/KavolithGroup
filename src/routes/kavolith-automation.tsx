@@ -12,7 +12,7 @@ import photoDataviz from "@/assets/photo-dataviz.jpg";
 import { PricingGrid, AUTOMATION_TIERS } from "@/components/site/pricing";
 import { AUTOMATION_CASE_STUDIES, CaseStudyCard } from "@/components/site/case-studies";
 
-const SITE = "https://kavolithgroup.lovable.app";
+const SITE = "https://kavolith.com";
 
 export const Route = createFileRoute("/kavolith-automation")({
   component: AutomationPage,

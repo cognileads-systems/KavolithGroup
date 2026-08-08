@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell, Section, Eyebrow, SectionTitle } from "@/components/site/layout";
 
-const SITE = "https://kavolithgroup.lovable.app";
+const SITE = "https://kavolith.com";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
