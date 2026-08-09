@@ -139,6 +139,11 @@ export const Route = createFileRoute("/cognileads-os")({
       { property: "og:type", content: "product" },
       { property: "og:url", content: `${SITE}/cognileads-os` },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: "https://kavolith.com/kavolith-og.svg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:type", content: "image/svg+xml" },
+      { name: "twitter:image", content: "https://kavolith.com/kavolith-og.svg" },
     ],
     links: [{ rel: "canonical", href: `${SITE}/cognileads-os` }],
     scripts: [
