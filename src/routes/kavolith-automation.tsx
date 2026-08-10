@@ -48,23 +48,81 @@ export const Route = createFileRoute("/kavolith-automation")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "Service",
-          "@id": `${SITE}/kavolith-automation#service`,
-          name: "Kavolith Automation",
-          url: `${SITE}/kavolith-automation`,
-          serviceType: "Business process automation engineering",
-          areaServed: "IN",
-          provider: { "@type": "Organization", name: "Kavolith Group" },
-          hasOfferCatalog: {
-            "@type": "OfferCatalog",
-            name: "Automation packages",
-            itemListElement: AUTOMATION_TIERS.map((t) => ({
-              "@type": "Offer",
-              name: t.name,
-              price: String(t.setup.now.INR),
-              priceCurrency: "INR",
-            })),
-          },
+          "@graph": [
+            {
+              "@type": "Service",
+              "@id": `${SITE}/kavolith-automation#service`,
+              name: "Kavolith Automation",
+              url: `${SITE}/kavolith-automation`,
+              serviceType: "Business process automation engineering",
+              areaServed: "IN",
+              provider: { "@type": "Organization", name: "Kavolith Group" },
+              hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: "Automation packages",
+                itemListElement: AUTOMATION_TIERS.map((t) => ({
+                  "@type": "Offer",
+                  name: t.name,
+                  price: String(t.setup.now.INR),
+                  priceCurrency: "INR",
+                })),
+              },
+            },
+            {
+              "@type": "FAQPage",
+              "@id": `${SITE}/kavolith-automation#faq`,
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "What kinds of processes can Kavolith Automation handle?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "We automate lead routing and assignment, invoice generation and payment follow-up, CRM synchronisation, inbound enquiry capture, document collection, appointment reminders, internal approval chasing, and scheduled reporting. If your process runs on logic and repeatable steps, we can automate it.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "What tools do you use to build automations?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "We build on Make.com, n8n, and Python/FastAPI depending on the complexity and hosting requirements. For AI-powered workflows we integrate Gemini and other LLM APIs. We recommend the tool that costs least to maintain in the long run, not the one that is easiest to sell.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "How long does automation setup take?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Single-workflow automations typically go live within one to two weeks. Multi-system builds run two to four weeks. A fixed delivery date is agreed before work begins.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Do I need any technical knowledge to work with Kavolith Automation?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "No. You describe the process and the outcome you want. We handle the technical design, build, testing, and deployment. We also hand over documentation written in plain language so your team can understand what runs and why.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "What if an automation breaks after launch?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Every automation we build includes error handling and monitoring so failures surface immediately rather than silently losing data. Scale and Premium packages include a monthly maintenance window. Critical failures are addressed as a priority regardless of tier.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "How is automation priced?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Fixed price per engagement, agreed before work starts. Launchpad covers a single workflow build. Scale and Premium cover multi-workflow systems with ongoing monthly iteration. A 30% founding-client discount is currently available across all tiers.",
+                  },
+                },
+              ],
+            },
+          ],
         }),
       },
     ],
