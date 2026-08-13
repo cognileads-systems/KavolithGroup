@@ -58,6 +58,8 @@ export const Route = createFileRoute("/contact")({
               contactPoint: {
                 "@type": "ContactPoint",
                 contactType: "sales",
+                email: "arafath@kavolith.com",
+                telephone: "+919492044168",
                 availableLanguage: ["English", "Telugu", "Hindi"],
                 areaServed: "IN",
               },
