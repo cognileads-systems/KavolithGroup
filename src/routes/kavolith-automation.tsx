@@ -174,6 +174,9 @@ function AutomationPage() {
         >
           Scope an automation
         </Link>
+        <div className="mt-4">
+          <WhatsAppGhostButton />
+        </div>
       </PhotoLatticeSection>
 
       <Section className="pt-0">
