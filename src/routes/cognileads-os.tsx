@@ -265,6 +265,9 @@ function CogniLeadsOSPage() {
             >
               Request a deployment scope
             </Link>
+            <div className="mt-4">
+              <WhatsAppGhostButton />
+            </div>
           </div>
           <LivePipelineDemo />
       </PhotoLatticeSection>
