@@ -8,6 +8,7 @@ import {
   SectionTitle,
 } from "@/components/site/layout";
 import photoNeural from "@/assets/photo-neural.jpg";
+import { WhatsAppInline } from "@/components/site/how-we-work";
 
 const SITE = "https://kavolith.com";
 
