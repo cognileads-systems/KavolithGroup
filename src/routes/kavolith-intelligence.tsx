@@ -168,6 +168,9 @@ function IntelligencePage() {
           >
             Book a presale slot
           </Link>
+          <div className="mt-4">
+            <WhatsAppGhostButton />
+          </div>
         </div>
       </PhotoLatticeSection>
 
