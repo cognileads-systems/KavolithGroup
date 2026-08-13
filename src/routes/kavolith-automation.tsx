@@ -11,6 +11,7 @@ import photoDataviz from "@/assets/photo-dataviz.jpg";
 
 import { PricingGrid, AUTOMATION_TIERS } from "@/components/site/pricing";
 import { AUTOMATION_CASE_STUDIES, CaseStudyCard } from "@/components/site/case-studies";
+import { WhatsAppGhostButton } from "@/components/site/how-we-work";
 
 const SITE = "https://kavolith.com";
 
