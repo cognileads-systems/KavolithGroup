@@ -9,6 +9,13 @@ const BRANDS = [
   { to: "/kavolith-automation", name: "Kavolith Automation", note: "Automation Engineering Platform" },
 ] as const;
 
+const SOCIALS = [
+  { label: "Instagram", href: "https://www.instagram.com/kavolithgroup" },
+  { label: "Facebook", href: "https://www.facebook.com/share/1DDknf8Po1/" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/mohammed-arfath-59374845/" },
+  { label: "WhatsApp", href: "https://wa.me/919492044168" },
+] as const;
+
 export function SiteFooter() {
   return (
     <Translate>
