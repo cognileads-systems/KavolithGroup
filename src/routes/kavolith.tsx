@@ -217,6 +217,10 @@ function KavolithPage() {
         </div>
       </Section>
 
+      <Section className="pt-0">
+        <HowWeWorkCompact />
+      </Section>
+
       <PhotoSection image={photoDataviz} className="pt-0">
         <SectionTitle
           eyebrow="Pricing"
