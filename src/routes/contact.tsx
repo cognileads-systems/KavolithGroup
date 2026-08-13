@@ -93,7 +93,10 @@ function ContactPage() {
 
       <Section className="pt-0">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
-          <ContactForm />
+          <div>
+            <ContactForm />
+            <WhatsAppInline prompt="Prefer to chat directly?" />
+          </div>
           <div>
             <SectionTitle eyebrow="What happens next" title="Three steps" />
             <ol className="mt-6 space-y-4">
