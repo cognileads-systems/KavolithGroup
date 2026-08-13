@@ -65,6 +65,11 @@ export const Route = createFileRoute("/about")({
               name: "Arfath",
               jobTitle: "Founder",
               worksFor: { "@type": "Organization", name: "Kavolith Group" },
+              sameAs: [
+                "https://www.linkedin.com/in/mohammed-arfath-59374845/",
+                "https://www.instagram.com/kavolithgroup",
+                "https://www.facebook.com/share/1DDknf8Po1/",
+              ],
               knowsAbout: [
                 "AI systems engineering",
                 "Business process automation",
