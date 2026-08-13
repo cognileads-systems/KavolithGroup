@@ -10,6 +10,7 @@ import {
 } from "@/components/site/layout";
 import photoDataviz from "@/assets/photo-dataviz.jpg";
 import photoLattice from "@/assets/photo-lattice.jpg";
+import { WhatsAppGhostButton } from "@/components/site/how-we-work";
 
 import { LivePipelineDemo } from "@/components/site/live-pipeline-demo";
 import {
@@ -265,6 +266,9 @@ function CogniLeadsOSPage() {
             >
               Request a deployment scope
             </Link>
+            <div className="mt-4">
+              <WhatsAppGhostButton />
+            </div>
           </div>
           <LivePipelineDemo />
       </PhotoLatticeSection>

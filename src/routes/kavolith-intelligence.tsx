@@ -7,6 +7,7 @@ import {
   SectionTitle,
 } from "@/components/site/layout";
 import photoLattice from "@/assets/photo-lattice.jpg";
+import { WhatsAppGhostButton } from "@/components/site/how-we-work";
 
 const SITE = "https://kavolith.com";
 
@@ -168,6 +169,9 @@ function IntelligencePage() {
           >
             Book a presale slot
           </Link>
+          <div className="mt-4">
+            <WhatsAppGhostButton />
+          </div>
         </div>
       </PhotoLatticeSection>
 

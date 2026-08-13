@@ -8,6 +8,7 @@ import {
   SectionTitle,
 } from "@/components/site/layout";
 import photoNeural from "@/assets/photo-neural.jpg";
+import { WhatsAppInline } from "@/components/site/how-we-work";
 
 const SITE = "https://kavolith.com";
 
@@ -65,6 +66,11 @@ export const Route = createFileRoute("/about")({
               name: "Arfath",
               jobTitle: "Founder",
               worksFor: { "@type": "Organization", name: "Kavolith Group" },
+              sameAs: [
+                "https://www.linkedin.com/in/mohammed-arfath-59374845/",
+                "https://www.instagram.com/kavolithgroup",
+                "https://www.facebook.com/share/1DDknf8Po1/",
+              ],
               knowsAbout: [
                 "AI systems engineering",
                 "Business process automation",
@@ -134,6 +140,7 @@ function AboutPage() {
               <p>
                 We're based in Hyderabad, Telangana, and work with clients across India.
               </p>
+              <WhatsAppInline prompt="Want to talk directly?" />
             </div>
           </div>
 

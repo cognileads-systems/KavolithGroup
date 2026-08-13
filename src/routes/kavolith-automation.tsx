@@ -11,6 +11,7 @@ import photoDataviz from "@/assets/photo-dataviz.jpg";
 
 import { PricingGrid, AUTOMATION_TIERS } from "@/components/site/pricing";
 import { AUTOMATION_CASE_STUDIES, CaseStudyCard } from "@/components/site/case-studies";
+import { WhatsAppGhostButton } from "@/components/site/how-we-work";
 
 const SITE = "https://kavolith.com";
 
@@ -174,6 +175,9 @@ function AutomationPage() {
         >
           Scope an automation
         </Link>
+        <div className="mt-4">
+          <WhatsAppGhostButton />
+        </div>
       </PhotoLatticeSection>
 
       <Section className="pt-0">
