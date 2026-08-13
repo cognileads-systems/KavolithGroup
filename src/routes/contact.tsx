@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, Section, Eyebrow, SectionTitle } from "@/components/site/layout";
 import { ContactForm } from "@/components/site/contact-form";
+import { WhatsAppInline } from "@/components/site/how-we-work";
 
 const SITE = "https://kavolith.com";
 
