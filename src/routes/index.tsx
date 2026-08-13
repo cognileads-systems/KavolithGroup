@@ -182,6 +182,10 @@ function HomePage() {
           ))}
         </div>
       </Section>
+
+      <Section className="pt-0">
+        <HowWeWork />
+      </Section>
     </PageShell>
   );
 }
