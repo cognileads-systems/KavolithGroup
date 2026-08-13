@@ -139,6 +139,7 @@ function AboutPage() {
               <p>
                 We're based in Hyderabad, Telangana, and work with clients across India.
               </p>
+              <WhatsAppInline prompt="Want to talk directly?" />
             </div>
           </div>
 
