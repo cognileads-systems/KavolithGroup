@@ -57,9 +57,26 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-border px-6 py-5">
-        <p className="mx-auto max-w-6xl font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-          © 2026 Kavolith Group — Engineer Intelligence into Business.
-        </p>
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+            © 2026 Kavolith Group — Engineer Intelligence into Business.
+          </p>
+          <ul className="flex items-center gap-4 font-mono text-[11px] uppercase tracking-[0.2em]">
+            {SOCIALS.map((s) => (
+              <li key={s.label}>
+                <a
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="text-muted-foreground transition-colors hover:text-accent"
+                >
+                  {s.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </footer>
     </Translate>
