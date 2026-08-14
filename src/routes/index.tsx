@@ -189,6 +189,11 @@ function HomePage() {
       <Section className="pt-0">
         <HowWeWork />
       </Section>
+
+      <FaqSection
+        items={HOME_FAQS}
+        subheading="Questions clients ask before booking a call."
+      />
     </PageShell>
   );
 }
