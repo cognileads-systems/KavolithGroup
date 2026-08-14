@@ -81,6 +81,7 @@ export const Route = createFileRoute("/")({
               publisher: { "@id": `${SITE}/#organization` },
               inLanguage: "en",
             },
+            faqSchema(`${SITE}/#faq`, HOME_FAQS),
           ],
         }),
       },
