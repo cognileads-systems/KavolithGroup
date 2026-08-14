@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell, Section, Eyebrow, SectionTitle } from "@/components/site/layout";
 import { HowWeWork } from "@/components/site/how-we-work";
+import { FaqSection, faqSchema, HOME_FAQS } from "@/components/site/faq";
 
 const SITE = "https://kavolith.com";
 
