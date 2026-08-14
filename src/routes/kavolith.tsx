@@ -13,6 +13,7 @@ import photoNeural from "@/assets/photo-neural.jpg";
 import { PricingGrid, KAVOLITH_TIERS } from "@/components/site/pricing";
 import { CASE_STUDIES, CaseStudyCard } from "@/components/site/case-studies";
 import { HowWeWorkCompact } from "@/components/site/how-we-work";
+import { FaqSection, faqSchema, KAVOLITH_FAQS } from "@/components/site/faq";
 
 const SITE = "https://kavolith.com";
 
@@ -89,68 +90,7 @@ export const Route = createFileRoute("/kavolith")({
               },
               parentOrganization: { "@type": "Organization", name: "Kavolith Group" },
             },
-            {
-              "@type": "FAQPage",
-              "@id": `${SITE}/kavolith#faq`,
-              mainEntity: [
-                {
-                  "@type": "Question",
-                  name: "What is included in the systems audit?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "We map how work actually moves through your business — every handoff, spreadsheet, and manual step — and identify where time and revenue are leaking. You receive a written findings report and a prioritised list of automation opportunities before any build begins.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "How long does a Kavolith engagement take?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "A Launchpad engagement typically completes in two to four weeks. Scale engagements run four to eight weeks. Premium and custom builds are scoped individually. You receive a fixed delivery date before work begins.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "How much does Kavolith cost?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Launchpad starts at ₹46,000 one-time. Scale starts at ₹58,000 setup plus ₹28,500 per month. Premium starts at ₹90,000 setup plus ₹40,000 per month. A founding-client discount of 30% is currently available. All prices are confirmed in writing before work begins.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "Who owns the code and workflows after delivery?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "You do, completely. Source code, workflow configurations, and all credentials are handed over on final payment. Kavolith retains no rights to reuse your proprietary systems.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "How does payment work?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Milestone-based. Typically 50% to begin and 50% on handover for Launchpad. Larger engagements split across sprint milestones. The quoted price is the final price unless scope changes, and scope changes are agreed in writing before work continues.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "Do you work with businesses outside Hyderabad?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Yes. We work with businesses across India and with international clients in the US, EU, and GCC. Delivery is remote-first. International engagements are quoted in USD or EUR.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "What happens after the build is complete?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Every engagement includes full handover documentation and a support window. Scale and Premium tiers include ongoing monthly iteration. If you need continued support beyond the initial engagement, a monthly retainer can be scoped separately.",
-                  },
-                },
-              ],
-            },
+            faqSchema(`${SITE}/kavolith#faq`, KAVOLITH_FAQS),
           ],
         }),
       },
@@ -247,6 +187,11 @@ function KavolithPage() {
           ))}
         </div>
       </Section>
+
+      <FaqSection
+        items={KAVOLITH_FAQS}
+        subheading="Everything you should know before you book."
+      />
     </PageShell>
   );
 }

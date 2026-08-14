@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell, Section, Eyebrow, SectionTitle } from "@/components/site/layout";
 import { HowWeWork } from "@/components/site/how-we-work";
+import { FaqSection, faqSchema, HOME_FAQS } from "@/components/site/faq";
 
 const SITE = "https://kavolith.com";
 
@@ -80,6 +81,7 @@ export const Route = createFileRoute("/")({
               publisher: { "@id": `${SITE}/#organization` },
               inLanguage: "en",
             },
+            faqSchema(`${SITE}/#faq`, HOME_FAQS),
           ],
         }),
       },
@@ -187,6 +189,11 @@ function HomePage() {
       <Section className="pt-0">
         <HowWeWork />
       </Section>
+
+      <FaqSection
+        items={HOME_FAQS}
+        subheading="Questions clients ask before booking a call."
+      />
     </PageShell>
   );
 }
