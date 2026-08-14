@@ -11,6 +11,7 @@ import {
 import photoDataviz from "@/assets/photo-dataviz.jpg";
 import photoLattice from "@/assets/photo-lattice.jpg";
 import { WhatsAppGhostButton } from "@/components/site/how-we-work";
+import { FaqSection, faqSchema, COGNILEADS_FAQS } from "@/components/site/faq";
 
 import { LivePipelineDemo } from "@/components/site/live-pipeline-demo";
 import {
@@ -193,6 +194,7 @@ export const Route = createFileRoute("/cognileads-os")({
                 seller: { "@type": "Organization", name: "Kavolith Group" },
               },
             },
+            faqSchema(`${SITE}/cognileads-os#faq`, COGNILEADS_FAQS),
           ],
         }),
       },
@@ -321,6 +323,10 @@ function CogniLeadsOSPage() {
         </div>
       </PhotoSection>
 
+      <FaqSection
+        items={COGNILEADS_FAQS}
+        subheading="How CogniLeads OS works and what to expect."
+      />
     </PageShell>
   );
 }

@@ -189,6 +189,10 @@ function AutomationPage() {
         </div>
       </Section>
 
+      <FaqSection
+        items={AUTOMATION_FAQS}
+        subheading="What we automate, how it works, and what to expect."
+      />
     </PageShell>
   );
 }
