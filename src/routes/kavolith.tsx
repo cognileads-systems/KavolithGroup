@@ -187,6 +187,11 @@ function KavolithPage() {
           ))}
         </div>
       </Section>
+
+      <FaqSection
+        items={KAVOLITH_FAQS}
+        subheading="Everything you should know before you book."
+      />
     </PageShell>
   );
 }
