@@ -8,35 +8,10 @@ import {
 } from "@/components/site/layout";
 import photoLattice from "@/assets/photo-lattice.jpg";
 import { WhatsAppGhostButton } from "@/components/site/how-we-work";
+import { FaqSection, faqSchema, INTELLIGENCE_FAQS } from "@/components/site/faq";
 
 const SITE = "https://kavolith.com";
 
-const FAQS = [
-  {
-    q: "What is Kavolith Intelligence?",
-    a: "Kavolith Intelligence is an Enterprise AI Workforce Platform: multilingual digital employees that own compliance, documentation, and HR/ops processes end to end instead of just answering messages.",
-  },
-  {
-    q: "Which languages are supported?",
-    a: "Both presale packages are multilingual and operate in English, Telugu, and Hindi.",
-  },
-  {
-    q: "When will it be available?",
-    a: "The platform is in build and available on presale. Booking requires one month's advance, and presale customers are onboarded in the order their booking is confirmed.",
-  },
-  {
-    q: "How is a digital employee different from a chatbot?",
-    a: "A chatbot replies to messages. A digital employee owns a process: it collects the required inputs, validates them against your rules, updates your systems, and escalates exceptions to a human.",
-  },
-  {
-    q: "Can it work with the systems we already use?",
-    a: "Yes. Digital employees are wired into the CRM, document store, and messaging tools you already run, rather than requiring a migration.",
-  },
-  {
-    q: "What does the advance booking cover?",
-    a: "One month's advance reserves your onboarding slot and starts the scoping work — process mapping, rule definition, and language configuration — before the platform goes live.",
-  },
-];
 
 const PACKAGES = [
   {
@@ -126,15 +101,7 @@ export const Route = createFileRoute("/kavolith-intelligence")({
                 },
               })),
             },
-            {
-              "@type": "FAQPage",
-              "@id": `${SITE}/kavolith-intelligence#faq`,
-              mainEntity: FAQS.map((f) => ({
-                "@type": "Question",
-                name: f.q,
-                acceptedAnswer: { "@type": "Answer", text: f.a },
-              })),
-            },
+            faqSchema(`${SITE}/kavolith-intelligence#faq`, INTELLIGENCE_FAQS),
           ],
         }),
       },
@@ -228,17 +195,10 @@ function IntelligencePage() {
         </div>
       </Section>
 
-      <Section className="pt-0">
-        <SectionTitle eyebrow="FAQ" title="Questions about the platform" />
-        <div className="mt-10 grid gap-4 md:grid-cols-2">
-          {FAQS.map((f) => (
-            <article key={f.q} className="rounded-xl border border-border bg-surface p-6">
-              <h3 className="text-base">{f.q}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{f.a}</p>
-            </article>
-          ))}
-        </div>
-      </Section>
+      <FaqSection
+        items={INTELLIGENCE_FAQS}
+        subheading="Package details, booking process, and how digital employees work."
+      />
     </PageShell>
   );
 }
