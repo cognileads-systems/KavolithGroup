@@ -113,6 +113,40 @@ function ContactPage() {
                 </li>
               ))}
             </ol>
+
+            <div className="mt-8 rounded-xl border border-accent/40 bg-panel p-6">
+              <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+                Direct lines
+              </div>
+              <dl className="mt-4 space-y-3 text-sm">
+                <div>
+                  <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                    Email
+                  </dt>
+                  <dd className="mt-1">
+                    <a
+                      href="mailto:arafath@kavolith.com"
+                      className="text-foreground transition-colors hover:text-accent"
+                    >
+                      arafath@kavolith.com
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                    Customer care
+                  </dt>
+                  <dd className="mt-1">
+                    <a
+                      href="tel:+919492044168"
+                      className="text-foreground transition-colors hover:text-accent"
+                    >
+                      +91 94920 44168
+                    </a>
+                  </dd>
+                </div>
+              </dl>
+            </div>
           </div>
         </div>
       </Section>
