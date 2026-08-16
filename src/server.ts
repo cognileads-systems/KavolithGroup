@@ -66,6 +66,8 @@ const SECURITY_HEADERS: Record<string, string> = {
 function withSecurityHeaders(response: Response): Response {
   const headers = new Headers(response.headers);
   for (const [key, value] of Object.entries(SECURITY_HEADERS)) {
+    // The CSP would block Vite's dev websocket/HMR client; production only.
+    if (key === "Content-Security-Policy" && import.meta.env.DEV) continue;
     if (!headers.has(key)) headers.set(key, value);
   }
   return new Response(response.body, {
