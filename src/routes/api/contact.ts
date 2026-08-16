@@ -92,6 +92,7 @@ export const Route = createFileRoute("/api/contact")({
           lead: {
             name: body.name ?? null,
             email: body.email,
+            phone: body.phone ?? null,
             company: body.company ?? null,
             message: body.message,
           },
