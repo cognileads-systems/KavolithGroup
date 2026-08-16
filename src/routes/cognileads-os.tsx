@@ -22,7 +22,7 @@ import {
   formatMoney,
   type Currency,
 } from "@/components/site/pricing";
-import { breadcrumbSchema } from "@/lib/seo";
+import { breadcrumbSchema, PRICE_VALID_UNTIL } from "@/lib/seo";
 
 const DEPLOYMENT_LIST: Record<Currency, [number, number]> = {
   INR: [120000, 250000],
@@ -171,6 +171,8 @@ export const Route = createFileRoute("/cognileads-os")({
             priceCurrency: "INR",
             lowPrice: "120000",
             highPrice: "250000",
+            offerCount: "2",
+            priceValidUntil: PRICE_VALID_UNTIL,
           },
             },
             {
@@ -185,6 +187,7 @@ export const Route = createFileRoute("/cognileads-os")({
                 "@type": "Offer",
                 priceCurrency: "INR",
                 price: "120000",
+                priceValidUntil: PRICE_VALID_UNTIL,
                 priceSpecification: {
                   "@type": "PriceSpecification",
                   minPrice: "120000",

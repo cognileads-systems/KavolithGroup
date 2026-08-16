@@ -9,7 +9,7 @@ import {
 import photoLattice from "@/assets/photo-lattice.jpg";
 import { WhatsAppGhostButton } from "@/components/site/how-we-work";
 import { FaqSection, faqSchema, INTELLIGENCE_FAQS } from "@/components/site/faq";
-import { breadcrumbSchema } from "@/lib/seo";
+import { breadcrumbSchema, PRICE_VALID_UNTIL } from "@/lib/seo";
 
 const SITE = "https://kavolith.com";
 
@@ -96,6 +96,7 @@ export const Route = createFileRoute("/kavolith-intelligence")({
                 name: p.name,
                 availability: "https://schema.org/PreOrder",
                 priceCurrency: "INR",
+                priceValidUntil: PRICE_VALID_UNTIL,
                 priceSpecification: {
                   "@type": "PriceSpecification",
                   description: "Predefined rate, confirmed at scoping. One-month advance booking.",

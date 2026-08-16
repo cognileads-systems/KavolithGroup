@@ -14,7 +14,7 @@ import { PricingGrid, KAVOLITH_TIERS } from "@/components/site/pricing";
 import { CASE_STUDIES, CaseStudyCard } from "@/components/site/case-studies";
 import { HowWeWorkCompact } from "@/components/site/how-we-work";
 import { FaqSection, faqSchema, KAVOLITH_FAQS } from "@/components/site/faq";
-import { breadcrumbSchema } from "@/lib/seo";
+import { breadcrumbSchema, PRICE_VALID_UNTIL } from "@/lib/seo";
 
 const SITE = "https://kavolith.com";
 
@@ -74,6 +74,7 @@ export const Route = createFileRoute("/kavolith")({
               name: t.name,
               price: String(t.setup.now.INR),
               priceCurrency: "INR",
+              priceValidUntil: PRICE_VALID_UNTIL,
             })),
           },
             },
