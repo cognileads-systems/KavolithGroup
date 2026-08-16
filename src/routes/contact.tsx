@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, Section, Eyebrow, SectionTitle } from "@/components/site/layout";
 import { ContactForm } from "@/components/site/contact-form";
 import { WhatsAppInline } from "@/components/site/how-we-work";
+import { breadcrumbSchema } from "@/lib/seo";
 
 const SITE = "https://kavolith.com";
 
@@ -24,11 +25,11 @@ export const Route = createFileRoute("/contact")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE}/contact` },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:image", content: "https://kavolith.com/kavolith-og.svg" },
+      { property: "og:image", content: "https://kavolith.com/kavolith-og.png" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:type", content: "image/svg+xml" },
-      { name: "twitter:image", content: "https://kavolith.com/kavolith-og.svg" },
+      { property: "og:image:type", content: "image/png" },
+      { name: "twitter:image", content: "https://kavolith.com/kavolith-og.png" },
     ],
     links: [{ rel: "canonical", href: `${SITE}/contact` }],
     scripts: [
@@ -37,6 +38,7 @@ export const Route = createFileRoute("/contact")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@graph": [
+            breadcrumbSchema([{ name: "Contact", path: "/contact" }]),
             {
               "@type": "ContactPage",
               "@id": `${SITE}/contact#contact`,
