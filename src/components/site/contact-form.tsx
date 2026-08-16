@@ -13,6 +13,7 @@ function ContactFormBase() {
     const fd = new FormData(form);
     const name = String(fd.get("name") || "").trim();
     const email = String(fd.get("email") || "").trim();
+    const phone = String(fd.get("phone") || "").trim();
     const company = String(fd.get("company") || "").trim();
     const message = String(fd.get("message") || "").trim();
 
@@ -34,7 +35,7 @@ function ContactFormBase() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, company, message }),
+        body: JSON.stringify({ name, email, phone, company, message }),
       });
       const json = await response.json();
       if (response.ok && json?.ok === true) {
@@ -66,7 +67,8 @@ function ContactFormBase() {
           error={errors.email}
         />
       </div>
-      <div className="mt-5">
+      <div className="mt-5 grid gap-5 md:grid-cols-2">
+        <Field label="Phone (optional)" name="phone" type="tel" placeholder="+91 98765 43210" />
         <Field label="Company" name="company" placeholder="Northwind Realty" />
       </div>
       <div className="mt-5">
