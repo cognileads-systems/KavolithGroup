@@ -130,13 +130,15 @@ export const Route = createFileRoute("/api/contact")({
           results.email = { status: "logged" };
         }
 
-        // 2) Make.com webhook
+        // 2) Make.com webhook (primary router)
         const makeUrl = process.env.MAKE_WEBHOOK_URL;
+        let makeDelivered = false;
         if (makeUrl) {
           const makeToken = process.env.MAKE_WEBHOOK_TOKEN;
           const flatPayload = {
             name: body.name ?? "",
             email: body.email,
+            phone: body.phone ?? "",
             company: body.company ?? "",
             message: body.message,
             source: "kavolith.com//web",
@@ -149,6 +151,7 @@ export const Route = createFileRoute("/api/contact")({
               body: JSON.stringify(flatPayload),
             });
             results.make = { status: r.status };
+            makeDelivered = r.ok;
             if (!r.ok) hadFailure = true;
           } catch (e) {
             results.make = { error: String(e) };
@@ -156,6 +159,18 @@ export const Route = createFileRoute("/api/contact")({
           }
         } else {
           results.make = { status: "not_configured" };
+        }
+
+        // 3) Airtable backup — only when the primary router did not accept the lead
+        if (!makeDelivered) {
+          const fallback = await writeAirtableFallback({
+            name: body.name ?? "",
+            email: body.email,
+            phone: body.phone ?? "",
+            message: body.message,
+          });
+          results.airtable = fallback;
+          if (fallback.ok === true) hadFailure = false;
         }
 
         console.log(
