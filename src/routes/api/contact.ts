@@ -9,10 +9,64 @@ const transcriptEntrySchema = z.object({
 const contactSchema = z.object({
   name: z.string().trim().max(100).optional().nullable(),
   email: z.string().trim().email().max(255),
+  phone: z.string().trim().max(40).optional().nullable(),
   company: z.string().trim().max(150).optional().nullable(),
   message: z.string().trim().min(1).max(4000),
   audit_transcript: z.array(transcriptEntrySchema).max(50).optional(),
 });
+
+const AIRTABLE_BASE_ID = "appoNkt7vTXZ51J0r";
+const AIRTABLE_TABLE_ID = "tblpbTruwwEL4nmG6";
+
+/**
+ * Backup write straight into Airtable when the primary Make.com router is
+ * unavailable, so an inbound lead is never lost. Never throws.
+ */
+async function writeAirtableFallback(fields: {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+}): Promise<Record<string, unknown>> {
+  const apiKey = process.env.AIRTABLE_API_KEY;
+  if (!apiKey) return { status: "not_configured" };
+
+  try {
+    const r = await fetch(
+      `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_ID}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          typecast: true,
+          records: [
+            {
+              fields: {
+                name: fields.name,
+                email: fields.email,
+                phone: fields.phone,
+                message: fields.message,
+                source: "direct-fallback",
+                timestamp: new Date().toISOString(),
+              },
+            },
+          ],
+        }),
+      },
+    );
+    if (!r.ok) {
+      console.warn("[Kavolith] airtable fallback rejected:", r.status);
+      return { status: r.status, ok: false };
+    }
+    return { status: r.status, ok: true };
+  } catch (e) {
+    console.warn("[Kavolith] airtable fallback threw:", String(e));
+    return { error: String(e) };
+  }
+}
 
 export const Route = createFileRoute("/api/contact")({
   server: {
@@ -76,13 +130,15 @@ export const Route = createFileRoute("/api/contact")({
           results.email = { status: "logged" };
         }
 
-        // 2) Make.com webhook
+        // 2) Make.com webhook (primary router)
         const makeUrl = process.env.MAKE_WEBHOOK_URL;
+        let makeDelivered = false;
         if (makeUrl) {
           const makeToken = process.env.MAKE_WEBHOOK_TOKEN;
           const flatPayload = {
             name: body.name ?? "",
             email: body.email,
+            phone: body.phone ?? "",
             company: body.company ?? "",
             message: body.message,
             source: "kavolith.com//web",
@@ -95,6 +151,7 @@ export const Route = createFileRoute("/api/contact")({
               body: JSON.stringify(flatPayload),
             });
             results.make = { status: r.status };
+            makeDelivered = r.ok;
             if (!r.ok) hadFailure = true;
           } catch (e) {
             results.make = { error: String(e) };
@@ -102,6 +159,18 @@ export const Route = createFileRoute("/api/contact")({
           }
         } else {
           results.make = { status: "not_configured" };
+        }
+
+        // 3) Airtable backup — only when the primary router did not accept the lead
+        if (!makeDelivered) {
+          const fallback = await writeAirtableFallback({
+            name: body.name ?? "",
+            email: body.email,
+            phone: body.phone ?? "",
+            message: body.message,
+          });
+          results.airtable = fallback;
+          if (fallback.ok === true) hadFailure = false;
         }
 
         console.log(

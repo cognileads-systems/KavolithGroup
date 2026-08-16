@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as KavolithIntelligenceRouteImport } from './routes/kavolith-intelligence'
 import { Route as KavolithAutomationRouteImport } from './routes/kavolith-automation'
@@ -28,6 +29,11 @@ import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const McpRoute = McpRouteImport.update({
@@ -114,6 +120,7 @@ export interface FileRoutesByFullPath {
   '/kavolith-automation': typeof KavolithAutomationRoute
   '/kavolith-intelligence': typeof KavolithIntelligenceRoute
   '/mcp': typeof McpRoute
+  '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -131,6 +138,7 @@ export interface FileRoutesByTo {
   '/kavolith-automation': typeof KavolithAutomationRoute
   '/kavolith-intelligence': typeof KavolithIntelligenceRoute
   '/mcp': typeof McpRoute
+  '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -149,6 +157,7 @@ export interface FileRoutesById {
   '/kavolith-automation': typeof KavolithAutomationRoute
   '/kavolith-intelligence': typeof KavolithIntelligenceRoute
   '/mcp': typeof McpRoute
+  '/privacy': typeof PrivacyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -168,6 +177,7 @@ export interface FileRouteTypes {
     | '/kavolith-automation'
     | '/kavolith-intelligence'
     | '/mcp'
+    | '/privacy'
     | '/sitemap.xml'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -185,6 +195,7 @@ export interface FileRouteTypes {
     | '/kavolith-automation'
     | '/kavolith-intelligence'
     | '/mcp'
+    | '/privacy'
     | '/sitemap.xml'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -202,6 +213,7 @@ export interface FileRouteTypes {
     | '/kavolith-automation'
     | '/kavolith-intelligence'
     | '/mcp'
+    | '/privacy'
     | '/sitemap.xml'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -220,6 +232,7 @@ export interface RootRouteChildren {
   KavolithAutomationRoute: typeof KavolithAutomationRoute
   KavolithIntelligenceRoute: typeof KavolithIntelligenceRoute
   McpRoute: typeof McpRoute
+  PrivacyRoute: typeof PrivacyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -235,6 +248,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mcp': {
@@ -348,6 +368,7 @@ const rootRouteChildren: RootRouteChildren = {
   KavolithAutomationRoute: KavolithAutomationRoute,
   KavolithIntelligenceRoute: KavolithIntelligenceRoute,
   McpRoute: McpRoute,
+  PrivacyRoute: PrivacyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
