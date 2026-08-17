@@ -154,7 +154,7 @@ function Field({
 export function ContactForm() {
   return (
     <Translate>
-      <ContactFormBase />
+      {ContactFormBase()}
     </Translate>
   );
 }

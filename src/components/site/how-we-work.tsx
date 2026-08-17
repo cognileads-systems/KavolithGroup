@@ -1,3 +1,4 @@
+import { Translate } from "@/i18n";
 import { Link } from "@tanstack/react-router";
 import { SectionTitle } from "./layout";
 
@@ -40,51 +41,57 @@ const STEPS_COMPACT = [
 
 export function WhatsAppCTA({ className = "" }: { className?: string }) {
   return (
-    <div className={`flex flex-wrap items-center justify-center gap-3 ${className}`}>
-      <a
-        href={WA_BOOK}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground transition-opacity hover:opacity-90"
-      >
-        Book a free call on WhatsApp
-      </a>
-      <Link
-        to="/contact"
-        className="rounded-lg border border-accent px-5 py-3 text-sm font-semibold text-accent transition-colors hover:bg-accent-soft"
-      >
-        Send us a message
-      </Link>
-    </div>
+    <Translate>
+      <div className={`flex flex-wrap items-center justify-center gap-3 ${className}`}>
+        <a
+          href={WA_BOOK}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground transition-opacity hover:opacity-90"
+        >
+          Book a free call on WhatsApp
+        </a>
+        <Link
+          to="/contact"
+          className="rounded-lg border border-accent px-5 py-3 text-sm font-semibold text-accent transition-colors hover:bg-accent-soft"
+        >
+          Send us a message
+        </Link>
+      </div>
+    </Translate>
   );
 }
 
 export function WhatsAppGhostButton({ className = "" }: { className?: string }) {
   return (
-    <a
-      href={WA_LEARN}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`inline-flex rounded-lg border border-accent px-5 py-3 text-sm font-medium text-accent transition-colors hover:bg-accent-soft ${className}`}
-    >
-      Questions? Chat on WhatsApp →
-    </a>
+    <Translate>
+      <a
+        href={WA_LEARN}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`inline-flex rounded-lg border border-accent px-5 py-3 text-sm font-medium text-accent transition-colors hover:bg-accent-soft ${className}`}
+      >
+        Questions? Chat on WhatsApp →
+      </a>
+    </Translate>
   );
 }
 
 export function WhatsAppInline({ prompt }: { prompt: string }) {
   return (
-    <p className="mt-6 font-sans text-sm text-muted-foreground">
-      {prompt}{" "}
-      <a
-        href={WA_LEARN}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-teal underline-offset-4 hover:underline"
-      >
-        → {prompt.startsWith("Want") ? "WhatsApp me" : "Message us on WhatsApp"}
-      </a>
-    </p>
+    <Translate>
+      <p className="mt-6 font-sans text-sm text-muted-foreground">
+        {prompt}{" "}
+        <a
+          href={WA_LEARN}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-teal underline-offset-4 hover:underline"
+        >
+          → {prompt.startsWith("Want") ? "WhatsApp me" : "Message us on WhatsApp"}
+        </a>
+      </p>
+    </Translate>
   );
 }
 
@@ -106,15 +113,15 @@ function StepGrid({ steps }: { steps: { title: string; body: string }[] }) {
 
 export function HowWeWork() {
   return (
-    <>
+    <Translate>
       <SectionTitle
         eyebrow="Process"
         title="How We Work"
         intro="Four steps from first conversation to live system. No surprises, no hidden costs."
       />
-      <StepGrid steps={STEPS_FULL} />
+      {StepGrid({ steps: STEPS_FULL })}
       <WhatsAppCTA className="mt-12" />
-    </>
+    </Translate>
   );
 }
 
@@ -141,13 +148,13 @@ const AFTER_DELIVERY = [
 
 export function HowWeWorkCompact() {
   return (
-    <>
+    <Translate>
       <SectionTitle
         eyebrow="Process"
         title="How We Work"
         intro="Four steps. One fixed price. Ongoing support."
       />
-      <StepGrid steps={STEPS_COMPACT} />
+      {StepGrid({ steps: STEPS_COMPACT })}
 
       <div className="mt-12 overflow-x-auto rounded-xl border border-border bg-panel">
         <table className="w-full min-w-[640px] border-collapse text-left">
@@ -184,6 +191,6 @@ export function HowWeWorkCompact() {
       </div>
 
       <WhatsAppCTA className="mt-12" />
-    </>
+    </Translate>
   );
 }

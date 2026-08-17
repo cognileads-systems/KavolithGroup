@@ -1,3 +1,4 @@
+import { Translate } from "@/i18n";
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
@@ -59,63 +60,65 @@ function DeploymentPriceCard() {
   const [low, high] = DEPLOYMENT_NOW[currency];
 
   return (
-    <div className="rounded-xl border border-accent/50 bg-panel p-6">
-      <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
-        Presale · Custom engineering
+    <Translate>
+      <div className="rounded-xl border border-accent/50 bg-panel p-6">
+        <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+          Presale · Custom engineering
+        </div>
+
+        <CurrencyToggle currency={currency} onChange={setCurrency} className="mt-4" />
+
+        <div className="mt-4 font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
+          List price{" "}
+          <span className="line-through decoration-muted-foreground/70">
+            {formatMoney(currency, listLow)} – {formatMoney(currency, listHigh)}
+          </span>
+        </div>
+        <div className="mt-1 font-display text-3xl text-accent">
+          {formatMoney(currency, low)} – {formatMoney(currency, high)}
+        </div>
+        <div className="mt-3">
+          <DiscountBadge />
+        </div>
+        <div className="mt-2 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+          scoped per deployment · approximate conversions
+        </div>
+
+        <ul className="mt-4 space-y-2.5 border-t border-border pt-4 text-sm">
+          {DEPLOYMENT_DETAILS.map((d) => (
+            <li key={d} className="flex items-start gap-2.5 leading-relaxed text-muted-foreground">
+              <svg
+                aria-hidden
+                viewBox="0 0 16 16"
+                className="mt-[3px] h-3.5 w-3.5 shrink-0 text-accent"
+                role="presentation"
+              >
+                <path
+                  d="M3 8.5l3.2 3.2L13 4.8"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <span>{d}</span>
+            </li>
+          ))}
+        </ul>
+
+
+
+        <p className="mt-4 border-t border-border pt-4 text-sm leading-relaxed text-muted-foreground">
+          60% advance to begin · full platform access during presale · performance-backed remaining
+          balance.
+        </p>
+        <p className="mt-3 text-xs text-muted-foreground">
+          List prices are indicative pre-discount figures. {DISCOUNT_CODE} applies {DISCOUNT_PERCENT}%
+          off flat across India, the US, and the EU.
+        </p>
       </div>
-
-      <CurrencyToggle currency={currency} onChange={setCurrency} className="mt-4" />
-
-      <div className="mt-4 font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
-        List price{" "}
-        <span className="line-through decoration-muted-foreground/70">
-          {formatMoney(currency, listLow)} – {formatMoney(currency, listHigh)}
-        </span>
-      </div>
-      <div className="mt-1 font-display text-3xl text-accent">
-        {formatMoney(currency, low)} – {formatMoney(currency, high)}
-      </div>
-      <div className="mt-3">
-        <DiscountBadge />
-      </div>
-      <div className="mt-2 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-        scoped per deployment · approximate conversions
-      </div>
-
-      <ul className="mt-4 space-y-2.5 border-t border-border pt-4 text-sm">
-        {DEPLOYMENT_DETAILS.map((d) => (
-          <li key={d} className="flex items-start gap-2.5 leading-relaxed text-muted-foreground">
-            <svg
-              aria-hidden
-              viewBox="0 0 16 16"
-              className="mt-[3px] h-3.5 w-3.5 shrink-0 text-accent"
-              role="presentation"
-            >
-              <path
-                d="M3 8.5l3.2 3.2L13 4.8"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            <span>{d}</span>
-          </li>
-        ))}
-      </ul>
-
-
-
-      <p className="mt-4 border-t border-border pt-4 text-sm leading-relaxed text-muted-foreground">
-        60% advance to begin · full platform access during presale · performance-backed remaining
-        balance.
-      </p>
-      <p className="mt-3 text-xs text-muted-foreground">
-        List prices are indicative pre-discount figures. {DISCOUNT_CODE} applies {DISCOUNT_PERCENT}%
-        off flat across India, the US, and the EU.
-      </p>
-    </div>
+    </Translate>
   );
 }
 
