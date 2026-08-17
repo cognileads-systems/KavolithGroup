@@ -1,4 +1,5 @@
 import { Section, SectionTitle } from "./layout";
+import { Translate } from "@/i18n";
 import { CircuitDivider } from "./motifs";
 
 export type FaqItem = { q: string; a: string };
@@ -29,7 +30,7 @@ export function FaqSection({
   id?: string;
 }) {
   return (
-    <>
+    <Translate>
       <CircuitDivider />
       <Section id={id} className="pt-0">
         <SectionTitle eyebrow="FAQ" title={heading} intro={subheading} />
@@ -42,7 +43,7 @@ export function FaqSection({
           ))}
         </div>
       </Section>
-    </>
+    </Translate>
   );
 }
 

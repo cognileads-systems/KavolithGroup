@@ -91,7 +91,7 @@ function LivePipelineDemoBase() {
 export function LivePipelineDemo() {
   return (
     <Translate>
-      <LivePipelineDemoBase />
+      {LivePipelineDemoBase()}
     </Translate>
   );
 }

@@ -125,7 +125,7 @@ function CaseStudyCardBase({ study }: { study: CaseStudy }) {
 export function CaseStudyCard({ ...props }: Parameters<typeof CaseStudyCardBase>[0]) {
   return (
     <Translate>
-      <CaseStudyCardBase {...props} />
+      {CaseStudyCardBase(props)}
     </Translate>
   );
 }

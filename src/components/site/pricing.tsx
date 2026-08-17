@@ -62,12 +62,14 @@ export function CurrencyToggle({
 
 export function DiscountBadge({ className = "" }: { className?: string }) {
   return (
-    <span
-      className={`inline-flex items-center gap-2 rounded-full bg-accent-soft px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-accent ${className}`}
-    >
-      <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-      {DISCOUNT_CODE} · {DISCOUNT_PERCENT}% off
-    </span>
+    <Translate>
+      <span
+        className={`inline-flex items-center gap-2 rounded-full bg-accent-soft px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-accent ${className}`}
+      >
+        <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+        {DISCOUNT_CODE} · {DISCOUNT_PERCENT}% off
+      </span>
+    </Translate>
   );
 }
 
@@ -358,7 +360,7 @@ function PricingGridBase({ tiers, note }: { tiers: Tier[]; note?: string }) {
 export function PricingGrid({ ...props }: Parameters<typeof PricingGridBase>[0]) {
   return (
     <Translate>
-      <PricingGridBase {...props} />
+      {PricingGridBase(props)}
     </Translate>
   );
 }

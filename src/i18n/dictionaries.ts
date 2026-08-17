@@ -477,6 +477,11 @@ const es: Dict = {
   "We scope the engagement and confirm price before any build starts.": "Definimos el alcance y confirmamos el precio antes de empezar a construir.",
   "Direct lines": "Líneas directas",
   "Customer care": "Atención al cliente",
+  "List prices are indicative pre-discount figures. The": "Los precios de lista son cifras indicativas antes del descuento. El",
+  "List prices are indicative pre-discount figures.": "Los precios de lista son cifras indicativas antes del descuento.",
+  "% off applies flat across India, the US, and the EU, on setup and monthly fees alike.": "% de descuento se aplica de forma uniforme en India, EE. UU. y la UE, tanto en la implantación como en las cuotas mensuales.",
+  "% off flat across India, the US, and the EU.": "% de descuento uniforme en India, EE. UU. y la UE.",
+  "What does \"free bug fixes\" mean exactly?": "¿Qué significa exactamente \"corrección de errores gratuita\"?",
 };
 
 const de: Dict = {
@@ -944,6 +949,11 @@ const de: Dict = {
   "We scope the engagement and confirm price before any build starts.": "Wir definieren den Umfang und bestätigen den Preis, bevor der Aufbau beginnt.",
   "Direct lines": "Direkte Kontakte",
   "Customer care": "Kundenbetreuung",
+  "List prices are indicative pre-discount figures. The": "Listenpreise sind unverbindliche Angaben vor Rabatt. Der",
+  "List prices are indicative pre-discount figures.": "Listenpreise sind unverbindliche Angaben vor Rabatt.",
+  "% off applies flat across India, the US, and the EU, on setup and monthly fees alike.": "% Rabatt gilt einheitlich in Indien, den USA und der EU – für Einrichtung und monatliche Gebühren gleichermaßen.",
+  "% off flat across India, the US, and the EU.": "% Rabatt einheitlich in Indien, den USA und der EU.",
+  "What does \"free bug fixes\" mean exactly?": "Was bedeutet „kostenlose Fehlerbehebung\" genau?",
 };
 
 export const DICTIONARIES: Record<Lang, Dict> = { en: {}, es, de };
