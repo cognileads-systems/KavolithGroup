@@ -44,16 +44,18 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const t = useCallback(
     (s: string) => {
       const dict = DICTIONARIES[lang];
-      const key = s.trim();
-      const hit = dict[key];
+      const parts = /^(\s*)([\s\S]*?)(\s*)$/.exec(s);
+      if (!parts) return s;
+      const [, lead, body, tail] = parts as unknown as [string, string, string, string];
+      if (!body) return s;
+      // JSX text nodes wrap across lines; dictionary keys are single-line
+      const hit = dict[body] ?? dict[body.replace(/\s+/g, " ")];
       if (!hit) return s;
-      // preserve surrounding whitespace of the original JSX text node
-      const lead = s.slice(0, s.indexOf(key[0] ?? ""));
-      const tail = s.slice(s.indexOf(key) + key.length);
       return `${lead}${hit}${tail}`;
     },
     [lang],
   );
+
 
   const value = useMemo(() => ({ lang, setLang, t }), [lang, setLang, t]);
 
