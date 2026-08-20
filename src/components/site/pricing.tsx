@@ -122,10 +122,13 @@ export type Tier = {
   setup: PricePair;
   monthly?: RangePair;
   outcome: string;
+  /** Process-level proof line: what the running system does, no metrics. */
+  proof?: string;
   features: string[];
   badge?: string;
   featured?: boolean;
 };
+
 
 const LAUNCHPAD_SETUP: PricePair = {
   list: { INR: 46000, USD: 1000, EUR: 900 },
