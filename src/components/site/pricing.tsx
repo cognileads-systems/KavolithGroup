@@ -207,37 +207,64 @@ export const KAVOLITH_TIERS: Tier[] = [
   },
 ];
 
+/** Automation is a separate product line: workflow/AI only, no website or portal build. */
+const SINGLE_FLOW_SETUP: PricePair = {
+  list: { INR: 40000, USD: 860, EUR: 785 },
+  now: { INR: 28000, USD: 600, EUR: 550 },
+};
+const OPS_STACK_SETUP: PricePair = {
+  list: { INR: 92900, USD: 2000, EUR: 1830 },
+  now: { INR: 65000, USD: 1400, EUR: 1280 },
+};
+const OPS_STACK_MONTHLY: RangePair = {
+  list: { INR: [11430, 21430], USD: [250, 465], EUR: [230, 420] },
+  now: { INR: [8000, 15000], USD: [175, 325], EUR: [160, 295] },
+};
+const AUTOMATION_CONTROL_SETUP: PricePair = {
+  list: { INR: 157150, USD: 3430, EUR: 3070 },
+  now: { INR: 110000, USD: 2400, EUR: 2150 },
+};
+const AUTOMATION_CONTROL_MONTHLY: RangePair = {
+  list: { INR: [21430, 42860], USD: [465, 930], EUR: [420, 840] },
+  now: { INR: [15000, 30000], USD: [325, 650], EUR: [295, 590] },
+};
+
 export const AUTOMATION_TIERS: Tier[] = [
   {
     id: "single-flow",
     name: "Single Flow",
-    setup: LAUNCHPAD_SETUP,
-    outcome: "Automate the one process that costs your team the most manual hours.",
+    setup: SINGLE_FLOW_SETUP,
+    outcome:
+      "One production automation with one clear outcome — for example, an inbox triage system that reads incoming mail, drafts replies for human approval, sends only pre-approved messages, and flags anything needing a real decision.",
+    proof: "Inbox triage runs unattended; only pre-flagged messages wait for a human decision.",
     features: [
       "Process mapping session and written workflow spec",
       "One production workflow with retry and error handling",
-      "Smart AI intake form feeding the workflow",
-      "WhatsApp notification & UPI payment link step",
-      "Automated Google Sheets / CRM record funnel",
+      "AI drafting step with human approval before anything sends",
+      "Rules for what auto-sends and what gets flagged for a decision",
+      "Notification step to email or WhatsApp",
+      "Automated record log to Google Sheets or your CRM",
       "Runbook and handoff documentation",
-      "GA4 event tracking on the automated path",
       "One free update round (up to 3 workflow steps) within 30 days of launch",
     ],
   },
   {
     id: "ops-stack",
     name: "Ops Stack",
-    setup: SCALE_SETUP,
-    monthly: SCALE_MONTHLY,
-    outcome: "Wire your core tools together so data stops being re-entered by hand.",
+    setup: OPS_STACK_SETUP,
+    monthly: OPS_STACK_MONTHLY,
+    outcome:
+      "Multiple connected workflows operating as one system — for example, a lead-scoring agent that tracks and scores inbound messages by intent, connected WhatsApp and Gmail automation, and a daily end-of-day summary delivered on Telegram or WhatsApp.",
+    proof:
+      "Inbound messages are scored by intent as they arrive, and the day closes with a summary of what is done and what is pending.",
     features: [
-      "Everything in Single Flow + multi-tool architecture",
-      "Multi-tool integration and CRM sync (3–5 connected workflows)",
-      "Automated appointment & calendar booking flow",
-      "WhatsApp AI auto-responder (drip FAQs & pricing)",
-      "Single-screen lead pipeline dashboard (New → Closed)",
+      "Everything in Single Flow + multi-workflow architecture",
+      "Lead-scoring agent that classifies inbound messages by intent",
+      "Connected WhatsApp and Gmail automation across one pipeline",
+      "3–5 connected workflows with shared data and CRM sync",
+      "Daily end-of-day summary report via Telegram or WhatsApp",
+      "Single-screen pipeline view (New → Closed)",
       "Monitoring, alerting, and monthly iteration",
-      "Quarterly automation reliability & throughput report",
       "100% of Single Flow amount paid credited as loyalty credit (if upgrading within 90 days)",
     ],
     badge: "Most common",
@@ -246,22 +273,26 @@ export const AUTOMATION_TIERS: Tier[] = [
   {
     id: "automation-control",
     name: "Automation Control",
-    setup: PREMIUM_SETUP,
-    monthly: PREMIUM_MONTHLY,
-    outcome: "Operate automation as infrastructure across departments, with reserved capacity.",
+    setup: AUTOMATION_CONTROL_SETUP,
+    monthly: AUTOMATION_CONTROL_MONTHLY,
+    outcome:
+      "Department-level automation with reserved build capacity — everything in Ops Stack plus multi-step agents, such as an itinerary and logistics agent that processes filled forms, runs accessibility-specific research, and generates day-by-day plans and packing lists.",
+    proof:
+      "Submitted forms turn into researched day-by-day plans and packing lists without a coordinator assembling them by hand.",
     features: [
       "Everything in Ops Stack",
       "Department-wide workflow coverage",
-      "n8n automation workflows with integrated voice-chat AI agent",
-      "Official Google Workspace account included (1 year, 1 seat)",
-      "4 scheduled workflow/feature updates per year",
+      "Multi-step agent workflows with research and document generation steps",
+      "Accessibility-aware research steps (for example, venue access requirements)",
+      "Automatic day-by-day plan and checklist generation",
       "Multi-language automated messaging (EN/Telugu/Hindi)",
-      "4-currency payment handling (INR/USD/EUR)",
-      "Priority build queue and quarterly review",
+      "Reserved build capacity and priority queue",
+      "Quarterly reliability review and 4 scheduled workflow updates per year",
       "Built on hardened, bot/vulnerability-protected infrastructure",
     ],
   },
 ];
+
 
 /** Small checkmark used for itemized deliverables. */
 function CheckIcon() {
