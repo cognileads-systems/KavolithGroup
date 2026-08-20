@@ -377,6 +377,16 @@ function PricingGridBase({ tiers, note }: { tiers: Tier[]; note?: string }) {
 
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{t.outcome}</p>
 
+            {t.proof && (
+              <div className="mt-4 rounded-lg border border-border bg-panel/60 p-4">
+                <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
+                  In production
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.proof}</p>
+              </div>
+            )}
+
+
             <ul className="mt-5 space-y-2.5 text-sm">
               {t.features.map((f) => (
                 <li key={f} className="flex items-start gap-2.5 leading-relaxed text-muted-foreground">
