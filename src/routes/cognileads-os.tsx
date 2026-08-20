@@ -27,14 +27,14 @@ import { breadcrumbSchema, PRICE_VALID_UNTIL } from "@/lib/seo";
 
 const DEPLOYMENT_LIST: Record<Currency, [number, number]> = {
   INR: [120000, 250000],
-  USD: [10700, 22300],
-  EUR: [9700, 20300],
+  USD: [4000, 8000],
+  EUR: [3650, 7300],
 };
 
 const DEPLOYMENT_NOW: Record<Currency, [number, number]> = {
   INR: [84000, 175000],
-  USD: [7490, 15610],
-  EUR: [6790, 14210],
+  USD: [2800, 5600],
+  EUR: [2555, 5110],
 };
 
 const DEPLOYMENT_DETAILS = [
@@ -55,7 +55,7 @@ const DEPLOYMENT_DETAILS = [
 
 
 function DeploymentPriceCard() {
-  const [currency, setCurrency] = useState<Currency>("USD");
+  const [currency, setCurrency] = useState<Currency>("INR");
   const [listLow, listHigh] = DEPLOYMENT_LIST[currency];
   const [low, high] = DEPLOYMENT_NOW[currency];
 
