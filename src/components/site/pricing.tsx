@@ -6,6 +6,9 @@ export type Currency = (typeof CURRENCIES)[number];
 
 export type Amount = Record<Currency, number>;
 export type PricePair = { list: Amount; now: Amount };
+/** Some regions are quoted as a monthly band rather than a single figure. */
+export type RangeAmount = Record<Currency, [number, number]>;
+export type RangePair = { list: RangeAmount; now: RangeAmount };
 
 const SYMBOL: Record<Currency, string> = { INR: "₹", USD: "$", EUR: "€" };
 
@@ -17,6 +20,12 @@ export function formatMoney(currency: Currency, value: number) {
   const rounded = Math.round(value);
   const locale = currency === "INR" ? "en-IN" : "en-US";
   return `${SYMBOL[currency]}${rounded.toLocaleString(locale)}`;
+}
+
+export function formatRange(currency: Currency, [low, high]: [number, number]) {
+  return low === high
+    ? formatMoney(currency, low)
+    : `${formatMoney(currency, low)} – ${formatMoney(currency, high)}`;
 }
 
 /** Legacy anchor helper kept for the list price of range-based offers. */
@@ -82,22 +91,24 @@ export function PriceLine({
   size = "lg",
 }: {
   currency: Currency;
-  pair: PricePair;
+  pair: PricePair | RangePair;
   label: string;
   suffix?: string;
   size?: "lg" | "sm";
 }) {
+  const show = (v: number | [number, number]) =>
+    Array.isArray(v) ? formatRange(currency, v) : formatMoney(currency, v);
   return (
     <div>
       <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
         {label}{" "}
         <span className="line-through decoration-muted-foreground/70">
-          {formatMoney(currency, pair.list[currency])}
+          {show(pair.list[currency])}
         </span>
       </div>
       <div className="mt-1 flex items-baseline gap-2">
         <span className={`font-display text-accent ${size === "lg" ? "text-2xl" : "text-xl"}`}>
-          {formatMoney(currency, pair.now[currency])}
+          {show(pair.now[currency])}
         </span>
         {suffix && <span className="font-mono text-[11px] text-muted-foreground">{suffix}</span>}
       </div>
@@ -109,7 +120,7 @@ export type Tier = {
   id: string;
   name: string;
   setup: PricePair;
-  monthly?: PricePair;
+  monthly?: RangePair;
   outcome: string;
   features: string[];
   badge?: string;
@@ -121,20 +132,20 @@ const LAUNCHPAD_SETUP: PricePair = {
   now: { INR: 32200, USD: 700, EUR: 630 },
 };
 const SCALE_SETUP: PricePair = {
-  list: { INR: 58000, USD: 3500, EUR: 3200 },
-  now: { INR: 40600, USD: 2450, EUR: 2240 },
+  list: { INR: 78500, USD: 3500, EUR: 3200 },
+  now: { INR: 55000, USD: 2450, EUR: 2240 },
 };
-const SCALE_MONTHLY: PricePair = {
-  list: { INR: 28500, USD: 600, EUR: 550 },
-  now: { INR: 20000, USD: 420, EUR: 385 },
+const SCALE_MONTHLY: RangePair = {
+  list: { INR: [10000, 21500], USD: [600, 600], EUR: [550, 550] },
+  now: { INR: [7000, 15000], USD: [420, 420], EUR: [385, 385] },
 };
 const PREMIUM_SETUP: PricePair = {
-  list: { INR: 90000, USD: 8000, EUR: 7300 },
-  now: { INR: 63000, USD: 5600, EUR: 5100 },
+  list: { INR: 112300, USD: 7150, EUR: 6500 },
+  now: { INR: 78600, USD: 5000, EUR: 4550 },
 };
-const PREMIUM_MONTHLY: PricePair = {
-  list: { INR: 40000, USD: 1500, EUR: 1350 },
-  now: { INR: 28000, USD: 1050, EUR: 945 },
+const PREMIUM_MONTHLY: RangePair = {
+  list: { INR: [14300, 35700], USD: [1500, 1500], EUR: [1350, 1350] },
+  now: { INR: [10000, 25000], USD: [1050, 1050], EUR: [945, 945] },
 };
 
 export const KAVOLITH_TIERS: Tier[] = [
@@ -272,7 +283,7 @@ function CheckIcon() {
 
 
 function PricingGridBase({ tiers, note }: { tiers: Tier[]; note?: string }) {
-  const [currency, setCurrency] = useState<Currency>("USD");
+  const [currency, setCurrency] = useState<Currency>("INR");
 
   return (
     <div>
