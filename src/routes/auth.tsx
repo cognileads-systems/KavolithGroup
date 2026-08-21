@@ -22,10 +22,10 @@ export const Route = createFileRoute("/auth")({
         property: "og:description",
         content: "Operator authentication for the Kavolith AI SDR control plane.",
       },
-      { property: "og:url", content: "https://cognileadssystems.lovable.app/auth" },
+      { property: "og:url", content: "https://kavolith.com/auth" },
       { name: "robots", content: "noindex, nofollow" },
     ],
-    links: [{ rel: "canonical", href: "https://cognileadssystems.lovable.app/auth" }],
+    links: [{ rel: "canonical", href: "https://kavolith.com/auth" }],
   }),
 });
 
