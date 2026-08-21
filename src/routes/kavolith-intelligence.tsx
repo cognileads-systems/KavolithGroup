@@ -53,8 +53,9 @@ const PACKAGES = [
   },
   {
     name: "AI HR/Ops Digital Employee",
-    rate: "Predefined rate",
-    booking: "1-month advance booking",
+    rate: "Founding-client rate",
+    booking: "1-month advance reservation",
+
     outcome:
       "Cover the repetitive HR and operations workload — onboarding, requests, and internal follow-ups — without adding headcount.",
     features: [
