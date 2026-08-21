@@ -154,10 +154,9 @@ export const Route = createFileRoute("/api/contact")({
             });
             results.make = { status: r.status };
             makeDelivered = r.ok;
-            if (!r.ok) hadFailure = true;
+            if (r.ok) delivered = true;
           } catch (e) {
             results.make = { error: String(e) };
-            hadFailure = true;
           }
         } else {
           results.make = { status: "not_configured" };
@@ -172,15 +171,21 @@ export const Route = createFileRoute("/api/contact")({
             message: body.message,
           });
           results.airtable = fallback;
-          if (fallback.ok === true) hadFailure = false;
+          if (fallback.ok === true) delivered = true;
         }
 
         console.log(
           "[Kavolith] contact submission:",
-          JSON.stringify({ payload, results }),
+          JSON.stringify({ payload, results, delivered }),
         );
 
-        return Response.json({ ok: !hadFailure });
+        // No channel accepted the lead — tell the client so the UI never shows
+        // a false "delivered" confirmation.
+        if (!delivered) {
+          return Response.json({ ok: false }, { status: 502 });
+        }
+
+        return Response.json({ ok: true });
       },
     },
   },
