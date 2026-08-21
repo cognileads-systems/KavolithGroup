@@ -124,13 +124,12 @@ export const Route = createFileRoute("/api/contact")({
               }),
             });
             results.email = { status: r.status };
-            if (!r.ok) hadFailure = true;
+            if (r.ok) delivered = true;
           } catch (e) {
             results.email = { error: String(e) };
-            hadFailure = true;
           }
         } else {
-          results.email = { status: "logged" };
+          results.email = { status: "not_configured" };
         }
 
         // 2) Make.com webhook (primary router)
