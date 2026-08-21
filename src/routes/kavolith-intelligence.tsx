@@ -84,7 +84,7 @@ export const Route = createFileRoute("/kavolith-intelligence")({
       {
         property: "og:description",
         content:
-          "Multilingual digital employees (English, Telugu, Hindi) for compliance, documentation, and HR/ops. Coming soon — presale open.",
+          "Multilingual digital employees (English, Telugu, Hindi) for compliance, documentation, and HR/ops. Coming soon — reserve a build slot at the founding-client rate.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE}/kavolith-intelligence` },
