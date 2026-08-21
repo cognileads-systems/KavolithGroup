@@ -38,8 +38,9 @@ const INTELLIGENCE_MONTHLY: RangePair = {
 const PACKAGES = [
   {
     name: "AI Compliance & Documentation Employee",
-    rate: "Predefined rate",
-    booking: "1-month advance booking",
+    rate: "Founding-client rate",
+    booking: "1-month advance reservation",
+
     outcome:
       "Hand over the document-heavy part of compliance work — collection, validation, and filing — to a digital employee that never loses track of a pending item.",
     features: [
