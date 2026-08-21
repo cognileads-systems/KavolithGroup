@@ -134,6 +134,7 @@ export const Route = createFileRoute("/kavolith-intelligence")({
 });
 
 function IntelligencePage() {
+  const [currency, setCurrency] = useState<Currency>("INR");
   return (
     <PageShell>
       <PhotoLatticeSection image={photoLattice} priority>
