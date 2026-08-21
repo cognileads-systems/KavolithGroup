@@ -100,7 +100,9 @@ export const Route = createFileRoute("/api/contact")({
         };
 
         const results: Record<string, unknown> = {};
-        let hadFailure = false;
+        // A lead only counts as handled when at least one channel actually
+        // accepted it. Missing configuration is NOT a success.
+        let delivered = false;
 
         // 1) Email alert framework
         const resendKey = process.env.RESEND_API_KEY;
