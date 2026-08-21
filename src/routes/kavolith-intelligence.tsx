@@ -168,11 +168,20 @@ function IntelligencePage() {
 
       <Section className="pt-0">
         <SectionTitle
-          eyebrow="Presale packages"
-          title="Two digital employees, available on presale"
-          intro="Both run at a predefined rate and require one month's advance to reserve an onboarding slot."
+          eyebrow="Reservation packages"
+          title="Two digital employees, open for reservation"
+          intro="Reserve your build slot — the founding-client rate is locked in now, and delivery begins once your selected package enters the build queue."
         />
-        <div className="mt-10 grid gap-5 md:grid-cols-2">
+
+        <div className="mt-8 flex flex-wrap items-center gap-3">
+          <CurrencyToggle currency={currency} onChange={setCurrency} />
+          <DiscountBadge />
+          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+            Approximate conversions
+          </span>
+        </div>
+
+        <div className="mt-6 grid gap-5 md:grid-cols-2">
           {PACKAGES.map((p) => (
             <article
               key={p.name}
@@ -196,6 +205,27 @@ function IntelligencePage() {
                   {p.booking}
                 </span>
               </div>
+
+              <div className="mt-5 space-y-3">
+                <PriceLine
+                  currency={currency}
+                  pair={INTELLIGENCE_SETUP}
+                  label="Setup list"
+                  suffix="setup"
+                />
+                <PriceLine
+                  currency={currency}
+                  pair={INTELLIGENCE_MONTHLY}
+                  label="Monthly list"
+                  suffix="/ month"
+                  size="sm"
+                />
+              </div>
+
+              <div className="mt-3">
+                <DiscountBadge />
+              </div>
+
               <p className="mt-5 text-[15px] leading-relaxed text-muted-foreground" itemProp="description">
                 {p.outcome}
               </p>
@@ -211,13 +241,21 @@ function IntelligencePage() {
                 to="/contact"
                 className="mt-7 inline-flex w-fit rounded-lg bg-accent-soft px-4 py-2 text-sm font-medium text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
               >
-                Reserve this package →
+                Reserve this build slot →
               </Link>
+              <meta itemProp="priceCurrency" content={currency} />
+              <meta itemProp="price" content={String(INTELLIGENCE_SETUP.now[currency][0])} />
               <link itemProp="availability" href="https://schema.org/PreOrder" />
             </article>
           ))}
         </div>
+        <p className="mt-5 text-xs text-muted-foreground">
+          List prices are indicative pre-discount figures. The {DISCOUNT_CODE} rate of{" "}
+          {DISCOUNT_PERCENT}% off applies flat across India, the US, and the EU, on setup and monthly
+          fees alike. Final figure inside the band is confirmed at scoping.
+        </p>
       </Section>
+
 
       <FaqSection
         items={INTELLIGENCE_FAQS}
