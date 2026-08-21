@@ -75,7 +75,7 @@ export const Route = createFileRoute("/kavolith-intelligence")({
       {
         name: "description",
         content:
-          "Kavolith Intelligence is an Enterprise AI Workforce Platform of multilingual digital employees for compliance, documentation, and HR/ops. Presale open now.",
+          "Kavolith Intelligence is an Enterprise AI Workforce Platform of multilingual digital employees for compliance, documentation, and HR/ops. Setup from ₹80,000 plus ₹15,000/month — reserve your build slot at the founding-client rate.",
       },
       {
         property: "og:title",
