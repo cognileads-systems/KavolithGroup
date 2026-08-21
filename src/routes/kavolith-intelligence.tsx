@@ -120,12 +120,26 @@ export const Route = createFileRoute("/kavolith-intelligence")({
                 availability: "https://schema.org/PreOrder",
                 priceCurrency: "INR",
                 priceValidUntil: PRICE_VALID_UNTIL,
-                priceSpecification: {
-                  "@type": "PriceSpecification",
-                  description: "Predefined rate, confirmed at scoping. One-month advance booking.",
-                  priceCurrency: "INR",
-                },
+                priceSpecification: [
+                  {
+                    "@type": "PriceSpecification",
+                    description:
+                      "Founding-client setup fee, confirmed at scoping. One-month advance reservation.",
+                    priceCurrency: "INR",
+                    minPrice: INTELLIGENCE_SETUP.now.INR[0],
+                    maxPrice: INTELLIGENCE_SETUP.now.INR[1],
+                  },
+                  {
+                    "@type": "UnitPriceSpecification",
+                    description: "Monthly run-and-iterate fee at the founding-client rate.",
+                    priceCurrency: "INR",
+                    minPrice: INTELLIGENCE_MONTHLY.now.INR[0],
+                    maxPrice: INTELLIGENCE_MONTHLY.now.INR[1],
+                    unitText: "MONTH",
+                  },
+                ],
               })),
+
             },
             faqSchema(`${SITE}/kavolith-intelligence#faq`, INTELLIGENCE_FAQS),
           ],
