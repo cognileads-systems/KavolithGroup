@@ -142,7 +142,7 @@ function IntelligencePage() {
           <div className="mb-7 flex flex-wrap items-center gap-3 rounded-xl border border-accent/40 bg-accent-soft px-5 py-3">
             <span className="animate-stage-pulse h-2 w-2 rounded-full bg-accent" />
             <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
-              Coming soon — presale booking open
+              Coming soon — reservations open at the founding-client rate
             </span>
           </div>
 
@@ -159,8 +159,9 @@ function IntelligencePage() {
             to="/contact"
             className="mt-8 inline-flex rounded-lg bg-accent px-5 py-3 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
           >
-            Book a presale slot
+            Reserve your build slot
           </Link>
+
           <div className="mt-4">
             <WhatsAppGhostButton />
           </div>
