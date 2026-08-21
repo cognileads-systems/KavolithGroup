@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import {
   PageShell,
   Section,
@@ -10,8 +11,28 @@ import photoLattice from "@/assets/photo-lattice.jpg";
 import { WhatsAppGhostButton } from "@/components/site/how-we-work";
 import { FaqSection, faqSchema, INTELLIGENCE_FAQS } from "@/components/site/faq";
 import { breadcrumbSchema, PRICE_VALID_UNTIL } from "@/lib/seo";
+import {
+  CurrencyToggle,
+  DiscountBadge,
+  DISCOUNT_CODE,
+  DISCOUNT_PERCENT,
+  PriceLine,
+  type Currency,
+  type RangePair,
+} from "@/components/site/pricing";
 
 const SITE = "https://kavolith.com";
+
+/** Founding-client reservation pricing: list figures are pre-FOUNDER30 anchors. */
+const INTELLIGENCE_SETUP: RangePair = {
+  list: { INR: [114300, 214300], USD: [1360, 2570], EUR: [1240, 2360] },
+  now: { INR: [80000, 150000], USD: [950, 1800], EUR: [870, 1650] },
+};
+const INTELLIGENCE_MONTHLY: RangePair = {
+  list: { INR: [21430, 42860], USD: [250, 500], EUR: [230, 460] },
+  now: { INR: [15000, 30000], USD: [175, 350], EUR: [160, 320] },
+};
+
 
 
 const PACKAGES = [
