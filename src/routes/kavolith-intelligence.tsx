@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import {
   PageShell,
   Section,
@@ -10,15 +11,36 @@ import photoLattice from "@/assets/photo-lattice.jpg";
 import { WhatsAppGhostButton } from "@/components/site/how-we-work";
 import { FaqSection, faqSchema, INTELLIGENCE_FAQS } from "@/components/site/faq";
 import { breadcrumbSchema, PRICE_VALID_UNTIL } from "@/lib/seo";
+import {
+  CurrencyToggle,
+  DiscountBadge,
+  DISCOUNT_CODE,
+  DISCOUNT_PERCENT,
+  PriceLine,
+  type Currency,
+  type RangePair,
+} from "@/components/site/pricing";
 
 const SITE = "https://kavolith.com";
+
+/** Founding-client reservation pricing: list figures are pre-FOUNDER30 anchors. */
+const INTELLIGENCE_SETUP: RangePair = {
+  list: { INR: [114300, 214300], USD: [1360, 2570], EUR: [1240, 2360] },
+  now: { INR: [80000, 150000], USD: [950, 1800], EUR: [870, 1650] },
+};
+const INTELLIGENCE_MONTHLY: RangePair = {
+  list: { INR: [21430, 42860], USD: [250, 500], EUR: [230, 460] },
+  now: { INR: [15000, 30000], USD: [175, 350], EUR: [160, 320] },
+};
+
 
 
 const PACKAGES = [
   {
     name: "AI Compliance & Documentation Employee",
-    rate: "Predefined rate",
-    booking: "1-month advance booking",
+    rate: "Founding-client rate",
+    booking: "1-month advance reservation",
+
     outcome:
       "Hand over the document-heavy part of compliance work — collection, validation, and filing — to a digital employee that never loses track of a pending item.",
     features: [
@@ -31,8 +53,9 @@ const PACKAGES = [
   },
   {
     name: "AI HR/Ops Digital Employee",
-    rate: "Predefined rate",
-    booking: "1-month advance booking",
+    rate: "Founding-client rate",
+    booking: "1-month advance reservation",
+
     outcome:
       "Cover the repetitive HR and operations workload — onboarding, requests, and internal follow-ups — without adding headcount.",
     features: [
@@ -52,7 +75,7 @@ export const Route = createFileRoute("/kavolith-intelligence")({
       {
         name: "description",
         content:
-          "Kavolith Intelligence is an Enterprise AI Workforce Platform of multilingual digital employees for compliance, documentation, and HR/ops. Presale open now.",
+          "Kavolith Intelligence is an Enterprise AI Workforce Platform of multilingual digital employees for compliance, documentation, and HR/ops. Setup from ₹80,000 plus ₹15,000/month — reserve your build slot at the founding-client rate.",
       },
       {
         property: "og:title",
@@ -61,7 +84,7 @@ export const Route = createFileRoute("/kavolith-intelligence")({
       {
         property: "og:description",
         content:
-          "Multilingual digital employees (English, Telugu, Hindi) for compliance, documentation, and HR/ops. Coming soon — presale open.",
+          "Multilingual digital employees (English, Telugu, Hindi) for compliance, documentation, and HR/ops. Coming soon — reserve a build slot at the founding-client rate.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE}/kavolith-intelligence` },
@@ -97,12 +120,26 @@ export const Route = createFileRoute("/kavolith-intelligence")({
                 availability: "https://schema.org/PreOrder",
                 priceCurrency: "INR",
                 priceValidUntil: PRICE_VALID_UNTIL,
-                priceSpecification: {
-                  "@type": "PriceSpecification",
-                  description: "Predefined rate, confirmed at scoping. One-month advance booking.",
-                  priceCurrency: "INR",
-                },
+                priceSpecification: [
+                  {
+                    "@type": "PriceSpecification",
+                    description:
+                      "Founding-client setup fee, confirmed at scoping. One-month advance reservation.",
+                    priceCurrency: "INR",
+                    minPrice: INTELLIGENCE_SETUP.now.INR[0],
+                    maxPrice: INTELLIGENCE_SETUP.now.INR[1],
+                  },
+                  {
+                    "@type": "UnitPriceSpecification",
+                    description: "Monthly run-and-iterate fee at the founding-client rate.",
+                    priceCurrency: "INR",
+                    minPrice: INTELLIGENCE_MONTHLY.now.INR[0],
+                    maxPrice: INTELLIGENCE_MONTHLY.now.INR[1],
+                    unitText: "MONTH",
+                  },
+                ],
               })),
+
             },
             faqSchema(`${SITE}/kavolith-intelligence#faq`, INTELLIGENCE_FAQS),
           ],
@@ -113,6 +150,7 @@ export const Route = createFileRoute("/kavolith-intelligence")({
 });
 
 function IntelligencePage() {
+  const [currency, setCurrency] = useState<Currency>("INR");
   return (
     <PageShell>
       <PhotoLatticeSection image={photoLattice} priority>
@@ -120,7 +158,7 @@ function IntelligencePage() {
           <div className="mb-7 flex flex-wrap items-center gap-3 rounded-xl border border-accent/40 bg-accent-soft px-5 py-3">
             <span className="animate-stage-pulse h-2 w-2 rounded-full bg-accent" />
             <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
-              Coming soon — presale booking open
+              Coming soon — reservations open at the founding-client rate
             </span>
           </div>
 
@@ -137,8 +175,9 @@ function IntelligencePage() {
             to="/contact"
             className="mt-8 inline-flex rounded-lg bg-accent px-5 py-3 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
           >
-            Book a presale slot
+            Reserve your build slot
           </Link>
+
           <div className="mt-4">
             <WhatsAppGhostButton />
           </div>
@@ -147,11 +186,20 @@ function IntelligencePage() {
 
       <Section className="pt-0">
         <SectionTitle
-          eyebrow="Presale packages"
-          title="Two digital employees, available on presale"
-          intro="Both run at a predefined rate and require one month's advance to reserve an onboarding slot."
+          eyebrow="Reservation packages"
+          title="Two digital employees, open for reservation"
+          intro="Reserve your build slot — the founding-client rate is locked in now, and delivery begins once your selected package enters the build queue."
         />
-        <div className="mt-10 grid gap-5 md:grid-cols-2">
+
+        <div className="mt-8 flex flex-wrap items-center gap-3">
+          <CurrencyToggle currency={currency} onChange={setCurrency} />
+          <DiscountBadge />
+          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+            Approximate conversions
+          </span>
+        </div>
+
+        <div className="mt-6 grid gap-5 md:grid-cols-2">
           {PACKAGES.map((p) => (
             <article
               key={p.name}
@@ -175,6 +223,27 @@ function IntelligencePage() {
                   {p.booking}
                 </span>
               </div>
+
+              <div className="mt-5 space-y-3">
+                <PriceLine
+                  currency={currency}
+                  pair={INTELLIGENCE_SETUP}
+                  label="Setup list"
+                  suffix="setup"
+                />
+                <PriceLine
+                  currency={currency}
+                  pair={INTELLIGENCE_MONTHLY}
+                  label="Monthly list"
+                  suffix="/ month"
+                  size="sm"
+                />
+              </div>
+
+              <div className="mt-3">
+                <DiscountBadge />
+              </div>
+
               <p className="mt-5 text-[15px] leading-relaxed text-muted-foreground" itemProp="description">
                 {p.outcome}
               </p>
@@ -190,13 +259,21 @@ function IntelligencePage() {
                 to="/contact"
                 className="mt-7 inline-flex w-fit rounded-lg bg-accent-soft px-4 py-2 text-sm font-medium text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
               >
-                Reserve this package →
+                Reserve this build slot →
               </Link>
+              <meta itemProp="priceCurrency" content={currency} />
+              <meta itemProp="price" content={String(INTELLIGENCE_SETUP.now[currency][0])} />
               <link itemProp="availability" href="https://schema.org/PreOrder" />
             </article>
           ))}
         </div>
+        <p className="mt-5 text-xs text-muted-foreground">
+          List prices are indicative pre-discount figures. The {DISCOUNT_CODE} rate of{" "}
+          {DISCOUNT_PERCENT}% off applies flat across India, the US, and the EU, on setup and monthly
+          fees alike. Final figure inside the band is confirmed at scoping.
+        </p>
       </Section>
+
 
       <FaqSection
         items={INTELLIGENCE_FAQS}
