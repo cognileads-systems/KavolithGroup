@@ -74,6 +74,7 @@ export const Route = createFileRoute("/kavolith")({
               name: t.name,
               price: String(t.setup.now.INR),
               priceCurrency: "INR",
+              availability: "https://schema.org/InStock",
               priceValidUntil: PRICE_VALID_UNTIL,
             })),
           },

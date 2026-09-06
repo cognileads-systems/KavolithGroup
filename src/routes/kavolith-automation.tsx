@@ -13,7 +13,7 @@ import { PricingGrid, AUTOMATION_TIERS } from "@/components/site/pricing";
 import { AUTOMATION_CASE_STUDIES, CaseStudyCard } from "@/components/site/case-studies";
 import { WhatsAppGhostButton } from "@/components/site/how-we-work";
 import { FaqSection, faqSchema, AUTOMATION_FAQS } from "@/components/site/faq";
-import { breadcrumbSchema } from "@/lib/seo";
+import { breadcrumbSchema, PRICE_VALID_UNTIL } from "@/lib/seo";
 
 const SITE = "https://kavolith.com";
 
@@ -69,6 +69,8 @@ export const Route = createFileRoute("/kavolith-automation")({
                   name: t.name,
                   price: String(t.setup.now.INR),
                   priceCurrency: "INR",
+                  availability: "https://schema.org/InStock",
+                  priceValidUntil: PRICE_VALID_UNTIL,
                 })),
               },
             },
