@@ -183,6 +183,7 @@ export const Route = createFileRoute("/cognileads-os")({
               "@id": `${SITE}/cognileads-os#productoffer`,
               name: "CogniLeads OS deployment",
               url: `${SITE}/cognileads-os`,
+              image: "https://kavolith.com/kavolith-og.png",
               brand: { "@type": "Brand", name: "CogniLeads OS" },
               description:
                 "Custom-engineered CogniLeads OS deployment, scoped per business. 60% advance to begin, performance-backed remaining balance.",

@@ -118,6 +118,7 @@ export const Route = createFileRoute("/kavolith-intelligence")({
                 "@type": "Offer",
                 name: p.name,
                 availability: "https://schema.org/PreOrder",
+                price: String(INTELLIGENCE_SETUP.now.INR[0]),
                 priceCurrency: "INR",
                 priceValidUntil: PRICE_VALID_UNTIL,
                 priceSpecification: [
