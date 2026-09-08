@@ -23,6 +23,60 @@ const LINKS: Array<[number, number]> = [
   [2, 10], [4, 12], [6, 13], [9, 16], [11, 18], [13, 19],
 ];
 
+/** Alternate connections that fade in while nearby base links fade out, so the
+ *  network's shape subtly reconfigures over time. */
+const ALT_LINKS: Array<[number, number]> = [
+  [1, 10], [3, 12], [5, 13], [7, 20], [10, 17], [12, 19], [15, 9], [18, 21],
+];
+
+/** Links that carry a travelling signal pulse. */
+const SIGNAL_LINKS: Array<[number, number]> = [
+  [1, 2], [4, 5], [8, 9], [16, 17], [13, 14], [19, 20],
+];
+
+/** Links whose base stroke periodically fades out (paired with ALT_LINKS). */
+const FADING = new Set([1, 3, 5, 15, 18, 22, 24, 27]);
+
+/** Deterministic CSS: small organic drift per node (larger/brighter nodes drift a
+ *  touch faster and further for parallax depth), link reconfiguration, and signal
+ *  pulses. Everything is gated behind prefers-reduced-motion: no-preference, so
+ *  reduced-motion users see the static frame. */
+function buildCss() {
+  const parts: string[] = [];
+
+  parts.push(`
+@keyframes kv-drift-a { 0%,100% { transform: translate(0,0); } 25% { transform: translate(3px,-4px); } 50% { transform: translate(-2px,3px); } 75% { transform: translate(4px,2px); } }
+@keyframes kv-drift-b { 0%,100% { transform: translate(0,0); } 30% { transform: translate(-4px,2px); } 60% { transform: translate(2px,4px); } 80% { transform: translate(3px,-3px); } }
+@keyframes kv-drift-c { 0%,100% { transform: translate(0,0); } 20% { transform: translate(2px,3px); } 55% { transform: translate(-3px,-2px); } 85% { transform: translate(-1px,4px); } }
+@keyframes kv-drift-d { 0%,100% { transform: translate(0,0); } 35% { transform: translate(4px,3px); } 65% { transform: translate(-3px,-4px); } }
+@keyframes kv-link-out { 0%,42% { opacity: 1; } 50%,92% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes kv-link-in { 0%,42% { opacity: 0; } 50%,92% { opacity: 1; } 100% { opacity: 0; } }
+`);
+
+  NODES.forEach((n) => {
+    const kf = ["a", "b", "c", "d"][n.i % 4];
+    const dur = (n.big ? 13 : 19) + (n.i % 5) * 1.7;
+    const scale = n.big ? 1 : 0.55;
+    parts.push(
+      `.kv-n-${n.i} { animation: kv-drift-${kf} ${dur}s ease-in-out ${(n.i % 7) * 0.9}s infinite; transform-box: fill-box; transform-origin: center; scale: 1; }`,
+      `.kv-n-${n.i} { --kv-amp: ${scale}; }`,
+    );
+  });
+
+  SIGNAL_LINKS.forEach(([a, b], i) => {
+    const dx = NODES[b].x - NODES[a].x;
+    const dy = NODES[b].y - NODES[a].y;
+    parts.push(
+      `@keyframes kv-sig-${i} { 0% { transform: translate(0,0); opacity: 0; } 15% { opacity: 0.85; } 70% { opacity: 0.7; } 100% { transform: translate(${dx}px,${dy}px); opacity: 0; } }`,
+      `.kv-sig-${i} { animation: kv-sig-${i} 4.2s ease-in-out ${i * 3.1}s infinite; }`,
+    );
+  });
+
+  return `@media (prefers-reduced-motion: no-preference) { ${parts.join("\n")} }`;
+}
+
+const LATTICE_CSS = buildCss();
+
 export function NodeLattice({ className = "" }: { className?: string }) {
   return (
     <svg
@@ -32,8 +86,11 @@ export function NodeLattice({ className = "" }: { className?: string }) {
       preserveAspectRatio="none"
       className={`absolute inset-0 h-full w-full ${className}`}
     >
+      <style dangerouslySetInnerHTML={{ __html: LATTICE_CSS }} />
+
       {LINKS.map(([a, b], i) => {
         const color = i % 5 === 1 || i % 5 === 3 ? TEAL : VIOLET;
+        const fading = FADING.has(i);
         return (
           <line
             key={`l-${a}-${b}`}
@@ -44,14 +101,52 @@ export function NodeLattice({ className = "" }: { className?: string }) {
             stroke={color}
             strokeOpacity={i % 2 === 0 ? 0.6 : 0.5}
             strokeWidth={1.5}
+            style={
+              fading
+                ? {
+                    animation: `kv-link-out ${12 + (i % 4) * 2}s ease-in-out ${(i % 5) * 1.4}s infinite`,
+                  }
+                : undefined
+            }
+            className={fading ? "kv-fade" : undefined}
           />
         );
       })}
+
+      {ALT_LINKS.map(([a, b], i) => (
+        <line
+          key={`alt-${a}-${b}`}
+          x1={NODES[a].x}
+          y1={NODES[a].y}
+          x2={NODES[b].x}
+          y2={NODES[b].y}
+          stroke={i % 3 === 1 ? TEAL : VIOLET}
+          strokeOpacity={0.4}
+          strokeWidth={1.2}
+          opacity={0}
+          style={{
+            animation: `kv-link-in ${12 + (i % 4) * 2}s ease-in-out ${(i % 5) * 1.4}s infinite`,
+          }}
+        />
+      ))}
+
+      {SIGNAL_LINKS.map(([a, b], i) => (
+        <circle
+          key={`sig-${a}-${b}`}
+          cx={NODES[a].x}
+          cy={NODES[a].y}
+          r={3}
+          fill={i % 2 === 0 ? TEAL : VIOLET}
+          opacity={0}
+          className={`kv-sig-${i}`}
+        />
+      ))}
+
       {NODES.map((n) => {
         const color = n.teal ? TEAL : VIOLET;
         const r = n.big ? 4 : 2.6;
         return (
-          <g key={`n-${n.i}`}>
+          <g key={`n-${n.i}`} className={`kv-n-${n.i}`}>
             {n.big && (
               <circle cx={n.x} cy={n.y} r={r * 2} fill={color} fillOpacity={0.22} />
             )}
