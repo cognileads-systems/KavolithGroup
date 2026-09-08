@@ -4,6 +4,8 @@
  * restrained accent behind sections and as section dividers.
  */
 
+import { useEffect, useState } from "react";
+
 const VIOLET = "#A78BFA";
 const TEAL = "#5EEAD4";
 
@@ -24,58 +26,90 @@ const LINKS: Array<[number, number]> = [
 ];
 
 /** Alternate connections that fade in while nearby base links fade out, so the
- *  network's shape subtly reconfigures over time. */
+ *  network's shape visibly reconfigures every few seconds. */
 const ALT_LINKS: Array<[number, number]> = [
   [1, 10], [3, 12], [5, 13], [7, 20], [10, 17], [12, 19], [15, 9], [18, 21],
 ];
 
-/** Links that carry a travelling signal pulse. */
+/** Links that carry a travelling signal pulse (several, staggered). */
 const SIGNAL_LINKS: Array<[number, number]> = [
-  [1, 2], [4, 5], [8, 9], [16, 17], [13, 14], [19, 20],
+  [1, 2], [4, 5], [8, 9], [16, 17], [13, 14], [19, 20], [9, 10], [17, 18], [5, 6], [20, 21],
 ];
 
-/** Links whose base stroke periodically fades out (paired with ALT_LINKS). */
+/** Base links whose stroke periodically fades out (paired with ALT_LINKS). */
 const FADING = new Set([1, 3, 5, 15, 18, 22, 24, 27]);
 
-/** Deterministic CSS: small organic drift per node (larger/brighter nodes drift a
- *  touch faster and further for parallax depth), link reconfiguration, and signal
- *  pulses. Everything is gated behind prefers-reduced-motion: no-preference, so
- *  reduced-motion users see the static frame. */
-function buildCss() {
-  const parts: string[] = [];
+/** Deterministic per-node drift path: 4 waypoints in a small looping range.
+ *  Bigger/brighter nodes drift slightly faster and further (parallax depth). */
+const DRIFT = NODES.map((n) => {
+  const s = n.i + 3;
+  const amp = n.big ? 9 : 6;
+  const off = (k: number) => {
+    const v = ((s * (k * 31 + 17)) % 21) / 10 - 1; // -1..1 deterministic
+    return Math.round(v * amp * 10) / 10;
+  };
+  const pts: Array<[number, number]> = [
+    [0, 0],
+    [off(1), off(2)],
+    [off(3), off(4)],
+    [off(5), off(6)],
+    [0, 0],
+  ];
+  return {
+    pts,
+    dur: (n.big ? 7 : 9) + (n.i % 5) * 0.6,
+    begin: -((n.i % 8) * 0.9),
+  };
+});
 
-  parts.push(`
-@keyframes kv-drift-a { 0%,100% { transform: translate(0,0); } 25% { transform: translate(3px,-4px); } 50% { transform: translate(-2px,3px); } 75% { transform: translate(4px,2px); } }
-@keyframes kv-drift-b { 0%,100% { transform: translate(0,0); } 30% { transform: translate(-4px,2px); } 60% { transform: translate(2px,4px); } 80% { transform: translate(3px,-3px); } }
-@keyframes kv-drift-c { 0%,100% { transform: translate(0,0); } 20% { transform: translate(2px,3px); } 55% { transform: translate(-3px,-2px); } 85% { transform: translate(-1px,4px); } }
-@keyframes kv-drift-d { 0%,100% { transform: translate(0,0); } 35% { transform: translate(4px,3px); } 65% { transform: translate(-3px,-4px); } }
-@keyframes kv-link-out { 0%,42% { opacity: 1; } 50%,92% { opacity: 0; } 100% { opacity: 1; } }
-@keyframes kv-link-in { 0%,42% { opacity: 0; } 50%,92% { opacity: 1; } 100% { opacity: 0; } }
-`);
+const CYCLE_CSS = `
+@keyframes kv-link-out { 0%,35% { opacity: var(--kv-o); } 50%,85% { opacity: 0; } 100% { opacity: var(--kv-o); } }
+@keyframes kv-link-in { 0%,35% { opacity: 0; } 50%,85% { opacity: 0.45; } 100% { opacity: 0; } }
+`;
 
-  NODES.forEach((n) => {
-    const kf = ["a", "b", "c", "d"][n.i % 4];
-    const dur = (n.big ? 13 : 19) + (n.i % 5) * 1.7;
-    parts.push(
-      `.kv-n-${n.i} { animation: kv-drift-${kf} ${dur}s ease-in-out ${(n.i % 7) * 0.9}s infinite; animation-timing-function: ease-in-out; }`,
-    );
-  });
-
-  SIGNAL_LINKS.forEach(([a, b], i) => {
-    const dx = NODES[b].x - NODES[a].x;
-    const dy = NODES[b].y - NODES[a].y;
-    parts.push(
-      `@keyframes kv-sig-${i} { 0% { transform: translate(0,0); opacity: 0; } 15% { opacity: 0.85; } 70% { opacity: 0.7; } 100% { transform: translate(${dx}px,${dy}px); opacity: 0; } }`,
-      `.kv-sig-${i} { animation: kv-sig-${i} 4.2s ease-in-out ${i * 3.1}s infinite; }`,
-    );
-  });
-
-  return `@media (prefers-reduced-motion: no-preference) { ${parts.join("\n")} }`;
+function nodeAnim(i: number) {
+  const d = DRIFT[i];
+  return {
+    values: d.pts.map(([dx, dy]) => `${dx} ${dy}`).join(";"),
+    dur: `${d.dur}s`,
+    begin: `${d.begin}s`,
+  };
 }
 
-const LATTICE_CSS = buildCss();
+/** Absolute endpoint value list for one end of a line, following that node. */
+function endValues(i: number, axis: "x" | "y") {
+  const n = NODES[i];
+  const base = axis === "x" ? n.x : n.y;
+  return DRIFT[i].pts.map((p) => base + (axis === "x" ? p[0] : p[1])).join(";");
+}
+
+function LineDrift({ a, b }: { a: number; b: number }) {
+  return (
+    <>
+      <animate attributeName="x1" values={endValues(a, "x")} dur={`${DRIFT[a].dur}s`} begin={`${DRIFT[a].begin}s`} repeatCount="indefinite" />
+      <animate attributeName="y1" values={endValues(a, "y")} dur={`${DRIFT[a].dur}s`} begin={`${DRIFT[a].begin}s`} repeatCount="indefinite" />
+      <animate attributeName="x2" values={endValues(b, "x")} dur={`${DRIFT[b].dur}s`} begin={`${DRIFT[b].begin}s`} repeatCount="indefinite" />
+      <animate attributeName="y2" values={endValues(b, "y")} dur={`${DRIFT[b].dur}s`} begin={`${DRIFT[b].begin}s`} repeatCount="indefinite" />
+    </>
+  );
+}
+
+function useReducedMotion() {
+  const [reduced, setReduced] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduced(mq.matches);
+    const on = () => setReduced(mq.matches);
+    mq.addEventListener("change", on);
+    return () => mq.removeEventListener("change", on);
+  }, []);
+  return reduced;
+}
 
 export function NodeLattice({ className = "" }: { className?: string }) {
+  const reduced = useReducedMotion();
+  const animate = !reduced;
+
   return (
     <svg
       aria-hidden
@@ -84,11 +118,12 @@ export function NodeLattice({ className = "" }: { className?: string }) {
       preserveAspectRatio="none"
       className={`absolute inset-0 h-full w-full ${className}`}
     >
-      <style dangerouslySetInnerHTML={{ __html: LATTICE_CSS }} />
+      <style dangerouslySetInnerHTML={{ __html: CYCLE_CSS }} />
 
       {LINKS.map(([a, b], i) => {
         const color = i % 5 === 1 || i % 5 === 3 ? TEAL : VIOLET;
-        const fading = FADING.has(i);
+        const fading = animate && FADING.has(i);
+        const o = i % 2 === 0 ? 0.6 : 0.5;
         return (
           <line
             key={`l-${a}-${b}`}
@@ -97,64 +132,99 @@ export function NodeLattice({ className = "" }: { className?: string }) {
             x2={NODES[b].x}
             y2={NODES[b].y}
             stroke={color}
-            strokeOpacity={i % 2 === 0 ? 0.6 : 0.5}
             strokeWidth={1.5}
+            opacity={o}
             style={
               fading
-                ? {
-                    animation: `kv-link-out ${12 + (i % 4) * 2}s ease-in-out ${(i % 5) * 1.4}s infinite`,
-                  }
+                ? ({
+                    ["--kv-o" as string]: String(o),
+                    animation: `kv-link-out ${6 + (i % 3)}s ease-in-out ${(i % 4) * 1.3}s infinite`,
+                  } as React.CSSProperties)
                 : undefined
             }
-            className={fading ? "kv-fade" : undefined}
-          />
+          >
+            {animate && <LineDrift a={a} b={b} />}
+          </line>
         );
       })}
 
-      {ALT_LINKS.map(([a, b], i) => (
-        <line
-          key={`alt-${a}-${b}`}
-          x1={NODES[a].x}
-          y1={NODES[a].y}
-          x2={NODES[b].x}
-          y2={NODES[b].y}
-          stroke={i % 3 === 1 ? TEAL : VIOLET}
-          strokeOpacity={0.4}
-          strokeWidth={1.2}
-          opacity={0}
-          style={{
-            animation: `kv-link-in ${12 + (i % 4) * 2}s ease-in-out ${(i % 5) * 1.4}s infinite`,
-          }}
-        />
-      ))}
+      {animate &&
+        ALT_LINKS.map(([a, b], i) => (
+          <line
+            key={`alt-${a}-${b}`}
+            x1={NODES[a].x}
+            y1={NODES[a].y}
+            x2={NODES[b].x}
+            y2={NODES[b].y}
+            stroke={i % 3 === 1 ? TEAL : VIOLET}
+            strokeWidth={1.2}
+            opacity={0}
+            style={{
+              animation: `kv-link-in ${6 + (i % 3)}s ease-in-out ${(i % 4) * 1.3}s infinite`,
+            }}
+          >
+            <LineDrift a={a} b={b} />
+          </line>
+        ))}
 
-      {SIGNAL_LINKS.map(([a, b], i) => (
-        <circle
-          key={`sig-${a}-${b}`}
-          cx={NODES[a].x}
-          cy={NODES[a].y}
-          r={3}
-          fill={i % 2 === 0 ? TEAL : VIOLET}
-          opacity={0}
-          className={`kv-sig-${i}`}
-        />
-      ))}
+      {animate &&
+        SIGNAL_LINKS.map(([a, b], i) => (
+          <circle
+            key={`sig-${a}-${b}-${i}`}
+            r={3.2}
+            cx={NODES[a].x}
+            cy={NODES[a].y}
+            fill={i % 2 === 0 ? TEAL : VIOLET}
+            opacity={0.85}
+          >
+            <animate
+              attributeName="cx"
+              values={`${NODES[a].x};${NODES[b].x}`}
+              dur="3.4s"
+              begin={`${(i % 5) * 0.85 + Math.floor(i / 5) * 0.4}s`}
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="cy"
+              values={`${NODES[a].y};${NODES[b].y}`}
+              dur="3.4s"
+              begin={`${(i % 5) * 0.85 + Math.floor(i / 5) * 0.4}s`}
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="opacity"
+              values="0;0.9;0.85;0"
+              dur="3.4s"
+              begin={`${(i % 5) * 0.85 + Math.floor(i / 5) * 0.4}s`}
+              repeatCount="indefinite"
+            />
+          </circle>
+        ))}
 
       {NODES.map((n) => {
         const color = n.teal ? TEAL : VIOLET;
         const r = n.big ? 4 : 2.6;
+        const a = nodeAnim(n.i);
         return (
-          <g key={`n-${n.i}`} className={`kv-n-${n.i}`}>
-            {n.big && (
-              <circle cx={n.x} cy={n.y} r={r * 2} fill={color} fillOpacity={0.22} />
+          <g key={`n-${n.i}`}>
+            {animate && (
+              <animateTransform
+                attributeName="transform"
+                type="translate"
+                values={a.values}
+                dur={a.dur}
+                begin={a.begin}
+                repeatCount="indefinite"
+              />
             )}
+            {n.big && <circle cx={n.x} cy={n.y} r={r * 2} fill={color} fillOpacity={0.22} />}
             <circle
               cx={n.x}
               cy={n.y}
               r={r}
               fill={color}
               fillOpacity={n.big ? 0.9 : 0.85}
-              className="animate-node-pulse-strong"
+              className={animate ? "animate-node-pulse-strong" : undefined}
               style={{ animationDelay: `${(n.i % 6) * 0.3}s` }}
             />
           </g>
