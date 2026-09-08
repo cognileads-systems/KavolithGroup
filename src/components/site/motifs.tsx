@@ -56,10 +56,8 @@ function buildCss() {
   NODES.forEach((n) => {
     const kf = ["a", "b", "c", "d"][n.i % 4];
     const dur = (n.big ? 13 : 19) + (n.i % 5) * 1.7;
-    const scale = n.big ? 1 : 0.55;
     parts.push(
-      `.kv-n-${n.i} { animation: kv-drift-${kf} ${dur}s ease-in-out ${(n.i % 7) * 0.9}s infinite; transform-box: fill-box; transform-origin: center; scale: 1; }`,
-      `.kv-n-${n.i} { --kv-amp: ${scale}; }`,
+      `.kv-n-${n.i} { animation: kv-drift-${kf} ${dur}s ease-in-out ${(n.i % 7) * 0.9}s infinite; animation-timing-function: ease-in-out; }`,
     );
   });
 

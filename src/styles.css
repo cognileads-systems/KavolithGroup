@@ -215,3 +215,12 @@ body {
 @utility animate-node-pulse-strong {
   animation: node-pulse-strong 2.8s ease-in-out infinite;
 }
+
+/* Background lattice is a background layer: freeze all of its motion for users
+   who ask their OS to reduce motion. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-node-pulse,
+  .animate-node-pulse-strong {
+    animation: none !important;
+  }
+}
