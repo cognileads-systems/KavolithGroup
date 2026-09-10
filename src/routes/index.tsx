@@ -122,7 +122,7 @@ const BRAND_TILES = [
 function HomePage() {
   return (
     <PageShell>
-      <div className="relative overflow-hidden">
+      <div className="relative isolate overflow-hidden">
         <HomeHeroVideo />
 
         <Section className="relative">
