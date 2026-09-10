@@ -41,9 +41,10 @@ const FADING = new Set([1, 3, 5, 15, 18, 22, 24, 27]);
 
 /** Deterministic per-node drift path: 4 waypoints in a small looping range.
  *  Bigger/brighter nodes drift slightly faster and further (parallax depth). */
-const DRIFT = NODES.map((n) => {
+function makeDrift(amplitudeMultiplier: number) {
+  return NODES.map((n) => {
   const s = n.i + 3;
-  const amp = n.big ? 9 : 6;
+  const amp = (n.big ? 9 : 6) * amplitudeMultiplier;
   const off = (k: number) => {
     const v = ((s * (k * 31 + 17)) % 21) / 10 - 1; // -1..1 deterministic
     return Math.round(v * amp * 10) / 10;
@@ -55,20 +56,24 @@ const DRIFT = NODES.map((n) => {
     [off(5), off(6)],
     [0, 0],
   ];
-  return {
-    pts,
-    dur: (n.big ? 7 : 9) + (n.i % 5) * 0.6,
-    begin: -((n.i % 8) * 0.9),
-  };
-});
+    return {
+      pts,
+      dur: (n.big ? 7 : 9) + (n.i % 5) * 0.6,
+      begin: -((n.i % 8) * 0.9),
+    };
+  });
+}
+
+const STANDARD_DRIFT = makeDrift(1);
+const ENHANCED_DRIFT = makeDrift(3.5);
 
 const CYCLE_CSS = `
 @keyframes kv-link-out { 0%,35% { opacity: var(--kv-o); } 50%,85% { opacity: 0; } 100% { opacity: var(--kv-o); } }
 @keyframes kv-link-in { 0%,35% { opacity: 0; } 50%,85% { opacity: 0.45; } 100% { opacity: 0; } }
 `;
 
-function nodeAnim(i: number) {
-  const d = DRIFT[i];
+function nodeAnim(i: number, drift: typeof STANDARD_DRIFT) {
+  const d = drift[i];
   return {
     values: d.pts.map(([dx, dy]) => `${dx} ${dy}`).join(";"),
     dur: `${d.dur}s`,
@@ -77,19 +82,19 @@ function nodeAnim(i: number) {
 }
 
 /** Absolute endpoint value list for one end of a line, following that node. */
-function endValues(i: number, axis: "x" | "y") {
+function endValues(i: number, axis: "x" | "y", drift: typeof STANDARD_DRIFT) {
   const n = NODES[i];
   const base = axis === "x" ? n.x : n.y;
-  return DRIFT[i].pts.map((p) => base + (axis === "x" ? p[0] : p[1])).join(";");
+  return drift[i].pts.map((p) => base + (axis === "x" ? p[0] : p[1])).join(";");
 }
 
-function LineDrift({ a, b }: { a: number; b: number }) {
+function LineDrift({ a, b, drift }: { a: number; b: number; drift: typeof STANDARD_DRIFT }) {
   return (
     <>
-      <animate attributeName="x1" values={endValues(a, "x")} dur={`${DRIFT[a].dur}s`} begin={`${DRIFT[a].begin}s`} repeatCount="indefinite" />
-      <animate attributeName="y1" values={endValues(a, "y")} dur={`${DRIFT[a].dur}s`} begin={`${DRIFT[a].begin}s`} repeatCount="indefinite" />
-      <animate attributeName="x2" values={endValues(b, "x")} dur={`${DRIFT[b].dur}s`} begin={`${DRIFT[b].begin}s`} repeatCount="indefinite" />
-      <animate attributeName="y2" values={endValues(b, "y")} dur={`${DRIFT[b].dur}s`} begin={`${DRIFT[b].begin}s`} repeatCount="indefinite" />
+      <animate attributeName="x1" values={endValues(a, "x", drift)} dur={`${drift[a].dur}s`} begin={`${drift[a].begin}s`} repeatCount="indefinite" />
+      <animate attributeName="y1" values={endValues(a, "y", drift)} dur={`${drift[a].dur}s`} begin={`${drift[a].begin}s`} repeatCount="indefinite" />
+      <animate attributeName="x2" values={endValues(b, "x", drift)} dur={`${drift[b].dur}s`} begin={`${drift[b].begin}s`} repeatCount="indefinite" />
+      <animate attributeName="y2" values={endValues(b, "y", drift)} dur={`${drift[b].dur}s`} begin={`${drift[b].begin}s`} repeatCount="indefinite" />
     </>
   );
 }
@@ -106,9 +111,16 @@ function useReducedMotion() {
   return reduced;
 }
 
-export function NodeLattice({ className = "" }: { className?: string }) {
+export function NodeLattice({
+  className = "",
+  enhanced = false,
+}: {
+  className?: string;
+  enhanced?: boolean;
+}) {
   const reduced = useReducedMotion();
   const animate = !reduced;
+  const drift = enhanced ? ENHANCED_DRIFT : STANDARD_DRIFT;
 
   return (
     <svg
@@ -143,7 +155,7 @@ export function NodeLattice({ className = "" }: { className?: string }) {
                 : undefined
             }
           >
-            {animate && <LineDrift a={a} b={b} />}
+            {animate && <LineDrift a={a} b={b} drift={drift} />}
           </line>
         );
       })}
@@ -157,13 +169,13 @@ export function NodeLattice({ className = "" }: { className?: string }) {
             x2={NODES[b].x}
             y2={NODES[b].y}
             stroke={i % 3 === 1 ? TEAL : VIOLET}
-            strokeWidth={1.2}
+            strokeWidth={enhanced ? 1.7 : 1.2}
             opacity={0}
             style={{
               animation: `kv-link-in ${6 + (i % 3)}s ease-in-out ${(i % 4) * 1.3}s infinite`,
             }}
           >
-            <LineDrift a={a} b={b} />
+            <LineDrift a={a} b={b} drift={drift} />
           </line>
         ))}
 
@@ -171,11 +183,11 @@ export function NodeLattice({ className = "" }: { className?: string }) {
         SIGNAL_LINKS.map(([a, b], i) => (
           <circle
             key={`sig-${a}-${b}-${i}`}
-            r={3.2}
+            r={enhanced ? 4.6 : 3.2}
             cx={NODES[a].x}
             cy={NODES[a].y}
             fill={i % 2 === 0 ? TEAL : VIOLET}
-            opacity={0.85}
+            opacity={enhanced ? 1 : 0.85}
           >
             <animate
               attributeName="cx"
@@ -193,7 +205,7 @@ export function NodeLattice({ className = "" }: { className?: string }) {
             />
             <animate
               attributeName="opacity"
-              values="0;0.9;0.85;0"
+               values={enhanced ? "0;1;0.95;0" : "0;0.9;0.85;0"}
               dur="3.4s"
               begin={`${(i % 5) * 0.85 + Math.floor(i / 5) * 0.4}s`}
               repeatCount="indefinite"
@@ -204,7 +216,7 @@ export function NodeLattice({ className = "" }: { className?: string }) {
       {NODES.map((n) => {
         const color = n.teal ? TEAL : VIOLET;
         const r = n.big ? 4 : 2.6;
-        const a = nodeAnim(n.i);
+        const a = nodeAnim(n.i, drift);
         return (
           <g key={`n-${n.i}`}>
             {animate && (

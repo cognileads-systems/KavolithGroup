@@ -90,18 +90,20 @@ export function PhotoLatticeSection({
   priority = false,
   className = "",
   id,
+  enhancedLattice = false,
 }: {
   children: ReactNode;
   image: string;
   priority?: boolean;
   className?: string;
   id?: string;
+  enhancedLattice?: boolean;
 }) {
   return (
     <div className="relative isolate overflow-hidden">
       <PhotoBackdrop src={image} priority={priority} />
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <NodeLattice />
+        <NodeLattice enhanced={enhancedLattice} />
       </div>
       <Section id={id} className={`relative ${className}`}>
         {children}
