@@ -110,7 +110,7 @@ const PRINCIPLES = [
 function AboutPage() {
   return (
     <PageShell>
-      <PhotoLatticeSection image={photoNeural} priority>
+      <PhotoLatticeSection image={photoNeural} priority enhancedLattice>
         <Eyebrow>About</Eyebrow>
         <h1 className="mt-5 max-w-3xl text-4xl leading-[1.1] md:text-5xl">
           An <span className="text-accent">Intelligence Systems Company</span>
