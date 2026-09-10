@@ -3,6 +3,7 @@ import { PageShell, Section, Eyebrow, SectionTitle } from "@/components/site/lay
 import { HowWeWork } from "@/components/site/how-we-work";
 import { FaqSection, faqSchema, HOME_FAQS } from "@/components/site/faq";
 import { breadcrumbSchema } from "@/lib/seo";
+import { HomeHeroVideo } from "@/components/site/home-hero-video";
 
 const SITE = "https://kavolith.com";
 
@@ -122,8 +123,7 @@ function HomePage() {
   return (
     <PageShell>
       <div className="relative overflow-hidden">
-        <div className="blob left-[10%] top-[-120px] h-[380px] w-[380px]" />
-        <div className="blob right-[5%] top-[40px] h-[300px] w-[300px] opacity-20" />
+        <HomeHeroVideo />
 
         <Section className="relative">
           <Eyebrow>Kavolith Group</Eyebrow>
