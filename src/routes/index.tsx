@@ -4,6 +4,7 @@ import { HowWeWork } from "@/components/site/how-we-work";
 import { FaqSection, faqSchema, HOME_FAQS } from "@/components/site/faq";
 import { breadcrumbSchema } from "@/lib/seo";
 import { HomeHeroVideo } from "@/components/site/home-hero-video";
+import { StoryLightbox } from "@/components/site/story-lightbox";
 
 const SITE = "https://kavolith.com";
 
@@ -140,7 +141,7 @@ function HomePage() {
             operations, and workforce automation.
           </p>
 
-          <div className="mt-9 flex flex-wrap gap-3">
+          <div className="mt-9 flex flex-wrap items-center gap-3">
             <Link
               to="/contact"
               className="rounded-lg bg-accent px-5 py-3 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
@@ -153,6 +154,7 @@ function HomePage() {
             >
               See our systems
             </a>
+            <StoryLightbox />
           </div>
         </Section>
       </div>
