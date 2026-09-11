@@ -260,7 +260,7 @@ const TERMS = [
 function CogniLeadsOSPage() {
   return (
     <PageShell>
-      <PhotoLatticeSection image={photoLattice} priority className="grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+      <PhotoLatticeSection image={photoLattice} priority enhancedLattice className="grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-center">
 
           <div>
             <Eyebrow>A Kavolith Company</Eyebrow>
