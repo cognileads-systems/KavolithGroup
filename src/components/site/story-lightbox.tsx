@@ -20,17 +20,17 @@ export function StoryLightbox() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <button
-          type="button"
-          className="inline-flex items-center gap-2 rounded-lg px-2 py-3 text-sm font-medium text-muted-foreground underline-offset-4 transition-colors hover:text-accent hover:underline"
-        >
-          <span className="flex h-6 w-6 items-center justify-center rounded-full border border-border bg-accent-soft text-accent">
-            <Play className="h-3 w-3" aria-hidden />
-          </span>
-          Watch our story
-        </button>
-      </DialogTrigger>
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        className="inline-flex items-center gap-2 rounded-lg px-2 py-3 text-sm font-medium text-muted-foreground underline-offset-4 transition-colors hover:text-accent hover:underline"
+      >
+        <span className="flex h-6 w-6 items-center justify-center rounded-full border border-border bg-accent-soft text-accent">
+          <Play className="h-3 w-3" aria-hidden />
+        </span>
+        Watch our story
+      </button>
+
 
       <DialogContent className="max-w-3xl border-border bg-surface p-2 sm:p-3">
         <DialogTitle className="px-2 pt-1 text-base">Our story</DialogTitle>
