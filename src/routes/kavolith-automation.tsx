@@ -112,7 +112,7 @@ const AUTOMATION_TYPES = [
 function AutomationPage() {
   return (
     <PageShell>
-      <PhotoLatticeSection image={photoDatastream} priority>
+      <PhotoLatticeSection image={photoDatastream} priority enhancedLattice>
         <Eyebrow>Kavolith Automation</Eyebrow>
         <h1 className="mt-5 max-w-3xl text-4xl leading-[1.1] md:text-5xl">
           Automation that runs like <span className="text-accent">infrastructure</span>

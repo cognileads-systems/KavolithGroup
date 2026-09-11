@@ -154,7 +154,7 @@ function IntelligencePage() {
   const [currency, setCurrency] = useState<Currency>("INR");
   return (
     <PageShell>
-      <PhotoLatticeSection image={photoLattice} priority>
+      <PhotoLatticeSection image={photoLattice} priority enhancedLattice>
         <div>
           <div className="mb-7 flex flex-wrap items-center gap-3 rounded-xl border border-accent/40 bg-accent-soft px-5 py-3">
             <span className="animate-stage-pulse h-2 w-2 rounded-full bg-accent" />

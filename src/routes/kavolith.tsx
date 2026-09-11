@@ -120,7 +120,7 @@ const SERVICES = [
 function KavolithPage() {
   return (
     <PageShell>
-      <PhotoLatticeSection image={photoNeural} priority>
+      <PhotoLatticeSection image={photoNeural} priority enhancedLattice>
         <Eyebrow>Kavolith · Core services</Eyebrow>
         <h1 className="mt-5 max-w-3xl text-4xl leading-[1.1] md:text-5xl">
           AI systems engineering for businesses that{" "}
