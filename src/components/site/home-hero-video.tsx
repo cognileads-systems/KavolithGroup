@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import heroVideo from "@/assets/kavolith-home-hero.mp4.asset.json";
-import heroPoster from "@/assets/kavolith-home-hero-poster.jpg.asset.json";
+
+const HERO_VIDEO_URL = "/kavolith-home-hero.mp4";
+const HERO_POSTER_URL = "/kavolith-home-hero-poster.jpg";
 
 export function HomeHeroVideo() {
   const [motionAllowed, setMotionAllowed] = useState(false);
@@ -16,7 +17,7 @@ export function HomeHeroVideo() {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
       <img
-        src={heroPoster.url}
+        src={HERO_POSTER_URL}
         alt=""
         width={1280}
         height={720}
@@ -26,7 +27,7 @@ export function HomeHeroVideo() {
       {motionAllowed && (
         <video
           className="absolute inset-0 h-full w-full object-cover"
-          poster={heroPoster.url}
+          poster={HERO_POSTER_URL}
           muted
           autoPlay
           loop
@@ -34,7 +35,7 @@ export function HomeHeroVideo() {
           preload="metadata"
           disablePictureInPicture
         >
-          <source src={heroVideo.url} type="video/mp4" />
+          <source src={HERO_VIDEO_URL} type="video/mp4" />
         </video>
       )}
       <div className="absolute inset-0 bg-gradient-to-r from-background via-background/65 to-background/15" />
