@@ -55,7 +55,7 @@ const DEPLOYMENT_DETAILS = [
 
 
 function DeploymentPriceCard() {
-  const [currency, setCurrency] = useState<Currency>("INR");
+  const [currency, setCurrency] = useState<Currency>("USD");
   const [listLow, listHigh] = DEPLOYMENT_LIST[currency];
   const [low, high] = DEPLOYMENT_NOW[currency];
 

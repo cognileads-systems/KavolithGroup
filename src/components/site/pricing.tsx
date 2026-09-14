@@ -317,7 +317,7 @@ function CheckIcon() {
 
 
 function PricingGridBase({ tiers, note }: { tiers: Tier[]; note?: string }) {
-  const [currency, setCurrency] = useState<Currency>("INR");
+  const [currency, setCurrency] = useState<Currency>("USD");
 
   return (
     <div>

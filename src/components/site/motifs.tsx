@@ -113,7 +113,7 @@ function useReducedMotion() {
 
 export function NodeLattice({
   className = "",
-  enhanced = false,
+  enhanced = true,
 }: {
   className?: string;
   enhanced?: boolean;

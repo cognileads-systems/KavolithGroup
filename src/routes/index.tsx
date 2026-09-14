@@ -5,6 +5,7 @@ import { FaqSection, faqSchema, HOME_FAQS } from "@/components/site/faq";
 import { breadcrumbSchema } from "@/lib/seo";
 import { HomeHeroVideo } from "@/components/site/home-hero-video";
 import { StoryLightbox } from "@/components/site/story-lightbox";
+import { ProofOfWork, PROOF_ITEMS } from "@/components/site/proof-of-work";
 
 const SITE = "https://kavolith.com";
 
@@ -86,6 +87,18 @@ export const Route = createFileRoute("/")({
               inLanguage: "en",
             },
             faqSchema(`${SITE}/#faq`, HOME_FAQS),
+            {
+              "@type": "ItemList",
+              "@id": `${SITE}/#proof-of-work`,
+              name: "Kavolith Group proof of work",
+              itemListElement: PROOF_ITEMS.map((item, i) => ({
+                "@type": "ListItem",
+                position: i + 1,
+                name: item.title,
+                description: `${item.status}. ${item.summary}`,
+                ...(item.link ? { url: item.link.href } : {}),
+              })),
+            },
           ],
         }),
       },
@@ -189,6 +202,12 @@ function HomePage() {
           ))}
         </div>
       </Section>
+
+      <Section id="proof-of-work" className="pt-0">
+        <ProofOfWork />
+      </Section>
+
+
 
       <Section className="pt-0">
         <HowWeWork />

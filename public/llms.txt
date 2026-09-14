@@ -4,20 +4,30 @@
 
 Kavolith Group operates four brands: Kavolith (AI systems engineering services), CogniLeads OS (AI Revenue Intelligence Platform), Kavolith Intelligence (Enterprise AI Workforce Platform, presale), and Kavolith Automation (automation engineering).
 
+Prices are displayed in USD by default, with EUR and INR available as toggles. A flat FOUNDER30 discount (30% off) applies across all regions.
+
 ## Pages
 
-- [Home](/): Group overview and the four brands.
-- [Kavolith](/kavolith): Core services — systems audit, custom workflow builds, intelligence layer. Tiers from ₹23,000.
-- [CogniLeads OS](/cognileads-os): AI Revenue Intelligence Platform. Capture, score, route, convert. ₹1,20,000–₹2,50,000 per deployment.
-- [Kavolith Intelligence](/kavolith-intelligence): Enterprise AI Workforce Platform — multilingual digital employees. Coming soon, presale open.
-- [Kavolith Automation](/kavolith-automation): Lead routing, invoicing, and CRM sync automation packages.
+- [Home](/): Group overview, the four brands, and the Proof of Work section.
+- [Kavolith](/kavolith): Core services — systems audit, custom workflow builds, intelligence layer. Tiers: Launchpad, Scale, Premium.
+- [CogniLeads OS](/cognileads-os): AI Revenue Intelligence Platform. Capture, score, route, convert.
+- [Kavolith Intelligence](/kavolith-intelligence): Enterprise AI Workforce Platform — multilingual digital employees. Coming soon, build-slot reservations open.
+- [Kavolith Automation](/kavolith-automation): Automation tiers — Single Flow, Ops Stack, Automation Control.
 - [About](/about): Background, principles, and location.
 - [Contact](/contact): Consultation request form.
+- [Privacy](/privacy): Privacy policy, compliant with India's DPDP Act 2023.
+- [Sitemap](/sitemap.xml)
+
+## Proof of work (verified facts only)
+
+- TLEGAL — Advocate Portal: live client build at https://tlegal.org.in. Hand-coded on TanStack Start, React 19, Bun, Tailwind CSS v4; Airtable-backed case intake; built to comply with India's DPDP Act 2023.
+- Kavolith Automation lead capture pipeline: in production on Make.com. Webhook-triggered lead capture, AI classification, auto-routing to Airtable, Telegram, and email.
+- CogniLeads OS: architecture and capability only — 130+ files, 40+ modules, FastAPI backend. Not a live client deployment.
 
 ## Kavolith Intelligence presale packages
 
-- AI Compliance & Documentation Employee — multilingual (English, Telugu, Hindi), predefined rate, one-month advance booking.
-- AI HR/Ops Digital Employee — multilingual (English, Telugu, Hindi), predefined rate, one-month advance booking.
+- AI Compliance & Documentation Employee — multilingual (English, Telugu, Hindi), one-month advance booking.
+- AI HR/Ops Digital Employee — multilingual (English, Telugu, Hindi), one-month advance booking.
 
 ## Automation types built by Kavolith Automation
 

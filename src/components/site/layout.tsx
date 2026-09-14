@@ -90,7 +90,7 @@ export function PhotoLatticeSection({
   priority = false,
   className = "",
   id,
-  enhancedLattice = false,
+  enhancedLattice = true,
 }: {
   children: ReactNode;
   image: string;
