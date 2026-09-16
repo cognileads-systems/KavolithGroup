@@ -160,7 +160,7 @@ function AutomationPage() {
         <div className="mt-10">
           <PricingGrid
             tiers={AUTOMATION_TIERS}
-            note="All prices in INR. Final scope is confirmed after a process mapping session."
+            note="Final scope is confirmed after a process mapping session."
           />
         </div>
       </PhotoLatticeSection>
