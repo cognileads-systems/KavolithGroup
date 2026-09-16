@@ -174,7 +174,7 @@ function KavolithPage() {
         <div className="mt-10">
           <PricingGrid
             tiers={KAVOLITH_TIERS}
-            note="All prices in INR. Scope is confirmed after the initial consultation."
+            note="Scope is confirmed after the initial consultation."
           />
         </div>
       </PhotoSection>
