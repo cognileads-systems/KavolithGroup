@@ -6,13 +6,14 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import storyVideoAsset from "@/assets/kavolith-founder-story.mp4.asset.json";
 
 /**
  * Secondary "Watch our story" trigger + video lightbox.
- * The video source is a placeholder slot — set STORY_VIDEO_SRC once the
- * founder intro file is attached.
+ * Video: founder intro, 70s, vertical 1080×1920 — letterboxed with
+ * object-contain inside the 16:9 player frame.
  */
-const STORY_VIDEO_SRC: string | null = null;
+const STORY_VIDEO_SRC: string | null = storyVideoAsset.url;
 
 export function StoryLightbox() {
   const [open, setOpen] = useState(false);
@@ -40,7 +41,7 @@ export function StoryLightbox() {
         <div className="mt-2 aspect-video w-full overflow-hidden rounded-lg border border-border bg-ink">
           {STORY_VIDEO_SRC ? (
             <video
-              className="h-full w-full object-cover"
+              className="h-full w-full object-contain"
               src={STORY_VIDEO_SRC}
               controls
               autoPlay
