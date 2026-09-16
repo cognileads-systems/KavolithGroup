@@ -41,7 +41,7 @@ export function StoryLightbox() {
         <div className="mt-2 aspect-video w-full overflow-hidden rounded-lg border border-border bg-ink">
           {STORY_VIDEO_SRC ? (
             <video
-              className="h-full w-full object-cover"
+              className="h-full w-full object-contain"
               src={STORY_VIDEO_SRC}
               controls
               autoPlay
