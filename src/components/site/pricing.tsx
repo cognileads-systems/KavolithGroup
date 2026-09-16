@@ -402,7 +402,10 @@ function PricingGridBase({ tiers, note }: { tiers: Tier[]; note?: string }) {
           </article>
         ))}
       </div>
-      {note && <p className="mt-5 text-sm text-muted-foreground">{note}</p>}
+      <p className="mt-5 text-sm text-muted-foreground">
+        <span>All prices shown in {currency}.</span>
+        {note ? <span> {note}</span> : null}
+      </p>
       <p className="mt-2 text-xs text-muted-foreground">
         List prices are indicative pre-discount figures. The {DISCOUNT_CODE} rate of{" "}
         {DISCOUNT_PERCENT}% off applies flat across India, the US, and the EU, on setup and monthly
