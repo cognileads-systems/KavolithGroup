@@ -123,8 +123,8 @@ function KavolithPage() {
       <PhotoLatticeSection image={photoNeural} priority enhancedLattice>
         <Eyebrow>Kavolith · Core services</Eyebrow>
         <h1 className="mt-5 max-w-3xl text-4xl leading-[1.1] md:text-5xl">
-          AI systems engineering for businesses that{" "}
-          <span className="text-accent">outgrew manual process</span>
+          AI systems engineering for businesses that
+          <span className="ml-[0.28em] text-accent">outgrew manual process</span>
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
           Kavolith is the core services brand of Kavolith Group. We audit how your business runs,
