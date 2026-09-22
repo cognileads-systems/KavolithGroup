@@ -6,7 +6,6 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import storyVideoAsset from "@/assets/kavolith-founder-story.mp4.asset.json";
 
 /**
  * Secondary "Watch our story" trigger + video lightbox.
