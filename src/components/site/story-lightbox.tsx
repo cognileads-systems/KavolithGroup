@@ -12,7 +12,7 @@ import {
  * Video: founder intro, 70s, vertical 1080×1920 — letterboxed with
  * object-contain inside the 16:9 player frame.
  */
-const STORY_VIDEO_SRC: string | null = storyVideoAsset.url;
+const STORY_VIDEO_SRC: string = "/kavolith-founder-story.mp4";
 
 export function StoryLightbox() {
   const [open, setOpen] = useState(false);
