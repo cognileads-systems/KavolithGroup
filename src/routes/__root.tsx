@@ -36,7 +36,7 @@ function NotFoundComponent() {
   );
 }
 
-const ErrorComponent = lazy(() => import("@/lib/error-page"));
+const ErrorComponent = lazy(() => import("@/lib/error-route"));
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
