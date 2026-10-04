@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell, Section, Eyebrow, SectionTitle } from "@/components/site/layout";
-import { HowWeWork } from "@/components/site/how-we-work";
+import { HowWeWork, BOOKING_URL } from "@/components/site/how-we-work";
 import { FaqSection, faqSchema, HOME_FAQS } from "@/components/site/faq";
 import { breadcrumbSchema } from "@/lib/seo";
 import { HomeHeroVideo } from "@/components/site/home-hero-video";

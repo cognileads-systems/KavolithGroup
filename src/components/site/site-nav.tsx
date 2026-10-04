@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { LanguageSwitcher, Translate } from "@/i18n";
+import { BOOKING_URL } from "@/components/site/how-we-work";
 
 export const NAV_LINKS = [
   { to: "/", label: "Home" },

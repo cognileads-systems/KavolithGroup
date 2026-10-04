@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import {
   PageShell,
   Section,
@@ -8,7 +8,7 @@ import {
   SectionTitle,
 } from "@/components/site/layout";
 import photoNeural from "@/assets/photo-neural.jpg";
-import { WhatsAppInline } from "@/components/site/how-we-work";
+import { WhatsAppInline, BOOKING_URL } from "@/components/site/how-we-work";
 import { breadcrumbSchema } from "@/lib/seo";
 
 const SITE = "https://kavolith.com";
@@ -164,12 +164,14 @@ function AboutPage() {
             If your team is losing time to manual handoffs, the first conversation is a systems
             audit — not a sales pitch.
           </p>
-          <Link
-            to="/contact"
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-lg bg-accent px-5 py-3 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
           >
             Book a consultation
-          </Link>
+          </a>
         </div>
       </Section>
     </PageShell>

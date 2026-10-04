@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import {
   PageShell,
@@ -8,7 +8,7 @@ import {
   SectionTitle,
 } from "@/components/site/layout";
 import photoLattice from "@/assets/photo-lattice.jpg";
-import { WhatsAppGhostButton } from "@/components/site/how-we-work";
+import { WhatsAppGhostButton, BOOKING_URL } from "@/components/site/how-we-work";
 import { FaqSection, faqSchema, INTELLIGENCE_FAQS } from "@/components/site/faq";
 import { breadcrumbSchema, PRICE_VALID_UNTIL } from "@/lib/seo";
 import {

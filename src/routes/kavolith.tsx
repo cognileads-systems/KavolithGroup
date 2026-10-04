@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import {
   PageShell,
   Section,
@@ -12,7 +12,7 @@ import photoNeural from "@/assets/photo-neural.jpg";
 
 import { PricingGrid, KAVOLITH_TIERS } from "@/components/site/pricing";
 import { CASE_STUDIES, CaseStudyCard } from "@/components/site/case-studies";
-import { HowWeWorkCompact } from "@/components/site/how-we-work";
+import { HowWeWorkCompact, BOOKING_URL } from "@/components/site/how-we-work";
 import { FaqSection, faqSchema, KAVOLITH_FAQS } from "@/components/site/faq";
 import { breadcrumbSchema, PRICE_VALID_UNTIL } from "@/lib/seo";
 

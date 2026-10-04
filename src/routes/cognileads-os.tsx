@@ -1,6 +1,6 @@
 import { Translate } from "@/i18n";
 import { useState } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import {
   PageShell,
   Section,
@@ -11,7 +11,7 @@ import {
 } from "@/components/site/layout";
 import photoDataviz from "@/assets/photo-dataviz.jpg";
 import photoLattice from "@/assets/photo-lattice.jpg";
-import { WhatsAppGhostButton } from "@/components/site/how-we-work";
+import { WhatsAppGhostButton, BOOKING_URL } from "@/components/site/how-we-work";
 import { FaqSection, faqSchema, COGNILEADS_FAQS } from "@/components/site/faq";
 
 import { LivePipelineDemo } from "@/components/site/live-pipeline-demo";
