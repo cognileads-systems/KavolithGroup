@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import {
   PageShell,
@@ -8,7 +8,7 @@ import {
   SectionTitle,
 } from "@/components/site/layout";
 import photoLattice from "@/assets/photo-lattice.jpg";
-import { WhatsAppGhostButton } from "@/components/site/how-we-work";
+import { WhatsAppGhostButton, BOOKING_URL } from "@/components/site/how-we-work";
 import { FaqSection, faqSchema, INTELLIGENCE_FAQS } from "@/components/site/faq";
 import { breadcrumbSchema, PRICE_VALID_UNTIL } from "@/lib/seo";
 import {
@@ -172,12 +172,14 @@ function IntelligencePage() {
             documentation, and HR/ops processes end to end: collect the inputs, validate against your
             rules, update your systems, escalate the exceptions.
           </p>
-          <Link
-            to="/contact"
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-8 inline-flex rounded-lg bg-accent px-5 py-3 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
           >
             Reserve your build slot
-          </Link>
+          </a>
 
           <div className="mt-4">
             <WhatsAppGhostButton />
@@ -256,12 +258,14 @@ function IntelligencePage() {
                   </li>
                 ))}
               </ul>
-              <Link
-                to="/contact"
+              <a
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-7 inline-flex w-fit rounded-lg bg-accent-soft px-4 py-2 text-sm font-medium text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
               >
                 Reserve this build slot →
-              </Link>
+              </a>
               <meta itemProp="priceCurrency" content={currency} />
               <meta itemProp="price" content={String(INTELLIGENCE_SETUP.now[currency][0])} />
               <link itemProp="availability" href="https://schema.org/PreOrder" />

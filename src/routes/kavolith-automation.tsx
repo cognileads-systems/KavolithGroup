@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import {
   PageShell,
   Section,
@@ -11,7 +11,7 @@ import photoDataviz from "@/assets/photo-dataviz.jpg";
 
 import { PricingGrid, AUTOMATION_TIERS } from "@/components/site/pricing";
 import { AUTOMATION_CASE_STUDIES, CaseStudyCard } from "@/components/site/case-studies";
-import { WhatsAppGhostButton } from "@/components/site/how-we-work";
+import { WhatsAppGhostButton, BOOKING_URL } from "@/components/site/how-we-work";
 import { FaqSection, faqSchema, AUTOMATION_FAQS } from "@/components/site/faq";
 import { breadcrumbSchema, PRICE_VALID_UNTIL } from "@/lib/seo";
 
@@ -121,12 +121,14 @@ function AutomationPage() {
           We engineer the workflows behind lead routing, invoicing, and CRM sync — with error
           handling, monitoring, and documentation, so they keep working after we hand them over.
         </p>
-        <Link
-          to="/contact"
+        <a
+          href={BOOKING_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="mt-8 inline-flex rounded-lg bg-accent px-5 py-3 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
         >
           Scope an automation
-        </Link>
+        </a>
         <div className="mt-4">
           <WhatsAppGhostButton />
         </div>

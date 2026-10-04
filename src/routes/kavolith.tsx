@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import {
   PageShell,
   Section,
@@ -12,7 +12,7 @@ import photoNeural from "@/assets/photo-neural.jpg";
 
 import { PricingGrid, KAVOLITH_TIERS } from "@/components/site/pricing";
 import { CASE_STUDIES, CaseStudyCard } from "@/components/site/case-studies";
-import { HowWeWorkCompact } from "@/components/site/how-we-work";
+import { HowWeWorkCompact, BOOKING_URL } from "@/components/site/how-we-work";
 import { FaqSection, faqSchema, KAVOLITH_FAQS } from "@/components/site/faq";
 import { breadcrumbSchema, PRICE_VALID_UNTIL } from "@/lib/seo";
 
@@ -131,12 +131,14 @@ function KavolithPage() {
           build the workflows that remove the manual work, and connect them into one intelligence
           layer.
         </p>
-        <Link
-          to="/contact"
+        <a
+          href={BOOKING_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="mt-8 inline-flex rounded-lg bg-accent px-5 py-3 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
         >
           Book a consultation
-        </Link>
+        </a>
       </PhotoLatticeSection>
 
       <Section className="pt-0">

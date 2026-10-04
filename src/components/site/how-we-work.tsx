@@ -6,6 +6,8 @@ export const WA_BOOK =
   "https://wa.me/919492044168?text=Hi%20Kavolith!%20I%27d%20like%20to%20book%20a%20free%20discovery%20call.";
 export const WA_LEARN =
   "https://wa.me/919492044168?text=Hi%20Kavolith!%20I%27d%20like%20to%20learn%20more.";
+export const BOOKING_URL =
+  "https://calendar.google.com/calendar/appointments/schedules/AcZssZ2WpZS3N0ceXAlLkph41Yz38GWFnOyicZfYc2ZtgN2NbpZLV-C8U5ARABDluIO_-XcACST-ypqg";
 
 const STEPS_FULL = [
   {
