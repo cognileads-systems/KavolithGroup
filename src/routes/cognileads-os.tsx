@@ -271,12 +271,14 @@ function CogniLeadsOSPage() {
               Every inbound lead captured, scored, routed, and followed up automatically — so your
               team spends its time on the conversations that are actually worth having.
             </p>
-            <Link
-              to="/contact"
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-8 inline-flex rounded-lg bg-accent px-5 py-3 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
             >
               Request a deployment scope
-            </Link>
+            </a>
             <div className="mt-4">
               <WhatsAppGhostButton />
             </div>

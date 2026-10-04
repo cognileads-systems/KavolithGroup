@@ -131,12 +131,14 @@ function KavolithPage() {
           build the workflows that remove the manual work, and connect them into one intelligence
           layer.
         </p>
-        <Link
-          to="/contact"
+        <a
+          href={BOOKING_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="mt-8 inline-flex rounded-lg bg-accent px-5 py-3 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90"
         >
           Book a consultation
-        </Link>
+        </a>
       </PhotoLatticeSection>
 
       <Section className="pt-0">

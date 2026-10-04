@@ -43,12 +43,14 @@ export function SiteNav() {
 
           <div className="flex items-center gap-2">
             <LanguageSwitcher />
-            <Link
-              to="/contact"
-              className="hidden rounded-lg bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90 sm:inline-flex"
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex rounded-lg bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-90 sm:inline-flex"
             >
               Book a consultation
-            </Link>
+            </a>
             <button
               type="button"
               aria-label="Toggle navigation"
