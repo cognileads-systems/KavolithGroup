@@ -8,7 +8,7 @@ Prices are displayed in USD by default, with EUR and INR available as toggles. A
 
 ## Pages
 
-- [Home](https://kavolith.com): Group overview, the four brands, and the Proof of Work section.
+- [Home](https://kavolith.com/): Group overview, the four brands, and the Proof of Work section.
 - [Kavolith](https://kavolith.com/kavolith): Core services — systems audit, custom workflow builds, intelligence layer. Tiers: Launchpad, Scale, Premium.
 - [CogniLeads OS](https://kavolith.com/cognileads-os): AI Revenue Intelligence Platform. Capture, score, route, convert.
 - [Kavolith Intelligence](https://kavolith.com/kavolith-intelligence): Enterprise AI Workforce Platform — multilingual digital employees. Coming soon, build-slot reservations open.
