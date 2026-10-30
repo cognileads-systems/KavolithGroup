@@ -202,7 +202,7 @@ export const KAVOLITH_TIERS: Tier[] = [
       "Minimum 4-page multi-language AI-translated website",
       "4-currency storefront support (INR/USD/EUR)",
       "Custom .com domain included",
-      "Built on hardened, bot/vulnerability-protected infrastructure",
+      "Security-first delivery: encrypted end to end, hardened headers, server-side credentials, and payments routed through your gateway, so card data never touches our systems.",
     ],
   },
 ];
@@ -288,7 +288,7 @@ export const AUTOMATION_TIERS: Tier[] = [
       "Multi-language automated messaging (EN/Telugu/Hindi)",
       "Reserved build capacity and priority queue",
       "Quarterly reliability review and 4 scheduled workflow updates per year",
-      "Built on hardened, bot/vulnerability-protected infrastructure",
+      "Security-first delivery: encrypted end to end, hardened headers, server-side credentials, and payments routed through your gateway, so card data never touches our systems.",
     ],
   },
 ];
@@ -380,7 +380,7 @@ function PricingGridBase({ tiers, note }: { tiers: Tier[]; note?: string }) {
             {t.proof && (
               <div className="mt-4 rounded-lg border border-border bg-panel/60 p-4">
                 <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
-                  In production
+                  Running in our own operations
                 </div>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.proof}</p>
               </div>

@@ -29,7 +29,7 @@ function LivePipelineDemoBase() {
     <div className="rounded-xl border border-border bg-panel p-5">
       <div className="flex items-center justify-between border-b border-border pb-3">
         <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-          live pipeline
+          sample pipeline
         </span>
         <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
           it {WORDS[word]}
