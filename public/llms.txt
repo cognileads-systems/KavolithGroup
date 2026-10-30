@@ -8,15 +8,15 @@ Prices are displayed in USD by default, with EUR and INR available as toggles. A
 
 ## Pages
 
-- [Home](/): Group overview, the four brands, and the Proof of Work section.
-- [Kavolith](/kavolith): Core services — systems audit, custom workflow builds, intelligence layer. Tiers: Launchpad, Scale, Premium.
-- [CogniLeads OS](/cognileads-os): AI Revenue Intelligence Platform. Capture, score, route, convert.
-- [Kavolith Intelligence](/kavolith-intelligence): Enterprise AI Workforce Platform — multilingual digital employees. Coming soon, build-slot reservations open.
-- [Kavolith Automation](/kavolith-automation): Automation tiers — Single Flow, Ops Stack, Automation Control.
-- [About](/about): Background, principles, and location.
-- [Contact](/contact): Consultation request form.
-- [Privacy](/privacy): Privacy policy, compliant with India's DPDP Act 2023.
-- [Sitemap](/sitemap.xml)
+- [Home](https://kavolith.com): Group overview, the four brands, and the Proof of Work section.
+- [Kavolith](https://kavolith.com/kavolith): Core services — systems audit, custom workflow builds, intelligence layer. Tiers: Launchpad, Scale, Premium.
+- [CogniLeads OS](https://kavolith.com/cognileads-os): AI Revenue Intelligence Platform. Capture, score, route, convert.
+- [Kavolith Intelligence](https://kavolith.com/kavolith-intelligence): Enterprise AI Workforce Platform — multilingual digital employees. Coming soon, build-slot reservations open.
+- [Kavolith Automation](https://kavolith.com/kavolith-automation): Automation tiers — Single Flow, Ops Stack, Automation Control.
+- [About](https://kavolith.com/about): Background, principles, and location.
+- [Contact](https://kavolith.com/contact): Consultation request form.
+- [Privacy](https://kavolith.com/privacy): Privacy policy, compliant with India's DPDP Act 2023.
+- [Sitemap](https://kavolith.com/sitemap.xml)
 
 ## Proof of work (verified facts only)
 
