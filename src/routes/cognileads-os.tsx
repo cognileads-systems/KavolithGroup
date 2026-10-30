@@ -48,9 +48,9 @@ const DEPLOYMENT_DETAILS = [
   "Advanced AEO & GEO schema and GA4 analytics layer",
   "Multi-language interface (EN/Telugu/Hindi) and INR/USD/EUR handling",
   "Full schema and analytics documentation at handoff",
-  "3 free update rounds per year (3–4 pages or flows each)",
-  "Twice-yearly free bug-fix pass and quarterly performance report",
-  "Hosted on hardened, bot/vulnerability-protected infrastructure",
+  "3 complimentary update rounds per year, each covering up to 3 pages or workflows.",
+  "Defects in our work are fixed at no charge, always. Issues arising from outside changes, such as platform updates or third-party APIs, receive two complimentary review-and-fix passes each year. Quarterly performance report included.",
+  "Security-first delivery: encrypted end to end, hardened headers, server-side credentials, and payments routed through your gateway, so card data never touches our systems.",
 ];
 
 
@@ -134,7 +134,7 @@ export const Route = createFileRoute("/cognileads-os")({
       {
         name: "description",
         content:
-          "CogniLeads OS is an AI Revenue Intelligence Platform that captures every inbound lead, scores intent in real time, routes it to the right rep, and books meetings 24/7.",
+          "CogniLeads OS captures every inbound lead, scores intent in real time, and routes it to the right rep, with after-hours follow-up.",
       },
       { property: "og:title", content: "CogniLeads OS | AI Revenue Intelligence Platform" },
       {
@@ -247,7 +247,7 @@ const TERMS = [
     ref: "TERM.03",
     title: "Performance guarantee",
     body:
-      "If post-deployment qualification accuracy and intent-scoring performance don't match what was committed, you receive a 40% discount off the remaining balance.",
+      "Scoring accuracy is verified against a sample you label, agreed in writing before the build. If the agreed results are not met after our tuning period, 40% comes off your remaining balance.",
   },
   {
     ref: "TERM.04",

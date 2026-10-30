@@ -108,11 +108,11 @@ export const COGNILEADS_FAQS: FaqItem[] = [
   },
   {
     q: "What's included in the presale engagement?",
-    a: "Presale engagements are scoped between ₹1,20,000 and ₹2,50,000. They include lead capture webhook setup, AI-based intent classification, Airtable lead storage, Telegram and WhatsApp alert routing, and automated email reply sequences — configured specifically for your business.",
+    a: "Every engagement is scoped to your pipeline. The core build covers lead capture, AI intent scoring, lead storage, alert routing (Telegram or WhatsApp), and automated email replies. Larger scopes can add a custom web app, dashboard, and after-hours follow-up. Your written scope lists exactly what is included.",
   },
   {
     q: "How long does setup take?",
-    a: "Most deployments are live within 2–3 weeks from scope confirmation and advance payment.",
+    a: "Target setup is 2–3 weeks from scope confirmation and advance payment. We confirm the exact timeline in your written scope.",
   },
   {
     q: "Does it replace my existing CRM?",
