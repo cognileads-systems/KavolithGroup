@@ -45,7 +45,7 @@ const DEPLOYMENT_DETAILS = [
   "Automated CRM / Google Sheets funnel with reconciliation log",
   "Single-screen lead pipeline dashboard (New → Closed)",
   "n8n automation workflows with integrated voice-chat AI agent",
-  "Advanced AEO & GEO schema and GA4 analytics layer",
+  "GA4 analytics layer",
   "Multi-language interface (EN/Telugu/Hindi) and INR/USD/EUR handling",
   "Full schema and analytics documentation at handoff",
   "3 complimentary update rounds per year, each covering up to 3 pages or workflows.",
