@@ -100,7 +100,7 @@ export const KAVOLITH_FAQS: FaqItem[] = [
 export const COGNILEADS_FAQS: FaqItem[] = [
   {
     q: "What is CogniLeads OS?",
-    a: "CogniLeads OS is an AI Revenue Intelligence Platform that captures, scores, and routes inbound leads automatically. It classifies each lead using a UDSC scoring rubric, sends instant replies, and alerts your team only when a lead is worth actioning — before a competitor can respond.",
+    a: "CogniLeads OS is an AI Revenue Intelligence Platform that captures, scores, and routes inbound leads automatically. It classifies each lead using a UDSC scoring rubric, sends instant replies, and alerts your team only when a lead is worth actioning — while the lead is still warm.",
   },
   {
     q: "How does UDSC scoring work?",

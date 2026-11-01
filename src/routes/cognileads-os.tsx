@@ -40,7 +40,7 @@ const DEPLOYMENT_NOW: Record<Currency, [number, number]> = {
 const DEPLOYMENT_DETAILS = [
   "Custom web app + FastAPI backend engineered for your pipeline",
   "Real-time intent scoring (0–100) and priority alerting",
-  "Autonomous SDR for after-hours qualification and booking",
+  "AI SDR scores leads, drafts follow-ups and routes the right lead to your team to book",
   "Smart AI intake form with WhatsApp and UPI payment handoff",
   "Automated CRM / Google Sheets funnel with reconciliation log",
   "Single-screen lead pipeline dashboard (New → Closed)",
@@ -49,7 +49,7 @@ const DEPLOYMENT_DETAILS = [
   "Multi-language interface (EN/Telugu/Hindi) and INR/USD/EUR handling",
   "Full schema and analytics documentation at handoff",
   "3 complimentary update rounds per year, each covering up to 3 pages or workflows.",
-  "Defects in our work are fixed at no charge, always. Issues arising from outside changes, such as platform updates or third-party APIs, receive two complimentary review-and-fix passes each year. Quarterly performance report included.",
+  "Defects in our work are fixed at no charge, always. Issues arising from outside changes, such as platform updates or third-party APIs, receive two complimentary review-and-fix passes each year. Performance review with you each quarter, scoped per deployment.",
   "Security-first delivery: encrypted end to end, hardened headers, server-side credentials, and payments routed through your gateway, so card data never touches our systems.",
 ];
 
@@ -226,7 +226,7 @@ const CAPABILITIES = [
   },
   {
     title: "Convert around the clock",
-    body: "An autonomous SDR qualifies, answers, and books meetings outside working hours.",
+    body: "An AI SDR scores leads, drafts follow-ups and routes the right lead to your team to book — including outside working hours.",
   },
 ];
 
@@ -241,7 +241,7 @@ const TERMS = [
     ref: "TERM.02",
     title: "Full platform access from day one",
     body:
-      "During the presale period you get the complete platform: custom web app, FastAPI backend, real-time intent scoring, autonomous SDR, priority alerting, and the full schema layer. Nothing is held back.",
+      "During the presale period you get the complete platform: custom web app, FastAPI backend, real-time intent scoring, AI SDR, priority alerting, and the full schema layer. Nothing is held back.",
   },
   {
     ref: "TERM.03",
