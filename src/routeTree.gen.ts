@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AiLeadQualificationRouteImport } from './routes/ai-lead-qualification'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CognileadsOsRouteImport } from './routes/cognileads-os'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -19,7 +20,9 @@ import { Route as KavolithAutomationRouteImport } from './routes/kavolith-automa
 import { Route as KavolithIntelligenceRouteImport } from './routes/kavolith-intelligence'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as RealEstateRouteImport } from './routes/real-estate'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as WhatsappAutomationRouteImport } from './routes/whatsapp-automation'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as ApiContactRouteImport } from './routes/api/contact'
@@ -34,6 +37,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiLeadQualificationRoute = AiLeadQualificationRouteImport.update({
+  id: '/ai-lead-qualification',
+  path: '/ai-lead-qualification',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -76,9 +84,19 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RealEstateRoute = RealEstateRouteImport.update({
+  id: '/real-estate',
+  path: '/real-estate',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WhatsappAutomationRoute = WhatsappAutomationRouteImport.update({
+  id: '/whatsapp-automation',
+  path: '/whatsapp-automation',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Char91DotmcpChar93ListToolsRoute =
@@ -113,6 +131,7 @@ const Char91DotmcpChar93InvokeToolToolRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/ai-lead-qualification': typeof AiLeadQualificationRoute
   '/auth': typeof AuthRoute
   '/cognileads-os': typeof CognileadsOsRoute
   '/contact': typeof ContactRoute
@@ -121,7 +140,9 @@ export interface FileRoutesByFullPath {
   '/kavolith-intelligence': typeof KavolithIntelligenceRoute
   '/mcp': typeof McpRoute
   '/privacy': typeof PrivacyRoute
+  '/real-estate': typeof RealEstateRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/whatsapp-automation': typeof WhatsappAutomationRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/api/contact': typeof ApiContactRoute
@@ -131,6 +152,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/ai-lead-qualification': typeof AiLeadQualificationRoute
   '/auth': typeof AuthRoute
   '/cognileads-os': typeof CognileadsOsRoute
   '/contact': typeof ContactRoute
@@ -139,7 +161,9 @@ export interface FileRoutesByTo {
   '/kavolith-intelligence': typeof KavolithIntelligenceRoute
   '/mcp': typeof McpRoute
   '/privacy': typeof PrivacyRoute
+  '/real-estate': typeof RealEstateRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/whatsapp-automation': typeof WhatsappAutomationRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/api/contact': typeof ApiContactRoute
@@ -150,6 +174,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/ai-lead-qualification': typeof AiLeadQualificationRoute
   '/auth': typeof AuthRoute
   '/cognileads-os': typeof CognileadsOsRoute
   '/contact': typeof ContactRoute
@@ -158,7 +183,9 @@ export interface FileRoutesById {
   '/kavolith-intelligence': typeof KavolithIntelligenceRoute
   '/mcp': typeof McpRoute
   '/privacy': typeof PrivacyRoute
+  '/real-estate': typeof RealEstateRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/whatsapp-automation': typeof WhatsappAutomationRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/api/contact': typeof ApiContactRoute
@@ -170,6 +197,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/ai-lead-qualification'
     | '/auth'
     | '/cognileads-os'
     | '/contact'
@@ -178,7 +206,9 @@ export interface FileRouteTypes {
     | '/kavolith-intelligence'
     | '/mcp'
     | '/privacy'
+    | '/real-estate'
     | '/sitemap.xml'
+    | '/whatsapp-automation'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/api/contact'
@@ -188,6 +218,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/ai-lead-qualification'
     | '/auth'
     | '/cognileads-os'
     | '/contact'
@@ -196,7 +227,9 @@ export interface FileRouteTypes {
     | '/kavolith-intelligence'
     | '/mcp'
     | '/privacy'
+    | '/real-estate'
     | '/sitemap.xml'
+    | '/whatsapp-automation'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/api/contact'
@@ -206,6 +239,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/ai-lead-qualification'
     | '/auth'
     | '/cognileads-os'
     | '/contact'
@@ -214,7 +248,9 @@ export interface FileRouteTypes {
     | '/kavolith-intelligence'
     | '/mcp'
     | '/privacy'
+    | '/real-estate'
     | '/sitemap.xml'
+    | '/whatsapp-automation'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/api/contact'
@@ -225,6 +261,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AiLeadQualificationRoute: typeof AiLeadQualificationRoute
   AuthRoute: typeof AuthRoute
   CognileadsOsRoute: typeof CognileadsOsRoute
   ContactRoute: typeof ContactRoute
@@ -233,7 +270,9 @@ export interface RootRouteChildren {
   KavolithIntelligenceRoute: typeof KavolithIntelligenceRoute
   McpRoute: typeof McpRoute
   PrivacyRoute: typeof PrivacyRoute
+  RealEstateRoute: typeof RealEstateRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  WhatsappAutomationRoute: typeof WhatsappAutomationRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   ApiContactRoute: typeof ApiContactRoute
@@ -255,6 +294,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-lead-qualification': {
+      id: '/ai-lead-qualification'
+      path: '/ai-lead-qualification'
+      fullPath: '/ai-lead-qualification'
+      preLoaderRoute: typeof AiLeadQualificationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -313,11 +359,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/real-estate': {
+      id: '/real-estate'
+      path: '/real-estate'
+      fullPath: '/real-estate'
+      preLoaderRoute: typeof RealEstateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/whatsapp-automation': {
+      id: '/whatsapp-automation'
+      path: '/whatsapp-automation'
+      fullPath: '/whatsapp-automation'
+      preLoaderRoute: typeof WhatsappAutomationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/.mcp/list-tools': {
@@ -361,6 +421,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AiLeadQualificationRoute: AiLeadQualificationRoute,
   AuthRoute: AuthRoute,
   CognileadsOsRoute: CognileadsOsRoute,
   ContactRoute: ContactRoute,
@@ -369,7 +430,9 @@ const rootRouteChildren: RootRouteChildren = {
   KavolithIntelligenceRoute: KavolithIntelligenceRoute,
   McpRoute: McpRoute,
   PrivacyRoute: PrivacyRoute,
+  RealEstateRoute: RealEstateRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  WhatsappAutomationRoute: WhatsappAutomationRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
