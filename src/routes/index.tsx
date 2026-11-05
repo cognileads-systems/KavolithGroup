@@ -6,6 +6,7 @@ import { breadcrumbSchema } from "@/lib/seo";
 import { HomeHeroVideo } from "@/components/site/home-hero-video";
 import { StoryLightbox } from "@/components/site/story-lightbox";
 import { ProofOfWork, PROOF_ITEMS } from "@/components/site/proof-of-work";
+import { SOLUTIONS } from "@/components/site/site-footer";
 
 const SITE = "https://kavolith.com";
 
@@ -201,6 +202,22 @@ function HomePage() {
                 Explore →
               </Link>
             </article>
+          ))}
+        </div>
+      </Section>
+
+      <Section id="solutions" className="pt-0">
+        <SectionTitle eyebrow="Solutions" title="Built around your problem" />
+        <div className="mt-8 grid gap-5 md:grid-cols-3">
+          {SOLUTIONS.map((s) => (
+            <Link
+              key={s.to}
+              to={s.to}
+              className="rounded-xl border border-border bg-surface p-6 transition-colors hover:border-accent/40"
+            >
+              <h3 className="text-lg">{s.name}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.note}</p>
+            </Link>
           ))}
         </div>
       </Section>

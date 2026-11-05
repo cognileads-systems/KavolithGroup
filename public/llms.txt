@@ -13,6 +13,9 @@ Prices are displayed in USD by default, with EUR and INR available as toggles. A
 - [CogniLeads OS](https://kavolith.com/cognileads-os): AI Revenue Intelligence Platform. Capture, score, route, convert.
 - [Kavolith Intelligence](https://kavolith.com/kavolith-intelligence): Enterprise AI Workforce Platform — multilingual digital employees. Coming soon, build-slot reservations open.
 - [Kavolith Automation](https://kavolith.com/kavolith-automation): Automation tiers — Single Flow, Ops Stack, Automation Control.
+- [WhatsApp Automation](https://kavolith.com/whatsapp-automation): Automatic replies, enquiry capture and booking flows on WhatsApp.
+- [AI Lead Qualification](https://kavolith.com/ai-lead-qualification): Intent scoring and routing so hot leads reach a person first.
+- [Real Estate](https://kavolith.com/real-estate): Property enquiries qualified by budget, area and timeline and handed to the right agent.
 - [About](https://kavolith.com/about): Background, principles, and location.
 - [Contact](https://kavolith.com/contact): Consultation request form.
 - [Privacy](https://kavolith.com/privacy): Privacy policy, compliant with India's DPDP Act 2023.

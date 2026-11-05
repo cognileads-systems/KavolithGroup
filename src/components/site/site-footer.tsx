@@ -9,6 +9,12 @@ const BRANDS = [
   { to: "/kavolith-automation", name: "Kavolith Automation", note: "Automation Engineering Platform" },
 ] as const;
 
+export const SOLUTIONS = [
+  { to: "/whatsapp-automation", name: "WhatsApp Automation", note: "Replies, enquiry capture and booking flows on WhatsApp." },
+  { to: "/ai-lead-qualification", name: "AI Lead Qualification", note: "Score every enquiry and route hot leads to a person first." },
+  { to: "/real-estate", name: "Real Estate", note: "Property enquiries qualified and handed to the right agent." },
+] as const;
+
 const SOCIALS = [
   { label: "Instagram", href: "https://www.instagram.com/kavolithgroup" },
   { label: "Facebook", href: "https://www.facebook.com/share/1DDknf8Po1/" },
@@ -20,7 +26,7 @@ export function SiteFooter() {
   return (
     <Translate>
     <footer className="border-t border-border bg-surface/60">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 md:grid-cols-3">
+      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 md:grid-cols-4">
         <div>
           <div className="font-display text-base font-semibold">
             Kavolith<span className="text-accent"> Group</span>
@@ -42,6 +48,21 @@ export function SiteFooter() {
                   {b.name}
                 </Link>
                 <span className="block text-xs text-muted-foreground">{b.note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+            Solutions
+          </div>
+          <ul className="mt-4 space-y-2 text-sm">
+            {SOLUTIONS.map((s) => (
+              <li key={s.to}>
+                <Link to={s.to} className="text-muted-foreground transition-colors hover:text-accent">
+                  {s.name}
+                </Link>
               </li>
             ))}
           </ul>
