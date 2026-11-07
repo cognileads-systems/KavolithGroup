@@ -4,12 +4,27 @@ import { PageShell, Section } from "@/components/site/layout";
 import { SITE_URL } from "@/lib/seo";
 import "./real-estate-lead-desk.css";
 
-const SCENE_HEADLINES = [
-  "It starts with the enquiry.",
-  "Capture the useful details.",
-  "Bring intent signals into view.",
-  "Route the enquiry to a next step.",
-  "Give the agent useful context.",
+const SCENE_COPY = [
+  {
+    heading: "It starts with the enquiry.",
+    summary: "A new property question arrives in the shared inbox.",
+  },
+  {
+    heading: "Capture the useful details.",
+    summary: "A short conversation becomes a tidy lead record for the next person.",
+  },
+  {
+    heading: "Bring intent signals into view.",
+    summary: "The sample matches the requested area, budget band and timeline.",
+  },
+  {
+    heading: "Route the enquiry to a next step.",
+    summary: "Area, budget band and intent guide the sample handoff.",
+  },
+  {
+    heading: "Give the agent useful context.",
+    summary: "The lead arrives with its details and a simple, useful next step.",
+  },
 ] as const;
 
 const FAQ_ITEMS = [
@@ -53,7 +68,6 @@ const DELIVERED_WORK = [
     title: "Gym",
     package: "Launchpad",
     built: "Website",
-    automation: "Single Flow automation",
   },
 ] as const;
 
@@ -213,7 +227,7 @@ function RealEstateLeadDeskPage() {
           );
           const scoreRing = stage.querySelector<SVGCircleElement>("[data-score-ring]");
 
-          if (!ribbon || !track || !trail || !card || panels.length !== SCENE_HEADLINES.length) {
+          if (!ribbon || !track || !trail || !card || panels.length !== SCENE_COPY.length) {
             console.error("The concept lead story is missing required animation elements.");
             return;
           }
@@ -234,7 +248,7 @@ function RealEstateLeadDeskPage() {
           const context = gsap.context(() => {
             gsap.set(panels, { autoAlpha: 0, scale: 0.97, y: 8 });
             gsap.set(panels[0], { autoAlpha: 1, scale: 1, y: 0 });
-            gsap.set(headlines, { autoAlpha: 0.3, y: 8 });
+            gsap.set(headlines, { autoAlpha: 0, y: 8 });
             gsap.set(headlines[0], { autoAlpha: 1, y: 0 });
             gsap.set(fields, { autoAlpha: 0, x: -14 });
             if (scoreRing) gsap.set(scoreRing, { strokeDashoffset: 100 });
@@ -271,6 +285,7 @@ function RealEstateLeadDeskPage() {
               gsap.set(card, {
                 x: x - card.offsetWidth / 2,
                 y: y - card.offsetHeight / 2,
+                scale: Math.min(1, Math.max(0.68, stage.clientHeight / 700)),
                 rotationX: Math.sin(tilt) * 4,
                 rotationY: Math.cos(tilt) * 4,
               });
@@ -298,9 +313,9 @@ function RealEstateLeadDeskPage() {
             };
 
             timeline.eventCallback("onUpdate", () => {
-              const activeIndex = Math.min(4, Math.round(motion.progress * 4));
-              headlines.forEach((headline, index) => {
-                headline.classList.toggle("is-active", index === activeIndex);
+              const activeIndex = Math.min(SCENE_COPY.length - 1, Math.round(motion.progress * 4));
+              headlines.forEach((scene, index) => {
+                scene.classList.toggle("is-active", index === activeIndex);
               });
               updateHero();
             });
@@ -333,7 +348,7 @@ function RealEstateLeadDeskPage() {
               );
               timeline.to(
                 headlines[index],
-                { autoAlpha: 0.3, y: -5, duration: 0.2, ease: "power2.out" },
+                { autoAlpha: 0, y: -5, duration: 0.2, ease: "power2.out" },
                 (index + 1) * sceneDuration - 0.14,
               );
               timeline.to(
@@ -411,15 +426,16 @@ function RealEstateLeadDeskPage() {
           <div className="lead-active-glow" data-active-glow aria-hidden="true" />
 
           <div className="lead-stage-headlines hidden md:flex" aria-hidden="true">
-            {SCENE_HEADLINES.map((headline, index) => (
-              <h2
-                key={headline}
-                className="lead-stage-headline"
+            {SCENE_COPY.map(({ heading, summary }, index) => (
+              <div
+                key={heading}
+                className={`lead-headline-scene${index === 0 ? " is-active" : ""}`}
                 data-scene-headline
                 data-scene-index={index}
               >
-                {headline}
-              </h2>
+                <h2>{heading}</h2>
+                <p>{summary}</p>
+              </div>
             ))}
           </div>
 
@@ -446,7 +462,7 @@ function RealEstateLeadDeskPage() {
             <path
               className="lead-ribbon-track"
               data-ribbon-track
-              d="M 260 280 C 350 280 340 115 425 115 S 510 280 520 280 S 595 445 675 445 S 740 280 750 280"
+              d="M 260 280 C 350 280 340 190 425 190 S 510 280 520 280 S 595 370 675 370 S 740 280 750 280"
               fill="none"
               stroke="url(#lead-ribbon-gradient)"
               strokeLinecap="round"
@@ -455,7 +471,7 @@ function RealEstateLeadDeskPage() {
             <path
               className="lead-ribbon-trail"
               data-ribbon-trail
-              d="M 260 280 C 350 280 340 115 425 115 S 510 280 520 280 S 595 445 675 445 S 740 280 750 280"
+              d="M 260 280 C 350 280 340 190 425 190 S 510 280 520 280 S 595 370 675 370 S 740 280 750 280"
               fill="none"
               stroke="#5eead4"
               strokeLinecap="round"
@@ -469,9 +485,9 @@ function RealEstateLeadDeskPage() {
             </g>
             {[
               [260, 280],
-              [425, 115],
+              [425, 190],
               [520, 280],
-              [675, 445],
+              [675, 370],
               [750, 280],
             ].map(([cx, cy]) => (
               <circle key={`${cx}-${cy}`} className="lead-ribbon-node" cx={cx} cy={cy} r="9" />
@@ -612,12 +628,14 @@ function RealEstateLeadDeskPage() {
                       </dt>
                       <dd className="mt-1 text-foreground">{project.built}</dd>
                     </div>
-                    <div>
-                      <dt className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
-                        Automation:
-                      </dt>
-                      <dd className="mt-1 text-foreground">{project.automation}</dd>
-                    </div>
+                    {"automation" in project && (
+                      <div>
+                        <dt className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
+                          Automation:
+                        </dt>
+                        <dd className="mt-1 text-foreground">{project.automation}</dd>
+                      </div>
+                    )}
                   </dl>
                 </div>
               </article>
