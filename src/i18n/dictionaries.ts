@@ -487,6 +487,7 @@ const es: Dict = {
   // Concept lead desk — machine-drafted ES; native review required.
   "Real Estate Lead Desk — Concept Build | Kavolith Group": "Mesa de leads inmobiliarios — Demo conceptual | Kavolith Group",
   "From first message to a clear next step": "Del primer mensaje a un siguiente paso claro",
+  "It starts with the enquiry.": "Todo empieza con la consulta.",
   "Sample data": "Datos de ejemplo",
   "Capture the useful details.": "Captura los detalles importantes.",
   "Bring intent signals into view.": "Haz visibles las señales de intención.",
@@ -531,6 +532,7 @@ const es: Dict = {
   "Gym": "Gimnasio",
   "Single Flow automation": "Automatización Single Flow",
   "Is the enquiry real?": "¿La consulta es real?",
+  "Questions about this concept": "Preguntas sobre este concepto",
   "No. The enquiry and its details are fictional and shown as sample data for this demo.":
     "No. La consulta y sus detalles son ficticios y se muestran como datos de ejemplo para esta demo.",
   "Does this flow describe every delivered project?": "¿Este flujo describe todos los proyectos realizados?",
@@ -1014,6 +1016,7 @@ const de: Dict = {
   // Concept lead desk — machine-drafted DE; native review required.
   "Real Estate Lead Desk — Concept Build | Kavolith Group": "Immobilien-Lead-Desk — Konzeptversion | Kavolith Group",
   "From first message to a clear next step": "Von der ersten Nachricht zum klaren nächsten Schritt",
+  "It starts with the enquiry.": "Es beginnt mit der Anfrage.",
   "Sample data": "Beispieldaten",
   "Capture the useful details.": "Erfasse die wichtigen Details.",
   "Bring intent signals into view.": "Mache die Interessenssignale sichtbar.",
@@ -1058,6 +1061,7 @@ const de: Dict = {
   "Gym": "Fitnessstudio",
   "Single Flow automation": "Single-Flow-Automatisierung",
   "Is the enquiry real?": "Ist die Anfrage echt?",
+  "Questions about this concept": "Fragen zu diesem Konzept",
   "No. The enquiry and its details are fictional and shown as sample data for this demo.":
     "Nein. Die Anfrage und ihre Details sind fiktiv und werden in dieser Demo als Beispieldaten gezeigt.",
   "Does this flow describe every delivered project?": "Beschreibt dieser Ablauf jedes umgesetzte Projekt?",

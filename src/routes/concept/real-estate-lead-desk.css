@@ -1,68 +1,14 @@
+.lead-story-scene {
+  padding-block: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.lead-story-scene:last-child {
+  border-bottom: 0;
+}
+
 @media (min-width: 768px) {
-  .concept-stage-scene:not(:first-child) {
-    visibility: hidden;
-    opacity: 0;
+  .lead-story-scene {
+    padding-block: 3rem;
   }
-}
-
-@media (max-width: 767px) {
-  .concept-stage-scene {
-    opacity: 0;
-    transform: translateY(12px);
-    transition:
-      opacity 450ms ease,
-      transform 450ms ease;
-  }
-
-  .concept-stage-scene.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .story-route-line {
-    stroke-dashoffset: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .concept-story-stage {
-    display: grid !important;
-    height: auto !important;
-    min-height: 0 !important;
-  }
-
-  .concept-stage-scene,
-  .concept-stage-scene:not(:first-child) {
-    position: relative !important;
-    inset: auto !important;
-    margin-bottom: 1rem;
-    visibility: visible !important;
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
-
-  .story-route-line {
-    stroke-dashoffset: 0 !important;
-  }
-}
-
-.concept-story-static .concept-stage-scene {
-  position: relative !important;
-  inset: auto !important;
-  margin-bottom: 1rem;
-  visibility: visible !important;
-  opacity: 1 !important;
-  transform: none !important;
-  transition: none !important;
-}
-
-.concept-story-static {
-  display: grid !important;
-  height: auto !important;
-  min-height: 0 !important;
-}
-
-.concept-story-static .story-route-line {
-  stroke-dashoffset: 0 !important;
 }
