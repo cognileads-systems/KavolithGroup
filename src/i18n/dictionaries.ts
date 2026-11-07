@@ -540,7 +540,68 @@ const es: Dict = {
   "Does this flow describe every delivered project?": "¿Este flujo describe todos los proyectos realizados?",
   "No. The project cards describe work delivered; they do not claim every project used this enquiry flow.":
     "No. Las tarjetas describen trabajos realizados; no afirman que todos los proyectos usaran este flujo de consultas.",
-
+  // Step B copy is machine-drafted; native Spanish review required.
+  Arrive: "Llegada",
+  Capture: "Captura",
+  Score: "Puntuación",
+  "Qualify and assign": "Cualificar y asignar",
+  Respond: "Respuesta",
+  Book: "Reserva",
+  Handoff: "Traspaso",
+  "What could this be worth to you?": "¿Qué valor podría tener esto para ti?",
+  "Always on": "Siempre activo",
+  "Enquiries come from WhatsApp, portals and your site, at any hour.":
+    "Las consultas llegan por WhatsApp, portales y tu sitio web, a cualquier hora.",
+  "Every one lands in one place the moment it arrives.":
+    "Cada una llega a un mismo lugar en cuanto entra.",
+  "Details end up scattered across chats.": "Los detalles quedan dispersos entre los chats.",
+  "Budget, area, property type and timeline are captured into one record.":
+    "El presupuesto, la zona, el tipo de propiedad y el plazo se registran en una sola ficha.",
+  "Hot and cold leads look the same.": "Los leads con mayor y menor interés parecen iguales.",
+  "Each enquiry gets an intent score, so the right lead is called first.":
+    "Cada consulta recibe una puntuación de intención para llamar primero al lead adecuado.",
+  "Leads wait for someone to sort them.": "Los leads esperan a que alguien los clasifique.",
+  "The lead is qualified and assigned by category: site visit, office meeting or villa selection.":
+    "El lead se cualifica y asigna por categoría: visita a la propiedad, reunión en la oficina o selección de villa.",
+  "Replies are late or inconsistent.": "Las respuestas llegan tarde o son inconsistentes.",
+  "An automated message goes out by email and WhatsApp, and your team is alerted on Telegram.":
+    "Se envía un mensaje automático por correo electrónico y WhatsApp, y se avisa a tu equipo por Telegram.",
+  "Booking a visit takes many messages.": "Reservar una visita requiere muchos mensajes.",
+  "The buyer chooses a site visit, office meeting or villa viewing on a booking page, and the slot is set.":
+    "El comprador elige una visita a la propiedad, una reunión en la oficina o una visita a una villa en una página de reservas, y se fija el horario.",
+  "The right person finds out too late.": "La persona adecuada se entera demasiado tarde.",
+  "The concerned team receives the lead with the details and the booking attached.":
+    "El equipo correspondiente recibe el lead con los detalles y la reserva adjuntos.",
+  "Enquiry journey ribbon": "Cinta del recorrido de la consulta",
+  "Email preview": "Vista previa del correo electrónico",
+  "WhatsApp message": "Mensaje de WhatsApp",
+  "Telegram alert": "Alerta de Telegram",
+  "WhatsApp messages need a WhatsApp Business setup.":
+    "Los mensajes de WhatsApp requieren una configuración de WhatsApp Business.",
+  "A fictional weekday in spring": "Un día laborable ficticio de primavera",
+  "Site visits": "Visitas a la propiedad",
+  "Office meetings": "Reuniones en la oficina",
+  "Villa selection": "Selección de villa",
+  "Runs around the clock.": "Funciona a todas horas.",
+  "Less manual sorting for your team.": "Menos clasificación manual para tu equipo.",
+  "A CRM record builds itself from every enquiry.":
+    "Cada consulta crea automáticamente un registro en el CRM.",
+  "Enquiries per month": "Consultas al mes",
+  "Share answered late or missed (%)": "Porcentaje de respuestas tardías o consultas perdidas (%)",
+  "Average deal value": "Valor medio de la operación",
+  "Share of recovered enquiries that would convert (%)":
+    "Porcentaje de consultas recuperadas que se convertirían (%)",
+  "Currency label": "Etiqueta de moneda",
+  "Example: monthly total": "Ejemplo: total mensual",
+  "Example: late share": "Ej.: cuota tardía",
+  "Example: deal value": "Ej.: valor medio",
+  "Example: recovery share": "Ej.: parte recuperada",
+  "Illustrative recovered value per month:": "Valor recuperado ilustrativo al mes:",
+  "Based only on the numbers you entered. Not a prediction or a guarantee.":
+    "Basado únicamente en las cifras que has introducido. No es una predicción ni una garantía.",
+  "Are the value figures real?": "¿Son reales las cifras de valor?",
+  "They are calculated only from the numbers you enter. They are not a promise of results.":
+    "Se calculan únicamente a partir de las cifras que introduces. No son una promesa de resultados.",
 };
 
 const de: Dict = {
@@ -1071,7 +1132,68 @@ const de: Dict = {
   "Does this flow describe every delivered project?": "Beschreibt dieser Ablauf jedes umgesetzte Projekt?",
   "No. The project cards describe work delivered; they do not claim every project used this enquiry flow.":
     "Nein. Die Projektkarten beschreiben umgesetzte Arbeiten; sie behaupten nicht, dass jedes Projekt diesen Anfrageablauf verwendet hat.",
-
+  // Step B copy is machine-drafted; native German review required.
+  Arrive: "Eingang",
+  Capture: "Erfassung",
+  Score: "Bewertung",
+  "Qualify and assign": "Qualifizieren und zuweisen",
+  Respond: "Antwort",
+  Book: "Buchung",
+  Handoff: "Übergabe",
+  "What could this be worth to you?": "Welchen Wert könnte das für Sie haben?",
+  "Always on": "Rund um die Uhr",
+  "Enquiries come from WhatsApp, portals and your site, at any hour.":
+    "Anfragen kommen jederzeit über WhatsApp, Portale und Ihre Website.",
+  "Every one lands in one place the moment it arrives.":
+    "Jede Anfrage landet sofort an einem zentralen Ort.",
+  "Details end up scattered across chats.": "Details verteilen sich über verschiedene Chats.",
+  "Budget, area, property type and timeline are captured into one record.":
+    "Budget, Gebiet, Immobilientyp und Zeitrahmen werden in einem Datensatz erfasst.",
+  "Hot and cold leads look the same.": "Leads mit hoher und niedriger Kaufabsicht sehen gleich aus.",
+  "Each enquiry gets an intent score, so the right lead is called first.":
+    "Jede Anfrage erhält einen Intent-Score, damit der passende Lead zuerst angerufen wird.",
+  "Leads wait for someone to sort them.": "Leads warten darauf, dass jemand sie sortiert.",
+  "The lead is qualified and assigned by category: site visit, office meeting or villa selection.":
+    "Der Lead wird qualifiziert und einer Kategorie zugewiesen: Besichtigung, Bürotermin oder Villenauswahl.",
+  "Replies are late or inconsistent.": "Antworten kommen verspätet oder uneinheitlich.",
+  "An automated message goes out by email and WhatsApp, and your team is alerted on Telegram.":
+    "Eine automatische Nachricht wird per E-Mail und WhatsApp versendet, und Ihr Team erhält eine Telegram-Benachrichtigung.",
+  "Booking a visit takes many messages.": "Eine Besichtigung zu buchen erfordert viele Nachrichten.",
+  "The buyer chooses a site visit, office meeting or villa viewing on a booking page, and the slot is set.":
+    "Der Käufer wählt auf einer Buchungsseite eine Besichtigung, einen Bürotermin oder eine Villenbesichtigung aus, und der Termin wird festgelegt.",
+  "The right person finds out too late.": "Die zuständige Person erfährt es zu spät.",
+  "The concerned team receives the lead with the details and the booking attached.":
+    "Das zuständige Team erhält den Lead mit den Angaben und der Buchung.",
+  "Enquiry journey ribbon": "Band für den Anfrageablauf",
+  "Email preview": "E-Mail-Vorschau",
+  "WhatsApp message": "WhatsApp-Nachricht",
+  "Telegram alert": "Telegram-Benachrichtigung",
+  "WhatsApp messages need a WhatsApp Business setup.":
+    "Für WhatsApp-Nachrichten ist eine WhatsApp-Business-Einrichtung erforderlich.",
+  "A fictional weekday in spring": "Ein fiktiver Werktag im Frühling",
+  "Site visits": "Besichtigungen",
+  "Office meetings": "Bürotermine",
+  "Villa selection": "Villenauswahl",
+  "Runs around the clock.": "Läuft rund um die Uhr.",
+  "Less manual sorting for your team.": "Weniger manuelle Sortierung für Ihr Team.",
+  "A CRM record builds itself from every enquiry.":
+    "Aus jeder Anfrage entsteht automatisch ein CRM-Datensatz.",
+  "Enquiries per month": "Anfragen pro Monat",
+  "Share answered late or missed (%)": "Anteil verspätet beantworteter oder verpasster Anfragen (%)",
+  "Average deal value": "Durchschnittlicher Auftragswert",
+  "Share of recovered enquiries that would convert (%)":
+    "Anteil zurückgewonnener Anfragen, die zu einem Abschluss führen würden (%)",
+  "Currency label": "Währungsangabe",
+  "Example: monthly total": "Bsp.: Monatssumme",
+  "Example: late share": "Bsp.: Spätanteil",
+  "Example: deal value": "Bsp.: Auftragswert",
+  "Example: recovery share": "Bsp.: Rückgewinnung",
+  "Illustrative recovered value per month:": "Illustrativer zurückgewonnener Wert pro Monat:",
+  "Based only on the numbers you entered. Not a prediction or a guarantee.":
+    "Basiert ausschließlich auf Ihren Eingaben. Keine Vorhersage und keine Garantie.",
+  "Are the value figures real?": "Sind die Wertangaben real?",
+  "They are calculated only from the numbers you enter. They are not a promise of results.":
+    "Sie werden ausschließlich anhand Ihrer Eingaben berechnet. Sie sind kein Erfolgsversprechen.",
 };
 
 export const DICTIONARIES: Record<Lang, Dict> = { en: {}, es, de };
