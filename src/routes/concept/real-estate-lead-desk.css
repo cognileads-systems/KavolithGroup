@@ -12,3 +12,32 @@
     padding-block: 3rem;
   }
 }
+
+.lead-ribbon-figure {
+  width: 100%;
+  aspect-ratio: 30 / 7;
+}
+
+.lead-ribbon-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.lead-ribbon-track {
+  opacity: 0.72;
+}
+
+.lead-ribbon-node {
+  fill: var(--surface);
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.lead-work-placeholder {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 7;
+}

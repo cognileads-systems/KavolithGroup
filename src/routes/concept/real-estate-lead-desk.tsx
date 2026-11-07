@@ -103,6 +103,68 @@ function RealEstateLeadDeskPage() {
         </div>
       </Section>
 
+      <Section className="hidden py-4 md:block">
+        <div className="mx-auto max-w-5xl">
+          <figure className="lead-ribbon-figure">
+            <svg
+              className="lead-ribbon-svg"
+              viewBox="0 0 1200 280"
+              role="img"
+              aria-label="From first message to a clear next step"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <defs>
+                <linearGradient id="lead-ribbon-gradient" x1="0" x2="1">
+                  <stop offset="0%" stopColor="#a78bfa" />
+                  <stop offset="100%" stopColor="#5eead4" />
+                </linearGradient>
+              </defs>
+              <path
+                className="lead-ribbon-track"
+                d="M 72 140 C 218 140 218 72 360 72 S 500 140 636 140 S 778 208 918 208 S 1060 140 1128 140"
+                fill="none"
+                stroke="url(#lead-ribbon-gradient)"
+                strokeLinecap="round"
+                strokeWidth="3"
+              />
+              {[
+                [72, 140],
+                [360, 72],
+                [636, 140],
+                [918, 208],
+                [1128, 140],
+              ].map(([cx, cy]) => (
+                <circle
+                  key={`${cx}-${cy}`}
+                  className="lead-ribbon-node"
+                  cx={cx}
+                  cy={cy}
+                  r="9"
+                />
+              ))}
+              <g
+                className="lead-ribbon-object"
+                data-ribbon-object
+                transform="translate(72 140)"
+                aria-hidden="true"
+              >
+                <rect
+                  x="-18"
+                  y="-18"
+                  width="36"
+                  height="36"
+                  rx="12"
+                  fill="#14121c"
+                  stroke="#5eead4"
+                  strokeWidth="2"
+                />
+                <circle cx="0" cy="0" r="4" fill="#5eead4" />
+              </g>
+            </svg>
+          </figure>
+        </div>
+      </Section>
+
       <Section className="py-8 md:py-12">
         <div className="mx-auto max-w-5xl">
           <article className="lead-story-scene">
@@ -182,13 +244,53 @@ function RealEstateLeadDeskPage() {
                 key={project.title}
                 className="overflow-hidden rounded-2xl border border-border bg-surface"
               >
-                <div
-                  role="img"
-                  aria-label="Neutral SVG placeholder — project screenshot not supplied."
-                  className="grid aspect-[16/7] place-items-center border-b border-border bg-panel px-5 text-center font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground"
-                >
-                  Neutral SVG placeholder — project screenshot not supplied.
-                </div>
+                <figure className="border-b border-border bg-panel">
+                  <svg
+                    className="lead-work-placeholder"
+                    viewBox="0 0 640 280"
+                    role="img"
+                    aria-label="Neutral SVG placeholder — project screenshot not supplied."
+                    preserveAspectRatio="xMidYMid meet"
+                  >
+                    <rect
+                      x="1"
+                      y="1"
+                      width="638"
+                      height="278"
+                      rx="18"
+                      fill="#14121c"
+                      stroke="rgba(250,250,248,.09)"
+                      strokeWidth="2"
+                    />
+                    <path
+                      d="M 40 74 H 600 M 40 110 H 440 M 40 210 H 600"
+                      stroke="rgba(250,250,248,.08)"
+                      strokeWidth="2"
+                    />
+                    <rect
+                      x="40"
+                      y="138"
+                      width="172"
+                      height="48"
+                      rx="8"
+                      fill="rgba(167,139,250,.12)"
+                      stroke="#a78bfa"
+                    />
+                    <rect
+                      x="232"
+                      y="138"
+                      width="128"
+                      height="48"
+                      rx="8"
+                      fill="rgba(94,234,212,.08)"
+                      stroke="#5eead4"
+                    />
+                    <circle cx="570" cy="162" r="14" fill="#5eead4" />
+                  </svg>
+                  <figcaption className="px-5 pb-4 text-center font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
+                    Neutral SVG placeholder — project screenshot not supplied.
+                  </figcaption>
+                </figure>
                 <div className="p-5 md:p-6">
                   <h3 className="font-display text-xl">{project.title}</h3>
                   <dl className="mt-5 space-y-4 text-sm">
