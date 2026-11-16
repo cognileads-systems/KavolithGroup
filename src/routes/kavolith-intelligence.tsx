@@ -17,18 +17,19 @@ import {
   DISCOUNT_CODE,
   DISCOUNT_PERCENT,
   PriceLine,
+  rangeForCurrency,
+  type BaseCurrency,
   type Currency,
-  type RangePair,
 } from "@/components/site/pricing";
 
 const SITE = "https://kavolith.com";
 
 /** Founding-client reservation pricing: list figures are pre-FOUNDER30 anchors. */
-const INTELLIGENCE_SETUP: RangePair = {
+const INTELLIGENCE_SETUP = {
   list: { INR: [114300, 214300], USD: [1360, 2570], EUR: [1240, 2360] },
   now: { INR: [80000, 150000], USD: [950, 1800], EUR: [870, 1650] },
 };
-const INTELLIGENCE_MONTHLY: RangePair = {
+const INTELLIGENCE_MONTHLY = {
   list: { INR: [21430, 42860], USD: [250, 500], EUR: [230, 460] },
   now: { INR: [15000, 30000], USD: [175, 350], EUR: [160, 320] },
 };
@@ -267,7 +268,7 @@ function IntelligencePage() {
                 Reserve this build slot →
               </a>
               <meta itemProp="priceCurrency" content={currency} />
-              <meta itemProp="price" content={String(INTELLIGENCE_SETUP.now[currency][0])} />
+              <meta itemProp="price" content={String(rangeForCurrency(INTELLIGENCE_SETUP.now, currency)[0])} />
               <link itemProp="availability" href="https://schema.org/PreOrder" />
             </article>
           ))}
@@ -277,6 +278,11 @@ function IntelligencePage() {
           {DISCOUNT_PERCENT}% off applies flat across India, the US, and the EU, on setup and monthly
           fees alike. Final figure inside the band is confirmed at scoping.
         </p>
+        {currency === "AED" && (
+          <p className="mt-2 text-xs text-muted-foreground">
+            AED prices are converted from USD at the fixed AED/USD rate of 3.6725 and rounded to the nearest 10.
+          </p>
+        )}
       </Section>
 
 

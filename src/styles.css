@@ -79,6 +79,15 @@ body {
   background-color: var(--ink);
 }
 
+html[dir="rtl"] body,
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] h4 {
+  font-family: "IBM Plex Sans Arabic", ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: normal;
+}
+
 @layer base {
   * {
     border-color: var(--color-border);

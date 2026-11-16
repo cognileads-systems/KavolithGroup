@@ -141,6 +141,7 @@ function Field({
         id={name}
         name={name}
         type={type}
+        dir={type === "email" || type === "tel" ? "ltr" : undefined}
         required={required}
         placeholder={placeholder}
         aria-invalid={!!error}

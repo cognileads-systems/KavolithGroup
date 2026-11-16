@@ -30,6 +30,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
   }, [lang]);
 
   const setLang = useCallback((l: Lang) => {
@@ -115,6 +116,7 @@ export function LanguageSwitcher({ className = "" }: { className?: string }) {
         <button
           key={l.code}
           type="button"
+          lang={l.code}
           aria-pressed={lang === l.code}
           title={l.name}
           onClick={() => setLang(l.code)}
