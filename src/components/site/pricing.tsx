@@ -1,16 +1,32 @@
 import { Translate } from "@/i18n";
 import { useState } from "react";
 
-export const CURRENCIES = ["USD", "EUR", "INR"] as const;
+export const CURRENCIES = ["USD", "EUR", "INR", "AED"] as const;
 export type Currency = (typeof CURRENCIES)[number];
+export type BaseCurrency = Exclude<Currency, "AED">;
 
-export type Amount = Record<Currency, number>;
+export type Amount = Record<BaseCurrency, number>;
 export type PricePair = { list: Amount; now: Amount };
 /** Some regions are quoted as a monthly band rather than a single figure. */
-export type RangeAmount = Record<Currency, [number, number]>;
+export type RangeAmount = Record<BaseCurrency, [number, number]>;
 export type RangePair = { list: RangeAmount; now: RangeAmount };
 
-const SYMBOL: Record<Currency, string> = { INR: "₹", USD: "$", EUR: "€" };
+const SYMBOL: Record<BaseCurrency, string> = { INR: "₹", USD: "$", EUR: "€" };
+
+/** Fixed AED/USD peg used to derive all displayed AED pricing. */
+export const AED_PER_USD = 3.6725;
+
+export function amountForCurrency(amount: Amount, currency: Currency) {
+  if (currency === "AED") return Math.round((amount.USD * AED_PER_USD) / 10) * 10;
+  return amount[currency];
+}
+
+export function rangeForCurrency(amount: RangeAmount, currency: Currency): [number, number] {
+  if (currency === "AED") {
+    return amount.USD.map((value) => Math.round((value * AED_PER_USD) / 10) * 10) as [number, number];
+  }
+  return amount[currency];
+}
 
 /** Founder discount applied flat across every region. */
 export const DISCOUNT_CODE = "FOUNDER30";
@@ -18,6 +34,7 @@ export const DISCOUNT_PERCENT = 30;
 
 export function formatMoney(currency: Currency, value: number) {
   const rounded = Math.round(value);
+  if (currency === "AED") return `AED ${rounded.toLocaleString("en-US")}`;
   const locale = currency === "INR" ? "en-IN" : "en-US";
   return `${SYMBOL[currency]}${rounded.toLocaleString(locale)}`;
 }
@@ -30,7 +47,7 @@ export function formatRange(currency: Currency, [low, high]: [number, number]) {
 
 /** Legacy anchor helper kept for the list price of range-based offers. */
 export function marketRate(currency: Currency, value: number) {
-  const step = currency === "INR" ? 500 : 5;
+  const step = currency === "INR" ? 500 : currency === "AED" ? 10 : 5;
   return formatMoney(currency, Math.round(value / step) * step);
 }
 
@@ -103,14 +120,18 @@ export function PriceLine({
       <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
         {label}{" "}
         <span className="line-through decoration-muted-foreground/70">
-          {show(pair.list[currency])}
+          <bdi dir="ltr">{show(Array.isArray(pair.list.USD) ? rangeForCurrency(pair.list as RangeAmount, currency) : amountForCurrency(pair.list as Amount, currency))}</bdi>
         </span>
       </div>
       <div className="mt-1 flex items-baseline gap-2">
         <span className={`font-display text-accent ${size === "lg" ? "text-2xl" : "text-xl"}`}>
-          {show(pair.now[currency])}
+          <bdi dir="ltr">{show(Array.isArray(pair.now.USD) ? rangeForCurrency(pair.now as RangeAmount, currency) : amountForCurrency(pair.now as Amount, currency))}</bdi>
         </span>
-        {suffix && <span className="font-mono text-[11px] text-muted-foreground">{suffix}</span>}
+        {suffix && (
+          <span className="font-mono text-[11px] text-muted-foreground">
+            {currency === "AED" && suffix === "/ month" ? "/mo" : suffix}
+          </span>
+        )}
       </div>
     </div>
   );
@@ -411,6 +432,11 @@ function PricingGridBase({ tiers, note }: { tiers: Tier[]; note?: string }) {
         {DISCOUNT_PERCENT}% off applies flat across India, the US, and the EU, on setup and monthly
         fees alike.
       </p>
+      {currency === "AED" && (
+        <p className="mt-2 text-xs text-muted-foreground">
+          AED prices are converted from USD at the fixed AED/USD rate of 3.6725 and rounded to the nearest 10.
+        </p>
+      )}
     </div>
   );
 }

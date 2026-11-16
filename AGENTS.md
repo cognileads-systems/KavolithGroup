@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep locale selection and document direction in the shared i18n provider, and derive AED display amounts from USD in the shared pricing module so translations and conversions remain consistent site-wide.

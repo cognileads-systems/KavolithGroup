@@ -21,17 +21,19 @@ import {
   DISCOUNT_CODE,
   DISCOUNT_PERCENT,
   formatMoney,
+  rangeForCurrency,
+  type BaseCurrency,
   type Currency,
 } from "@/components/site/pricing";
 import { breadcrumbSchema, PRICE_VALID_UNTIL } from "@/lib/seo";
 
-const DEPLOYMENT_LIST: Record<Currency, [number, number]> = {
+const DEPLOYMENT_LIST: Record<BaseCurrency, [number, number]> = {
   INR: [120000, 250000],
   USD: [4000, 8000],
   EUR: [3650, 7300],
 };
 
-const DEPLOYMENT_NOW: Record<Currency, [number, number]> = {
+const DEPLOYMENT_NOW: Record<BaseCurrency, [number, number]> = {
   INR: [84000, 175000],
   USD: [2800, 5600],
   EUR: [2555, 5110],
@@ -56,8 +58,8 @@ const DEPLOYMENT_DETAILS = [
 
 function DeploymentPriceCard() {
   const [currency, setCurrency] = useState<Currency>("USD");
-  const [listLow, listHigh] = DEPLOYMENT_LIST[currency];
-  const [low, high] = DEPLOYMENT_NOW[currency];
+  const [listLow, listHigh] = rangeForCurrency(DEPLOYMENT_LIST, currency);
+  const [low, high] = rangeForCurrency(DEPLOYMENT_NOW, currency);
 
   return (
     <Translate>
@@ -71,11 +73,11 @@ function DeploymentPriceCard() {
         <div className="mt-4 font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
           List price{" "}
           <span className="line-through decoration-muted-foreground/70">
-            {formatMoney(currency, listLow)} – {formatMoney(currency, listHigh)}
+            <bdi dir="ltr">{formatMoney(currency, listLow)} – {formatMoney(currency, listHigh)}</bdi>
           </span>
         </div>
         <div className="mt-1 font-display text-3xl text-accent">
-          {formatMoney(currency, low)} – {formatMoney(currency, high)}
+          <bdi dir="ltr">{formatMoney(currency, low)} – {formatMoney(currency, high)}</bdi>
         </div>
         <div className="mt-3">
           <DiscountBadge />
@@ -117,6 +119,11 @@ function DeploymentPriceCard() {
           List prices are indicative pre-discount figures. {DISCOUNT_CODE} applies {DISCOUNT_PERCENT}%
           off flat across India, the US, and the EU.
         </p>
+        {currency === "AED" && (
+          <p className="mt-2 text-xs text-muted-foreground">
+            AED prices are converted from USD at the fixed AED/USD rate of 3.6725 and rounded to the nearest 10.
+          </p>
+        )}
       </div>
     </Translate>
   );

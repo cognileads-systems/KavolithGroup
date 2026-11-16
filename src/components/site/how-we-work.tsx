@@ -159,7 +159,7 @@ export function HowWeWorkCompact() {
       {StepGrid({ steps: STEPS_COMPACT })}
 
       <div className="mt-12 overflow-x-auto rounded-xl border border-border bg-panel">
-        <table className="w-full min-w-[640px] border-collapse text-left">
+        <table className="w-full min-w-[640px] border-collapse text-start">
           <thead>
             <tr>
               <th className="px-5 py-4 font-display text-sm font-semibold text-foreground" />

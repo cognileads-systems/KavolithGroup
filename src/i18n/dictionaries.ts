@@ -2,6 +2,7 @@ export const LANGUAGES = [
   { code: "en", label: "EN", name: "English" },
   { code: "es", label: "ES", name: "Español" },
   { code: "de", label: "DE", name: "Deutsch" },
+  { code: "ar", label: "العربية", name: "العربية" },
 ] as const;
 
 export type Lang = (typeof LANGUAGES)[number]["code"];
@@ -958,4 +959,4 @@ const de: Dict = {
   "What does \"free bug fixes\" mean exactly?": "Was bedeutet „kostenlose Fehlerbehebung\" genau?",
 };
 
-export const DICTIONARIES: Record<Lang, Dict> = { en: {}, es, de };
+export const DICTIONARIES: Record<Lang, Dict> = { en: {}, es, de, ar };
